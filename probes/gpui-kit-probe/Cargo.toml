@@ -1,0 +1,16 @@
+[package]
+name = "komorebi-gpui-kit-framework-bench"
+version = "0.1.0"
+edition = "2024"
+publish = false
+
+[dependencies]
+async-channel = "2"
+gpui-kit = "=0.8.1"
+serde_json = "1"
+ui-bench-protocol = { path = "../probe-protocol" }
+windows-sys = { version = "0.61", features = [
+  "Win32_Foundation",
+  "Win32_System_Threading",
+  "Win32_UI_WindowsAndMessaging",
+] }
