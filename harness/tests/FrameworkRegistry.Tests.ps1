@@ -7,16 +7,25 @@ Describe "benchmark framework registry" {
     $definitions.GetType().FullName | Should Be "System.Collections.Specialized.OrderedDictionary"
     $enabled = @($definitions.Values | Where-Object Enabled | ForEach-Object Name)
 
-    $enabled | Should Be @(
-      "tauri", "slint", "zgui", "dioxus-desktop", "dioxus-native", "gpui-ce", "iced", "gpui-kit", "kas", "makepad"
-    )
+    ($enabled -join ",") | Should Be "tauri,slint,zgui,dioxus-desktop,dioxus-native,gpui-ce,iced,gpui-kit,kas,makepad,ferroui"
   }
 
-  It "predeclares the approved expansion candidates as disabled" {
+  It "has no approved expansion candidates left disabled" {
     $definitions = Get-BenchmarkFrameworkDefinitions
     $disabled = @($definitions.Values | Where-Object { -not $_.Enabled } | ForEach-Object Name)
 
-    $disabled | Should Be @("ferroui")
+    $disabled.Count | Should Be 0
+  }
+
+  It "resolves the exact FerroUI default desktop build definition and prerelease pin" {
+    $definition = Get-BenchmarkFrameworkDefinition -Name "ferroui"
+
+    $definition.Name | Should Be "ferroui"
+    $definition.Directory | Should Be "ferroui-probe"
+    $definition.Binary | Should Be "komorebi-ferroui-framework-bench.exe"
+    $definition.PinName | Should Be "ferroUi"
+    $definition.Pin | Should Be "0.4.0-preview.1"
+    $definition.Enabled | Should Be $true
   }
 
   It "resolves the exact Iced build definition and pin" {
