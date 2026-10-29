@@ -7,7 +7,7 @@ Describe "benchmark framework registry" {
     $definitions.GetType().FullName | Should Be "System.Collections.Specialized.OrderedDictionary"
     $enabled = @($definitions.Values | Where-Object Enabled | ForEach-Object Name)
 
-    ($enabled -join ",") | Should Be "tauri,slint,zgui,dioxus-desktop,dioxus-native,gpui-ce,iced,gpui-kit,kas,makepad,ferroui"
+    ($enabled -join ",") | Should Be "tauri,slint,zgui,dioxus-desktop,dioxus-native,gpui-ce,iced,gpui-kit,kas,makepad,ferroui,egui"
   }
 
   It "has no approved expansion candidates left disabled" {
@@ -25,6 +25,17 @@ Describe "benchmark framework registry" {
     $definition.Binary | Should Be "komorebi-ferroui-framework-bench.exe"
     $definition.PinName | Should Be "ferroUi"
     $definition.Pin | Should Be "0.4.0-preview.1"
+    $definition.Enabled | Should Be $true
+  }
+
+  It "resolves the exact egui WGPU build definition and pin" {
+    $definition = Get-BenchmarkFrameworkDefinition -Name "egui"
+
+    $definition.Name | Should Be "egui"
+    $definition.Directory | Should Be "egui-probe"
+    $definition.Binary | Should Be "komorebi-egui-framework-bench.exe"
+    $definition.PinName | Should Be "egui"
+    $definition.Pin | Should Be "0.37.0"
     $definition.Enabled | Should Be $true
   }
 

@@ -12,7 +12,8 @@ function Get-BenchmarkFrameworkDefinitions {
     [pscustomobject]@{ Name = "gpui-kit"; Directory = "gpui-kit-probe"; Binary = "komorebi-gpui-kit-framework-bench.exe"; PinName = "gpuiKit"; Pin = "0.8.1"; Enabled = $true },
     [pscustomobject]@{ Name = "kas"; Directory = "kas-probe"; Binary = "komorebi-kas-framework-bench.exe"; PinName = "kas"; Pin = "0.17.0"; Enabled = $true },
     [pscustomobject]@{ Name = "makepad"; Directory = "makepad-probe"; Binary = "komorebi-makepad-framework-bench.exe"; PinName = "makepad"; Pin = "1.0.0"; Enabled = $true },
-    [pscustomobject]@{ Name = "ferroui"; Directory = "ferroui-probe"; Binary = "komorebi-ferroui-framework-bench.exe"; PinName = "ferroUi"; Pin = "0.4.0-preview.1"; Enabled = $true }
+    [pscustomobject]@{ Name = "ferroui"; Directory = "ferroui-probe"; Binary = "komorebi-ferroui-framework-bench.exe"; PinName = "ferroUi"; Pin = "0.4.0-preview.1"; Enabled = $true },
+    [pscustomobject]@{ Name = "egui"; Directory = "egui-probe"; Binary = "komorebi-egui-framework-bench.exe"; PinName = "egui"; Pin = "0.37.0"; Enabled = $true }
   )) {
     [void]$definitions.Add($definition.Name, $definition)
   }
