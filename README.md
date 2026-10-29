@@ -10,11 +10,11 @@ resident Windows quick launcher. The published historical cohort contains:
 - Dioxus Native on Blitz
 - gpui-ce
 
-Iced, gpui-kit, KAS, Makepad, FerroUI, and egui form the corrected 2026-10-29
-unmanaged-window expansion cohort. Each was tested serially with an isolated
-Cargo home and target directory which was removed only after its durable result
-passed validation, keeping peak disk use close to one framework build at a
-time.
+Iced, gpui-kit, KAS, Makepad, FerroUI, and egui are the six additional
+contestants. All twelve frameworks were tested serially under the corrected
+2026-10-29 unmanaged-window protocol, with an isolated Cargo home and target
+directory removed only after its durable result passed validation. This keeps
+peak disk use close to one framework build at a time.
 
 The production application that motivated the experiment is not a contestant.
 Each reduced probe owns the same two-window scene and shared selection state,
@@ -48,22 +48,27 @@ resolution; it does not mean that the framework never uses the GPU. See the
 [`full report`](docs/2026-10-28-six-framework-resident-comparison.md) for
 ranges, post-hide behavior, limitations, and interpretation.
 
-### Corrected unmanaged-window expansion
+### Corrected unmanaged-window total table
 
-The following medians come from three release rounds on 2026-10-29 after both
-exact benchmark titles were excluded from komorebi. They are comparable within
-this six-framework cohort, but not directly rankable against the managed-window
-historical table above. Renderers were Iced WGPU/DX12, gpui-kit on gpui-pre,
-KAS WGPU/DX12, Makepad D3D11, FerroUI Skia/ANGLE, and egui/eframe WGPU.
+The following medians cover all twelve frameworks rerun for three release
+rounds on 2026-10-29 after both exact benchmark titles were excluded from
+komorebi. Entries in this table are comparable with each other, but should not
+be mixed with the managed-window historical table above.
 
 | Framework | Hidden PWS (MB) | Workload PWS (MB) | Workload CPU (%) | GPU avg (%) | Warm show / hide (ms) |
 |---|---:|---:|---:|---:|---:|
-| Iced | 133.3 | 152.0 | 0.327 | 1.054 | 329.911 / **222.939** |
+| Tauri / WebView2 | 94.6 | 98.2 | 0.328 | **0.000** | 259.550 / 218.722 |
+| Slint | 33.2 | 61.5 | 1.304 | 6.717 | 419.151 / 345.402 |
+| zgui | 87.0 | 96.6 | 0.328 | 0.834 | **207.027** / 227.862 |
+| Dioxus Desktop / WebView2 | 97.2 | 123.1 | 1.313 | 0.481 | 335.474 / 263.959 |
+| Dioxus Native / Blitz | 189.5 | 189.9 | **0.325** | **0.000** | 266.597 / **199.261** |
+| gpui-ce | 23.7 | 36.6 | 0.658 | 2.985 | 246.915 / 204.532 |
+| Iced | 133.3 | 152.0 | 0.327 | 1.054 | 329.911 / 222.939 |
 | gpui-kit | **19.0** | **24.8** | 0.656 | 1.618 | 284.224 / 308.871 |
 | KAS | 151.7 | 188.4 | 0.328 | 11.699 | 246.977 / 237.816 |
-| Makepad | 124.9 | 133.9 | 0.328 | 1.022 | **224.070** / 234.086 |
+| Makepad | 124.9 | 133.9 | 0.328 | 1.022 | 224.070 / 234.086 |
 | FerroUI | 45.7 | 54.4 | 0.329 | 0.632 | 297.982 / 244.843 |
-| egui | 184.9 | 189.0 | **0.325** | **0.496** | 253.600 / 230.375 |
+| egui | 184.9 | 189.0 | **0.325** | 0.496 | 253.600 / 230.375 |
 
 These are machine- and scene-specific observations. In particular, the GPU
 counter is sampled at Windows process/engine resolution, and the frameworks use

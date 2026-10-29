@@ -12,14 +12,21 @@ lifecycle of a resident quick launcher:
 5. Dioxus Native (Blitz/WGPU)
 6. gpui-ce
 
-The corrected 2026-10-29 expansion is a separate unmanaged-window cohort:
+The corrected 2026-10-29 unmanaged-window cohort reruns the historical six and
+adds six more contestants:
 
-1. Iced 0.14.0 (WGPU/DX12)
-2. gpui-kit 0.8.1 on gpui-pre 0.3.10
-3. KAS 0.17.0 (WGPU/DX12)
-4. Makepad Widgets 1.0.0 (native Windows D3D11)
-5. FerroUI 0.4.0-preview.1 (default desktop Fluent/Skia/ANGLE)
-6. egui/eframe 0.37.0 (WGPU)
+1. Tauri 2 (WebView2)
+2. Slint
+3. zgui
+4. Dioxus Desktop (WebView2)
+5. Dioxus Native (Blitz/WGPU)
+6. gpui-ce
+7. Iced 0.14.0 (WGPU/DX12)
+8. gpui-kit 0.8.1 on gpui-pre 0.3.10
+9. KAS 0.17.0 (WGPU/DX12)
+10. Makepad Widgets 1.0.0 (native Windows D3D11)
+11. FerroUI 0.4.0-preview.1 (default desktop Fluent/Skia/ANGLE)
+12. egui/eframe 0.37.0 (WGPU)
 
 The benchmark is a reduced business-equivalent probe, not a comparison between the full Tauri product and minimal demos. Cold startup remains supplementary. The primary result is the cost of a process that stays alive, presents warm windows, performs the same workload, and returns to the background.
 
@@ -106,9 +113,9 @@ tooling was kept inside its work root and removed with the validated build.
 
 ## Interpretation limits
 
-- The six expansion contestants were measured on one machine and date under
-  the corrected unmanaged-window rule; their numbers do not retroactively
-  replace the historical six-framework report.
+- All twelve contestants were measured on one machine and date under the
+  corrected unmanaged-window rule. These results form a separate comparable
+  cohort and do not retroactively replace the historical six-framework report.
 - A zero GPU sample means the Windows per-process counter observed no activity
   at the sampling resolution, not that a framework never uses the GPU.
 - Framework defaults differ. FerroUI's default Fluent stack transitively
