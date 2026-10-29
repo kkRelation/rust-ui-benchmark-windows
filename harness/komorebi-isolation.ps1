@@ -26,7 +26,7 @@ function Test-KomorebiExactTitleIgnoreRule {
       Where-Object {
         $_.kind -eq "Title" -and
         $_.id -eq $Title -and
-        $_.matching_strategy -eq "Equals"
+        $_.matching_strategy -in @("Equals", "Legacy")
       }
   ).Count -gt 0
 }

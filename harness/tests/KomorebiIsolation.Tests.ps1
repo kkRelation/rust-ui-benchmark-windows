@@ -15,6 +15,20 @@ Describe "komorebi benchmark isolation" {
     Test-KomorebiExactTitleIgnoreRule -Identifiers $identifiers -Title "UI Framework Bench - Auxiliary Canvas" | Should Be $false
   }
 
+  It "accepts the legacy strategy emitted by the dynamic ignore-rule command" {
+    $identifiers = @(
+      [pscustomobject]@{
+        kind = "Title"
+        id = "UI Framework Bench - Auxiliary Canvas"
+        matching_strategy = "Legacy"
+      }
+    )
+
+    Test-KomorebiExactTitleIgnoreRule `
+      -Identifiers $identifiers `
+      -Title "UI Framework Bench - Auxiliary Canvas" | Should Be $true
+  }
+
   It "does nothing when komorebi is not running" {
     Mock Test-BenchmarkKomorebiRunning { $false }
     Mock Get-BenchmarkKomorebiState { throw "must not query" }
