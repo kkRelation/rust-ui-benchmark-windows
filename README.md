@@ -342,6 +342,7 @@ identifier. They are preserved so the published result remains traceable to
 the exact measured source; they are fixture labels, not dependencies on the
 original application.
 
-Before publishing this repository or accepting outside contributions, choose
-and add an explicit open-source `LICENSE`.
+## License
+
+This project is licensed under the [MIT License](LICENSE).
 
