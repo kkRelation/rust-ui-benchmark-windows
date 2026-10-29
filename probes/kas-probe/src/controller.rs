@@ -9,7 +9,8 @@ use ui_bench_protocol::{
 };
 
 use crate::visibility::{
-    normalize_benchmark_window_sizes, set_visible_for_benchmark_windows, wait_for_benchmark_windows,
+    normalize_benchmark_window_sizes, set_visible_for_benchmark_windows,
+    stabilize_benchmark_windows_hidden, wait_for_benchmark_windows,
 };
 
 #[derive(Default)]
@@ -94,7 +95,7 @@ pub fn start_controller(mut proxy: Proxy, log: EventLog) {
         let result = (|| -> Result<(), String> {
             wait_for_benchmark_windows(Duration::from_secs(30))?;
             normalize_benchmark_window_sizes()?;
-            set_visible_for_benchmark_windows(false)?;
+            stabilize_benchmark_windows_hidden(Duration::from_secs(3), Duration::from_millis(500))?;
             log.emit(EventKind::ReadyHidden, None)
                 .map_err(|error| error.to_string())?;
 

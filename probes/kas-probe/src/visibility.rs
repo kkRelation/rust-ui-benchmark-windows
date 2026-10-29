@@ -4,8 +4,8 @@ use windows_sys::Win32::Foundation::HWND;
 use windows_sys::Win32::System::Threading::GetCurrentProcessId;
 use windows_sys::Win32::UI::HiDpi::GetDpiForWindow;
 use windows_sys::Win32::UI::WindowsAndMessaging::{
-    FindWindowExW, GetWindowThreadProcessId, SW_HIDE, SW_SHOWNOACTIVATE, SWP_NOACTIVATE,
-    SWP_NOMOVE, SWP_NOZORDER, SetWindowPos, ShowWindow,
+    FindWindowExW, GetWindowThreadProcessId, IsWindowVisible, SW_HIDE, SW_SHOWNOACTIVATE,
+    SWP_NOACTIVATE, SWP_NOMOVE, SWP_NOZORDER, SetWindowPos, ShowWindow,
 };
 
 use crate::scene::{AUXILIARY_OUTER_SIZE, AUXILIARY_TITLE, MAIN_OUTER_SIZE, MAIN_TITLE};
@@ -46,15 +46,47 @@ fn benchmark_windows() -> Vec<(HWND, &'static str)> {
 pub fn wait_for_benchmark_windows(timeout: Duration) -> Result<(), String> {
     let started = Instant::now();
     while started.elapsed() < timeout {
-        if benchmark_windows().len() == 2 {
+        let windows = benchmark_windows();
+        if windows.len() == 2
+            && windows
+                .iter()
+                .all(|(window, _)| unsafe { IsWindowVisible(*window) } != 0)
+        {
             return Ok(());
         }
         std::thread::sleep(Duration::from_millis(25));
     }
     Err(format!(
-        "expected two benchmark windows within {} ms, found {}",
+        "expected two initially visible benchmark windows within {} ms, found {}",
         timeout.as_millis(),
         benchmark_windows().len()
+    ))
+}
+
+pub fn stabilize_benchmark_windows_hidden(
+    timeout: Duration,
+    stable_for: Duration,
+) -> Result<(), String> {
+    let started = Instant::now();
+    let mut hidden_since = None;
+    while started.elapsed() < timeout {
+        set_visible_for_benchmark_windows(false)?;
+        let all_hidden = benchmark_windows()
+            .iter()
+            .all(|(window, _)| unsafe { IsWindowVisible(*window) } == 0);
+        if all_hidden {
+            let since = hidden_since.get_or_insert_with(Instant::now);
+            if since.elapsed() >= stable_for {
+                return Ok(());
+            }
+        } else {
+            hidden_since = None;
+        }
+        std::thread::sleep(Duration::from_millis(25));
+    }
+    Err(format!(
+        "benchmark windows did not remain hidden for {} ms",
+        stable_for.as_millis()
     ))
 }
 
