@@ -8,7 +8,7 @@ Describe "benchmark framework registry" {
     $enabled = @($definitions.Values | Where-Object Enabled | ForEach-Object Name)
 
     $enabled | Should Be @(
-      "tauri", "slint", "zgui", "dioxus-desktop", "dioxus-native", "gpui-ce", "iced", "gpui-kit"
+      "tauri", "slint", "zgui", "dioxus-desktop", "dioxus-native", "gpui-ce", "iced", "gpui-kit", "kas"
     )
   }
 
@@ -16,7 +16,7 @@ Describe "benchmark framework registry" {
     $definitions = Get-BenchmarkFrameworkDefinitions
     $disabled = @($definitions.Values | Where-Object { -not $_.Enabled } | ForEach-Object Name)
 
-    $disabled | Should Be @("kas", "makepad", "ferroui")
+    $disabled | Should Be @("makepad", "ferroui")
   }
 
   It "resolves the exact Iced build definition and pin" {
@@ -42,6 +42,17 @@ Describe "benchmark framework registry" {
     $definition.Enabled | Should Be $true
     $gpuiCe.PinName | Should Be "gpuiCe"
     $gpuiCe.Pin | Should Be "5cac1478fea0a5f6f28ae4bc7df4b552dff8854b"
+  }
+
+  It "resolves the exact KAS WGPU build definition and pin" {
+    $definition = Get-BenchmarkFrameworkDefinition -Name "kas"
+
+    $definition.Name | Should Be "kas"
+    $definition.Directory | Should Be "kas-probe"
+    $definition.Binary | Should Be "komorebi-kas-framework-bench.exe"
+    $definition.PinName | Should Be "kas"
+    $definition.Pin | Should Be "0.17.0"
+    $definition.Enabled | Should Be $true
   }
 
   It "resolves the exact Slint build definition and pin" {
