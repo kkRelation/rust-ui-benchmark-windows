@@ -1,0 +1,10 @@
+{"framework":"gpui-ce","event":"ready-hidden","timestamp":"2026-10-29T07:43:00.7290623Z","elapsedMs":299}
+{"framework":"gpui-ce","event":"show-start","timestamp":"2026-10-29T07:43:14.0196607Z","elapsedMs":13589}
+{"framework":"gpui-ce","event":"show-end","timestamp":"2026-10-29T07:43:14.0197306Z","elapsedMs":13589}
+{"framework":"gpui-ce","event":"workload-start","timestamp":"2026-10-29T07:43:28.797987Z","elapsedMs":28368}
+{"framework":"gpui-ce","event":"workload-end","timestamp":"2026-10-29T07:43:41.16214Z","elapsedMs":40732}
+{"framework":"gpui-ce","event":"hide-start","timestamp":"2026-10-29T07:43:41.1634044Z","elapsedMs":40733}
+{"framework":"gpui-ce","event":"hide-end","timestamp":"2026-10-29T07:43:41.1681576Z","elapsedMs":40738}
+{"framework":"gpui-ce","event":"cycle-start","timestamp":"2026-10-29T07:44:09.3957699Z","elapsedMs":68965,"detail":{"count":30}}
+{"framework":"gpui-ce","event":"cycle-end","timestamp":"2026-10-29T07:44:13.0979059Z","elapsedMs":72668,"detail":{"count":30}}
+{"framework":"gpui-ce","event":"quit","timestamp":"2026-10-29T07:44:26.3315653Z","elapsedMs":85901}
