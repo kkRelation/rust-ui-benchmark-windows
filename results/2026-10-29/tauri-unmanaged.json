@@ -1,0 +1,1796 @@
+{
+  "schemaVersion": 2,
+  "capturedAt": "2026-10-29T15:08:50.0990404+08:00",
+  "protocol": {
+    "resident": true,
+    "windows": 2,
+    "mainContentSize": "700x480",
+    "auxiliaryContentSize": "1200x760",
+    "workload": "400 shared-state updates at 20 ms",
+    "phases": [
+      "hiddenIdle",
+      "warmShow",
+      "visibleIdle",
+      "workload400",
+      "warmHide",
+      "postHideIdle",
+      "cycle30",
+      "postCycleIdle"
+    ],
+    "sampleSeconds": 10,
+    "postHideSettleSeconds": 15,
+    "cycleCount": 30,
+    "rounds": 3,
+    "roundStart": 1,
+    "rotatingOrder": true,
+    "smoke": false
+  },
+  "pins": {
+    "tauri": "2.12.5"
+  },
+  "environment": {
+    "os": "Microsoft Windows 11 专业版",
+    "osVersion": "10.0.26200",
+    "machine": "Jiaolong Series MRID6",
+    "logicalProcessors": 32,
+    "cpu": [
+      "AMD Ryzen 9 7945HX with Radeon Graphics        "
+    ],
+    "gpu": [
+      {
+        "name": "Parsec Virtual Display Adapter",
+        "driverVersion": "0.45.0.0"
+      },
+      {
+        "name": "GameViewer Virtual Display Adapter",
+        "driverVersion": "15.6.5.199"
+      },
+      {
+        "name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+        "driverVersion": "32.0.16.1047"
+      },
+      {
+        "name": "AMD Radeon(TM) Graphics",
+        "driverVersion": "32.0.11038.3"
+      }
+    ],
+    "powerPlan": "电源方案 GUID: 5fa7881b-3a51-42ec-92eb-4a309e6a73cc  (cpu boost)"
+  },
+  "toolchain": {
+    "rustcVerbose": "rustc 1.98.1 (48a229cea 2026-09-01)\nbinary: rustc\ncommit-hash: 48a229ceaefd4985c50990b14116b6d856af0985\ncommit-date: 2026-09-01\nhost: x86_64-pc-windows-msvc\nrelease: 1.98.1\nLLVM version: 22.1.8",
+    "cargoVersion": "cargo 1.98.1 (797e8a9bc 2026-08-05)"
+  },
+  "runs": [
+    {
+      "framework": "tauri",
+      "round": 1,
+      "status": "ok",
+      "executable": ".benchmark-work/tauri/target/release/komorebi-tauri-framework-bench.exe",
+      "executableSizeMb": 8.4,
+      "showLatencyMs": 313.626,
+      "hideLatencyMs": 199.499,
+      "topology": {
+        "hidden": [
+          {
+            "ProcessId": 54196,
+            "Title": "UI Framework Bench - Auxiliary Canvas",
+            "Visible": false,
+            "Width": 1215,
+            "Height": 794
+          },
+          {
+            "ProcessId": 54196,
+            "Title": "UI Framework Bench - Main",
+            "Visible": false,
+            "Width": 715,
+            "Height": 514
+          }
+        ],
+        "visible": [
+          {
+            "ProcessId": 54196,
+            "Title": "UI Framework Bench - Auxiliary Canvas",
+            "Visible": true,
+            "Width": 1215,
+            "Height": 794
+          },
+          {
+            "ProcessId": 54196,
+            "Title": "UI Framework Bench - Main",
+            "Visible": true,
+            "Width": 715,
+            "Height": 514
+          }
+        ],
+        "postHide": [
+          {
+            "ProcessId": 54196,
+            "Title": "UI Framework Bench - Auxiliary Canvas",
+            "Visible": false,
+            "Width": 1215,
+            "Height": 794
+          },
+          {
+            "ProcessId": 54196,
+            "Title": "UI Framework Bench - Main",
+            "Visible": false,
+            "Width": 715,
+            "Height": 514
+          }
+        ],
+        "postCycle": [
+          {
+            "ProcessId": 54196,
+            "Title": "UI Framework Bench - Auxiliary Canvas",
+            "Visible": false,
+            "Width": 1215,
+            "Height": 794
+          },
+          {
+            "ProcessId": 54196,
+            "Title": "UI Framework Bench - Main",
+            "Visible": false,
+            "Width": 715,
+            "Height": 514
+          }
+        ]
+      },
+      "phases": {
+        "hiddenIdle": {
+          "capturedAt": "2026-10-29T15:04:31.1640219+08:00",
+          "sampleStartedAt": "2026-10-29T15:04:20.0410307+08:00",
+          "sampleEndedAt": "2026-10-29T15:04:31.1640219+08:00",
+          "sampleDurationSeconds": 11.123,
+          "rootProcessId": 54196,
+          "processCount": 8,
+          "rendererCount": 2,
+          "workingSetMb": 395.8,
+          "privateWorkingSetMb": 94.3,
+          "privateBytesMb": 264.5,
+          "cpuSampleSeconds": 10,
+          "cpuSingleCorePercent": 0.0,
+          "cpuMachinePercent": 0.0,
+          "logicalProcessorCount": 32,
+          "gpuSamples": 11,
+          "gpuEnginePercent": 0.0,
+          "gpuEngineAveragePercent": 0.0,
+          "gpuEnginePeakPercent": 0.001,
+          "dedicatedGpuMb": 145.2,
+          "dedicatedGpuStartMb": 145.2,
+          "dedicatedGpuEndMb": 145.2,
+          "dedicatedGpuPeakMb": 145.2,
+          "sharedGpuMb": 2.1,
+          "sharedGpuStartMb": 2.1,
+          "sharedGpuEndMb": 2.1,
+          "sharedGpuPeakMb": 2.1,
+          "processes": [
+            {
+              "processId": 13304,
+              "parentProcessId": 54196,
+              "name": "msedgewebview2.exe",
+              "renderer": false
+            },
+            {
+              "processId": 21312,
+              "parentProcessId": 13304,
+              "name": "msedgewebview2.exe",
+              "renderer": true
+            },
+            {
+              "processId": 29096,
+              "parentProcessId": 13304,
+              "name": "msedgewebview2.exe",
+              "renderer": false
+            },
+            {
+              "processId": 34772,
+              "parentProcessId": 13304,
+              "name": "msedgewebview2.exe",
+              "renderer": false
+            },
+            {
+              "processId": 41724,
+              "parentProcessId": 13304,
+              "name": "msedgewebview2.exe",
+              "renderer": false
+            },
+            {
+              "processId": 52576,
+              "parentProcessId": 13304,
+              "name": "msedgewebview2.exe",
+              "renderer": false
+            },
+            {
+              "processId": 54196,
+              "parentProcessId": 58480,
+              "name": "komorebi-tauri-framework-bench.exe",
+              "renderer": false
+            },
+            {
+              "processId": 58072,
+              "parentProcessId": 13304,
+              "name": "msedgewebview2.exe",
+              "renderer": true
+            }
+          ]
+        },
+        "visibleIdle": {
+          "capturedAt": "2026-10-29T15:04:45.570103+08:00",
+          "sampleStartedAt": "2026-10-29T15:04:34.4695465+08:00",
+          "sampleEndedAt": "2026-10-29T15:04:45.570103+08:00",
+          "sampleDurationSeconds": 11.1,
+          "rootProcessId": 54196,
+          "processCount": 8,
+          "rendererCount": 2,
+          "workingSetMb": 398.3,
+          "privateWorkingSetMb": 94.5,
+          "privateBytesMb": 239.0,
+          "cpuSampleSeconds": 10,
+          "cpuSingleCorePercent": 9.009,
+          "cpuMachinePercent": 0.282,
+          "logicalProcessorCount": 32,
+          "gpuSamples": 11,
+          "gpuEnginePercent": 0.0,
+          "gpuEngineAveragePercent": 0.0,
+          "gpuEnginePeakPercent": 0.0,
+          "dedicatedGpuMb": 77.3,
+          "dedicatedGpuStartMb": 77.3,
+          "dedicatedGpuEndMb": 77.3,
+          "dedicatedGpuPeakMb": 77.3,
+          "sharedGpuMb": 2.1,
+          "sharedGpuStartMb": 2.1,
+          "sharedGpuEndMb": 2.1,
+          "sharedGpuPeakMb": 2.1,
+          "processes": [
+            {
+              "processId": 13304,
+              "parentProcessId": 54196,
+              "name": "msedgewebview2.exe",
+              "renderer": false
+            },
+            {
+              "processId": 21312,
+              "parentProcessId": 13304,
+              "name": "msedgewebview2.exe",
+              "renderer": true
+            },
+            {
+              "processId": 29096,
+              "parentProcessId": 13304,
+              "name": "msedgewebview2.exe",
+              "renderer": false
+            },
+            {
+              "processId": 34772,
+              "parentProcessId": 13304,
+              "name": "msedgewebview2.exe",
+              "renderer": false
+            },
+            {
+              "processId": 41724,
+              "parentProcessId": 13304,
+              "name": "msedgewebview2.exe",
+              "renderer": false
+            },
+            {
+              "processId": 52576,
+              "parentProcessId": 13304,
+              "name": "msedgewebview2.exe",
+              "renderer": false
+            },
+            {
+              "processId": 54196,
+              "parentProcessId": 58480,
+              "name": "komorebi-tauri-framework-bench.exe",
+              "renderer": false
+            },
+            {
+              "processId": 58072,
+              "parentProcessId": 13304,
+              "name": "msedgewebview2.exe",
+              "renderer": true
+            }
+          ]
+        },
+        "workload400": {
+          "capturedAt": "2026-10-29T15:04:58.8544907+08:00",
+          "sampleStartedAt": "2026-10-29T15:04:49.3268075+08:00",
+          "sampleEndedAt": "2026-10-29T15:04:58.8544907+08:00",
+          "sampleDurationSeconds": 9.526,
+          "rootProcessId": 54196,
+          "processCount": 8,
+          "rendererCount": 2,
+          "workingSetMb": 411.7,
+          "privateWorkingSetMb": 98.2,
+          "privateBytesMb": 242.5,
+          "cpuSampleSeconds": 8,
+          "cpuSingleCorePercent": 10.497,
+          "cpuMachinePercent": 0.328,
+          "logicalProcessorCount": 32,
+          "gpuSamples": 9,
+          "gpuEnginePercent": 0.0,
+          "gpuEngineAveragePercent": 0.0,
+          "gpuEnginePeakPercent": 0.0,
+          "dedicatedGpuMb": 77.3,
+          "dedicatedGpuStartMb": 77.3,
+          "dedicatedGpuEndMb": 77.3,
+          "dedicatedGpuPeakMb": 77.3,
+          "sharedGpuMb": 2.1,
+          "sharedGpuStartMb": 2.1,
+          "sharedGpuEndMb": 2.1,
+          "sharedGpuPeakMb": 2.1,
+          "processes": [
+            {
+              "processId": 13304,
+              "parentProcessId": 54196,
+              "name": "msedgewebview2.exe",
+              "renderer": false
+            },
+            {
+              "processId": 21312,
+              "parentProcessId": 13304,
+              "name": "msedgewebview2.exe",
+              "renderer": true
+            },
+            {
+              "processId": 29096,
+              "parentProcessId": 13304,
+              "name": "msedgewebview2.exe",
+              "renderer": false
+            },
+            {
+              "processId": 34772,
+              "parentProcessId": 13304,
+              "name": "msedgewebview2.exe",
+              "renderer": false
+            },
+            {
+              "processId": 41724,
+              "parentProcessId": 13304,
+              "name": "msedgewebview2.exe",
+              "renderer": false
+            },
+            {
+              "processId": 52576,
+              "parentProcessId": 13304,
+              "name": "msedgewebview2.exe",
+              "renderer": false
+            },
+            {
+              "processId": 54196,
+              "parentProcessId": 58480,
+              "name": "komorebi-tauri-framework-bench.exe",
+              "renderer": false
+            },
+            {
+              "processId": 58072,
+              "parentProcessId": 13304,
+              "name": "msedgewebview2.exe",
+              "renderer": true
+            }
+          ]
+        },
+        "postHideIdle": {
+          "capturedAt": "2026-10-29T15:05:28.5529937+08:00",
+          "sampleStartedAt": "2026-10-29T15:05:17.4551087+08:00",
+          "sampleEndedAt": "2026-10-29T15:05:28.5529937+08:00",
+          "sampleDurationSeconds": 11.098,
+          "rootProcessId": 54196,
+          "processCount": 8,
+          "rendererCount": 2,
+          "workingSetMb": 411.3,
+          "privateWorkingSetMb": 96.6,
+          "privateBytesMb": 240.5,
+          "cpuSampleSeconds": 10,
+          "cpuSingleCorePercent": 0.0,
+          "cpuMachinePercent": 0.0,
+          "logicalProcessorCount": 32,
+          "gpuSamples": 11,
+          "gpuEnginePercent": 0.0,
+          "gpuEngineAveragePercent": 0.0,
+          "gpuEnginePeakPercent": 0.0,
+          "dedicatedGpuMb": 77.3,
+          "dedicatedGpuStartMb": 77.3,
+          "dedicatedGpuEndMb": 77.3,
+          "dedicatedGpuPeakMb": 77.3,
+          "sharedGpuMb": 2.1,
+          "sharedGpuStartMb": 2.1,
+          "sharedGpuEndMb": 2.1,
+          "sharedGpuPeakMb": 2.1,
+          "processes": [
+            {
+              "processId": 13304,
+              "parentProcessId": 54196,
+              "name": "msedgewebview2.exe",
+              "renderer": false
+            },
+            {
+              "processId": 21312,
+              "parentProcessId": 13304,
+              "name": "msedgewebview2.exe",
+              "renderer": true
+            },
+            {
+              "processId": 29096,
+              "parentProcessId": 13304,
+              "name": "msedgewebview2.exe",
+              "renderer": false
+            },
+            {
+              "processId": 34772,
+              "parentProcessId": 13304,
+              "name": "msedgewebview2.exe",
+              "renderer": false
+            },
+            {
+              "processId": 41724,
+              "parentProcessId": 13304,
+              "name": "msedgewebview2.exe",
+              "renderer": false
+            },
+            {
+              "processId": 52576,
+              "parentProcessId": 13304,
+              "name": "msedgewebview2.exe",
+              "renderer": false
+            },
+            {
+              "processId": 54196,
+              "parentProcessId": 58480,
+              "name": "komorebi-tauri-framework-bench.exe",
+              "renderer": false
+            },
+            {
+              "processId": 58072,
+              "parentProcessId": 13304,
+              "name": "msedgewebview2.exe",
+              "renderer": true
+            }
+          ]
+        },
+        "postCycleIdle": {
+          "capturedAt": "2026-10-29T15:05:46.3873511+08:00",
+          "sampleStartedAt": "2026-10-29T15:05:35.2469669+08:00",
+          "sampleEndedAt": "2026-10-29T15:05:46.3873511+08:00",
+          "sampleDurationSeconds": 11.14,
+          "rootProcessId": 54196,
+          "processCount": 8,
+          "rendererCount": 2,
+          "workingSetMb": 416.2,
+          "privateWorkingSetMb": 99.1,
+          "privateBytesMb": 214.8,
+          "cpuSampleSeconds": 10,
+          "cpuSingleCorePercent": 0.0,
+          "cpuMachinePercent": 0.0,
+          "logicalProcessorCount": 32,
+          "gpuSamples": 11,
+          "gpuEnginePercent": 0.0,
+          "gpuEngineAveragePercent": 0.0,
+          "gpuEnginePeakPercent": 0.0,
+          "dedicatedGpuMb": 54.0,
+          "dedicatedGpuStartMb": 54.0,
+          "dedicatedGpuEndMb": 54.0,
+          "dedicatedGpuPeakMb": 54.0,
+          "sharedGpuMb": 2.1,
+          "sharedGpuStartMb": 2.1,
+          "sharedGpuEndMb": 2.1,
+          "sharedGpuPeakMb": 2.1,
+          "processes": [
+            {
+              "processId": 13304,
+              "parentProcessId": 54196,
+              "name": "msedgewebview2.exe",
+              "renderer": false
+            },
+            {
+              "processId": 21312,
+              "parentProcessId": 13304,
+              "name": "msedgewebview2.exe",
+              "renderer": true
+            },
+            {
+              "processId": 29096,
+              "parentProcessId": 13304,
+              "name": "msedgewebview2.exe",
+              "renderer": false
+            },
+            {
+              "processId": 34772,
+              "parentProcessId": 13304,
+              "name": "msedgewebview2.exe",
+              "renderer": false
+            },
+            {
+              "processId": 41724,
+              "parentProcessId": 13304,
+              "name": "msedgewebview2.exe",
+              "renderer": false
+            },
+            {
+              "processId": 52576,
+              "parentProcessId": 13304,
+              "name": "msedgewebview2.exe",
+              "renderer": false
+            },
+            {
+              "processId": 54196,
+              "parentProcessId": 58480,
+              "name": "komorebi-tauri-framework-bench.exe",
+              "renderer": false
+            },
+            {
+              "processId": 58072,
+              "parentProcessId": 13304,
+              "name": "msedgewebview2.exe",
+              "renderer": true
+            }
+          ]
+        }
+      },
+      "eventLog": "D:\\C2D\\Desktop\\Code\\Rust\\sTools\\rust-ui-benchmark-windows\\results\\2026-10-29\\tauri-unmanaged-artifacts\\tauri\\round-1-events.jsonl",
+      "executableSha256": "55de4e9343a215e39e93bd695b9a4527928941dd69cdea903b0b99c5c4707853",
+      "lockfileSha256": "3dface88a872ed2c263469891ed76bd2f8d91bd14beb91c5db0f3099c849b089"
+    },
+    {
+      "framework": "tauri",
+      "round": 2,
+      "status": "ok",
+      "executable": ".benchmark-work/tauri/target/release/komorebi-tauri-framework-bench.exe",
+      "executableSizeMb": 8.4,
+      "showLatencyMs": 259.55,
+      "hideLatencyMs": 228.401,
+      "topology": {
+        "hidden": [
+          {
+            "ProcessId": 19216,
+            "Title": "UI Framework Bench - Auxiliary Canvas",
+            "Visible": false,
+            "Width": 1215,
+            "Height": 794
+          },
+          {
+            "ProcessId": 19216,
+            "Title": "UI Framework Bench - Main",
+            "Visible": false,
+            "Width": 715,
+            "Height": 514
+          }
+        ],
+        "visible": [
+          {
+            "ProcessId": 19216,
+            "Title": "UI Framework Bench - Auxiliary Canvas",
+            "Visible": true,
+            "Width": 1215,
+            "Height": 794
+          },
+          {
+            "ProcessId": 19216,
+            "Title": "UI Framework Bench - Main",
+            "Visible": true,
+            "Width": 715,
+            "Height": 514
+          }
+        ],
+        "postHide": [
+          {
+            "ProcessId": 19216,
+            "Title": "UI Framework Bench - Auxiliary Canvas",
+            "Visible": false,
+            "Width": 1215,
+            "Height": 794
+          },
+          {
+            "ProcessId": 19216,
+            "Title": "UI Framework Bench - Main",
+            "Visible": false,
+            "Width": 715,
+            "Height": 514
+          }
+        ],
+        "postCycle": [
+          {
+            "ProcessId": 19216,
+            "Title": "UI Framework Bench - Auxiliary Canvas",
+            "Visible": false,
+            "Width": 1215,
+            "Height": 794
+          },
+          {
+            "ProcessId": 19216,
+            "Title": "UI Framework Bench - Main",
+            "Visible": false,
+            "Width": 715,
+            "Height": 514
+          }
+        ]
+      },
+      "phases": {
+        "hiddenIdle": {
+          "capturedAt": "2026-10-29T15:06:01.4442805+08:00",
+          "sampleStartedAt": "2026-10-29T15:05:50.2922439+08:00",
+          "sampleEndedAt": "2026-10-29T15:06:01.4442805+08:00",
+          "sampleDurationSeconds": 11.152,
+          "rootProcessId": 19216,
+          "processCount": 8,
+          "rendererCount": 2,
+          "workingSetMb": 396.2,
+          "privateWorkingSetMb": 94.6,
+          "privateBytesMb": 265.6,
+          "cpuSampleSeconds": 10,
+          "cpuSingleCorePercent": 0.0,
+          "cpuMachinePercent": 0.0,
+          "logicalProcessorCount": 32,
+          "gpuSamples": 11,
+          "gpuEnginePercent": 0.0,
+          "gpuEngineAveragePercent": 0.0,
+          "gpuEnginePeakPercent": 0.001,
+          "dedicatedGpuMb": 145.2,
+          "dedicatedGpuStartMb": 145.2,
+          "dedicatedGpuEndMb": 145.2,
+          "dedicatedGpuPeakMb": 145.2,
+          "sharedGpuMb": 2.2,
+          "sharedGpuStartMb": 2.2,
+          "sharedGpuEndMb": 2.2,
+          "sharedGpuPeakMb": 2.2,
+          "processes": [
+            {
+              "processId": 9464,
+              "parentProcessId": 19216,
+              "name": "msedgewebview2.exe",
+              "renderer": false
+            },
+            {
+              "processId": 19216,
+              "parentProcessId": 58480,
+              "name": "komorebi-tauri-framework-bench.exe",
+              "renderer": false
+            },
+            {
+              "processId": 33056,
+              "parentProcessId": 9464,
+              "name": "msedgewebview2.exe",
+              "renderer": false
+            },
+            {
+              "processId": 42808,
+              "parentProcessId": 9464,
+              "name": "msedgewebview2.exe",
+              "renderer": false
+            },
+            {
+              "processId": 44504,
+              "parentProcessId": 9464,
+              "name": "msedgewebview2.exe",
+              "renderer": true
+            },
+            {
+              "processId": 51780,
+              "parentProcessId": 9464,
+              "name": "msedgewebview2.exe",
+              "renderer": true
+            },
+            {
+              "processId": 52356,
+              "parentProcessId": 9464,
+              "name": "msedgewebview2.exe",
+              "renderer": false
+            },
+            {
+              "processId": 54128,
+              "parentProcessId": 9464,
+              "name": "msedgewebview2.exe",
+              "renderer": false
+            }
+          ]
+        },
+        "visibleIdle": {
+          "capturedAt": "2026-10-29T15:06:15.9513447+08:00",
+          "sampleStartedAt": "2026-10-29T15:06:04.7946835+08:00",
+          "sampleEndedAt": "2026-10-29T15:06:15.9513447+08:00",
+          "sampleDurationSeconds": 11.157,
+          "rootProcessId": 19216,
+          "processCount": 8,
+          "rendererCount": 2,
+          "workingSetMb": 398.9,
+          "privateWorkingSetMb": 95.0,
+          "privateBytesMb": 240.5,
+          "cpuSampleSeconds": 10,
+          "cpuSingleCorePercent": 8.963,
+          "cpuMachinePercent": 0.28,
+          "logicalProcessorCount": 32,
+          "gpuSamples": 11,
+          "gpuEnginePercent": 0.0,
+          "gpuEngineAveragePercent": 0.0,
+          "gpuEnginePeakPercent": 0.0,
+          "dedicatedGpuMb": 77.3,
+          "dedicatedGpuStartMb": 77.3,
+          "dedicatedGpuEndMb": 77.3,
+          "dedicatedGpuPeakMb": 77.3,
+          "sharedGpuMb": 2.2,
+          "sharedGpuStartMb": 2.2,
+          "sharedGpuEndMb": 2.2,
+          "sharedGpuPeakMb": 2.2,
+          "processes": [
+            {
+              "processId": 9464,
+              "parentProcessId": 19216,
+              "name": "msedgewebview2.exe",
+              "renderer": false
+            },
+            {
+              "processId": 19216,
+              "parentProcessId": 58480,
+              "name": "komorebi-tauri-framework-bench.exe",
+              "renderer": false
+            },
+            {
+              "processId": 33056,
+              "parentProcessId": 9464,
+              "name": "msedgewebview2.exe",
+              "renderer": false
+            },
+            {
+              "processId": 42808,
+              "parentProcessId": 9464,
+              "name": "msedgewebview2.exe",
+              "renderer": false
+            },
+            {
+              "processId": 44504,
+              "parentProcessId": 9464,
+              "name": "msedgewebview2.exe",
+              "renderer": true
+            },
+            {
+              "processId": 51780,
+              "parentProcessId": 9464,
+              "name": "msedgewebview2.exe",
+              "renderer": true
+            },
+            {
+              "processId": 52356,
+              "parentProcessId": 9464,
+              "name": "msedgewebview2.exe",
+              "renderer": false
+            },
+            {
+              "processId": 54128,
+              "parentProcessId": 9464,
+              "name": "msedgewebview2.exe",
+              "renderer": false
+            }
+          ]
+        },
+        "workload400": {
+          "capturedAt": "2026-10-29T15:06:29.0868682+08:00",
+          "sampleStartedAt": "2026-10-29T15:06:19.5679099+08:00",
+          "sampleEndedAt": "2026-10-29T15:06:29.0868682+08:00",
+          "sampleDurationSeconds": 9.517,
+          "rootProcessId": 19216,
+          "processCount": 8,
+          "rendererCount": 2,
+          "workingSetMb": 411.5,
+          "privateWorkingSetMb": 97.9,
+          "privateBytesMb": 243.0,
+          "cpuSampleSeconds": 8,
+          "cpuSingleCorePercent": 10.507,
+          "cpuMachinePercent": 0.328,
+          "logicalProcessorCount": 32,
+          "gpuSamples": 9,
+          "gpuEnginePercent": 0.0,
+          "gpuEngineAveragePercent": 0.0,
+          "gpuEnginePeakPercent": 0.0,
+          "dedicatedGpuMb": 77.3,
+          "dedicatedGpuStartMb": 77.3,
+          "dedicatedGpuEndMb": 77.3,
+          "dedicatedGpuPeakMb": 77.3,
+          "sharedGpuMb": 2.2,
+          "sharedGpuStartMb": 2.2,
+          "sharedGpuEndMb": 2.2,
+          "sharedGpuPeakMb": 2.2,
+          "processes": [
+            {
+              "processId": 9464,
+              "parentProcessId": 19216,
+              "name": "msedgewebview2.exe",
+              "renderer": false
+            },
+            {
+              "processId": 19216,
+              "parentProcessId": 58480,
+              "name": "komorebi-tauri-framework-bench.exe",
+              "renderer": false
+            },
+            {
+              "processId": 33056,
+              "parentProcessId": 9464,
+              "name": "msedgewebview2.exe",
+              "renderer": false
+            },
+            {
+              "processId": 42808,
+              "parentProcessId": 9464,
+              "name": "msedgewebview2.exe",
+              "renderer": false
+            },
+            {
+              "processId": 44504,
+              "parentProcessId": 9464,
+              "name": "msedgewebview2.exe",
+              "renderer": true
+            },
+            {
+              "processId": 51780,
+              "parentProcessId": 9464,
+              "name": "msedgewebview2.exe",
+              "renderer": true
+            },
+            {
+              "processId": 52356,
+              "parentProcessId": 9464,
+              "name": "msedgewebview2.exe",
+              "renderer": false
+            },
+            {
+              "processId": 54128,
+              "parentProcessId": 9464,
+              "name": "msedgewebview2.exe",
+              "renderer": false
+            }
+          ]
+        },
+        "postHideIdle": {
+          "capturedAt": "2026-10-29T15:06:58.8384602+08:00",
+          "sampleStartedAt": "2026-10-29T15:06:47.7194113+08:00",
+          "sampleEndedAt": "2026-10-29T15:06:58.8384602+08:00",
+          "sampleDurationSeconds": 11.119,
+          "rootProcessId": 19216,
+          "processCount": 8,
+          "rendererCount": 2,
+          "workingSetMb": 411.0,
+          "privateWorkingSetMb": 96.0,
+          "privateBytesMb": 240.8,
+          "cpuSampleSeconds": 10,
+          "cpuSingleCorePercent": 0.0,
+          "cpuMachinePercent": 0.0,
+          "logicalProcessorCount": 32,
+          "gpuSamples": 11,
+          "gpuEnginePercent": 0.0,
+          "gpuEngineAveragePercent": 0.0,
+          "gpuEnginePeakPercent": 0.0,
+          "dedicatedGpuMb": 77.3,
+          "dedicatedGpuStartMb": 77.3,
+          "dedicatedGpuEndMb": 77.3,
+          "dedicatedGpuPeakMb": 77.3,
+          "sharedGpuMb": 2.2,
+          "sharedGpuStartMb": 2.2,
+          "sharedGpuEndMb": 2.2,
+          "sharedGpuPeakMb": 2.2,
+          "processes": [
+            {
+              "processId": 9464,
+              "parentProcessId": 19216,
+              "name": "msedgewebview2.exe",
+              "renderer": false
+            },
+            {
+              "processId": 19216,
+              "parentProcessId": 58480,
+              "name": "komorebi-tauri-framework-bench.exe",
+              "renderer": false
+            },
+            {
+              "processId": 33056,
+              "parentProcessId": 9464,
+              "name": "msedgewebview2.exe",
+              "renderer": false
+            },
+            {
+              "processId": 42808,
+              "parentProcessId": 9464,
+              "name": "msedgewebview2.exe",
+              "renderer": false
+            },
+            {
+              "processId": 44504,
+              "parentProcessId": 9464,
+              "name": "msedgewebview2.exe",
+              "renderer": true
+            },
+            {
+              "processId": 51780,
+              "parentProcessId": 9464,
+              "name": "msedgewebview2.exe",
+              "renderer": true
+            },
+            {
+              "processId": 52356,
+              "parentProcessId": 9464,
+              "name": "msedgewebview2.exe",
+              "renderer": false
+            },
+            {
+              "processId": 54128,
+              "parentProcessId": 9464,
+              "name": "msedgewebview2.exe",
+              "renderer": false
+            }
+          ]
+        },
+        "postCycleIdle": {
+          "capturedAt": "2026-10-29T15:07:16.3400593+08:00",
+          "sampleStartedAt": "2026-10-29T15:07:05.1908235+08:00",
+          "sampleEndedAt": "2026-10-29T15:07:16.3400593+08:00",
+          "sampleDurationSeconds": 11.149,
+          "rootProcessId": 19216,
+          "processCount": 8,
+          "rendererCount": 2,
+          "workingSetMb": 412.8,
+          "privateWorkingSetMb": 97.2,
+          "privateBytesMb": 214.7,
+          "cpuSampleSeconds": 10,
+          "cpuSingleCorePercent": 0.0,
+          "cpuMachinePercent": 0.0,
+          "logicalProcessorCount": 32,
+          "gpuSamples": 11,
+          "gpuEnginePercent": 0.0,
+          "gpuEngineAveragePercent": 0.0,
+          "gpuEnginePeakPercent": 0.0,
+          "dedicatedGpuMb": 54.0,
+          "dedicatedGpuStartMb": 54.0,
+          "dedicatedGpuEndMb": 54.0,
+          "dedicatedGpuPeakMb": 54.0,
+          "sharedGpuMb": 2.1,
+          "sharedGpuStartMb": 2.1,
+          "sharedGpuEndMb": 2.1,
+          "sharedGpuPeakMb": 2.1,
+          "processes": [
+            {
+              "processId": 9464,
+              "parentProcessId": 19216,
+              "name": "msedgewebview2.exe",
+              "renderer": false
+            },
+            {
+              "processId": 19216,
+              "parentProcessId": 58480,
+              "name": "komorebi-tauri-framework-bench.exe",
+              "renderer": false
+            },
+            {
+              "processId": 33056,
+              "parentProcessId": 9464,
+              "name": "msedgewebview2.exe",
+              "renderer": false
+            },
+            {
+              "processId": 42808,
+              "parentProcessId": 9464,
+              "name": "msedgewebview2.exe",
+              "renderer": false
+            },
+            {
+              "processId": 44504,
+              "parentProcessId": 9464,
+              "name": "msedgewebview2.exe",
+              "renderer": true
+            },
+            {
+              "processId": 51780,
+              "parentProcessId": 9464,
+              "name": "msedgewebview2.exe",
+              "renderer": true
+            },
+            {
+              "processId": 52356,
+              "parentProcessId": 9464,
+              "name": "msedgewebview2.exe",
+              "renderer": false
+            },
+            {
+              "processId": 54128,
+              "parentProcessId": 9464,
+              "name": "msedgewebview2.exe",
+              "renderer": false
+            }
+          ]
+        }
+      },
+      "eventLog": "D:\\C2D\\Desktop\\Code\\Rust\\sTools\\rust-ui-benchmark-windows\\results\\2026-10-29\\tauri-unmanaged-artifacts\\tauri\\round-2-events.jsonl",
+      "executableSha256": "55de4e9343a215e39e93bd695b9a4527928941dd69cdea903b0b99c5c4707853",
+      "lockfileSha256": "3dface88a872ed2c263469891ed76bd2f8d91bd14beb91c5db0f3099c849b089"
+    },
+    {
+      "framework": "tauri",
+      "round": 3,
+      "status": "ok",
+      "executable": ".benchmark-work/tauri/target/release/komorebi-tauri-framework-bench.exe",
+      "executableSizeMb": 8.4,
+      "showLatencyMs": 247.657,
+      "hideLatencyMs": 218.722,
+      "topology": {
+        "hidden": [
+          {
+            "ProcessId": 14172,
+            "Title": "UI Framework Bench - Auxiliary Canvas",
+            "Visible": false,
+            "Width": 1215,
+            "Height": 794
+          },
+          {
+            "ProcessId": 14172,
+            "Title": "UI Framework Bench - Main",
+            "Visible": false,
+            "Width": 715,
+            "Height": 514
+          }
+        ],
+        "visible": [
+          {
+            "ProcessId": 14172,
+            "Title": "UI Framework Bench - Auxiliary Canvas",
+            "Visible": true,
+            "Width": 1215,
+            "Height": 794
+          },
+          {
+            "ProcessId": 14172,
+            "Title": "UI Framework Bench - Main",
+            "Visible": true,
+            "Width": 715,
+            "Height": 514
+          }
+        ],
+        "postHide": [
+          {
+            "ProcessId": 14172,
+            "Title": "UI Framework Bench - Auxiliary Canvas",
+            "Visible": false,
+            "Width": 1215,
+            "Height": 794
+          },
+          {
+            "ProcessId": 14172,
+            "Title": "UI Framework Bench - Main",
+            "Visible": false,
+            "Width": 715,
+            "Height": 514
+          }
+        ],
+        "postCycle": [
+          {
+            "ProcessId": 14172,
+            "Title": "UI Framework Bench - Auxiliary Canvas",
+            "Visible": false,
+            "Width": 1215,
+            "Height": 794
+          },
+          {
+            "ProcessId": 14172,
+            "Title": "UI Framework Bench - Main",
+            "Visible": false,
+            "Width": 715,
+            "Height": 514
+          }
+        ]
+      },
+      "phases": {
+        "hiddenIdle": {
+          "capturedAt": "2026-10-29T15:07:31.3984458+08:00",
+          "sampleStartedAt": "2026-10-29T15:07:20.2495851+08:00",
+          "sampleEndedAt": "2026-10-29T15:07:31.3984458+08:00",
+          "sampleDurationSeconds": 11.149,
+          "rootProcessId": 14172,
+          "processCount": 8,
+          "rendererCount": 2,
+          "workingSetMb": 398.3,
+          "privateWorkingSetMb": 94.8,
+          "privateBytesMb": 241.1,
+          "cpuSampleSeconds": 10,
+          "cpuSingleCorePercent": 0.0,
+          "cpuMachinePercent": 0.0,
+          "logicalProcessorCount": 32,
+          "gpuSamples": 11,
+          "gpuEnginePercent": 0.0,
+          "gpuEngineAveragePercent": 0.0,
+          "gpuEnginePeakPercent": 0.001,
+          "dedicatedGpuMb": 96.7,
+          "dedicatedGpuStartMb": 96.7,
+          "dedicatedGpuEndMb": 96.7,
+          "dedicatedGpuPeakMb": 96.7,
+          "sharedGpuMb": 2.2,
+          "sharedGpuStartMb": 2.2,
+          "sharedGpuEndMb": 2.2,
+          "sharedGpuPeakMb": 2.2,
+          "processes": [
+            {
+              "processId": 14172,
+              "parentProcessId": 58480,
+              "name": "komorebi-tauri-framework-bench.exe",
+              "renderer": false
+            },
+            {
+              "processId": 21104,
+              "parentProcessId": 51028,
+              "name": "msedgewebview2.exe",
+              "renderer": true
+            },
+            {
+              "processId": 42788,
+              "parentProcessId": 51028,
+              "name": "msedgewebview2.exe",
+              "renderer": false
+            },
+            {
+              "processId": 43992,
+              "parentProcessId": 51028,
+              "name": "msedgewebview2.exe",
+              "renderer": false
+            },
+            {
+              "processId": 46964,
+              "parentProcessId": 51028,
+              "name": "msedgewebview2.exe",
+              "renderer": false
+            },
+            {
+              "processId": 47972,
+              "parentProcessId": 51028,
+              "name": "msedgewebview2.exe",
+              "renderer": true
+            },
+            {
+              "processId": 50972,
+              "parentProcessId": 51028,
+              "name": "msedgewebview2.exe",
+              "renderer": false
+            },
+            {
+              "processId": 51028,
+              "parentProcessId": 14172,
+              "name": "msedgewebview2.exe",
+              "renderer": false
+            }
+          ]
+        },
+        "visibleIdle": {
+          "capturedAt": "2026-10-29T15:07:45.6852317+08:00",
+          "sampleStartedAt": "2026-10-29T15:07:34.5319654+08:00",
+          "sampleEndedAt": "2026-10-29T15:07:45.6852317+08:00",
+          "sampleDurationSeconds": 11.153,
+          "rootProcessId": 14172,
+          "processCount": 8,
+          "rendererCount": 2,
+          "workingSetMb": 400.9,
+          "privateWorkingSetMb": 95.1,
+          "privateBytesMb": 216.4,
+          "cpuSampleSeconds": 10,
+          "cpuSingleCorePercent": 8.966,
+          "cpuMachinePercent": 0.28,
+          "logicalProcessorCount": 32,
+          "gpuSamples": 11,
+          "gpuEnginePercent": 0.0,
+          "gpuEngineAveragePercent": 0.0,
+          "gpuEnginePeakPercent": 0.0,
+          "dedicatedGpuMb": 58.0,
+          "dedicatedGpuStartMb": 58.0,
+          "dedicatedGpuEndMb": 58.0,
+          "dedicatedGpuPeakMb": 58.0,
+          "sharedGpuMb": 2.1,
+          "sharedGpuStartMb": 2.1,
+          "sharedGpuEndMb": 2.1,
+          "sharedGpuPeakMb": 2.1,
+          "processes": [
+            {
+              "processId": 14172,
+              "parentProcessId": 58480,
+              "name": "komorebi-tauri-framework-bench.exe",
+              "renderer": false
+            },
+            {
+              "processId": 21104,
+              "parentProcessId": 51028,
+              "name": "msedgewebview2.exe",
+              "renderer": true
+            },
+            {
+              "processId": 42788,
+              "parentProcessId": 51028,
+              "name": "msedgewebview2.exe",
+              "renderer": false
+            },
+            {
+              "processId": 43992,
+              "parentProcessId": 51028,
+              "name": "msedgewebview2.exe",
+              "renderer": false
+            },
+            {
+              "processId": 46964,
+              "parentProcessId": 51028,
+              "name": "msedgewebview2.exe",
+              "renderer": false
+            },
+            {
+              "processId": 47972,
+              "parentProcessId": 51028,
+              "name": "msedgewebview2.exe",
+              "renderer": true
+            },
+            {
+              "processId": 50972,
+              "parentProcessId": 51028,
+              "name": "msedgewebview2.exe",
+              "renderer": false
+            },
+            {
+              "processId": 51028,
+              "parentProcessId": 14172,
+              "name": "msedgewebview2.exe",
+              "renderer": false
+            }
+          ]
+        },
+        "workload400": {
+          "capturedAt": "2026-10-29T15:07:58.9683107+08:00",
+          "sampleStartedAt": "2026-10-29T15:07:49.4424283+08:00",
+          "sampleEndedAt": "2026-10-29T15:07:58.9683107+08:00",
+          "sampleDurationSeconds": 9.525,
+          "rootProcessId": 14172,
+          "processCount": 8,
+          "rendererCount": 2,
+          "workingSetMb": 413.8,
+          "privateWorkingSetMb": 98.3,
+          "privateBytesMb": 219.4,
+          "cpuSampleSeconds": 8,
+          "cpuSingleCorePercent": 10.499,
+          "cpuMachinePercent": 0.328,
+          "logicalProcessorCount": 32,
+          "gpuSamples": 9,
+          "gpuEnginePercent": 0.0,
+          "gpuEngineAveragePercent": 0.0,
+          "gpuEnginePeakPercent": 0.0,
+          "dedicatedGpuMb": 58.0,
+          "dedicatedGpuStartMb": 58.0,
+          "dedicatedGpuEndMb": 58.0,
+          "dedicatedGpuPeakMb": 58.0,
+          "sharedGpuMb": 2.1,
+          "sharedGpuStartMb": 2.1,
+          "sharedGpuEndMb": 2.1,
+          "sharedGpuPeakMb": 2.1,
+          "processes": [
+            {
+              "processId": 14172,
+              "parentProcessId": 58480,
+              "name": "komorebi-tauri-framework-bench.exe",
+              "renderer": false
+            },
+            {
+              "processId": 21104,
+              "parentProcessId": 51028,
+              "name": "msedgewebview2.exe",
+              "renderer": true
+            },
+            {
+              "processId": 42788,
+              "parentProcessId": 51028,
+              "name": "msedgewebview2.exe",
+              "renderer": false
+            },
+            {
+              "processId": 43992,
+              "parentProcessId": 51028,
+              "name": "msedgewebview2.exe",
+              "renderer": false
+            },
+            {
+              "processId": 46964,
+              "parentProcessId": 51028,
+              "name": "msedgewebview2.exe",
+              "renderer": false
+            },
+            {
+              "processId": 47972,
+              "parentProcessId": 51028,
+              "name": "msedgewebview2.exe",
+              "renderer": true
+            },
+            {
+              "processId": 50972,
+              "parentProcessId": 51028,
+              "name": "msedgewebview2.exe",
+              "renderer": false
+            },
+            {
+              "processId": 51028,
+              "parentProcessId": 14172,
+              "name": "msedgewebview2.exe",
+              "renderer": false
+            }
+          ]
+        },
+        "postHideIdle": {
+          "capturedAt": "2026-10-29T15:08:28.5668797+08:00",
+          "sampleStartedAt": "2026-10-29T15:08:17.4350397+08:00",
+          "sampleEndedAt": "2026-10-29T15:08:28.5668797+08:00",
+          "sampleDurationSeconds": 11.132,
+          "rootProcessId": 14172,
+          "processCount": 8,
+          "rendererCount": 2,
+          "workingSetMb": 413.5,
+          "privateWorkingSetMb": 96.6,
+          "privateBytesMb": 217.3,
+          "cpuSampleSeconds": 10,
+          "cpuSingleCorePercent": 0.0,
+          "cpuMachinePercent": 0.0,
+          "logicalProcessorCount": 32,
+          "gpuSamples": 11,
+          "gpuEnginePercent": 0.0,
+          "gpuEngineAveragePercent": 0.0,
+          "gpuEnginePeakPercent": 0.0,
+          "dedicatedGpuMb": 58.0,
+          "dedicatedGpuStartMb": 58.0,
+          "dedicatedGpuEndMb": 58.0,
+          "dedicatedGpuPeakMb": 58.0,
+          "sharedGpuMb": 2.1,
+          "sharedGpuStartMb": 2.1,
+          "sharedGpuEndMb": 2.1,
+          "sharedGpuPeakMb": 2.1,
+          "processes": [
+            {
+              "processId": 14172,
+              "parentProcessId": 58480,
+              "name": "komorebi-tauri-framework-bench.exe",
+              "renderer": false
+            },
+            {
+              "processId": 21104,
+              "parentProcessId": 51028,
+              "name": "msedgewebview2.exe",
+              "renderer": true
+            },
+            {
+              "processId": 42788,
+              "parentProcessId": 51028,
+              "name": "msedgewebview2.exe",
+              "renderer": false
+            },
+            {
+              "processId": 43992,
+              "parentProcessId": 51028,
+              "name": "msedgewebview2.exe",
+              "renderer": false
+            },
+            {
+              "processId": 46964,
+              "parentProcessId": 51028,
+              "name": "msedgewebview2.exe",
+              "renderer": false
+            },
+            {
+              "processId": 47972,
+              "parentProcessId": 51028,
+              "name": "msedgewebview2.exe",
+              "renderer": true
+            },
+            {
+              "processId": 50972,
+              "parentProcessId": 51028,
+              "name": "msedgewebview2.exe",
+              "renderer": false
+            },
+            {
+              "processId": 51028,
+              "parentProcessId": 14172,
+              "name": "msedgewebview2.exe",
+              "renderer": false
+            }
+          ]
+        },
+        "postCycleIdle": {
+          "capturedAt": "2026-10-29T15:08:46.2740267+08:00",
+          "sampleStartedAt": "2026-10-29T15:08:35.1641246+08:00",
+          "sampleEndedAt": "2026-10-29T15:08:46.2740267+08:00",
+          "sampleDurationSeconds": 11.11,
+          "rootProcessId": 14172,
+          "processCount": 8,
+          "rendererCount": 2,
+          "workingSetMb": 412.8,
+          "privateWorkingSetMb": 95.8,
+          "privateBytesMb": 211.6,
+          "cpuSampleSeconds": 10,
+          "cpuSingleCorePercent": 0.0,
+          "cpuMachinePercent": 0.0,
+          "logicalProcessorCount": 32,
+          "gpuSamples": 11,
+          "gpuEnginePercent": 0.0,
+          "gpuEngineAveragePercent": 0.0,
+          "gpuEnginePeakPercent": 0.0,
+          "dedicatedGpuMb": 54.0,
+          "dedicatedGpuStartMb": 54.0,
+          "dedicatedGpuEndMb": 54.0,
+          "dedicatedGpuPeakMb": 54.0,
+          "sharedGpuMb": 1.9,
+          "sharedGpuStartMb": 1.9,
+          "sharedGpuEndMb": 1.9,
+          "sharedGpuPeakMb": 1.9,
+          "processes": [
+            {
+              "processId": 14172,
+              "parentProcessId": 58480,
+              "name": "komorebi-tauri-framework-bench.exe",
+              "renderer": false
+            },
+            {
+              "processId": 21104,
+              "parentProcessId": 51028,
+              "name": "msedgewebview2.exe",
+              "renderer": true
+            },
+            {
+              "processId": 42788,
+              "parentProcessId": 51028,
+              "name": "msedgewebview2.exe",
+              "renderer": false
+            },
+            {
+              "processId": 43992,
+              "parentProcessId": 51028,
+              "name": "msedgewebview2.exe",
+              "renderer": false
+            },
+            {
+              "processId": 46964,
+              "parentProcessId": 51028,
+              "name": "msedgewebview2.exe",
+              "renderer": false
+            },
+            {
+              "processId": 47972,
+              "parentProcessId": 51028,
+              "name": "msedgewebview2.exe",
+              "renderer": true
+            },
+            {
+              "processId": 50972,
+              "parentProcessId": 51028,
+              "name": "msedgewebview2.exe",
+              "renderer": false
+            },
+            {
+              "processId": 51028,
+              "parentProcessId": 14172,
+              "name": "msedgewebview2.exe",
+              "renderer": false
+            }
+          ]
+        }
+      },
+      "eventLog": "D:\\C2D\\Desktop\\Code\\Rust\\sTools\\rust-ui-benchmark-windows\\results\\2026-10-29\\tauri-unmanaged-artifacts\\tauri\\round-3-events.jsonl",
+      "executableSha256": "55de4e9343a215e39e93bd695b9a4527928941dd69cdea903b0b99c5c4707853",
+      "lockfileSha256": "3dface88a872ed2c263469891ed76bd2f8d91bd14beb91c5db0f3099c849b089"
+    }
+  ],
+  "summary": {
+    "phases": [
+      {
+        "framework": "tauri",
+        "phase": "hiddenIdle",
+        "metrics": {
+          "workingSetMb": {
+            "count": 3,
+            "median": 396.2,
+            "minimum": 395.8,
+            "maximum": 398.3
+          },
+          "privateWorkingSetMb": {
+            "count": 3,
+            "median": 94.6,
+            "minimum": 94.3,
+            "maximum": 94.8
+          },
+          "privateBytesMb": {
+            "count": 3,
+            "median": 264.5,
+            "minimum": 241.1,
+            "maximum": 265.6
+          },
+          "cpuSingleCorePercent": {
+            "count": 3,
+            "median": 0.0,
+            "minimum": 0.0,
+            "maximum": 0.0
+          },
+          "cpuMachinePercent": {
+            "count": 3,
+            "median": 0.0,
+            "minimum": 0.0,
+            "maximum": 0.0
+          },
+          "gpuEngineAveragePercent": {
+            "count": 3,
+            "median": 0.0,
+            "minimum": 0.0,
+            "maximum": 0.0
+          },
+          "gpuEnginePeakPercent": {
+            "count": 3,
+            "median": 0.001,
+            "minimum": 0.001,
+            "maximum": 0.001
+          },
+          "dedicatedGpuPeakMb": {
+            "count": 3,
+            "median": 145.2,
+            "minimum": 96.7,
+            "maximum": 145.2
+          },
+          "sharedGpuPeakMb": {
+            "count": 3,
+            "median": 2.2,
+            "minimum": 2.1,
+            "maximum": 2.2
+          }
+        }
+      },
+      {
+        "framework": "tauri",
+        "phase": "visibleIdle",
+        "metrics": {
+          "workingSetMb": {
+            "count": 3,
+            "median": 398.9,
+            "minimum": 398.3,
+            "maximum": 400.9
+          },
+          "privateWorkingSetMb": {
+            "count": 3,
+            "median": 95.0,
+            "minimum": 94.5,
+            "maximum": 95.1
+          },
+          "privateBytesMb": {
+            "count": 3,
+            "median": 239.0,
+            "minimum": 216.4,
+            "maximum": 240.5
+          },
+          "cpuSingleCorePercent": {
+            "count": 3,
+            "median": 8.966,
+            "minimum": 8.963,
+            "maximum": 9.009
+          },
+          "cpuMachinePercent": {
+            "count": 3,
+            "median": 0.28,
+            "minimum": 0.28,
+            "maximum": 0.282
+          },
+          "gpuEngineAveragePercent": {
+            "count": 3,
+            "median": 0.0,
+            "minimum": 0.0,
+            "maximum": 0.0
+          },
+          "gpuEnginePeakPercent": {
+            "count": 3,
+            "median": 0.0,
+            "minimum": 0.0,
+            "maximum": 0.0
+          },
+          "dedicatedGpuPeakMb": {
+            "count": 3,
+            "median": 77.3,
+            "minimum": 58.0,
+            "maximum": 77.3
+          },
+          "sharedGpuPeakMb": {
+            "count": 3,
+            "median": 2.1,
+            "minimum": 2.1,
+            "maximum": 2.2
+          }
+        }
+      },
+      {
+        "framework": "tauri",
+        "phase": "workload400",
+        "metrics": {
+          "workingSetMb": {
+            "count": 3,
+            "median": 411.7,
+            "minimum": 411.5,
+            "maximum": 413.8
+          },
+          "privateWorkingSetMb": {
+            "count": 3,
+            "median": 98.2,
+            "minimum": 97.9,
+            "maximum": 98.3
+          },
+          "privateBytesMb": {
+            "count": 3,
+            "median": 242.5,
+            "minimum": 219.4,
+            "maximum": 243.0
+          },
+          "cpuSingleCorePercent": {
+            "count": 3,
+            "median": 10.499,
+            "minimum": 10.497,
+            "maximum": 10.507
+          },
+          "cpuMachinePercent": {
+            "count": 3,
+            "median": 0.328,
+            "minimum": 0.328,
+            "maximum": 0.328
+          },
+          "gpuEngineAveragePercent": {
+            "count": 3,
+            "median": 0.0,
+            "minimum": 0.0,
+            "maximum": 0.0
+          },
+          "gpuEnginePeakPercent": {
+            "count": 3,
+            "median": 0.0,
+            "minimum": 0.0,
+            "maximum": 0.0
+          },
+          "dedicatedGpuPeakMb": {
+            "count": 3,
+            "median": 77.3,
+            "minimum": 58.0,
+            "maximum": 77.3
+          },
+          "sharedGpuPeakMb": {
+            "count": 3,
+            "median": 2.1,
+            "minimum": 2.1,
+            "maximum": 2.2
+          }
+        }
+      },
+      {
+        "framework": "tauri",
+        "phase": "postHideIdle",
+        "metrics": {
+          "workingSetMb": {
+            "count": 3,
+            "median": 411.3,
+            "minimum": 411.0,
+            "maximum": 413.5
+          },
+          "privateWorkingSetMb": {
+            "count": 3,
+            "median": 96.6,
+            "minimum": 96.0,
+            "maximum": 96.6
+          },
+          "privateBytesMb": {
+            "count": 3,
+            "median": 240.5,
+            "minimum": 217.3,
+            "maximum": 240.8
+          },
+          "cpuSingleCorePercent": {
+            "count": 3,
+            "median": 0.0,
+            "minimum": 0.0,
+            "maximum": 0.0
+          },
+          "cpuMachinePercent": {
+            "count": 3,
+            "median": 0.0,
+            "minimum": 0.0,
+            "maximum": 0.0
+          },
+          "gpuEngineAveragePercent": {
+            "count": 3,
+            "median": 0.0,
+            "minimum": 0.0,
+            "maximum": 0.0
+          },
+          "gpuEnginePeakPercent": {
+            "count": 3,
+            "median": 0.0,
+            "minimum": 0.0,
+            "maximum": 0.0
+          },
+          "dedicatedGpuPeakMb": {
+            "count": 3,
+            "median": 77.3,
+            "minimum": 58.0,
+            "maximum": 77.3
+          },
+          "sharedGpuPeakMb": {
+            "count": 3,
+            "median": 2.1,
+            "minimum": 2.1,
+            "maximum": 2.2
+          }
+        }
+      },
+      {
+        "framework": "tauri",
+        "phase": "postCycleIdle",
+        "metrics": {
+          "workingSetMb": {
+            "count": 3,
+            "median": 412.8,
+            "minimum": 412.8,
+            "maximum": 416.2
+          },
+          "privateWorkingSetMb": {
+            "count": 3,
+            "median": 97.2,
+            "minimum": 95.8,
+            "maximum": 99.1
+          },
+          "privateBytesMb": {
+            "count": 3,
+            "median": 214.7,
+            "minimum": 211.6,
+            "maximum": 214.8
+          },
+          "cpuSingleCorePercent": {
+            "count": 3,
+            "median": 0.0,
+            "minimum": 0.0,
+            "maximum": 0.0
+          },
+          "cpuMachinePercent": {
+            "count": 3,
+            "median": 0.0,
+            "minimum": 0.0,
+            "maximum": 0.0
+          },
+          "gpuEngineAveragePercent": {
+            "count": 3,
+            "median": 0.0,
+            "minimum": 0.0,
+            "maximum": 0.0
+          },
+          "gpuEnginePeakPercent": {
+            "count": 3,
+            "median": 0.0,
+            "minimum": 0.0,
+            "maximum": 0.0
+          },
+          "dedicatedGpuPeakMb": {
+            "count": 3,
+            "median": 54.0,
+            "minimum": 54.0,
+            "maximum": 54.0
+          },
+          "sharedGpuPeakMb": {
+            "count": 3,
+            "median": 2.1,
+            "minimum": 1.9,
+            "maximum": 2.1
+          }
+        }
+      }
+    ],
+    "latency": [
+      {
+        "framework": "tauri",
+        "showLatencyMs": {
+          "count": 3,
+          "median": 259.55,
+          "minimum": 247.657,
+          "maximum": 313.626
+        },
+        "hideLatencyMs": {
+          "count": 3,
+          "median": 218.722,
+          "minimum": 199.499,
+          "maximum": 228.401
+        }
+      }
+    ]
+  }
+}

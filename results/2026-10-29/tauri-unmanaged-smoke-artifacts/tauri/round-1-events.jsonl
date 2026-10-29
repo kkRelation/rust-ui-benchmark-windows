@@ -1,0 +1,10 @@
+{"framework":"tauri","event":"ready-hidden","timestamp":"2026-10-29T07:02:32.5120865Z","elapsedMs":827}
+{"framework":"tauri","event":"show-start","timestamp":"2026-10-29T07:02:39.0870967Z","elapsedMs":7402}
+{"framework":"tauri","event":"show-end","timestamp":"2026-10-29T07:02:39.0878101Z","elapsedMs":7403}
+{"framework":"tauri","event":"workload-start","timestamp":"2026-10-29T07:02:46.3328755Z","elapsedMs":14648}
+{"framework":"tauri","event":"workload-end","timestamp":"2026-10-29T07:02:54.3333251Z","elapsedMs":22648}
+{"framework":"tauri","event":"hide-start","timestamp":"2026-10-29T07:02:58.6358243Z","elapsedMs":26951}
+{"framework":"tauri","event":"hide-end","timestamp":"2026-10-29T07:02:58.6367605Z","elapsedMs":26952}
+{"framework":"tauri","event":"cycle-start","timestamp":"2026-10-29T07:03:05.1692741Z","elapsedMs":33484,"detail":{"count":2}}
+{"framework":"tauri","event":"cycle-end","timestamp":"2026-10-29T07:03:05.3717516Z","elapsedMs":33687,"detail":{"count":2}}
+{"framework":"tauri","event":"quit","timestamp":"2026-10-29T07:03:10.9835819Z","elapsedMs":39299}

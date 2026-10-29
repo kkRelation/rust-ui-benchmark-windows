@@ -1,0 +1,28 @@
+{
+  "status": "success",
+  "framework": "tauri",
+  "anchor": false,
+  "keepWorkdir": false,
+  "resultPath": "D:\\C2D\\Desktop\\Code\\Rust\\sTools\\rust-ui-benchmark-windows\\results\\2026-10-29\\tauri-unmanaged.json",
+  "smokePath": "D:\\C2D\\Desktop\\Code\\Rust\\sTools\\rust-ui-benchmark-windows\\results\\2026-10-29\\tauri-unmanaged-smoke.json",
+  "comparisonPath": null,
+  "workspaceRoot": "D:\\C2D\\Desktop\\Code\\Rust\\sTools\\rust-ui-benchmark-windows\\.benchmark-work\\tauri",
+  "windowManagerIsolation": {
+    "manager": "komorebi",
+    "active": true,
+    "verified": true,
+    "requiredRules": [
+      "UI Framework Bench - Main",
+      "UI Framework Bench - Auxiliary Canvas"
+    ],
+    "addedRules": []
+  },
+  "cleanup": {
+    "RemovedPath": "D:\\C2D\\Desktop\\Code\\Rust\\sTools\\rust-ui-benchmark-windows\\.benchmark-work\\tauri",
+    "WasPresent": true,
+    "FreeBytesBefore": 41238245376,
+    "FreeBytesAfter": 44818046976,
+    "RecoveredBytes": 3579801600
+  },
+  "completedAt": "2026-10-29T15:08:55.2475012+08:00"
+}
