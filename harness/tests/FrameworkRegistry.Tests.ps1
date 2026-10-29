@@ -8,7 +8,7 @@ Describe "benchmark framework registry" {
     $enabled = @($definitions.Values | Where-Object Enabled | ForEach-Object Name)
 
     $enabled | Should Be @(
-      "tauri", "slint", "zgui", "dioxus-desktop", "dioxus-native", "gpui-ce", "iced"
+      "tauri", "slint", "zgui", "dioxus-desktop", "dioxus-native", "gpui-ce", "iced", "gpui-kit"
     )
   }
 
@@ -16,7 +16,7 @@ Describe "benchmark framework registry" {
     $definitions = Get-BenchmarkFrameworkDefinitions
     $disabled = @($definitions.Values | Where-Object { -not $_.Enabled } | ForEach-Object Name)
 
-    $disabled | Should Be @("gpui-kit", "kas", "makepad", "ferroui")
+    $disabled | Should Be @("kas", "makepad", "ferroui")
   }
 
   It "resolves the exact Iced build definition and pin" {
@@ -28,6 +28,20 @@ Describe "benchmark framework registry" {
     $definition.PinName | Should Be "iced"
     $definition.Pin | Should Be "0.14.0"
     $definition.Enabled | Should Be $true
+  }
+
+  It "resolves gpui-kit separately from gpui-ce" {
+    $definition = Get-BenchmarkFrameworkDefinition -Name "gpui-kit"
+    $gpuiCe = Get-BenchmarkFrameworkDefinition -Name "gpui-ce"
+
+    $definition.Name | Should Be "gpui-kit"
+    $definition.Directory | Should Be "gpui-kit-probe"
+    $definition.Binary | Should Be "komorebi-gpui-kit-framework-bench.exe"
+    $definition.PinName | Should Be "gpuiKit"
+    $definition.Pin | Should Be "0.8.1"
+    $definition.Enabled | Should Be $true
+    $gpuiCe.PinName | Should Be "gpuiCe"
+    $gpuiCe.Pin | Should Be "5cac1478fea0a5f6f28ae4bc7df4b552dff8854b"
   }
 
   It "resolves the exact Slint build definition and pin" {
