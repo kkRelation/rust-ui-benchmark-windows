@@ -38,7 +38,7 @@ Describe "isolated benchmark framework workspaces" {
   }
 
   It "allows a declared expansion candidate before it is enabled" {
-    (Get-BenchmarkFrameworkDefinition -Name "iced").Enabled | Should Be $false
+    (Get-BenchmarkFrameworkDefinition -Name "iced").Enabled | Should Be $true
     $workspace = New-BenchmarkFrameworkWorkspace -RepoRoot $repoRoot -Framework "iced"
 
     $workspace.Root | Should Be ([System.IO.Path]::GetFullPath((Join-Path $repoRoot ".benchmark-work\iced")))

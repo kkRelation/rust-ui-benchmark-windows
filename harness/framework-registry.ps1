@@ -8,7 +8,7 @@ function Get-BenchmarkFrameworkDefinitions {
     [pscustomobject]@{ Name = "dioxus-desktop"; Directory = "dioxus-desktop-probe"; Binary = "komorebi-dioxus-desktop-framework-bench.exe"; PinName = "dioxusDesktop"; Pin = "0.7.10"; Enabled = $true },
     [pscustomobject]@{ Name = "dioxus-native"; Directory = "dioxus-native-probe"; Binary = "komorebi-dioxus-native-framework-bench.exe"; PinName = "dioxusNativeBlitz"; Pin = "fe33b778baaef5375d941c8a4f491f62cbd31d30"; Enabled = $true },
     [pscustomobject]@{ Name = "gpui-ce"; Directory = "gpui-ce-probe"; Binary = "komorebi-gpui-ce-framework-bench.exe"; PinName = "gpuiCe"; Pin = "5cac1478fea0a5f6f28ae4bc7df4b552dff8854b"; Enabled = $true },
-    [pscustomobject]@{ Name = "iced"; Directory = "iced-probe"; Binary = "komorebi-iced-framework-bench.exe"; PinName = "iced"; Pin = "0.14.0"; Enabled = $false },
+    [pscustomobject]@{ Name = "iced"; Directory = "iced-probe"; Binary = "komorebi-iced-framework-bench.exe"; PinName = "iced"; Pin = "0.14.0"; Enabled = $true },
     [pscustomobject]@{ Name = "gpui-kit"; Directory = "gpui-kit-probe"; Binary = "komorebi-gpui-kit-framework-bench.exe"; PinName = "gpuiKit"; Pin = "0.8.1"; Enabled = $false },
     [pscustomobject]@{ Name = "kas"; Directory = "kas-probe"; Binary = "komorebi-kas-framework-bench.exe"; PinName = "kas"; Pin = "0.17.0"; Enabled = $false },
     [pscustomobject]@{ Name = "makepad"; Directory = "makepad-probe"; Binary = "komorebi-makepad-framework-bench.exe"; PinName = "makepad"; Pin = "1.0.0"; Enabled = $false },
