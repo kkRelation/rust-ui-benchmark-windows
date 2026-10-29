@@ -1,23 +1,27 @@
 param(
-  [ValidateSet("tauri", "slint", "zgui", "dioxus-desktop", "dioxus-native", "gpui-ce")]
-  [string[]]$Framework = @("tauri", "slint", "zgui", "dioxus-desktop", "dioxus-native", "gpui-ce"),
+  [string[]]$Framework = @(),
   [ValidateSet("debug", "release")]
   [string]$Configuration = "release"
 )
 
 $ErrorActionPreference = "Stop"
 $repoRoot = (Resolve-Path (Join-Path $PSScriptRoot "..")).Path
-$probeDirectories = [ordered]@{
-  "tauri" = "tauri-probe"
-  "slint" = "slint-probe"
-  "zgui" = "zgui-probe"
-  "dioxus-desktop" = "dioxus-desktop-probe"
-  "dioxus-native" = "dioxus-native-probe"
-  "gpui-ce" = "gpui-ce-probe"
+. (Join-Path $PSScriptRoot "framework-registry.ps1")
+
+if ($Framework.Count -eq 0) {
+  $Framework = @(
+    (Get-BenchmarkFrameworkDefinitions).Values |
+      Where-Object Enabled |
+      ForEach-Object Name
+  )
 }
 
 foreach ($frameworkName in $Framework) {
-  $manifestPath = Join-Path $repoRoot "probes\$($probeDirectories[$frameworkName])\Cargo.toml"
+  $definition = Get-BenchmarkFrameworkDefinition -Name $frameworkName
+  if (-not $definition.Enabled) {
+    throw "Benchmark framework is declared but not enabled: $frameworkName"
+  }
+  $manifestPath = Join-Path $repoRoot "probes\$($definition.Directory)\Cargo.toml"
   $arguments = @("build", "--locked", "--manifest-path", $manifestPath)
   if ($Configuration -eq "release") { $arguments += "--release" }
 

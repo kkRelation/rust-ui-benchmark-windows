@@ -1,6 +1,5 @@
 param(
-  [ValidateSet("tauri", "slint", "zgui", "dioxus-desktop", "dioxus-native", "gpui-ce")]
-  [string[]]$Framework = @("tauri", "slint", "zgui", "dioxus-desktop", "dioxus-native", "gpui-ce"),
+  [string[]]$Framework = @(),
   [ValidateRange(1, 20)][int]$Rounds = 3,
   [ValidateRange(1, 100)][int]$RoundStart = 1,
   [ValidateSet("debug", "release")][string]$Configuration = "release",
@@ -17,21 +16,30 @@ $repoRoot = (Resolve-Path (Join-Path $benchmarkRoot "..")).Path
 $measureScript = Join-Path $benchmarkRoot "measure-process-tree.ps1"
 . (Join-Path $benchmarkRoot "resident-benchmark-lib.ps1")
 . (Join-Path $benchmarkRoot "process-tree-lib.ps1")
+. (Join-Path $benchmarkRoot "framework-registry.ps1")
+
+if ($Framework.Count -eq 0) {
+  $Framework = @(
+    (Get-BenchmarkFrameworkDefinitions).Values |
+      Where-Object Enabled |
+      ForEach-Object Name
+  )
+}
+
+$probeDefinitions = [ordered]@{}
+foreach ($frameworkName in $Framework) {
+  $definition = Get-BenchmarkFrameworkDefinition -Name $frameworkName
+  if (-not $definition.Enabled) {
+    throw "Benchmark framework is declared but not enabled: $frameworkName"
+  }
+  $probeDefinitions[$frameworkName] = $definition
+}
 
 if ($Smoke) {
   $Rounds = 1
   $SampleSeconds = 1
   $PostHideSettleSeconds = 1
   $CycleCount = 2
-}
-
-$probeDefinitions = @{
-  "tauri" = @{ Directory = "tauri-probe"; Binary = "komorebi-tauri-framework-bench.exe" }
-  "slint" = @{ Directory = "slint-probe"; Binary = "komorebi-slint-framework-bench.exe" }
-  "zgui" = @{ Directory = "zgui-probe"; Binary = "komorebi-zgui-framework-bench.exe" }
-  "dioxus-desktop" = @{ Directory = "dioxus-desktop-probe"; Binary = "komorebi-dioxus-desktop-framework-bench.exe" }
-  "dioxus-native" = @{ Directory = "dioxus-native-probe"; Binary = "komorebi-dioxus-native-framework-bench.exe" }
-  "gpui-ce" = @{ Directory = "gpui-ce-probe"; Binary = "komorebi-gpui-ce-framework-bench.exe" }
 }
 
 if (-not ("ResidentBench.NativeWindows" -as [type])) {
@@ -340,6 +348,11 @@ $os = Get-CimInstance Win32_OperatingSystem
 $computer = Get-CimInstance Win32_ComputerSystem
 $processors = @(Get-CimInstance Win32_Processor)
 $videoControllers = @(Get-CimInstance Win32_VideoController)
+$pins = [ordered]@{}
+foreach ($frameworkName in $Framework) {
+  $definition = $probeDefinitions[$frameworkName]
+  $pins[$definition.PinName] = $definition.Pin
+}
 $result = [pscustomobject]@{
   schemaVersion = 2
   capturedAt = (Get-Date).ToString("o")
@@ -358,13 +371,7 @@ $result = [pscustomobject]@{
     rotatingOrder = $true
     smoke = [bool]$Smoke
   }
-  pins = [pscustomobject]@{
-    dioxusDesktop = "0.7.10"
-    dioxusNativeBlitz = "fe33b778baaef5375d941c8a4f491f62cbd31d30"
-    gpuiCe = "5cac1478fea0a5f6f28ae4bc7df4b552dff8854b"
-    slint = "1.16.1"
-    zgui = "951a0ea3b113247da6dff439fccbd9097aa3187f"
-  }
+  pins = [pscustomobject]$pins
   environment = [pscustomobject]@{
     os = $os.Caption
     osVersion = $os.Version
