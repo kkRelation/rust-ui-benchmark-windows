@@ -10,8 +10,8 @@ resident Windows quick launcher. The published historical cohort contains:
 - Dioxus Native on Blitz
 - gpui-ce
 
-Iced has joined the corrected unmanaged-window cohort. gpui-kit, KAS, Makepad,
-and FerroUI remain planned as sequential expansions. Each one uses an isolated
+Iced and gpui-kit have joined the corrected unmanaged-window cohort. KAS,
+Makepad, and FerroUI remain planned as sequential expansions. Each one uses an isolated
 Cargo home and target directory which is removed only after its durable result
 passes validation, keeping peak disk use close to one framework build at a
 time.
@@ -58,8 +58,9 @@ ranges, post-hide behavior, limitations, and interpretation.
 
 Every probe has its own `Cargo.lock`. Direct framework inputs are additionally
 pinned in its manifest: Slint 1.16.1, zgui commit `951a0ea3`, Dioxus Desktop
-0.7.10, Dioxus Native/Blitz commit `fe33b778`, gpui-ce commit `5cac1478`, and
-Tauri 2.12.5 (`tauri-build` 2.7.4).
+0.7.10, Dioxus Native/Blitz commit `fe33b778`, gpui-ce commit `5cac1478`,
+Tauri 2.12.5 (`tauri-build` 2.7.4), Iced 0.14.0, and gpui-kit 0.8.1
+(resolving to gpui-pre 0.3.10).
 
 ## Protocol
 
@@ -196,6 +197,27 @@ as diagnostics for an Iced/Winit same-process HWND enumeration deadlock; the
 successful probe restricts lookup to the two exact titles and verifies their
 PID before changing visibility. Guarded cleanup then removed only the isolated
 Iced work root and recovered 3,280,015,360 bytes.
+
+### gpui-kit unmanaged-window result
+
+gpui-kit 0.8.1, backed by gpui-pre 0.3.10, completed a debug smoke run and
+three valid release rounds on 2026-10-29. Its median hidden/workload private
+working sets were 19.0/24.8 MB; workload machine CPU was 0.656%, average GPU
+engine use was 1.618%, and warm show/hide latency was 284.224/308.871 ms. Both
+native windows retained the expected 715x514 and 1215x794 unmanaged outer
+sizes at all four checkpoints in every round. The probe uses gpui-kit's normal
+application, root-component, and asset initialization path; dependency and
+source inspection found no browser shell, QuickJS, or WebView runtime.
+
+The validated evidence is in
+[`gpui-kit-unmanaged-attempt-2.json`](results/2026-10-29/gpui-kit-unmanaged-attempt-2.json)
+and its adjacent event/status artifacts. The preceding
+[`gpui-kit-unmanaged.json`](results/2026-10-29/gpui-kit-unmanaged.json) is kept
+only as a diagnostic: gpui-pre created both initially hidden HWNDs at the full
+1920x1012 work area, so that otherwise complete run is not comparable. The
+accepted probe normalizes the two HWND outer rectangles with per-window DPI
+before emitting `ready-hidden`. Guarded cleanup removed only the isolated
+gpui-kit work root and recovered 7,488,868,352 bytes.
 
 ## Historical result
 

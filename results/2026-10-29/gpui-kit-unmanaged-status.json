@@ -1,0 +1,28 @@
+{
+  "status": "success",
+  "framework": "gpui-kit",
+  "anchor": false,
+  "keepWorkdir": false,
+  "resultPath": "D:\\C2D\\Desktop\\Code\\Rust\\sTools\\rust-ui-benchmark-windows\\results\\2026-10-29\\gpui-kit-unmanaged.json",
+  "smokePath": "D:\\C2D\\Desktop\\Code\\Rust\\sTools\\rust-ui-benchmark-windows\\results\\2026-10-29\\gpui-kit-unmanaged-smoke.json",
+  "comparisonPath": null,
+  "workspaceRoot": "D:\\C2D\\Desktop\\Code\\Rust\\sTools\\rust-ui-benchmark-windows\\.benchmark-work\\gpui-kit",
+  "windowManagerIsolation": {
+    "manager": "komorebi",
+    "active": true,
+    "verified": true,
+    "requiredRules": [
+      "UI Framework Bench - Main",
+      "UI Framework Bench - Auxiliary Canvas"
+    ],
+    "addedRules": []
+  },
+  "cleanup": {
+    "RemovedPath": "D:\\C2D\\Desktop\\Code\\Rust\\sTools\\rust-ui-benchmark-windows\\.benchmark-work\\gpui-kit",
+    "WasPresent": true,
+    "FreeBytesBefore": 37539737600,
+    "FreeBytesAfter": 44821278720,
+    "RecoveredBytes": 7281541120
+  },
+  "completedAt": "2026-10-29T16:25:33.4078092+08:00"
+}
