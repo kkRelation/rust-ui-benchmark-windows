@@ -10,8 +10,8 @@ resident Windows quick launcher. The published historical cohort contains:
 - Dioxus Native on Blitz
 - gpui-ce
 
-Iced and gpui-kit have joined the corrected unmanaged-window cohort. KAS,
-Makepad, and FerroUI remain planned as sequential expansions. Each one uses an isolated
+Iced, gpui-kit, and KAS have joined the corrected unmanaged-window cohort.
+Makepad and FerroUI remain planned as sequential expansions. Each one uses an isolated
 Cargo home and target directory which is removed only after its durable result
 passes validation, keeping peak disk use close to one framework build at a
 time.
@@ -53,14 +53,15 @@ ranges, post-hide behavior, limitations, and interpretation.
 - `probes/`: independent probe crates plus the shared protocol crate;
 - `harness/`: build, measurement, result-merge scripts, and Pester tests;
 - `results/2026-10-28/`: untouched raw data from the original experiment;
-- `results/2026-10-29/`: the audited Slint compatibility-anchor attempt;
+- `results/2026-10-29/`: audited compatibility-anchor and unmanaged-cohort results;
 - `docs/`: benchmark design, report, and extraction provenance.
 
 Every probe has its own `Cargo.lock`. Direct framework inputs are additionally
 pinned in its manifest: Slint 1.16.1, zgui commit `951a0ea3`, Dioxus Desktop
 0.7.10, Dioxus Native/Blitz commit `fe33b778`, gpui-ce commit `5cac1478`,
 Tauri 2.12.5 (`tauri-build` 2.7.4), Iced 0.14.0, and gpui-kit 0.8.1
-(resolving to gpui-pre 0.3.10).
+(resolving to gpui-pre 0.3.10). KAS, kas-wgpu, and kas-widgets are each
+pinned to 0.17.0, with only WGPU's DX12 backend enabled.
 
 ## Protocol
 
@@ -218,6 +219,26 @@ only as a diagnostic: gpui-pre created both initially hidden HWNDs at the full
 accepted probe normalizes the two HWND outer rectangles with per-window DPI
 before emitting `ready-hidden`. Guarded cleanup removed only the isolated
 gpui-kit work root and recovered 7,488,868,352 bytes.
+
+### KAS unmanaged-window result
+
+KAS 0.17.0 with its normal WGPU/DX12 runner completed a debug smoke run and
+three valid release rounds on 2026-10-29. Its median hidden/workload private
+working sets were 151.7/188.4 MB; workload machine CPU was 0.328%, average GPU
+engine use was 11.699%, and warm show/hide latency was 246.977/237.816 ms. The
+workload GPU figure is notably high for this probe and renderer, but remains a
+machine/scene observation rather than a general KAS claim. Both native windows
+retained the exact 715x514 and 1215x794 outer sizes at every checkpoint.
+
+The validated evidence is in
+[`kas-unmanaged-attempt-2.json`](results/2026-10-29/kas-unmanaged-attempt-2.json)
+and its adjacent event/status artifacts. The first [`kas.json`](results/2026-10-29/kas.json)
+run is retained as a diagnostic: release rounds 1 and 3 passed, but round 2
+caught KAS/Winit still performing the auxiliary window's initial show after
+both HWNDs had been created. The accepted probe waits for both initial shows,
+normalizes their DPI-aware outer rectangles, and requires 500 ms of stable
+hidden state before emitting `ready-hidden`. Guarded cleanup removed only the
+isolated KAS work root and recovered 3,313,897,472 bytes.
 
 ## Historical result
 

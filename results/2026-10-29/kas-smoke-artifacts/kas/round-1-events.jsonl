@@ -1,0 +1,10 @@
+{"framework":"kas","event":"ready-hidden","timestamp":"2026-10-29T08:53:38.5893873Z","elapsedMs":1559}
+{"framework":"kas","event":"show-start","timestamp":"2026-10-29T08:53:44.1148906Z","elapsedMs":7085}
+{"framework":"kas","event":"show-end","timestamp":"2026-10-29T08:53:44.4252125Z","elapsedMs":7395}
+{"framework":"kas","event":"workload-start","timestamp":"2026-10-29T08:53:50.6770461Z","elapsedMs":13647}
+{"framework":"kas","event":"workload-end","timestamp":"2026-10-29T08:53:58.6776338Z","elapsedMs":21647}
+{"framework":"kas","event":"hide-start","timestamp":"2026-10-29T08:54:01.9478511Z","elapsedMs":24918}
+{"framework":"kas","event":"hide-end","timestamp":"2026-10-29T08:54:01.9547412Z","elapsedMs":24925}
+{"framework":"kas","event":"cycle-start","timestamp":"2026-10-29T08:54:07.6237387Z","elapsedMs":30594,"detail":{"count":2}}
+{"framework":"kas","event":"cycle-end","timestamp":"2026-10-29T08:54:07.8656511Z","elapsedMs":30835,"detail":{"count":2}}
+{"framework":"kas","event":"quit","timestamp":"2026-10-29T08:54:12.520312Z","elapsedMs":35490}

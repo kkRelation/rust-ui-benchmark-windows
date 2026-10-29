@@ -1,0 +1,20 @@
+{
+  "status": "failed",
+  "framework": "kas",
+  "anchor": false,
+  "stage": "release-validation",
+  "error": "Release result validation failed: Result contains 1 failed run(s) for 'kas'.; Expected exactly 3 distinct successful rounds for 'kas'; found 2 successful run(s) and 2 distinct round number(s).",
+  "workspaceRoot": "D:\\C2D\\Desktop\\Code\\Rust\\sTools\\rust-ui-benchmark-windows\\.benchmark-work\\kas",
+  "workspacePreserved": true,
+  "windowManagerIsolation": {
+    "manager": "komorebi",
+    "active": true,
+    "verified": true,
+    "requiredRules": [
+      "UI Framework Bench - Main",
+      "UI Framework Bench - Auxiliary Canvas"
+    ],
+    "addedRules": []
+  },
+  "failedAt": "2026-10-29T16:57:40.6302950+08:00"
+}

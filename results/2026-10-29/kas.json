@@ -1,0 +1,916 @@
+{
+  "schemaVersion": 2,
+  "capturedAt": "2026-10-29T16:57:40.5982767+08:00",
+  "protocol": {
+    "resident": true,
+    "windows": 2,
+    "mainContentSize": "700x480",
+    "auxiliaryContentSize": "1200x760",
+    "workload": "400 shared-state updates at 20 ms",
+    "phases": [
+      "hiddenIdle",
+      "warmShow",
+      "visibleIdle",
+      "workload400",
+      "warmHide",
+      "postHideIdle",
+      "cycle30",
+      "postCycleIdle"
+    ],
+    "sampleSeconds": 10,
+    "postHideSettleSeconds": 15,
+    "cycleCount": 30,
+    "rounds": 3,
+    "roundStart": 1,
+    "rotatingOrder": true,
+    "smoke": false
+  },
+  "pins": {
+    "kas": "0.17.0"
+  },
+  "environment": {
+    "os": "Microsoft Windows 11 专业版",
+    "osVersion": "10.0.26200",
+    "machine": "Jiaolong Series MRID6",
+    "logicalProcessors": 32,
+    "cpu": [
+      "AMD Ryzen 9 7945HX with Radeon Graphics        "
+    ],
+    "gpu": [
+      {
+        "name": "Parsec Virtual Display Adapter",
+        "driverVersion": "0.45.0.0"
+      },
+      {
+        "name": "GameViewer Virtual Display Adapter",
+        "driverVersion": "15.6.5.199"
+      },
+      {
+        "name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+        "driverVersion": "32.0.16.1047"
+      },
+      {
+        "name": "AMD Radeon(TM) Graphics",
+        "driverVersion": "32.0.11038.3"
+      }
+    ],
+    "powerPlan": "电源方案 GUID: 5fa7881b-3a51-42ec-92eb-4a309e6a73cc  (cpu boost)"
+  },
+  "toolchain": {
+    "rustcVerbose": "rustc 1.98.1 (48a229cea 2026-09-01)\nbinary: rustc\ncommit-hash: 48a229ceaefd4985c50990b14116b6d856af0985\ncommit-date: 2026-09-01\nhost: x86_64-pc-windows-msvc\nrelease: 1.98.1\nLLVM version: 22.1.8",
+    "cargoVersion": "cargo 1.98.1 (797e8a9bc 2026-08-05)"
+  },
+  "runs": [
+    {
+      "framework": "kas",
+      "round": 1,
+      "status": "ok",
+      "executable": ".benchmark-work/kas/target/release/komorebi-kas-framework-bench.exe",
+      "executableSizeMb": 9.7,
+      "showLatencyMs": 309.921,
+      "hideLatencyMs": 314.079,
+      "topology": {
+        "hidden": [
+          {
+            "ProcessId": 56184,
+            "Title": "UI Framework Bench - Auxiliary Canvas",
+            "Visible": false,
+            "Width": 1215,
+            "Height": 794
+          },
+          {
+            "ProcessId": 56184,
+            "Title": "UI Framework Bench - Main",
+            "Visible": false,
+            "Width": 715,
+            "Height": 514
+          }
+        ],
+        "visible": [
+          {
+            "ProcessId": 56184,
+            "Title": "UI Framework Bench - Auxiliary Canvas",
+            "Visible": true,
+            "Width": 1215,
+            "Height": 794
+          },
+          {
+            "ProcessId": 56184,
+            "Title": "UI Framework Bench - Main",
+            "Visible": true,
+            "Width": 715,
+            "Height": 514
+          }
+        ],
+        "postHide": [
+          {
+            "ProcessId": 56184,
+            "Title": "UI Framework Bench - Auxiliary Canvas",
+            "Visible": false,
+            "Width": 1215,
+            "Height": 794
+          },
+          {
+            "ProcessId": 56184,
+            "Title": "UI Framework Bench - Main",
+            "Visible": false,
+            "Width": 715,
+            "Height": 514
+          }
+        ],
+        "postCycle": [
+          {
+            "ProcessId": 56184,
+            "Title": "UI Framework Bench - Auxiliary Canvas",
+            "Visible": false,
+            "Width": 1215,
+            "Height": 794
+          },
+          {
+            "ProcessId": 56184,
+            "Title": "UI Framework Bench - Main",
+            "Visible": false,
+            "Width": 715,
+            "Height": 514
+          }
+        ]
+      },
+      "phases": {
+        "hiddenIdle": {
+          "capturedAt": "2026-10-29T16:54:30.8834009+08:00",
+          "sampleStartedAt": "2026-10-29T16:54:19.7037351+08:00",
+          "sampleEndedAt": "2026-10-29T16:54:30.8834009+08:00",
+          "sampleDurationSeconds": 11.18,
+          "rootProcessId": 56184,
+          "processCount": 1,
+          "rendererCount": 0,
+          "workingSetMb": 249.8,
+          "privateWorkingSetMb": 159.8,
+          "privateBytesMb": 490.0,
+          "cpuSampleSeconds": 10,
+          "cpuSingleCorePercent": 0.0,
+          "cpuMachinePercent": 0.0,
+          "logicalProcessorCount": 32,
+          "gpuSamples": 11,
+          "gpuEnginePercent": 0.0,
+          "gpuEngineAveragePercent": 0.0,
+          "gpuEnginePeakPercent": 0.0,
+          "dedicatedGpuMb": 208.3,
+          "dedicatedGpuStartMb": 208.3,
+          "dedicatedGpuEndMb": 208.3,
+          "dedicatedGpuPeakMb": 208.3,
+          "sharedGpuMb": 144.6,
+          "sharedGpuStartMb": 144.6,
+          "sharedGpuEndMb": 144.6,
+          "sharedGpuPeakMb": 144.6,
+          "processes": [
+            {
+              "processId": 56184,
+              "parentProcessId": 53348,
+              "name": "komorebi-kas-framework-bench.exe",
+              "renderer": false
+            }
+          ]
+        },
+        "visibleIdle": {
+          "capturedAt": "2026-10-29T16:54:44.531901+08:00",
+          "sampleStartedAt": "2026-10-29T16:54:33.3492776+08:00",
+          "sampleEndedAt": "2026-10-29T16:54:44.531901+08:00",
+          "sampleDurationSeconds": 11.183,
+          "rootProcessId": 56184,
+          "processCount": 1,
+          "rendererCount": 0,
+          "workingSetMb": 273.4,
+          "privateWorkingSetMb": 171.0,
+          "privateBytesMb": 450.1,
+          "cpuSampleSeconds": 10,
+          "cpuSingleCorePercent": 0.0,
+          "cpuMachinePercent": 0.0,
+          "logicalProcessorCount": 32,
+          "gpuSamples": 11,
+          "gpuEnginePercent": 0.0,
+          "gpuEngineAveragePercent": 0.0,
+          "gpuEnginePeakPercent": 0.0,
+          "dedicatedGpuMb": 219.6,
+          "dedicatedGpuStartMb": 219.6,
+          "dedicatedGpuEndMb": 219.6,
+          "dedicatedGpuPeakMb": 219.6,
+          "sharedGpuMb": 163.2,
+          "sharedGpuStartMb": 163.2,
+          "sharedGpuEndMb": 163.2,
+          "sharedGpuPeakMb": 163.2,
+          "processes": [
+            {
+              "processId": 56184,
+              "parentProcessId": 53348,
+              "name": "komorebi-kas-framework-bench.exe",
+              "renderer": false
+            }
+          ]
+        },
+        "workload400": {
+          "capturedAt": "2026-10-29T16:54:56.8878878+08:00",
+          "sampleStartedAt": "2026-10-29T16:54:47.2444385+08:00",
+          "sampleEndedAt": "2026-10-29T16:54:56.8878878+08:00",
+          "sampleDurationSeconds": 9.642,
+          "rootProcessId": 56184,
+          "processCount": 1,
+          "rendererCount": 0,
+          "workingSetMb": 320.9,
+          "privateWorkingSetMb": 196.8,
+          "privateBytesMb": 475.9,
+          "cpuSampleSeconds": 8,
+          "cpuSingleCorePercent": 10.371,
+          "cpuMachinePercent": 0.324,
+          "logicalProcessorCount": 32,
+          "gpuSamples": 9,
+          "gpuEnginePercent": 13.778,
+          "gpuEngineAveragePercent": 13.778,
+          "gpuEnginePeakPercent": 17.761,
+          "dedicatedGpuMb": 241.9,
+          "dedicatedGpuStartMb": 241.9,
+          "dedicatedGpuEndMb": 241.9,
+          "dedicatedGpuPeakMb": 241.9,
+          "sharedGpuMb": 195.4,
+          "sharedGpuStartMb": 195.4,
+          "sharedGpuEndMb": 195.4,
+          "sharedGpuPeakMb": 195.4,
+          "processes": [
+            {
+              "processId": 56184,
+              "parentProcessId": 53348,
+              "name": "komorebi-kas-framework-bench.exe",
+              "renderer": false
+            }
+          ]
+        },
+        "postHideIdle": {
+          "capturedAt": "2026-10-29T16:55:25.5649272+08:00",
+          "sampleStartedAt": "2026-10-29T16:55:14.383627+08:00",
+          "sampleEndedAt": "2026-10-29T16:55:25.5649272+08:00",
+          "sampleDurationSeconds": 11.181,
+          "rootProcessId": 56184,
+          "processCount": 1,
+          "rendererCount": 0,
+          "workingSetMb": 320.9,
+          "privateWorkingSetMb": 196.8,
+          "privateBytesMb": 475.8,
+          "cpuSampleSeconds": 10,
+          "cpuSingleCorePercent": 0.0,
+          "cpuMachinePercent": 0.0,
+          "logicalProcessorCount": 32,
+          "gpuSamples": 11,
+          "gpuEnginePercent": 0.0,
+          "gpuEngineAveragePercent": 0.0,
+          "gpuEnginePeakPercent": 0.0,
+          "dedicatedGpuMb": 241.9,
+          "dedicatedGpuStartMb": 241.9,
+          "dedicatedGpuEndMb": 241.9,
+          "dedicatedGpuPeakMb": 241.9,
+          "sharedGpuMb": 195.4,
+          "sharedGpuStartMb": 195.4,
+          "sharedGpuEndMb": 195.4,
+          "sharedGpuPeakMb": 195.4,
+          "processes": [
+            {
+              "processId": 56184,
+              "parentProcessId": 53348,
+              "name": "komorebi-kas-framework-bench.exe",
+              "renderer": false
+            }
+          ]
+        },
+        "postCycleIdle": {
+          "capturedAt": "2026-10-29T16:55:42.1760111+08:00",
+          "sampleStartedAt": "2026-10-29T16:55:31.0041681+08:00",
+          "sampleEndedAt": "2026-10-29T16:55:42.1760111+08:00",
+          "sampleDurationSeconds": 11.172,
+          "rootProcessId": 56184,
+          "processCount": 1,
+          "rendererCount": 0,
+          "workingSetMb": 320.9,
+          "privateWorkingSetMb": 196.8,
+          "privateBytesMb": 475.8,
+          "cpuSampleSeconds": 10,
+          "cpuSingleCorePercent": 0.0,
+          "cpuMachinePercent": 0.0,
+          "logicalProcessorCount": 32,
+          "gpuSamples": 11,
+          "gpuEnginePercent": 0.0,
+          "gpuEngineAveragePercent": 0.0,
+          "gpuEnginePeakPercent": 0.0,
+          "dedicatedGpuMb": 241.9,
+          "dedicatedGpuStartMb": 241.9,
+          "dedicatedGpuEndMb": 241.9,
+          "dedicatedGpuPeakMb": 241.9,
+          "sharedGpuMb": 195.4,
+          "sharedGpuStartMb": 195.4,
+          "sharedGpuEndMb": 195.4,
+          "sharedGpuPeakMb": 195.4,
+          "processes": [
+            {
+              "processId": 56184,
+              "parentProcessId": 53348,
+              "name": "komorebi-kas-framework-bench.exe",
+              "renderer": false
+            }
+          ]
+        }
+      },
+      "eventLog": "D:\\C2D\\Desktop\\Code\\Rust\\sTools\\rust-ui-benchmark-windows\\results\\2026-10-29\\kas-artifacts\\kas\\round-1-events.jsonl",
+      "executableSha256": "1cfba606956089323c38d21a0bbc2149fcc37a178fa3476b2d91fe238699fc55",
+      "lockfileSha256": "07706fbd742ccfed385366173e1ea83ceac374d3240f47f2a2bfade4539b0ee1"
+    },
+    {
+      "framework": "kas",
+      "round": 2,
+      "status": "failed",
+      "executable": ".benchmark-work/kas/target/release/komorebi-kas-framework-bench.exe",
+      "error": "Expected two hidden benchmark windows during 'ready-hidden' for PID 300; observed 2: UI Framework Bench - Auxiliary Canvas:visible=True; UI Framework Bench - Main:visible=False",
+      "eventLog": "D:\\C2D\\Desktop\\Code\\Rust\\sTools\\rust-ui-benchmark-windows\\results\\2026-10-29\\kas-artifacts\\kas\\round-2-events.jsonl",
+      "executableSha256": "1cfba606956089323c38d21a0bbc2149fcc37a178fa3476b2d91fe238699fc55",
+      "lockfileSha256": "07706fbd742ccfed385366173e1ea83ceac374d3240f47f2a2bfade4539b0ee1"
+    },
+    {
+      "framework": "kas",
+      "round": 3,
+      "status": "ok",
+      "executable": ".benchmark-work/kas/target/release/komorebi-kas-framework-bench.exe",
+      "executableSizeMb": 9.7,
+      "showLatencyMs": 280.417,
+      "hideLatencyMs": 309.437,
+      "topology": {
+        "hidden": [
+          {
+            "ProcessId": 24068,
+            "Title": "UI Framework Bench - Auxiliary Canvas",
+            "Visible": false,
+            "Width": 1215,
+            "Height": 794
+          },
+          {
+            "ProcessId": 24068,
+            "Title": "UI Framework Bench - Main",
+            "Visible": false,
+            "Width": 715,
+            "Height": 514
+          }
+        ],
+        "visible": [
+          {
+            "ProcessId": 24068,
+            "Title": "UI Framework Bench - Auxiliary Canvas",
+            "Visible": true,
+            "Width": 1215,
+            "Height": 794
+          },
+          {
+            "ProcessId": 24068,
+            "Title": "UI Framework Bench - Main",
+            "Visible": true,
+            "Width": 715,
+            "Height": 514
+          }
+        ],
+        "postHide": [
+          {
+            "ProcessId": 24068,
+            "Title": "UI Framework Bench - Auxiliary Canvas",
+            "Visible": false,
+            "Width": 1215,
+            "Height": 794
+          },
+          {
+            "ProcessId": 24068,
+            "Title": "UI Framework Bench - Main",
+            "Visible": false,
+            "Width": 715,
+            "Height": 514
+          }
+        ],
+        "postCycle": [
+          {
+            "ProcessId": 24068,
+            "Title": "UI Framework Bench - Auxiliary Canvas",
+            "Visible": false,
+            "Width": 1215,
+            "Height": 794
+          },
+          {
+            "ProcessId": 24068,
+            "Title": "UI Framework Bench - Main",
+            "Visible": false,
+            "Width": 715,
+            "Height": 514
+          }
+        ]
+      },
+      "phases": {
+        "hiddenIdle": {
+          "capturedAt": "2026-10-29T16:56:27.6223361+08:00",
+          "sampleStartedAt": "2026-10-29T16:56:16.4384842+08:00",
+          "sampleEndedAt": "2026-10-29T16:56:27.6223361+08:00",
+          "sampleDurationSeconds": 11.184,
+          "rootProcessId": 24068,
+          "processCount": 1,
+          "rendererCount": 0,
+          "workingSetMb": 232.5,
+          "privateWorkingSetMb": 150.5,
+          "privateBytesMb": 482.4,
+          "cpuSampleSeconds": 10,
+          "cpuSingleCorePercent": 0.0,
+          "cpuMachinePercent": 0.0,
+          "logicalProcessorCount": 32,
+          "gpuSamples": 11,
+          "gpuEnginePercent": 0.0,
+          "gpuEngineAveragePercent": 0.0,
+          "gpuEnginePeakPercent": 0.0,
+          "dedicatedGpuMb": 208.3,
+          "dedicatedGpuStartMb": 208.3,
+          "dedicatedGpuEndMb": 208.3,
+          "dedicatedGpuPeakMb": 208.3,
+          "sharedGpuMb": 144.6,
+          "sharedGpuStartMb": 144.6,
+          "sharedGpuEndMb": 144.6,
+          "sharedGpuPeakMb": 144.6,
+          "processes": [
+            {
+              "processId": 24068,
+              "parentProcessId": 53348,
+              "name": "komorebi-kas-framework-bench.exe",
+              "renderer": false
+            }
+          ]
+        },
+        "visibleIdle": {
+          "capturedAt": "2026-10-29T16:56:40.9174275+08:00",
+          "sampleStartedAt": "2026-10-29T16:56:29.7454249+08:00",
+          "sampleEndedAt": "2026-10-29T16:56:40.9174275+08:00",
+          "sampleDurationSeconds": 11.172,
+          "rootProcessId": 24068,
+          "processCount": 1,
+          "rendererCount": 0,
+          "workingSetMb": 252.5,
+          "privateWorkingSetMb": 158.8,
+          "privateBytesMb": 442.8,
+          "cpuSampleSeconds": 10,
+          "cpuSingleCorePercent": 0.0,
+          "cpuMachinePercent": 0.0,
+          "logicalProcessorCount": 32,
+          "gpuSamples": 11,
+          "gpuEnginePercent": 0.0,
+          "gpuEngineAveragePercent": 0.0,
+          "gpuEnginePeakPercent": 0.0,
+          "dedicatedGpuMb": 219.6,
+          "dedicatedGpuStartMb": 219.6,
+          "dedicatedGpuEndMb": 219.6,
+          "dedicatedGpuPeakMb": 219.6,
+          "sharedGpuMb": 163.4,
+          "sharedGpuStartMb": 163.4,
+          "sharedGpuEndMb": 163.4,
+          "sharedGpuPeakMb": 163.4,
+          "processes": [
+            {
+              "processId": 24068,
+              "parentProcessId": 53348,
+              "name": "komorebi-kas-framework-bench.exe",
+              "renderer": false
+            }
+          ]
+        },
+        "workload400": {
+          "capturedAt": "2026-10-29T16:56:52.9298757+08:00",
+          "sampleStartedAt": "2026-10-29T16:56:43.3813113+08:00",
+          "sampleEndedAt": "2026-10-29T16:56:52.9298757+08:00",
+          "sampleDurationSeconds": 9.547,
+          "rootProcessId": 24068,
+          "processCount": 1,
+          "rendererCount": 0,
+          "workingSetMb": 303.3,
+          "privateWorkingSetMb": 187.9,
+          "privateBytesMb": 471.9,
+          "cpuSampleSeconds": 8,
+          "cpuSingleCorePercent": 10.475,
+          "cpuMachinePercent": 0.327,
+          "logicalProcessorCount": 32,
+          "gpuSamples": 9,
+          "gpuEnginePercent": 14.486,
+          "gpuEngineAveragePercent": 14.486,
+          "gpuEnginePeakPercent": 18.979,
+          "dedicatedGpuMb": 241.9,
+          "dedicatedGpuStartMb": 241.9,
+          "dedicatedGpuEndMb": 241.9,
+          "dedicatedGpuPeakMb": 241.9,
+          "sharedGpuMb": 196.7,
+          "sharedGpuStartMb": 195.5,
+          "sharedGpuEndMb": 196.7,
+          "sharedGpuPeakMb": 196.7,
+          "processes": [
+            {
+              "processId": 24068,
+              "parentProcessId": 53348,
+              "name": "komorebi-kas-framework-bench.exe",
+              "renderer": false
+            }
+          ]
+        },
+        "postHideIdle": {
+          "capturedAt": "2026-10-29T16:57:21.3807636+08:00",
+          "sampleStartedAt": "2026-10-29T16:57:10.2109975+08:00",
+          "sampleEndedAt": "2026-10-29T16:57:21.3807636+08:00",
+          "sampleDurationSeconds": 11.17,
+          "rootProcessId": 24068,
+          "processCount": 1,
+          "rendererCount": 0,
+          "workingSetMb": 303.3,
+          "privateWorkingSetMb": 187.9,
+          "privateBytesMb": 471.8,
+          "cpuSampleSeconds": 10,
+          "cpuSingleCorePercent": 0.0,
+          "cpuMachinePercent": 0.0,
+          "logicalProcessorCount": 32,
+          "gpuSamples": 11,
+          "gpuEnginePercent": 0.0,
+          "gpuEngineAveragePercent": 0.0,
+          "gpuEnginePeakPercent": 0.0,
+          "dedicatedGpuMb": 241.9,
+          "dedicatedGpuStartMb": 241.9,
+          "dedicatedGpuEndMb": 241.9,
+          "dedicatedGpuPeakMb": 241.9,
+          "sharedGpuMb": 196.7,
+          "sharedGpuStartMb": 196.7,
+          "sharedGpuEndMb": 196.7,
+          "sharedGpuPeakMb": 196.7,
+          "processes": [
+            {
+              "processId": 24068,
+              "parentProcessId": 53348,
+              "name": "komorebi-kas-framework-bench.exe",
+              "renderer": false
+            }
+          ]
+        },
+        "postCycleIdle": {
+          "capturedAt": "2026-10-29T16:57:37.9880728+08:00",
+          "sampleStartedAt": "2026-10-29T16:57:26.7939441+08:00",
+          "sampleEndedAt": "2026-10-29T16:57:37.9880728+08:00",
+          "sampleDurationSeconds": 11.194,
+          "rootProcessId": 24068,
+          "processCount": 1,
+          "rendererCount": 0,
+          "workingSetMb": 303.3,
+          "privateWorkingSetMb": 187.9,
+          "privateBytesMb": 471.8,
+          "cpuSampleSeconds": 10,
+          "cpuSingleCorePercent": 0.0,
+          "cpuMachinePercent": 0.0,
+          "logicalProcessorCount": 32,
+          "gpuSamples": 11,
+          "gpuEnginePercent": 0.0,
+          "gpuEngineAveragePercent": 0.0,
+          "gpuEnginePeakPercent": 0.0,
+          "dedicatedGpuMb": 241.9,
+          "dedicatedGpuStartMb": 241.9,
+          "dedicatedGpuEndMb": 241.9,
+          "dedicatedGpuPeakMb": 241.9,
+          "sharedGpuMb": 196.7,
+          "sharedGpuStartMb": 196.7,
+          "sharedGpuEndMb": 196.7,
+          "sharedGpuPeakMb": 196.7,
+          "processes": [
+            {
+              "processId": 24068,
+              "parentProcessId": 53348,
+              "name": "komorebi-kas-framework-bench.exe",
+              "renderer": false
+            }
+          ]
+        }
+      },
+      "eventLog": "D:\\C2D\\Desktop\\Code\\Rust\\sTools\\rust-ui-benchmark-windows\\results\\2026-10-29\\kas-artifacts\\kas\\round-3-events.jsonl",
+      "executableSha256": "1cfba606956089323c38d21a0bbc2149fcc37a178fa3476b2d91fe238699fc55",
+      "lockfileSha256": "07706fbd742ccfed385366173e1ea83ceac374d3240f47f2a2bfade4539b0ee1"
+    }
+  ],
+  "summary": {
+    "phases": [
+      {
+        "framework": "kas",
+        "phase": "hiddenIdle",
+        "metrics": {
+          "workingSetMb": {
+            "count": 2,
+            "median": 241.15,
+            "minimum": 232.5,
+            "maximum": 249.8
+          },
+          "privateWorkingSetMb": {
+            "count": 2,
+            "median": 155.15,
+            "minimum": 150.5,
+            "maximum": 159.8
+          },
+          "privateBytesMb": {
+            "count": 2,
+            "median": 486.2,
+            "minimum": 482.4,
+            "maximum": 490.0
+          },
+          "cpuSingleCorePercent": {
+            "count": 2,
+            "median": 0.0,
+            "minimum": 0.0,
+            "maximum": 0.0
+          },
+          "cpuMachinePercent": {
+            "count": 2,
+            "median": 0.0,
+            "minimum": 0.0,
+            "maximum": 0.0
+          },
+          "gpuEngineAveragePercent": {
+            "count": 2,
+            "median": 0.0,
+            "minimum": 0.0,
+            "maximum": 0.0
+          },
+          "gpuEnginePeakPercent": {
+            "count": 2,
+            "median": 0.0,
+            "minimum": 0.0,
+            "maximum": 0.0
+          },
+          "dedicatedGpuPeakMb": {
+            "count": 2,
+            "median": 208.3,
+            "minimum": 208.3,
+            "maximum": 208.3
+          },
+          "sharedGpuPeakMb": {
+            "count": 2,
+            "median": 144.6,
+            "minimum": 144.6,
+            "maximum": 144.6
+          }
+        }
+      },
+      {
+        "framework": "kas",
+        "phase": "visibleIdle",
+        "metrics": {
+          "workingSetMb": {
+            "count": 2,
+            "median": 262.95,
+            "minimum": 252.5,
+            "maximum": 273.4
+          },
+          "privateWorkingSetMb": {
+            "count": 2,
+            "median": 164.9,
+            "minimum": 158.8,
+            "maximum": 171.0
+          },
+          "privateBytesMb": {
+            "count": 2,
+            "median": 446.45,
+            "minimum": 442.8,
+            "maximum": 450.1
+          },
+          "cpuSingleCorePercent": {
+            "count": 2,
+            "median": 0.0,
+            "minimum": 0.0,
+            "maximum": 0.0
+          },
+          "cpuMachinePercent": {
+            "count": 2,
+            "median": 0.0,
+            "minimum": 0.0,
+            "maximum": 0.0
+          },
+          "gpuEngineAveragePercent": {
+            "count": 2,
+            "median": 0.0,
+            "minimum": 0.0,
+            "maximum": 0.0
+          },
+          "gpuEnginePeakPercent": {
+            "count": 2,
+            "median": 0.0,
+            "minimum": 0.0,
+            "maximum": 0.0
+          },
+          "dedicatedGpuPeakMb": {
+            "count": 2,
+            "median": 219.6,
+            "minimum": 219.6,
+            "maximum": 219.6
+          },
+          "sharedGpuPeakMb": {
+            "count": 2,
+            "median": 163.3,
+            "minimum": 163.2,
+            "maximum": 163.4
+          }
+        }
+      },
+      {
+        "framework": "kas",
+        "phase": "workload400",
+        "metrics": {
+          "workingSetMb": {
+            "count": 2,
+            "median": 312.1,
+            "minimum": 303.3,
+            "maximum": 320.9
+          },
+          "privateWorkingSetMb": {
+            "count": 2,
+            "median": 192.35,
+            "minimum": 187.9,
+            "maximum": 196.8
+          },
+          "privateBytesMb": {
+            "count": 2,
+            "median": 473.9,
+            "minimum": 471.9,
+            "maximum": 475.9
+          },
+          "cpuSingleCorePercent": {
+            "count": 2,
+            "median": 10.423,
+            "minimum": 10.371,
+            "maximum": 10.475
+          },
+          "cpuMachinePercent": {
+            "count": 2,
+            "median": 0.326,
+            "minimum": 0.324,
+            "maximum": 0.327
+          },
+          "gpuEngineAveragePercent": {
+            "count": 2,
+            "median": 14.132,
+            "minimum": 13.778,
+            "maximum": 14.486
+          },
+          "gpuEnginePeakPercent": {
+            "count": 2,
+            "median": 18.37,
+            "minimum": 17.761,
+            "maximum": 18.979
+          },
+          "dedicatedGpuPeakMb": {
+            "count": 2,
+            "median": 241.9,
+            "minimum": 241.9,
+            "maximum": 241.9
+          },
+          "sharedGpuPeakMb": {
+            "count": 2,
+            "median": 196.05,
+            "minimum": 195.4,
+            "maximum": 196.7
+          }
+        }
+      },
+      {
+        "framework": "kas",
+        "phase": "postHideIdle",
+        "metrics": {
+          "workingSetMb": {
+            "count": 2,
+            "median": 312.1,
+            "minimum": 303.3,
+            "maximum": 320.9
+          },
+          "privateWorkingSetMb": {
+            "count": 2,
+            "median": 192.35,
+            "minimum": 187.9,
+            "maximum": 196.8
+          },
+          "privateBytesMb": {
+            "count": 2,
+            "median": 473.8,
+            "minimum": 471.8,
+            "maximum": 475.8
+          },
+          "cpuSingleCorePercent": {
+            "count": 2,
+            "median": 0.0,
+            "minimum": 0.0,
+            "maximum": 0.0
+          },
+          "cpuMachinePercent": {
+            "count": 2,
+            "median": 0.0,
+            "minimum": 0.0,
+            "maximum": 0.0
+          },
+          "gpuEngineAveragePercent": {
+            "count": 2,
+            "median": 0.0,
+            "minimum": 0.0,
+            "maximum": 0.0
+          },
+          "gpuEnginePeakPercent": {
+            "count": 2,
+            "median": 0.0,
+            "minimum": 0.0,
+            "maximum": 0.0
+          },
+          "dedicatedGpuPeakMb": {
+            "count": 2,
+            "median": 241.9,
+            "minimum": 241.9,
+            "maximum": 241.9
+          },
+          "sharedGpuPeakMb": {
+            "count": 2,
+            "median": 196.05,
+            "minimum": 195.4,
+            "maximum": 196.7
+          }
+        }
+      },
+      {
+        "framework": "kas",
+        "phase": "postCycleIdle",
+        "metrics": {
+          "workingSetMb": {
+            "count": 2,
+            "median": 312.1,
+            "minimum": 303.3,
+            "maximum": 320.9
+          },
+          "privateWorkingSetMb": {
+            "count": 2,
+            "median": 192.35,
+            "minimum": 187.9,
+            "maximum": 196.8
+          },
+          "privateBytesMb": {
+            "count": 2,
+            "median": 473.8,
+            "minimum": 471.8,
+            "maximum": 475.8
+          },
+          "cpuSingleCorePercent": {
+            "count": 2,
+            "median": 0.0,
+            "minimum": 0.0,
+            "maximum": 0.0
+          },
+          "cpuMachinePercent": {
+            "count": 2,
+            "median": 0.0,
+            "minimum": 0.0,
+            "maximum": 0.0
+          },
+          "gpuEngineAveragePercent": {
+            "count": 2,
+            "median": 0.0,
+            "minimum": 0.0,
+            "maximum": 0.0
+          },
+          "gpuEnginePeakPercent": {
+            "count": 2,
+            "median": 0.0,
+            "minimum": 0.0,
+            "maximum": 0.0
+          },
+          "dedicatedGpuPeakMb": {
+            "count": 2,
+            "median": 241.9,
+            "minimum": 241.9,
+            "maximum": 241.9
+          },
+          "sharedGpuPeakMb": {
+            "count": 2,
+            "median": 196.05,
+            "minimum": 195.4,
+            "maximum": 196.7
+          }
+        }
+      }
+    ],
+    "latency": [
+      {
+        "framework": "kas",
+        "showLatencyMs": {
+          "count": 2,
+          "median": 295.169,
+          "minimum": 280.417,
+          "maximum": 309.921
+        },
+        "hideLatencyMs": {
+          "count": 2,
+          "median": 311.758,
+          "minimum": 309.437,
+          "maximum": 314.079
+        }
+      }
+    ]
+  }
+}
