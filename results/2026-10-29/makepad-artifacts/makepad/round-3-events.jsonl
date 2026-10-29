@@ -1,0 +1,10 @@
+{"framework":"makepad","event":"ready-hidden","timestamp":"2026-10-29T09:26:37.222559Z","elapsedMs":805}
+{"framework":"makepad","event":"show-start","timestamp":"2026-10-29T09:26:50.5055182Z","elapsedMs":14088}
+{"framework":"makepad","event":"show-end","timestamp":"2026-10-29T09:26:50.5149982Z","elapsedMs":14098}
+{"framework":"makepad","event":"workload-start","timestamp":"2026-10-29T09:27:05.2317179Z","elapsedMs":28815}
+{"framework":"makepad","event":"workload-end","timestamp":"2026-10-29T09:27:13.2320067Z","elapsedMs":36815}
+{"framework":"makepad","event":"hide-start","timestamp":"2026-10-29T09:27:16.1725433Z","elapsedMs":39755}
+{"framework":"makepad","event":"hide-end","timestamp":"2026-10-29T09:27:16.1763144Z","elapsedMs":39759}
+{"framework":"makepad","event":"cycle-start","timestamp":"2026-10-29T09:27:44.3500835Z","elapsedMs":67933,"detail":{"count":30}}
+{"framework":"makepad","event":"cycle-end","timestamp":"2026-10-29T09:27:47.7036338Z","elapsedMs":71286,"detail":{"count":30}}
+{"framework":"makepad","event":"quit","timestamp":"2026-10-29T09:28:00.9418233Z","elapsedMs":84525}

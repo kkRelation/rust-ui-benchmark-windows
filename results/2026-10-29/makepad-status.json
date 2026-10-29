@@ -1,0 +1,28 @@
+{
+  "status": "success",
+  "framework": "makepad",
+  "anchor": false,
+  "keepWorkdir": false,
+  "resultPath": "D:\\C2D\\Desktop\\Code\\Rust\\sTools\\rust-ui-benchmark-windows\\results\\2026-10-29\\makepad.json",
+  "smokePath": "D:\\C2D\\Desktop\\Code\\Rust\\sTools\\rust-ui-benchmark-windows\\results\\2026-10-29\\makepad-smoke.json",
+  "comparisonPath": null,
+  "workspaceRoot": "D:\\C2D\\Desktop\\Code\\Rust\\sTools\\rust-ui-benchmark-windows\\.benchmark-work\\makepad",
+  "windowManagerIsolation": {
+    "manager": "komorebi",
+    "active": true,
+    "verified": true,
+    "requiredRules": [
+      "UI Framework Bench - Main",
+      "UI Framework Bench - Auxiliary Canvas"
+    ],
+    "addedRules": []
+  },
+  "cleanup": {
+    "RemovedPath": "D:\\C2D\\Desktop\\Code\\Rust\\sTools\\rust-ui-benchmark-windows\\.benchmark-work\\makepad",
+    "WasPresent": true,
+    "FreeBytesBefore": 42919747584,
+    "FreeBytesAfter": 44817027072,
+    "RecoveredBytes": 1897279488
+  },
+  "completedAt": "2026-10-29T17:28:04.7076148+08:00"
+}

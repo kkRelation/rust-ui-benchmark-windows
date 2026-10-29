@@ -61,7 +61,8 @@ pinned in its manifest: Slint 1.16.1, zgui commit `951a0ea3`, Dioxus Desktop
 0.7.10, Dioxus Native/Blitz commit `fe33b778`, gpui-ce commit `5cac1478`,
 Tauri 2.12.5 (`tauri-build` 2.7.4), Iced 0.14.0, and gpui-kit 0.8.1
 (resolving to gpui-pre 0.3.10). KAS, kas-wgpu, and kas-widgets are each
-pinned to 0.17.0, with only WGPU's DX12 backend enabled.
+pinned to 0.17.0, with only WGPU's DX12 backend enabled. Makepad Widgets is
+pinned to 1.0.0 and uses Makepad's native Windows D3D11 path.
 
 ## Protocol
 
@@ -239,6 +240,26 @@ both HWNDs had been created. The accepted probe waits for both initial shows,
 normalizes their DPI-aware outer rectangles, and requires 500 ms of stable
 hidden state before emitting `ready-hidden`. Guarded cleanup removed only the
 isolated KAS work root and recovered 3,313,897,472 bytes.
+
+### Makepad unmanaged-window result
+
+Makepad Widgets 1.0.0 with its native Windows D3D11 renderer completed a
+debug smoke run and three valid release rounds on 2026-10-29. Its median
+hidden/workload private working sets were 124.9/133.9 MB; workload machine CPU
+was 0.328%, average GPU engine use was 1.022%, and warm show/hide latency was
+224.070/234.086 ms. Hidden, post-hide, and post-cycle CPU/GPU medians were all
+zero at the Windows sampling resolution. Both `MultiWindow` HWNDs retained the
+exact 715x514 and 1215x794 outer sizes at every checkpoint.
+
+The validated evidence is in
+[`makepad.json`](results/2026-10-29/makepad.json) and its adjacent event/status
+artifacts. Makepad 1.0.0 does not expose retained desktop visibility through
+its public window API, so the probe uses a current-PID and exact-title Win32
+adapter for show/hide, DPI-aware size normalization, and normal `WM_CLOSE`
+shutdown. The scene still uses one Makepad process, one `MultiWindow`, and one
+Rust selection value projected into both native windows; no WebView runtime is
+present. Guarded cleanup removed only the isolated Makepad work root and
+recovered 1,897,279,488 bytes.
 
 ## Historical result
 

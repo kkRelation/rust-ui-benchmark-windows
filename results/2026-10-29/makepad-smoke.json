@@ -1,0 +1,676 @@
+{
+  "schemaVersion": 2,
+  "capturedAt": "2026-10-29T17:23:46.3062642+08:00",
+  "protocol": {
+    "resident": true,
+    "windows": 2,
+    "mainContentSize": "700x480",
+    "auxiliaryContentSize": "1200x760",
+    "workload": "400 shared-state updates at 20 ms",
+    "phases": [
+      "hiddenIdle",
+      "warmShow",
+      "visibleIdle",
+      "workload400",
+      "warmHide",
+      "postHideIdle",
+      "cycle30",
+      "postCycleIdle"
+    ],
+    "sampleSeconds": 1,
+    "postHideSettleSeconds": 1,
+    "cycleCount": 2,
+    "rounds": 1,
+    "roundStart": 1,
+    "rotatingOrder": true,
+    "smoke": true
+  },
+  "pins": {
+    "makepad": "1.0.0"
+  },
+  "environment": {
+    "os": "Microsoft Windows 11 专业版",
+    "osVersion": "10.0.26200",
+    "machine": "Jiaolong Series MRID6",
+    "logicalProcessors": 32,
+    "cpu": [
+      "AMD Ryzen 9 7945HX with Radeon Graphics        "
+    ],
+    "gpu": [
+      {
+        "name": "Parsec Virtual Display Adapter",
+        "driverVersion": "0.45.0.0"
+      },
+      {
+        "name": "GameViewer Virtual Display Adapter",
+        "driverVersion": "15.6.5.199"
+      },
+      {
+        "name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+        "driverVersion": "32.0.16.1047"
+      },
+      {
+        "name": "AMD Radeon(TM) Graphics",
+        "driverVersion": "32.0.11038.3"
+      }
+    ],
+    "powerPlan": "电源方案 GUID: 5fa7881b-3a51-42ec-92eb-4a309e6a73cc  (cpu boost)"
+  },
+  "toolchain": {
+    "rustcVerbose": "rustc 1.98.1 (48a229cea 2026-09-01)\nbinary: rustc\ncommit-hash: 48a229ceaefd4985c50990b14116b6d856af0985\ncommit-date: 2026-09-01\nhost: x86_64-pc-windows-msvc\nrelease: 1.98.1\nLLVM version: 22.1.8",
+    "cargoVersion": "cargo 1.98.1 (797e8a9bc 2026-08-05)"
+  },
+  "runs": [
+    {
+      "framework": "makepad",
+      "round": 1,
+      "status": "ok",
+      "executable": ".benchmark-work/makepad/target/debug/komorebi-makepad-framework-bench.exe",
+      "executableSizeMb": 12.6,
+      "showLatencyMs": 334.57,
+      "hideLatencyMs": 217.532,
+      "topology": {
+        "hidden": [
+          {
+            "ProcessId": 32816,
+            "Title": "UI Framework Bench - Auxiliary Canvas",
+            "Visible": false,
+            "Width": 1215,
+            "Height": 794
+          },
+          {
+            "ProcessId": 32816,
+            "Title": "UI Framework Bench - Main",
+            "Visible": false,
+            "Width": 715,
+            "Height": 514
+          }
+        ],
+        "visible": [
+          {
+            "ProcessId": 32816,
+            "Title": "UI Framework Bench - Auxiliary Canvas",
+            "Visible": true,
+            "Width": 1215,
+            "Height": 794
+          },
+          {
+            "ProcessId": 32816,
+            "Title": "UI Framework Bench - Main",
+            "Visible": true,
+            "Width": 715,
+            "Height": 514
+          }
+        ],
+        "postHide": [
+          {
+            "ProcessId": 32816,
+            "Title": "UI Framework Bench - Auxiliary Canvas",
+            "Visible": false,
+            "Width": 1215,
+            "Height": 794
+          },
+          {
+            "ProcessId": 32816,
+            "Title": "UI Framework Bench - Main",
+            "Visible": false,
+            "Width": 715,
+            "Height": 514
+          }
+        ],
+        "postCycle": [
+          {
+            "ProcessId": 32816,
+            "Title": "UI Framework Bench - Auxiliary Canvas",
+            "Visible": false,
+            "Width": 1215,
+            "Height": 794
+          },
+          {
+            "ProcessId": 32816,
+            "Title": "UI Framework Bench - Main",
+            "Visible": false,
+            "Width": 715,
+            "Height": 514
+          }
+        ]
+      },
+      "phases": {
+        "hiddenIdle": {
+          "capturedAt": "2026-10-29T17:23:16.5995+08:00",
+          "sampleStartedAt": "2026-10-29T17:23:13.9911357+08:00",
+          "sampleEndedAt": "2026-10-29T17:23:16.5995+08:00",
+          "sampleDurationSeconds": 2.607,
+          "rootProcessId": 32816,
+          "processCount": 2,
+          "rendererCount": 0,
+          "workingSetMb": 183.5,
+          "privateWorkingSetMb": 130.9,
+          "privateBytesMb": 221.6,
+          "cpuSampleSeconds": 1,
+          "cpuSingleCorePercent": 0.0,
+          "cpuMachinePercent": 0.0,
+          "logicalProcessorCount": 32,
+          "gpuSamples": 2,
+          "gpuEnginePercent": 0.0,
+          "gpuEngineAveragePercent": 0.0,
+          "gpuEnginePeakPercent": 0.0,
+          "dedicatedGpuMb": 64.3,
+          "dedicatedGpuStartMb": 64.3,
+          "dedicatedGpuEndMb": 64.3,
+          "dedicatedGpuPeakMb": 64.3,
+          "sharedGpuMb": 15.5,
+          "sharedGpuStartMb": 15.5,
+          "sharedGpuEndMb": 15.5,
+          "sharedGpuPeakMb": 15.5,
+          "processes": [
+            {
+              "processId": 32816,
+              "parentProcessId": 52800,
+              "name": "komorebi-makepad-framework-bench.exe",
+              "renderer": false
+            },
+            {
+              "processId": 37340,
+              "parentProcessId": 32816,
+              "name": "conhost.exe",
+              "renderer": false
+            }
+          ]
+        },
+        "visibleIdle": {
+          "capturedAt": "2026-10-29T17:23:21.2187686+08:00",
+          "sampleStartedAt": "2026-10-29T17:23:19.154711+08:00",
+          "sampleEndedAt": "2026-10-29T17:23:21.2187686+08:00",
+          "sampleDurationSeconds": 2.064,
+          "rootProcessId": 32816,
+          "processCount": 2,
+          "rendererCount": 0,
+          "workingSetMb": 183.5,
+          "privateWorkingSetMb": 130.9,
+          "privateBytesMb": 221.6,
+          "cpuSampleSeconds": 1,
+          "cpuSingleCorePercent": 0.0,
+          "cpuMachinePercent": 0.0,
+          "logicalProcessorCount": 32,
+          "gpuSamples": 2,
+          "gpuEnginePercent": 0.0,
+          "gpuEngineAveragePercent": 0.0,
+          "gpuEnginePeakPercent": 0.0,
+          "dedicatedGpuMb": 64.3,
+          "dedicatedGpuStartMb": 64.3,
+          "dedicatedGpuEndMb": 64.3,
+          "dedicatedGpuPeakMb": 64.3,
+          "sharedGpuMb": 15.5,
+          "sharedGpuStartMb": 15.5,
+          "sharedGpuEndMb": 15.5,
+          "sharedGpuPeakMb": 15.5,
+          "processes": [
+            {
+              "processId": 32816,
+              "parentProcessId": 52800,
+              "name": "komorebi-makepad-framework-bench.exe",
+              "renderer": false
+            },
+            {
+              "processId": 37340,
+              "parentProcessId": 32816,
+              "name": "conhost.exe",
+              "renderer": false
+            }
+          ]
+        },
+        "workload400": {
+          "capturedAt": "2026-10-29T17:23:33.487489+08:00",
+          "sampleStartedAt": "2026-10-29T17:23:24.0066587+08:00",
+          "sampleEndedAt": "2026-10-29T17:23:33.487489+08:00",
+          "sampleDurationSeconds": 9.479,
+          "rootProcessId": 32816,
+          "processCount": 2,
+          "rendererCount": 0,
+          "workingSetMb": 188.0,
+          "privateWorkingSetMb": 135.4,
+          "privateBytesMb": 213.0,
+          "cpuSampleSeconds": 8,
+          "cpuSingleCorePercent": 31.649,
+          "cpuMachinePercent": 0.989,
+          "logicalProcessorCount": 32,
+          "gpuSamples": 9,
+          "gpuEnginePercent": 1.002,
+          "gpuEngineAveragePercent": 1.002,
+          "gpuEnginePeakPercent": 1.307,
+          "dedicatedGpuMb": 62.0,
+          "dedicatedGpuStartMb": 62.0,
+          "dedicatedGpuEndMb": 62.0,
+          "dedicatedGpuPeakMb": 62.0,
+          "sharedGpuMb": 9.7,
+          "sharedGpuStartMb": 7.0,
+          "sharedGpuEndMb": 9.7,
+          "sharedGpuPeakMb": 9.7,
+          "processes": [
+            {
+              "processId": 32816,
+              "parentProcessId": 52800,
+              "name": "komorebi-makepad-framework-bench.exe",
+              "renderer": false
+            },
+            {
+              "processId": 37340,
+              "parentProcessId": 32816,
+              "name": "conhost.exe",
+              "renderer": false
+            }
+          ]
+        },
+        "postHideIdle": {
+          "capturedAt": "2026-10-29T17:23:39.0468383+08:00",
+          "sampleStartedAt": "2026-10-29T17:23:36.9945429+08:00",
+          "sampleEndedAt": "2026-10-29T17:23:39.0468383+08:00",
+          "sampleDurationSeconds": 2.052,
+          "rootProcessId": 32816,
+          "processCount": 2,
+          "rendererCount": 0,
+          "workingSetMb": 186.9,
+          "privateWorkingSetMb": 134.3,
+          "privateBytesMb": 211.9,
+          "cpuSampleSeconds": 1,
+          "cpuSingleCorePercent": 0.0,
+          "cpuMachinePercent": 0.0,
+          "logicalProcessorCount": 32,
+          "gpuSamples": 2,
+          "gpuEnginePercent": 0.0,
+          "gpuEngineAveragePercent": 0.0,
+          "gpuEnginePeakPercent": 0.0,
+          "dedicatedGpuMb": 62.0,
+          "dedicatedGpuStartMb": 62.0,
+          "dedicatedGpuEndMb": 62.0,
+          "dedicatedGpuPeakMb": 62.0,
+          "sharedGpuMb": 9.7,
+          "sharedGpuStartMb": 9.7,
+          "sharedGpuEndMb": 9.7,
+          "sharedGpuPeakMb": 9.7,
+          "processes": [
+            {
+              "processId": 32816,
+              "parentProcessId": 52800,
+              "name": "komorebi-makepad-framework-bench.exe",
+              "renderer": false
+            },
+            {
+              "processId": 37340,
+              "parentProcessId": 32816,
+              "name": "conhost.exe",
+              "renderer": false
+            }
+          ]
+        },
+        "postCycleIdle": {
+          "capturedAt": "2026-10-29T17:23:43.5147506+08:00",
+          "sampleStartedAt": "2026-10-29T17:23:41.4528181+08:00",
+          "sampleEndedAt": "2026-10-29T17:23:43.5147506+08:00",
+          "sampleDurationSeconds": 2.062,
+          "rootProcessId": 32816,
+          "processCount": 2,
+          "rendererCount": 0,
+          "workingSetMb": 186.9,
+          "privateWorkingSetMb": 134.3,
+          "privateBytesMb": 211.9,
+          "cpuSampleSeconds": 1,
+          "cpuSingleCorePercent": 0.0,
+          "cpuMachinePercent": 0.0,
+          "logicalProcessorCount": 32,
+          "gpuSamples": 2,
+          "gpuEnginePercent": 0.0,
+          "gpuEngineAveragePercent": 0.0,
+          "gpuEnginePeakPercent": 0.0,
+          "dedicatedGpuMb": 62.0,
+          "dedicatedGpuStartMb": 62.0,
+          "dedicatedGpuEndMb": 62.0,
+          "dedicatedGpuPeakMb": 62.0,
+          "sharedGpuMb": 9.7,
+          "sharedGpuStartMb": 9.7,
+          "sharedGpuEndMb": 9.7,
+          "sharedGpuPeakMb": 9.7,
+          "processes": [
+            {
+              "processId": 32816,
+              "parentProcessId": 52800,
+              "name": "komorebi-makepad-framework-bench.exe",
+              "renderer": false
+            },
+            {
+              "processId": 37340,
+              "parentProcessId": 32816,
+              "name": "conhost.exe",
+              "renderer": false
+            }
+          ]
+        }
+      },
+      "eventLog": "D:\\C2D\\Desktop\\Code\\Rust\\sTools\\rust-ui-benchmark-windows\\results\\2026-10-29\\makepad-smoke-artifacts\\makepad\\round-1-events.jsonl",
+      "executableSha256": "a05f5eef6958f3c406cdf7a3648486072e712f2c0a00602d467b2fadca36cdda",
+      "lockfileSha256": "74f45f1008e9c401a20bcd50385c6b1aef3729cc7466f2064961ac7dc29d9d8b"
+    }
+  ],
+  "summary": {
+    "phases": [
+      {
+        "framework": "makepad",
+        "phase": "hiddenIdle",
+        "metrics": {
+          "workingSetMb": {
+            "count": 1,
+            "median": 183.5,
+            "minimum": 183.5,
+            "maximum": 183.5
+          },
+          "privateWorkingSetMb": {
+            "count": 1,
+            "median": 130.9,
+            "minimum": 130.9,
+            "maximum": 130.9
+          },
+          "privateBytesMb": {
+            "count": 1,
+            "median": 221.6,
+            "minimum": 221.6,
+            "maximum": 221.6
+          },
+          "cpuSingleCorePercent": {
+            "count": 1,
+            "median": 0.0,
+            "minimum": 0.0,
+            "maximum": 0.0
+          },
+          "cpuMachinePercent": {
+            "count": 1,
+            "median": 0.0,
+            "minimum": 0.0,
+            "maximum": 0.0
+          },
+          "gpuEngineAveragePercent": {
+            "count": 1,
+            "median": 0.0,
+            "minimum": 0.0,
+            "maximum": 0.0
+          },
+          "gpuEnginePeakPercent": {
+            "count": 1,
+            "median": 0.0,
+            "minimum": 0.0,
+            "maximum": 0.0
+          },
+          "dedicatedGpuPeakMb": {
+            "count": 1,
+            "median": 64.3,
+            "minimum": 64.3,
+            "maximum": 64.3
+          },
+          "sharedGpuPeakMb": {
+            "count": 1,
+            "median": 15.5,
+            "minimum": 15.5,
+            "maximum": 15.5
+          }
+        }
+      },
+      {
+        "framework": "makepad",
+        "phase": "visibleIdle",
+        "metrics": {
+          "workingSetMb": {
+            "count": 1,
+            "median": 183.5,
+            "minimum": 183.5,
+            "maximum": 183.5
+          },
+          "privateWorkingSetMb": {
+            "count": 1,
+            "median": 130.9,
+            "minimum": 130.9,
+            "maximum": 130.9
+          },
+          "privateBytesMb": {
+            "count": 1,
+            "median": 221.6,
+            "minimum": 221.6,
+            "maximum": 221.6
+          },
+          "cpuSingleCorePercent": {
+            "count": 1,
+            "median": 0.0,
+            "minimum": 0.0,
+            "maximum": 0.0
+          },
+          "cpuMachinePercent": {
+            "count": 1,
+            "median": 0.0,
+            "minimum": 0.0,
+            "maximum": 0.0
+          },
+          "gpuEngineAveragePercent": {
+            "count": 1,
+            "median": 0.0,
+            "minimum": 0.0,
+            "maximum": 0.0
+          },
+          "gpuEnginePeakPercent": {
+            "count": 1,
+            "median": 0.0,
+            "minimum": 0.0,
+            "maximum": 0.0
+          },
+          "dedicatedGpuPeakMb": {
+            "count": 1,
+            "median": 64.3,
+            "minimum": 64.3,
+            "maximum": 64.3
+          },
+          "sharedGpuPeakMb": {
+            "count": 1,
+            "median": 15.5,
+            "minimum": 15.5,
+            "maximum": 15.5
+          }
+        }
+      },
+      {
+        "framework": "makepad",
+        "phase": "workload400",
+        "metrics": {
+          "workingSetMb": {
+            "count": 1,
+            "median": 188.0,
+            "minimum": 188.0,
+            "maximum": 188.0
+          },
+          "privateWorkingSetMb": {
+            "count": 1,
+            "median": 135.4,
+            "minimum": 135.4,
+            "maximum": 135.4
+          },
+          "privateBytesMb": {
+            "count": 1,
+            "median": 213.0,
+            "minimum": 213.0,
+            "maximum": 213.0
+          },
+          "cpuSingleCorePercent": {
+            "count": 1,
+            "median": 31.649,
+            "minimum": 31.649,
+            "maximum": 31.649
+          },
+          "cpuMachinePercent": {
+            "count": 1,
+            "median": 0.989,
+            "minimum": 0.989,
+            "maximum": 0.989
+          },
+          "gpuEngineAveragePercent": {
+            "count": 1,
+            "median": 1.002,
+            "minimum": 1.002,
+            "maximum": 1.002
+          },
+          "gpuEnginePeakPercent": {
+            "count": 1,
+            "median": 1.307,
+            "minimum": 1.307,
+            "maximum": 1.307
+          },
+          "dedicatedGpuPeakMb": {
+            "count": 1,
+            "median": 62.0,
+            "minimum": 62.0,
+            "maximum": 62.0
+          },
+          "sharedGpuPeakMb": {
+            "count": 1,
+            "median": 9.7,
+            "minimum": 9.7,
+            "maximum": 9.7
+          }
+        }
+      },
+      {
+        "framework": "makepad",
+        "phase": "postHideIdle",
+        "metrics": {
+          "workingSetMb": {
+            "count": 1,
+            "median": 186.9,
+            "minimum": 186.9,
+            "maximum": 186.9
+          },
+          "privateWorkingSetMb": {
+            "count": 1,
+            "median": 134.3,
+            "minimum": 134.3,
+            "maximum": 134.3
+          },
+          "privateBytesMb": {
+            "count": 1,
+            "median": 211.9,
+            "minimum": 211.9,
+            "maximum": 211.9
+          },
+          "cpuSingleCorePercent": {
+            "count": 1,
+            "median": 0.0,
+            "minimum": 0.0,
+            "maximum": 0.0
+          },
+          "cpuMachinePercent": {
+            "count": 1,
+            "median": 0.0,
+            "minimum": 0.0,
+            "maximum": 0.0
+          },
+          "gpuEngineAveragePercent": {
+            "count": 1,
+            "median": 0.0,
+            "minimum": 0.0,
+            "maximum": 0.0
+          },
+          "gpuEnginePeakPercent": {
+            "count": 1,
+            "median": 0.0,
+            "minimum": 0.0,
+            "maximum": 0.0
+          },
+          "dedicatedGpuPeakMb": {
+            "count": 1,
+            "median": 62.0,
+            "minimum": 62.0,
+            "maximum": 62.0
+          },
+          "sharedGpuPeakMb": {
+            "count": 1,
+            "median": 9.7,
+            "minimum": 9.7,
+            "maximum": 9.7
+          }
+        }
+      },
+      {
+        "framework": "makepad",
+        "phase": "postCycleIdle",
+        "metrics": {
+          "workingSetMb": {
+            "count": 1,
+            "median": 186.9,
+            "minimum": 186.9,
+            "maximum": 186.9
+          },
+          "privateWorkingSetMb": {
+            "count": 1,
+            "median": 134.3,
+            "minimum": 134.3,
+            "maximum": 134.3
+          },
+          "privateBytesMb": {
+            "count": 1,
+            "median": 211.9,
+            "minimum": 211.9,
+            "maximum": 211.9
+          },
+          "cpuSingleCorePercent": {
+            "count": 1,
+            "median": 0.0,
+            "minimum": 0.0,
+            "maximum": 0.0
+          },
+          "cpuMachinePercent": {
+            "count": 1,
+            "median": 0.0,
+            "minimum": 0.0,
+            "maximum": 0.0
+          },
+          "gpuEngineAveragePercent": {
+            "count": 1,
+            "median": 0.0,
+            "minimum": 0.0,
+            "maximum": 0.0
+          },
+          "gpuEnginePeakPercent": {
+            "count": 1,
+            "median": 0.0,
+            "minimum": 0.0,
+            "maximum": 0.0
+          },
+          "dedicatedGpuPeakMb": {
+            "count": 1,
+            "median": 62.0,
+            "minimum": 62.0,
+            "maximum": 62.0
+          },
+          "sharedGpuPeakMb": {
+            "count": 1,
+            "median": 9.7,
+            "minimum": 9.7,
+            "maximum": 9.7
+          }
+        }
+      }
+    ],
+    "latency": [
+      {
+        "framework": "makepad",
+        "showLatencyMs": {
+          "count": 1,
+          "median": 334.57,
+          "minimum": 334.57,
+          "maximum": 334.57
+        },
+        "hideLatencyMs": {
+          "count": 1,
+          "median": 217.532,
+          "minimum": 217.532,
+          "maximum": 217.532
+        }
+      }
+    ]
+  }
+}
