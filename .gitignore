@@ -1,6 +1,7 @@
 **/target/
 **/gen/
 /results/local/
+/.benchmark-work/
 *.tmp
 *.log
 
