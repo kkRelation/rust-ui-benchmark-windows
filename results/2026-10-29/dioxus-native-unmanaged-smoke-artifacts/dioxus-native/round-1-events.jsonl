@@ -1,0 +1,10 @@
+{"framework":"dioxus-native","event":"ready-hidden","timestamp":"2026-10-29T07:29:02.3265878Z","elapsedMs":1493}
+{"framework":"dioxus-native","event":"show-start","timestamp":"2026-10-29T07:29:07.291773Z","elapsedMs":6458}
+{"framework":"dioxus-native","event":"show-end","timestamp":"2026-10-29T07:29:07.3087236Z","elapsedMs":6475}
+{"framework":"dioxus-native","event":"workload-start","timestamp":"2026-10-29T07:29:12.8987172Z","elapsedMs":12065}
+{"framework":"dioxus-native","event":"workload-end","timestamp":"2026-10-29T07:29:20.899067Z","elapsedMs":20065}
+{"framework":"dioxus-native","event":"hide-start","timestamp":"2026-10-29T07:29:23.9373868Z","elapsedMs":23104}
+{"framework":"dioxus-native","event":"hide-end","timestamp":"2026-10-29T07:29:23.9423579Z","elapsedMs":23109}
+{"framework":"dioxus-native","event":"cycle-start","timestamp":"2026-10-29T07:29:29.2407044Z","elapsedMs":28407,"detail":{"count":2}}
+{"framework":"dioxus-native","event":"cycle-end","timestamp":"2026-10-29T07:29:29.4704496Z","elapsedMs":28637,"detail":{"count":2}}
+{"framework":"dioxus-native","event":"quit","timestamp":"2026-10-29T07:29:33.9003777Z","elapsedMs":33067}

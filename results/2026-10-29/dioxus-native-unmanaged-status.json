@@ -1,0 +1,28 @@
+{
+  "status": "success",
+  "framework": "dioxus-native",
+  "anchor": false,
+  "keepWorkdir": false,
+  "resultPath": "D:\\C2D\\Desktop\\Code\\Rust\\sTools\\rust-ui-benchmark-windows\\results\\2026-10-29\\dioxus-native-unmanaged.json",
+  "smokePath": "D:\\C2D\\Desktop\\Code\\Rust\\sTools\\rust-ui-benchmark-windows\\results\\2026-10-29\\dioxus-native-unmanaged-smoke.json",
+  "comparisonPath": null,
+  "workspaceRoot": "D:\\C2D\\Desktop\\Code\\Rust\\sTools\\rust-ui-benchmark-windows\\.benchmark-work\\dioxus-native",
+  "windowManagerIsolation": {
+    "manager": "komorebi",
+    "active": true,
+    "verified": true,
+    "requiredRules": [
+      "UI Framework Bench - Main",
+      "UI Framework Bench - Auxiliary Canvas"
+    ],
+    "addedRules": []
+  },
+  "cleanup": {
+    "RemovedPath": "D:\\C2D\\Desktop\\Code\\Rust\\sTools\\rust-ui-benchmark-windows\\.benchmark-work\\dioxus-native",
+    "WasPresent": true,
+    "FreeBytesBefore": 37997801472,
+    "FreeBytesAfter": 44816601088,
+    "RecoveredBytes": 6818799616
+  },
+  "completedAt": "2026-10-29T15:35:29.5971682+08:00"
+}
