@@ -8,7 +8,7 @@ Describe "benchmark framework registry" {
     $enabled = @($definitions.Values | Where-Object Enabled | ForEach-Object Name)
 
     $enabled | Should Be @(
-      "tauri", "slint", "zgui", "dioxus-desktop", "dioxus-native", "gpui-ce", "iced", "gpui-kit", "kas"
+      "tauri", "slint", "zgui", "dioxus-desktop", "dioxus-native", "gpui-ce", "iced", "gpui-kit", "kas", "makepad"
     )
   }
 
@@ -16,7 +16,7 @@ Describe "benchmark framework registry" {
     $definitions = Get-BenchmarkFrameworkDefinitions
     $disabled = @($definitions.Values | Where-Object { -not $_.Enabled } | ForEach-Object Name)
 
-    $disabled | Should Be @("makepad", "ferroui")
+    $disabled | Should Be @("ferroui")
   }
 
   It "resolves the exact Iced build definition and pin" {
@@ -52,6 +52,17 @@ Describe "benchmark framework registry" {
     $definition.Binary | Should Be "komorebi-kas-framework-bench.exe"
     $definition.PinName | Should Be "kas"
     $definition.Pin | Should Be "0.17.0"
+    $definition.Enabled | Should Be $true
+  }
+
+  It "resolves the exact Makepad native build definition and pin" {
+    $definition = Get-BenchmarkFrameworkDefinition -Name "makepad"
+
+    $definition.Name | Should Be "makepad"
+    $definition.Directory | Should Be "makepad-probe"
+    $definition.Binary | Should Be "komorebi-makepad-framework-bench.exe"
+    $definition.PinName | Should Be "makepad"
+    $definition.Pin | Should Be "1.0.0"
     $definition.Enabled | Should Be $true
   }
 
