@@ -1,0 +1,320 @@
+{
+  "capturedAt": "2026-10-29T14:41:47.6481100+08:00",
+  "historicalPath": "D:\\C2D\\Desktop\\Code\\Rust\\sTools\\rust-ui-benchmark-windows\\results\\2026-10-28\\2026-10-28-six-framework-resident.json",
+  "currentPath": "D:\\C2D\\Desktop\\Code\\Rust\\sTools\\rust-ui-benchmark-windows\\results\\2026-10-29\\slint-anchor-unmanaged-attempt-2.json",
+  "comparison": {
+    "framework": "slint",
+    "status": "fail",
+    "failedMetricCount": 4,
+    "retryEligible": false,
+    "topologyMatch": false,
+    "environmentMatch": true,
+    "metrics": [
+      {
+        "name": "hiddenIdle.privateWorkingSetMb",
+        "status": "pass",
+        "rule": "historical-range",
+        "historical": {
+          "count": 3,
+          "median": 33.2,
+          "minimum": 33.0,
+          "maximum": 33.2
+        },
+        "current": {
+          "count": 3,
+          "median": 33.2,
+          "minimum": 33.1,
+          "maximum": 33.3
+        },
+        "relativeDifference": 0.0
+      },
+      {
+        "name": "workload400.privateWorkingSetMb",
+        "status": "pass",
+        "rule": "relative-10-percent",
+        "historical": {
+          "count": 3,
+          "median": 60.7,
+          "minimum": 60.4,
+          "maximum": 60.7
+        },
+        "current": {
+          "count": 3,
+          "median": 61.5,
+          "minimum": 61.3,
+          "maximum": 61.6
+        },
+        "relativeDifference": 0.01318
+      },
+      {
+        "name": "workload400.cpuMachinePercent",
+        "status": "fail",
+        "rule": "relative-10-percent",
+        "historical": {
+          "count": 3,
+          "median": 0.983,
+          "minimum": 0.981,
+          "maximum": 0.983
+        },
+        "current": {
+          "count": 3,
+          "median": 1.304,
+          "minimum": 0.982,
+          "maximum": 1.305
+        },
+        "relativeDifference": 0.326551
+      },
+      {
+        "name": "workload400.gpuEngineAveragePercent",
+        "status": "fail",
+        "rule": "relative-10-percent",
+        "historical": {
+          "count": 3,
+          "median": 5.378,
+          "minimum": 5.237,
+          "maximum": 6.189
+        },
+        "current": {
+          "count": 3,
+          "median": 6.717,
+          "minimum": 5.464,
+          "maximum": 7.012
+        },
+        "relativeDifference": 0.248977
+      },
+      {
+        "name": "workload400.dedicatedGpuPeakMb",
+        "status": "fail",
+        "rule": "relative-10-percent",
+        "historical": {
+          "count": 3,
+          "median": 75.3,
+          "minimum": 75.3,
+          "maximum": 75.3
+        },
+        "current": {
+          "count": 3,
+          "median": 63.1,
+          "minimum": 63.1,
+          "maximum": 63.1
+        },
+        "relativeDifference": 0.162019
+      },
+      {
+        "name": "workload400.sharedGpuPeakMb",
+        "status": "pass",
+        "rule": "historical-range",
+        "historical": {
+          "count": 3,
+          "median": 23.2,
+          "minimum": 23.2,
+          "maximum": 23.2
+        },
+        "current": {
+          "count": 3,
+          "median": 23.2,
+          "minimum": 23.2,
+          "maximum": 23.2
+        },
+        "relativeDifference": 0.0
+      },
+      {
+        "name": "latency.showLatencyMs",
+        "status": "pass",
+        "rule": "historical-range",
+        "historical": {
+          "count": 3,
+          "median": 353.855,
+          "minimum": 319.046,
+          "maximum": 438.483
+        },
+        "current": {
+          "count": 3,
+          "median": 419.151,
+          "minimum": 349.993,
+          "maximum": 469.705
+        },
+        "relativeDifference": 0.184528
+      },
+      {
+        "name": "latency.hideLatencyMs",
+        "status": "fail",
+        "rule": "relative-10-percent",
+        "historical": {
+          "count": 3,
+          "median": 288.17,
+          "minimum": 267.827,
+          "maximum": 293.006
+        },
+        "current": {
+          "count": 3,
+          "median": 345.402,
+          "minimum": 290.522,
+          "maximum": 355.388
+        },
+        "relativeDifference": 0.198605
+      },
+      {
+        "name": "postHideIdle.cpuMachinePercent",
+        "status": "pass",
+        "rule": "historical-zero",
+        "historical": {
+          "count": 3,
+          "median": 0.0,
+          "minimum": 0.0,
+          "maximum": 0.0
+        },
+        "current": {
+          "count": 3,
+          "median": 0.0,
+          "minimum": 0.0,
+          "maximum": 0.0
+        },
+        "relativeDifference": 0
+      }
+    ],
+    "topology": [
+      {
+        "name": "process.hiddenIdle",
+        "status": "pass",
+        "historicalAccepted": [
+          "processCount=1;rendererCount=0"
+        ],
+        "current": [
+          "processCount=1;rendererCount=0",
+          "processCount=1;rendererCount=0",
+          "processCount=1;rendererCount=0"
+        ]
+      },
+      {
+        "name": "process.visibleIdle",
+        "status": "pass",
+        "historicalAccepted": [
+          "processCount=1;rendererCount=0"
+        ],
+        "current": [
+          "processCount=1;rendererCount=0",
+          "processCount=1;rendererCount=0",
+          "processCount=1;rendererCount=0"
+        ]
+      },
+      {
+        "name": "process.workload400",
+        "status": "pass",
+        "historicalAccepted": [
+          "processCount=1;rendererCount=0"
+        ],
+        "current": [
+          "processCount=1;rendererCount=0",
+          "processCount=1;rendererCount=0",
+          "processCount=1;rendererCount=0"
+        ]
+      },
+      {
+        "name": "process.postHideIdle",
+        "status": "pass",
+        "historicalAccepted": [
+          "processCount=1;rendererCount=0"
+        ],
+        "current": [
+          "processCount=1;rendererCount=0",
+          "processCount=1;rendererCount=0",
+          "processCount=1;rendererCount=0"
+        ]
+      },
+      {
+        "name": "process.postCycleIdle",
+        "status": "pass",
+        "historicalAccepted": [
+          "processCount=1;rendererCount=0"
+        ],
+        "current": [
+          "processCount=1;rendererCount=0",
+          "processCount=1;rendererCount=0",
+          "processCount=1;rendererCount=0"
+        ]
+      },
+      {
+        "name": "windows.hidden",
+        "status": "pass",
+        "historicalAccepted": [
+          "count=2;UI Framework Bench - Auxiliary Canvas|False|1215|794;UI Framework Bench - Main|False|715|514",
+          "count=2;UI Framework Bench - Auxiliary Canvas|False|1252|652;UI Framework Bench - Main|False|1252|652"
+        ],
+        "current": [
+          "count=2;UI Framework Bench - Auxiliary Canvas|False|1215|794;UI Framework Bench - Main|False|715|514",
+          "count=2;UI Framework Bench - Auxiliary Canvas|False|1215|794;UI Framework Bench - Main|False|715|514",
+          "count=2;UI Framework Bench - Auxiliary Canvas|False|1215|794;UI Framework Bench - Main|False|715|514"
+        ]
+      },
+      {
+        "name": "windows.visible",
+        "status": "fail",
+        "historicalAccepted": [
+          "count=2;UI Framework Bench - Auxiliary Canvas|True|1252|652;UI Framework Bench - Main|True|1252|652"
+        ],
+        "current": [
+          "count=2;UI Framework Bench - Auxiliary Canvas|True|1215|794;UI Framework Bench - Main|True|715|514",
+          "count=2;UI Framework Bench - Auxiliary Canvas|True|1215|794;UI Framework Bench - Main|True|715|514",
+          "count=2;UI Framework Bench - Auxiliary Canvas|True|1215|794;UI Framework Bench - Main|True|715|514"
+        ]
+      },
+      {
+        "name": "windows.postHide",
+        "status": "fail",
+        "historicalAccepted": [
+          "count=2;UI Framework Bench - Auxiliary Canvas|False|1252|652;UI Framework Bench - Main|False|1252|652"
+        ],
+        "current": [
+          "count=2;UI Framework Bench - Auxiliary Canvas|False|1215|794;UI Framework Bench - Main|False|715|514",
+          "count=2;UI Framework Bench - Auxiliary Canvas|False|1215|794;UI Framework Bench - Main|False|715|514",
+          "count=2;UI Framework Bench - Auxiliary Canvas|False|1215|794;UI Framework Bench - Main|False|715|514"
+        ]
+      },
+      {
+        "name": "windows.postCycle",
+        "status": "fail",
+        "historicalAccepted": [
+          "count=2;UI Framework Bench - Auxiliary Canvas|False|1252|652;UI Framework Bench - Main|False|1252|652"
+        ],
+        "current": [
+          "count=2;UI Framework Bench - Auxiliary Canvas|False|1215|794;UI Framework Bench - Main|False|715|514",
+          "count=2;UI Framework Bench - Auxiliary Canvas|False|1215|794;UI Framework Bench - Main|False|715|514",
+          "count=2;UI Framework Bench - Auxiliary Canvas|False|1215|794;UI Framework Bench - Main|False|715|514"
+        ]
+      }
+    ],
+    "environment": [
+      {
+        "name": "osVersion",
+        "status": "pass",
+        "historical": "10.0.26200",
+        "current": "10.0.26200"
+      },
+      {
+        "name": "logicalProcessors",
+        "status": "pass",
+        "historical": "32",
+        "current": "32"
+      },
+      {
+        "name": "cpu",
+        "status": "pass",
+        "historical": "AMD Ryzen 9 7945HX with Radeon Graphics        ",
+        "current": "AMD Ryzen 9 7945HX with Radeon Graphics        "
+      },
+      {
+        "name": "gpu",
+        "status": "pass",
+        "historical": "AMD Radeon(TM) Graphics|32.0.11038.3|GameViewer Virtual Display Adapter|15.6.5.199|NVIDIA GeForce RTX 4060 Laptop GPU|32.0.16.1047|Parsec Virtual Display Adapter|0.45.0.0",
+        "current": "AMD Radeon(TM) Graphics|32.0.11038.3|GameViewer Virtual Display Adapter|15.6.5.199|NVIDIA GeForce RTX 4060 Laptop GPU|32.0.16.1047|Parsec Virtual Display Adapter|0.45.0.0"
+      },
+      {
+        "name": "powerPlan",
+        "status": "pass",
+        "historical": "电源方案 GUID: 5fa7881b-3a51-42ec-92eb-4a309e6a73cc  (cpu boost)",
+        "current": "电源方案 GUID: 5fa7881b-3a51-42ec-92eb-4a309e6a73cc  (cpu boost)"
+      }
+    ]
+  }
+}

@@ -153,6 +153,33 @@ and [`slint-anchor-status.json`](results/2026-10-29/slint-anchor-status.json).
 Any later continuation must be described as a separate, not directly ranked
 cohort unless a newly approved compatibility policy says otherwise.
 
+An explicitly approved second attempt then excluded both fixed benchmark
+window titles from komorebi before launch. A live-state check while the probe
+process and windows existed found neither window in komorebi's managed tree.
+Across all three rounds, the application-owned outer sizes were stable at
+`715x514` for the main window and `1215x794` for the auxiliary window. This
+confirms that the isolation works, while also proving that the historical
+visible/post-hide topology (two komorebi-arranged `1252x652` windows) belongs
+to a different window-management protocol.
+
+The second attempt is therefore valid evidence for a new unmanaged-window
+cohort, but it does not pass the strict historical gate. In addition to the
+expected topology mismatch, four medians fell outside the symmetric 10%
+compatibility band: workload CPU (+32.66%), workload GPU utilization
+(+24.90%), dedicated GPU allocation (-16.20%, an improvement but still a
+compatibility drift), and warm hide latency (+19.86%). Hidden and workload
+private working set, shared GPU allocation, warm show latency, environment,
+process count, and renderer count passed. Its evidence is in
+[`slint-anchor-unmanaged-attempt-2.json`](results/2026-10-29/slint-anchor-unmanaged-attempt-2.json),
+[`slint-anchor-unmanaged-attempt-2-comparison.json`](results/2026-10-29/slint-anchor-unmanaged-attempt-2-comparison.json),
+and [`slint-anchor-unmanaged-attempt-2-status.json`](results/2026-10-29/slint-anchor-unmanaged-attempt-2-status.json).
+After the durable files passed validation, the isolated Cargo home and target
+were explicitly removed, recovering 3,625,500,672 bytes.
+
+All expansion probes must use this unmanaged-window rule. Direct ranking
+against the original six remains historical context only; a strict combined
+ranking would require rerunning those six under the corrected rule.
+
 ## Historical result
 
 The original 2026-10-28 result, failed attempts, and explicit retries are kept

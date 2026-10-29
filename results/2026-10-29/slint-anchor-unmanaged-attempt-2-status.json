@@ -1,0 +1,20 @@
+{
+  "status": "failed",
+  "framework": "slint",
+  "anchor": true,
+  "stage": "anchor-comparison",
+  "error": "Anchor comparison failed (retryEligible=False, failedMetricCount=4).",
+  "workspaceRoot": "D:\\C2D\\Desktop\\Code\\Rust\\sTools\\rust-ui-benchmark-windows\\.benchmark-work\\slint",
+  "workspacePreserved": true,
+  "windowManagerIsolation": {
+    "manager": "komorebi",
+    "active": true,
+    "verified": true,
+    "requiredRules": [
+      "UI Framework Bench - Main",
+      "UI Framework Bench - Auxiliary Canvas"
+    ],
+    "addedRules": []
+  },
+  "failedAt": "2026-10-29T14:41:47.6554145+08:00"
+}
