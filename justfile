@@ -1,0 +1,17 @@
+set shell := ["pwsh", "-NoLogo", "-NoProfile", "-Command"]
+
+build:
+    & './harness/build-all.ps1' -Configuration release
+
+build-debug:
+    & './harness/build-all.ps1' -Configuration debug
+
+test:
+    Invoke-Pester -Path './harness/tests'
+
+smoke: build-debug
+    & './harness/measure-resident.ps1' -Configuration debug -Smoke -OutputPath './results/local/smoke.json'
+
+measure: build
+    & './harness/measure-resident.ps1' -Configuration release -Rounds 3 -SampleSeconds 10 -PostHideSettleSeconds 15 -CycleCount 30 -OutputPath './results/local/resident.json'
+

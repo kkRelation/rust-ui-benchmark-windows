@@ -1,0 +1,10 @@
+[package]
+name = "komorebi-slint-framework-bench"
+version = "0.1.0"
+edition = "2021"
+publish = false
+
+[dependencies]
+serde_json = "1"
+slint = "=1.16.1"
+ui-bench-protocol = { path = "../probe-protocol" }

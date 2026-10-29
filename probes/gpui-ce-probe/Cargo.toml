@@ -1,0 +1,12 @@
+[package]
+name = "komorebi-gpui-ce-framework-bench"
+version = "0.1.0"
+edition = "2024"
+publish = false
+
+[dependencies]
+async-channel = "2"
+gpui = { package = "gpui-ce", git = "https://github.com/gpui-ce/gpui-ce", rev = "5cac1478fea0a5f6f28ae4bc7df4b552dff8854b", default-features = false }
+gpui_platform = { package = "gpui_ce_platform", git = "https://github.com/gpui-ce/gpui-ce", rev = "5cac1478fea0a5f6f28ae4bc7df4b552dff8854b" }
+serde_json = "1"
+ui-bench-protocol = { path = "../probe-protocol" }

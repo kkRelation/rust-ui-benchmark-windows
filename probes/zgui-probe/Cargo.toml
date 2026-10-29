@@ -1,0 +1,12 @@
+[package]
+name = "komorebi-zgui-framework-bench"
+version = "0.1.0"
+edition = "2024"
+publish = false
+
+[dependencies]
+serde_json = "1"
+tokio = { version = "1", default-features = false, features = ["sync"] }
+ui-bench-protocol = { path = "../probe-protocol" }
+windows-sys = { version = "0.61", features = ["Win32_Foundation", "Win32_System_Threading", "Win32_UI_WindowsAndMessaging"] }
+zgui = { git = "https://github.com/zortax/zgui", rev = "951a0ea3b113247da6dff439fccbd9097aa3187f", features = ["tokio"] }
