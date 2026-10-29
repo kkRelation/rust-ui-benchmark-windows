@@ -10,6 +10,7 @@ use ui_bench_protocol::EventLog;
 
 use controller::{run_controller, start_command_reader};
 use scene::{AuxiliaryView, MainView, window_options};
+use windows::normalize_benchmark_window_sizes;
 
 const FRAMEWORK: &str = "gpui-kit";
 
@@ -56,6 +57,10 @@ fn main() {
             .downcast::<gpui_kit::base::Root>()
             .expect("gpui-kit auxiliary window must be Base Root wrapped");
 
+        // gpui-pre 0.3.10 creates initially hidden Windows HWNDs at the work
+        // area size. Normalize the native frames before the ready checkpoint;
+        // 15x34 is the measured decoration inset at this fixed DPI/environment.
+        normalize_benchmark_window_sizes().unwrap();
         log.emit(ui_bench_protocol::EventKind::ReadyHidden, None)
             .unwrap();
         cx.spawn(async move |cx| {

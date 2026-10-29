@@ -1,7 +1,9 @@
 use windows_sys::Win32::Foundation::HWND;
 use windows_sys::Win32::System::Threading::GetCurrentProcessId;
+use windows_sys::Win32::UI::HiDpi::GetDpiForWindow;
 use windows_sys::Win32::UI::WindowsAndMessaging::{
-    FindWindowExW, GetWindowThreadProcessId, SW_HIDE, SW_SHOWNOACTIVATE, ShowWindow,
+    FindWindowExW, GetWindowThreadProcessId, SW_HIDE, SW_SHOWNOACTIVATE, SWP_NOACTIVATE,
+    SWP_NOMOVE, SWP_NOZORDER, SetWindowPos, ShowWindow,
 };
 
 const MAIN_TITLE: &str = "UI Framework Bench - Main";
@@ -11,7 +13,7 @@ fn is_benchmark_window(process_id: u32, expected_process_id: u32, title: &str) -
     process_id == expected_process_id && (title == MAIN_TITLE || title == AUXILIARY_TITLE)
 }
 
-fn benchmark_windows() -> Vec<HWND> {
+fn benchmark_windows() -> Vec<(HWND, &'static str)> {
     let mut windows = Vec::new();
     let expected_process_id = unsafe { GetCurrentProcessId() };
     for title in [MAIN_TITLE, AUXILIARY_TITLE] {
@@ -32,7 +34,7 @@ fn benchmark_windows() -> Vec<HWND> {
             let mut process_id = 0_u32;
             unsafe { GetWindowThreadProcessId(window, &mut process_id) };
             if is_benchmark_window(process_id, expected_process_id, title) {
-                windows.push(window);
+                windows.push((window, title));
             }
             previous = window;
         }
@@ -48,9 +50,44 @@ pub fn set_benchmark_windows_visible(visible: bool) -> Result<(), String> {
             windows.len()
         ));
     }
-    for window in windows {
+    for (window, _) in windows {
         unsafe {
             ShowWindow(window, if visible { SW_SHOWNOACTIVATE } else { SW_HIDE });
+        }
+    }
+    Ok(())
+}
+
+pub fn normalize_benchmark_window_sizes() -> Result<(), String> {
+    let windows = benchmark_windows();
+    if windows.len() != 2 {
+        return Err(format!(
+            "expected two benchmark windows, found {}",
+            windows.len()
+        ));
+    }
+    for (window, title) in windows {
+        let (logical_width, logical_height) = if title == MAIN_TITLE {
+            (715, 514)
+        } else {
+            (1215, 794)
+        };
+        let dpi = unsafe { GetDpiForWindow(window) }.max(96);
+        let width = (logical_width * dpi as i32 + 48) / 96;
+        let height = (logical_height * dpi as i32 + 48) / 96;
+        let succeeded = unsafe {
+            SetWindowPos(
+                window,
+                std::ptr::null_mut(),
+                0,
+                0,
+                width,
+                height,
+                SWP_NOMOVE | SWP_NOZORDER | SWP_NOACTIVATE,
+            )
+        };
+        if succeeded == 0 {
+            return Err(format!("failed to size benchmark window: {title}"));
         }
     }
     Ok(())
