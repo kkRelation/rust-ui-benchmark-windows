@@ -7,7 +7,9 @@ param(
   [ValidateRange(0, 120)][int]$PostHideSettleSeconds = 15,
   [ValidateRange(1, 1000)][int]$CycleCount = 30,
   [switch]$Smoke,
-  [string]$OutputPath = ".\results\local\resident.json"
+  [string]$OutputPath = ".\results\local\resident.json",
+  [string]$TargetDirectory,
+  [string]$ArtifactDirectory
 )
 
 $ErrorActionPreference = "Stop"
@@ -17,6 +19,7 @@ $measureScript = Join-Path $benchmarkRoot "measure-process-tree.ps1"
 . (Join-Path $benchmarkRoot "resident-benchmark-lib.ps1")
 . (Join-Path $benchmarkRoot "process-tree-lib.ps1")
 . (Join-Path $benchmarkRoot "framework-registry.ps1")
+. (Join-Path $benchmarkRoot "benchmark-artifact-lib.ps1")
 
 if ($Framework.Count -eq 0) {
   $Framework = @(
@@ -231,6 +234,7 @@ function Invoke-ProbeRound {
     [string]$TemporaryDirectory
   )
   $eventLog = Join-Path $TemporaryDirectory "events.jsonl"
+  New-Item -ItemType File -Force -Path $eventLog | Out-Null
   $process = $null
   try {
     $process = Start-BenchmarkProbe -Executable $Executable -EventLog $eventLog
@@ -303,6 +307,12 @@ function Invoke-ProbeRound {
 $resolvedOutput = [System.IO.Path]::GetFullPath((Join-Path $repoRoot $OutputPath))
 $outputDirectory = Split-Path -Parent $resolvedOutput
 [System.IO.Directory]::CreateDirectory($outputDirectory) | Out-Null
+$resolvedArtifactDirectory = if ([string]::IsNullOrWhiteSpace($ArtifactDirectory)) {
+  Join-Path $outputDirectory (([System.IO.Path]::GetFileNameWithoutExtension($resolvedOutput)) + "-artifacts")
+} else {
+  Resolve-BenchmarkPath -RepoRoot $repoRoot -Path $ArtifactDirectory
+}
+[System.IO.Directory]::CreateDirectory($resolvedArtifactDirectory) | Out-Null
 
 $runs = @()
 $roundEnd = $RoundStart + $Rounds - 1
@@ -310,23 +320,31 @@ for ($round = $RoundStart; $round -lt ($RoundStart + $Rounds); $round++) {
   $order = @(Get-RotatedFrameworkOrder -Frameworks $Framework -Round $round)
   foreach ($frameworkName in $order) {
     $definition = $probeDefinitions[$frameworkName]
-    $artifactLabel = "probes/$($definition.Directory)/target/$Configuration/$($definition.Binary)"
-    $executable = Join-Path $repoRoot ($artifactLabel -replace "/", "\")
+    $artifact = Get-BenchmarkProbeArtifact `
+      -RepoRoot $repoRoot `
+      -Definition $definition `
+      -Configuration $Configuration `
+      -TargetDirectory $TargetDirectory
+    $artifactLabel = $artifact.Label
+    $executable = $artifact.Path
     if (-not (Test-Path -LiteralPath $executable)) {
       throw "Missing $Configuration probe binary: $artifactLabel"
     }
+    $executableSha256 = Get-BenchmarkFileSha256 -Path $executable
+    $lockfileSha256 = Get-BenchmarkFileSha256 -Path $artifact.LockfilePath
     $temporaryDirectory = Join-Path ([System.IO.Path]::GetTempPath()) ("ui-bench-" + [guid]::NewGuid().ToString("N"))
     [System.IO.Directory]::CreateDirectory($temporaryDirectory) | Out-Null
     Write-Host "[$round/$roundEnd] $frameworkName resident lifecycle"
+    $run = $null
     try {
-      $runs += Invoke-ProbeRound `
+      $run = Invoke-ProbeRound `
         -FrameworkName $frameworkName `
         -Round $round `
         -Executable $executable `
         -ArtifactLabel $artifactLabel `
         -TemporaryDirectory $temporaryDirectory
     } catch {
-      $runs += [pscustomobject]@{
+      $run = [pscustomobject]@{
         framework = $frameworkName
         round = $round
         status = "failed"
@@ -335,12 +353,24 @@ for ($round = $RoundStart; $round -lt ($RoundStart + $Rounds); $round++) {
       }
       Write-Warning "$frameworkName round $round failed: $($_.Exception.Message)"
     } finally {
-      $resolvedTemporary = [System.IO.Path]::GetFullPath($temporaryDirectory)
-      $resolvedTempRoot = [System.IO.Path]::GetFullPath([System.IO.Path]::GetTempPath())
-      if ($resolvedTemporary.StartsWith($resolvedTempRoot, [System.StringComparison]::OrdinalIgnoreCase)) {
-        Remove-Item -LiteralPath $resolvedTemporary -Recurse -Force -ErrorAction SilentlyContinue
+      try {
+        $durableEventLog = Save-BenchmarkRoundEventLog `
+          -SourcePath (Join-Path $temporaryDirectory "events.jsonl") `
+          -ArtifactDirectory $resolvedArtifactDirectory `
+          -Framework $frameworkName `
+          -Round $round
+        $run | Add-Member -NotePropertyName eventLog -NotePropertyValue $durableEventLog -Force
+        $run | Add-Member -NotePropertyName executableSha256 -NotePropertyValue $executableSha256 -Force
+        $run | Add-Member -NotePropertyName lockfileSha256 -NotePropertyValue $lockfileSha256 -Force
+      } finally {
+        $resolvedTemporary = [System.IO.Path]::GetFullPath($temporaryDirectory)
+        $resolvedTempRoot = [System.IO.Path]::GetFullPath([System.IO.Path]::GetTempPath())
+        if ($resolvedTemporary.StartsWith($resolvedTempRoot, [System.StringComparison]::OrdinalIgnoreCase)) {
+          Remove-Item -LiteralPath $resolvedTemporary -Recurse -Force -ErrorAction SilentlyContinue
+        }
       }
     }
+    $runs += $run
   }
 }
 
@@ -348,6 +378,10 @@ $os = Get-CimInstance Win32_OperatingSystem
 $computer = Get-CimInstance Win32_ComputerSystem
 $processors = @(Get-CimInstance Win32_Processor)
 $videoControllers = @(Get-CimInstance Win32_VideoController)
+$rustcVerbose = (& rustc -vV) -join "`n"
+if ($LASTEXITCODE -ne 0) { throw "rustc -vV failed with exit code $LASTEXITCODE" }
+$cargoVersion = (& cargo -V) -join "`n"
+if ($LASTEXITCODE -ne 0) { throw "cargo -V failed with exit code $LASTEXITCODE" }
 $pins = [ordered]@{}
 foreach ($frameworkName in $Framework) {
   $definition = $probeDefinitions[$frameworkName]
@@ -380,6 +414,10 @@ $result = [pscustomobject]@{
     cpu = @($processors | ForEach-Object Name)
     gpu = @($videoControllers | ForEach-Object { [pscustomobject]@{ name = $_.Name; driverVersion = $_.DriverVersion } })
     powerPlan = (powercfg /GETACTIVESCHEME) -join " "
+  }
+  toolchain = [pscustomobject]@{
+    rustcVerbose = $rustcVerbose
+    cargoVersion = $cargoVersion
   }
   runs = $runs
   summary = New-ResidentBenchmarkSummary -Runs $runs -Frameworks $Framework

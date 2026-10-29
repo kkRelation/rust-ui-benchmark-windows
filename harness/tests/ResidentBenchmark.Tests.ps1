@@ -1,5 +1,7 @@
 $libraryPath = Join-Path $PSScriptRoot "..\resident-benchmark-lib.ps1"
 . $libraryPath
+$artifactLibraryPath = Join-Path $PSScriptRoot "..\benchmark-artifact-lib.ps1"
+. $artifactLibraryPath
 
 Describe "resident benchmark orchestration helpers" {
   It "rotates framework order without changing membership" {
@@ -46,5 +48,25 @@ Describe "resident benchmark orchestration helpers" {
     $match = Wait-ProbeEvent -Path $path -Event "show-end" -AfterLine 1 -TimeoutSeconds 1
     $match.lineNumber | Should Be 3
     $match.value.elapsedMs | Should Be 3
+  }
+
+  It "preserves a round event log before temporary data is removed" {
+    $temporaryDirectory = Join-Path $TestDrive "temporary"
+    $artifactDirectory = Join-Path $TestDrive "artifacts"
+    New-Item -ItemType Directory -Force -Path $temporaryDirectory | Out-Null
+    $eventLog = Join-Path $temporaryDirectory "events.jsonl"
+    '{"event":"ready-hidden","elapsedMs":1}' | Set-Content -LiteralPath $eventLog -Encoding utf8
+
+    $durablePath = Save-BenchmarkRoundEventLog `
+      -SourcePath $eventLog `
+      -ArtifactDirectory $artifactDirectory `
+      -Framework "slint" `
+      -Round 2
+
+    Remove-Item -LiteralPath $temporaryDirectory -Recurse -Force
+
+    $durablePath | Should Be (Join-Path $artifactDirectory "slint\round-2-events.jsonl")
+    Test-Path -LiteralPath $durablePath | Should Be $true
+    (Get-Content -LiteralPath $durablePath -Raw) | Should Match 'ready-hidden'
   }
 }
