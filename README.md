@@ -1,7 +1,7 @@
 # Rust UI Benchmark for Windows
 
-A reproducible comparison of six desktop UI stacks under the lifecycle of a
-resident Windows quick launcher:
+A reproducible comparison of desktop UI stacks under the lifecycle of a
+resident Windows quick launcher. The published historical cohort contains:
 
 - Tauri/WebView2
 - Slint
@@ -9,6 +9,11 @@ resident Windows quick launcher:
 - Dioxus Desktop/WebView2
 - Dioxus Native on Blitz
 - gpui-ce
+
+Iced, gpui-kit, KAS, Makepad, and FerroUI are planned as sequential expansion
+cohorts. Each one uses an isolated Cargo home and target directory which is
+removed only after its durable result passes validation, keeping peak disk use
+close to one framework build at a time.
 
 The production application that motivated the experiment is not a contestant.
 Each reduced probe owns the same two-window scene and shared selection state,
@@ -19,11 +24,12 @@ uses Windows process, GPU engine, and GPU process-memory performance counters.
 
 ## Results at a glance
 
-The following values are medians from three release rounds on the same Windows
-11 machine. Memory is process-tree Private Working Set (PWS); CPU is workload
-CPU as a percentage of the whole 32-logical-processor machine; GPU is average
-engine utilization during the workload; GPU memory is the workload peak
-dedicated/shared allocation. Lower is better for every numeric column.
+The following historical values are medians from three release rounds on the
+same Windows 11 machine on 2026-10-28. Memory is process-tree Private Working
+Set (PWS); CPU is workload CPU as a percentage of the whole
+32-logical-processor machine; GPU is average engine utilization during the
+workload; GPU memory is the workload peak dedicated/shared allocation. Lower
+is better for every numeric column.
 
 | Framework | Hidden PWS (MB) | Workload PWS (MB) | Workload CPU (%) | GPU avg (%) | GPU memory peak (MB) | Warm show / hide (ms) | Main takeaway |
 |---|---:|---:|---:|---:|---:|---:|---|
@@ -43,9 +49,10 @@ ranges, post-hide behavior, limitations, and interpretation.
 
 ## Repository layout
 
-- `probes/`: six independent probe crates plus the shared protocol crate;
+- `probes/`: independent probe crates plus the shared protocol crate;
 - `harness/`: build, measurement, result-merge scripts, and Pester tests;
 - `results/2026-10-28/`: untouched raw data from the original experiment;
+- `results/2026-10-29/`: the audited Slint compatibility-anchor attempt;
 - `docs/`: benchmark design, report, and extraction provenance.
 
 Every probe has its own `Cargo.lock`. Direct framework inputs are additionally
@@ -110,6 +117,41 @@ Local results are written under `results/local/`, which is ignored by Git.
 For an explicitly numbered retry, combine `-Rounds 1` with `-RoundStart N`.
 Use `harness/merge-resident-results.ps1` to assemble successful pairs while
 retaining failed attempts for auditability.
+
+For the disk-bounded expansion workflow, run exactly one framework at a time:
+
+```powershell
+just framework-test NAME
+just framework-clean NAME
+```
+
+After the named probe is implemented and enabled, `framework-test` performs a
+debug smoke run, a release build, three full release rounds, result validation,
+and guarded cleanup. A failure preserves
+`.benchmark-work/<framework>` and writes a terminal status JSON. The explicit
+`framework-clean` recipe uses the same allow-listed path checks and is intended
+for an accepted terminal outcome, not an incomplete result.
+
+## Compatibility anchor status
+
+The historical six-framework result remains unchanged. On 2026-10-29, Slint
+1.16.1 was rebuilt from its committed source and lockfile in an isolated work
+root and completed one debug smoke round plus three release rounds. All runs,
+event logs, hashes, toolchain metadata, and environment identity checks were
+valid, but the deterministic compatibility gate failed and therefore did not
+clean the work root or authorize the expansion measurements.
+
+The failed numeric medians were workload GPU utilization (+18.35%), warm show
+latency (+42.17%), and warm hide latency (+38.88%) relative to the historical
+medians. Window outer dimensions also differed while the asynchronous Grid
+window manager was arranging and cloaking the two probe windows. This is more
+than the one-metric retry allowance, so no automatic retry was run and the new
+frameworks were not started. The durable evidence is in
+[`slint-anchor.json`](results/2026-10-29/slint-anchor.json),
+[`slint-anchor-comparison.json`](results/2026-10-29/slint-anchor-comparison.json),
+and [`slint-anchor-status.json`](results/2026-10-29/slint-anchor-status.json).
+Any later continuation must be described as a separate, not directly ranked
+cohort unless a newly approved compatibility policy says otherwise.
 
 ## Historical result
 

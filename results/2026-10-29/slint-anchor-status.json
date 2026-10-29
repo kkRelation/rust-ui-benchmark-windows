@@ -1,0 +1,10 @@
+{
+  "status": "failed",
+  "framework": "slint",
+  "anchor": true,
+  "stage": "anchor-comparison",
+  "error": "Anchor comparison failed (retryEligible=False, failedMetricCount=3).",
+  "workspaceRoot": "D:\\C2D\\Desktop\\Code\\Rust\\sTools\\rust-ui-benchmark-windows\\.benchmark-work\\slint",
+  "workspacePreserved": true,
+  "failedAt": "2026-10-29T13:43:45.4080690+08:00"
+}
