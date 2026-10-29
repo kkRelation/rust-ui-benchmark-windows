@@ -102,4 +102,22 @@ Describe "isolated benchmark framework workspaces" {
     (Test-Path -LiteralPath $workspace.Root) | Should Be $false
     (Test-Path -LiteralPath $sibling -PathType Container) | Should Be $true
   }
+
+  It "reports recovered space above the signed 32-bit limit" {
+    $workRoot = Join-Path $repoRoot ".benchmark-work\slint"
+    New-Item -ItemType Directory -Force -Path $workRoot | Out-Null
+    $script:freeSpaceQuery = 0
+    Mock Get-BenchmarkFreeBytes {
+      $script:freeSpaceQuery++
+      if ($script:freeSpaceQuery -eq 1) { [int64](10GB) } else { [int64](14GB) }
+    }
+
+    $result = Remove-BenchmarkFrameworkWorkspace `
+      -RepoRoot $repoRoot `
+      -Framework "slint" `
+      -Path $workRoot
+
+    $result.RecoveredBytes | Should Be ([int64](4GB))
+    $result.RecoveredBytes.GetType().FullName | Should Be "System.Int64"
+  }
 }

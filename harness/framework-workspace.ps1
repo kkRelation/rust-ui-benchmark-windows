@@ -110,11 +110,13 @@ function Remove-BenchmarkFrameworkWorkspace {
   }
 
   $freeBytesAfter = Get-BenchmarkFreeBytes -Path $resolvedRepo
+  $recoveredBytes = [int64]($freeBytesAfter - $freeBytesBefore)
+  if ($recoveredBytes -lt 0) { $recoveredBytes = [int64]0 }
   [pscustomobject]@{
     RemovedPath = $resolvedRoot
     WasPresent = [bool]$wasPresent
     FreeBytesBefore = [int64]$freeBytesBefore
     FreeBytesAfter = [int64]$freeBytesAfter
-    RecoveredBytes = [int64][math]::Max(0, $freeBytesAfter - $freeBytesBefore)
+    RecoveredBytes = $recoveredBytes
   }
 }
