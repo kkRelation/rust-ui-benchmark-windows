@@ -1,0 +1,886 @@
+{
+  "schemaVersion": 2,
+  "capturedAt": "2026-10-29T15:20:42.1235054+08:00",
+  "protocol": {
+    "resident": true,
+    "windows": 2,
+    "mainContentSize": "700x480",
+    "auxiliaryContentSize": "1200x760",
+    "workload": "400 shared-state updates at 20 ms",
+    "phases": [
+      "hiddenIdle",
+      "warmShow",
+      "visibleIdle",
+      "workload400",
+      "warmHide",
+      "postHideIdle",
+      "cycle30",
+      "postCycleIdle"
+    ],
+    "sampleSeconds": 1,
+    "postHideSettleSeconds": 1,
+    "cycleCount": 2,
+    "rounds": 1,
+    "roundStart": 1,
+    "rotatingOrder": true,
+    "smoke": true
+  },
+  "pins": {
+    "dioxusDesktop": "0.7.10"
+  },
+  "environment": {
+    "os": "Microsoft Windows 11 专业版",
+    "osVersion": "10.0.26200",
+    "machine": "Jiaolong Series MRID6",
+    "logicalProcessors": 32,
+    "cpu": [
+      "AMD Ryzen 9 7945HX with Radeon Graphics        "
+    ],
+    "gpu": [
+      {
+        "name": "Parsec Virtual Display Adapter",
+        "driverVersion": "0.45.0.0"
+      },
+      {
+        "name": "GameViewer Virtual Display Adapter",
+        "driverVersion": "15.6.5.199"
+      },
+      {
+        "name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+        "driverVersion": "32.0.16.1047"
+      },
+      {
+        "name": "AMD Radeon(TM) Graphics",
+        "driverVersion": "32.0.11038.3"
+      }
+    ],
+    "powerPlan": "电源方案 GUID: 5fa7881b-3a51-42ec-92eb-4a309e6a73cc  (cpu boost)"
+  },
+  "toolchain": {
+    "rustcVerbose": "rustc 1.98.1 (48a229cea 2026-09-01)\nbinary: rustc\ncommit-hash: 48a229ceaefd4985c50990b14116b6d856af0985\ncommit-date: 2026-09-01\nhost: x86_64-pc-windows-msvc\nrelease: 1.98.1\nLLVM version: 22.1.8",
+    "cargoVersion": "cargo 1.98.1 (797e8a9bc 2026-08-05)"
+  },
+  "runs": [
+    {
+      "framework": "dioxus-desktop",
+      "round": 1,
+      "status": "ok",
+      "executable": ".benchmark-work/dioxus-desktop/target/debug/komorebi-dioxus-desktop-framework-bench.exe",
+      "executableSizeMb": 12.6,
+      "showLatencyMs": 413.627,
+      "hideLatencyMs": 276.651,
+      "topology": {
+        "hidden": [
+          {
+            "ProcessId": 34516,
+            "Title": "UI Framework Bench - Auxiliary Canvas",
+            "Visible": false,
+            "Width": 1215,
+            "Height": 794
+          },
+          {
+            "ProcessId": 34516,
+            "Title": "UI Framework Bench - Main",
+            "Visible": false,
+            "Width": 715,
+            "Height": 514
+          }
+        ],
+        "visible": [
+          {
+            "ProcessId": 34516,
+            "Title": "UI Framework Bench - Auxiliary Canvas",
+            "Visible": true,
+            "Width": 1215,
+            "Height": 794
+          },
+          {
+            "ProcessId": 34516,
+            "Title": "UI Framework Bench - Main",
+            "Visible": true,
+            "Width": 715,
+            "Height": 514
+          }
+        ],
+        "postHide": [
+          {
+            "ProcessId": 34516,
+            "Title": "UI Framework Bench - Auxiliary Canvas",
+            "Visible": false,
+            "Width": 1215,
+            "Height": 794
+          },
+          {
+            "ProcessId": 34516,
+            "Title": "UI Framework Bench - Main",
+            "Visible": false,
+            "Width": 715,
+            "Height": 514
+          }
+        ],
+        "postCycle": [
+          {
+            "ProcessId": 34516,
+            "Title": "UI Framework Bench - Auxiliary Canvas",
+            "Visible": false,
+            "Width": 1215,
+            "Height": 794
+          },
+          {
+            "ProcessId": 34516,
+            "Title": "UI Framework Bench - Main",
+            "Visible": false,
+            "Width": 715,
+            "Height": 514
+          }
+        ]
+      },
+      "phases": {
+        "hiddenIdle": {
+          "capturedAt": "2026-10-29T15:20:05.794389+08:00",
+          "sampleStartedAt": "2026-10-29T15:20:03.2027025+08:00",
+          "sampleEndedAt": "2026-10-29T15:20:05.794389+08:00",
+          "sampleDurationSeconds": 2.59,
+          "rootProcessId": 34516,
+          "processCount": 9,
+          "rendererCount": 2,
+          "workingSetMb": 427.1,
+          "privateWorkingSetMb": 103.5,
+          "privateBytesMb": 277.6,
+          "cpuSampleSeconds": 1,
+          "cpuSingleCorePercent": 0.0,
+          "cpuMachinePercent": 0.0,
+          "logicalProcessorCount": 32,
+          "gpuSamples": 2,
+          "gpuEnginePercent": 0.0,
+          "gpuEngineAveragePercent": 0.0,
+          "gpuEnginePeakPercent": 0.001,
+          "dedicatedGpuMb": 145.9,
+          "dedicatedGpuStartMb": 145.9,
+          "dedicatedGpuEndMb": 145.9,
+          "dedicatedGpuPeakMb": 145.9,
+          "sharedGpuMb": 2.3,
+          "sharedGpuStartMb": 2.3,
+          "sharedGpuEndMb": 2.3,
+          "sharedGpuPeakMb": 2.3,
+          "processes": [
+            {
+              "processId": 7968,
+              "parentProcessId": 43472,
+              "name": "msedgewebview2.exe",
+              "renderer": true
+            },
+            {
+              "processId": 29352,
+              "parentProcessId": 43472,
+              "name": "msedgewebview2.exe",
+              "renderer": false
+            },
+            {
+              "processId": 32432,
+              "parentProcessId": 43472,
+              "name": "msedgewebview2.exe",
+              "renderer": false
+            },
+            {
+              "processId": 34516,
+              "parentProcessId": 17760,
+              "name": "komorebi-dioxus-desktop-framework-bench.exe",
+              "renderer": false
+            },
+            {
+              "processId": 41020,
+              "parentProcessId": 34516,
+              "name": "conhost.exe",
+              "renderer": false
+            },
+            {
+              "processId": 41956,
+              "parentProcessId": 43472,
+              "name": "msedgewebview2.exe",
+              "renderer": false
+            },
+            {
+              "processId": 43472,
+              "parentProcessId": 34516,
+              "name": "msedgewebview2.exe",
+              "renderer": false
+            },
+            {
+              "processId": 50696,
+              "parentProcessId": 43472,
+              "name": "msedgewebview2.exe",
+              "renderer": true
+            },
+            {
+              "processId": 59768,
+              "parentProcessId": 43472,
+              "name": "msedgewebview2.exe",
+              "renderer": false
+            }
+          ]
+        },
+        "visibleIdle": {
+          "capturedAt": "2026-10-29T15:20:11.7381916+08:00",
+          "sampleStartedAt": "2026-10-29T15:20:09.6709831+08:00",
+          "sampleEndedAt": "2026-10-29T15:20:11.7381916+08:00",
+          "sampleDurationSeconds": 2.067,
+          "rootProcessId": 34516,
+          "processCount": 9,
+          "rendererCount": 2,
+          "workingSetMb": 429.6,
+          "privateWorkingSetMb": 102.4,
+          "privateBytesMb": 246.0,
+          "cpuSampleSeconds": 1,
+          "cpuSingleCorePercent": 0.0,
+          "cpuMachinePercent": 0.0,
+          "logicalProcessorCount": 32,
+          "gpuSamples": 2,
+          "gpuEnginePercent": 0.0,
+          "gpuEngineAveragePercent": 0.0,
+          "gpuEnginePeakPercent": 0.0,
+          "dedicatedGpuMb": 57.1,
+          "dedicatedGpuStartMb": 57.1,
+          "dedicatedGpuEndMb": 57.1,
+          "dedicatedGpuPeakMb": 57.1,
+          "sharedGpuMb": 2.1,
+          "sharedGpuStartMb": 2.1,
+          "sharedGpuEndMb": 2.1,
+          "sharedGpuPeakMb": 2.1,
+          "processes": [
+            {
+              "processId": 7968,
+              "parentProcessId": 43472,
+              "name": "msedgewebview2.exe",
+              "renderer": true
+            },
+            {
+              "processId": 29352,
+              "parentProcessId": 43472,
+              "name": "msedgewebview2.exe",
+              "renderer": false
+            },
+            {
+              "processId": 32432,
+              "parentProcessId": 43472,
+              "name": "msedgewebview2.exe",
+              "renderer": false
+            },
+            {
+              "processId": 34516,
+              "parentProcessId": 17760,
+              "name": "komorebi-dioxus-desktop-framework-bench.exe",
+              "renderer": false
+            },
+            {
+              "processId": 41020,
+              "parentProcessId": 34516,
+              "name": "conhost.exe",
+              "renderer": false
+            },
+            {
+              "processId": 41956,
+              "parentProcessId": 43472,
+              "name": "msedgewebview2.exe",
+              "renderer": false
+            },
+            {
+              "processId": 43472,
+              "parentProcessId": 34516,
+              "name": "msedgewebview2.exe",
+              "renderer": false
+            },
+            {
+              "processId": 50696,
+              "parentProcessId": 43472,
+              "name": "msedgewebview2.exe",
+              "renderer": true
+            },
+            {
+              "processId": 59768,
+              "parentProcessId": 43472,
+              "name": "msedgewebview2.exe",
+              "renderer": false
+            }
+          ]
+        },
+        "workload400": {
+          "capturedAt": "2026-10-29T15:20:25.2305026+08:00",
+          "sampleStartedAt": "2026-10-29T15:20:15.7210064+08:00",
+          "sampleEndedAt": "2026-10-29T15:20:25.2305026+08:00",
+          "sampleDurationSeconds": 9.508,
+          "rootProcessId": 34516,
+          "processCount": 9,
+          "rendererCount": 2,
+          "workingSetMb": 458.1,
+          "privateWorkingSetMb": 126.4,
+          "privateBytesMb": 275.5,
+          "cpuSampleSeconds": 8,
+          "cpuSingleCorePercent": 52.587,
+          "cpuMachinePercent": 1.643,
+          "logicalProcessorCount": 32,
+          "gpuSamples": 9,
+          "gpuEnginePercent": 0.485,
+          "gpuEngineAveragePercent": 0.485,
+          "gpuEnginePeakPercent": 0.621,
+          "dedicatedGpuMb": 76.1,
+          "dedicatedGpuStartMb": 76.1,
+          "dedicatedGpuEndMb": 76.1,
+          "dedicatedGpuPeakMb": 76.1,
+          "sharedGpuMb": 2.1,
+          "sharedGpuStartMb": 3.2,
+          "sharedGpuEndMb": 2.1,
+          "sharedGpuPeakMb": 3.2,
+          "processes": [
+            {
+              "processId": 7968,
+              "parentProcessId": 43472,
+              "name": "msedgewebview2.exe",
+              "renderer": true
+            },
+            {
+              "processId": 29352,
+              "parentProcessId": 43472,
+              "name": "msedgewebview2.exe",
+              "renderer": false
+            },
+            {
+              "processId": 32432,
+              "parentProcessId": 43472,
+              "name": "msedgewebview2.exe",
+              "renderer": false
+            },
+            {
+              "processId": 34516,
+              "parentProcessId": 17760,
+              "name": "komorebi-dioxus-desktop-framework-bench.exe",
+              "renderer": false
+            },
+            {
+              "processId": 41020,
+              "parentProcessId": 34516,
+              "name": "conhost.exe",
+              "renderer": false
+            },
+            {
+              "processId": 41956,
+              "parentProcessId": 43472,
+              "name": "msedgewebview2.exe",
+              "renderer": false
+            },
+            {
+              "processId": 43472,
+              "parentProcessId": 34516,
+              "name": "msedgewebview2.exe",
+              "renderer": false
+            },
+            {
+              "processId": 50696,
+              "parentProcessId": 43472,
+              "name": "msedgewebview2.exe",
+              "renderer": true
+            },
+            {
+              "processId": 59768,
+              "parentProcessId": 43472,
+              "name": "msedgewebview2.exe",
+              "renderer": false
+            }
+          ]
+        },
+        "postHideIdle": {
+          "capturedAt": "2026-10-29T15:20:32.0502876+08:00",
+          "sampleStartedAt": "2026-10-29T15:20:29.9948552+08:00",
+          "sampleEndedAt": "2026-10-29T15:20:32.0502876+08:00",
+          "sampleDurationSeconds": 2.055,
+          "rootProcessId": 34516,
+          "processCount": 9,
+          "rendererCount": 2,
+          "workingSetMb": 460.0,
+          "privateWorkingSetMb": 118.5,
+          "privateBytesMb": 266.4,
+          "cpuSampleSeconds": 1,
+          "cpuSingleCorePercent": 0.0,
+          "cpuMachinePercent": 0.0,
+          "logicalProcessorCount": 32,
+          "gpuSamples": 2,
+          "gpuEnginePercent": 0.0,
+          "gpuEngineAveragePercent": 0.0,
+          "gpuEnginePeakPercent": 0.0,
+          "dedicatedGpuMb": 76.1,
+          "dedicatedGpuStartMb": 76.1,
+          "dedicatedGpuEndMb": 76.1,
+          "dedicatedGpuPeakMb": 76.1,
+          "sharedGpuMb": 2.1,
+          "sharedGpuStartMb": 2.1,
+          "sharedGpuEndMb": 2.1,
+          "sharedGpuPeakMb": 2.1,
+          "processes": [
+            {
+              "processId": 7968,
+              "parentProcessId": 43472,
+              "name": "msedgewebview2.exe",
+              "renderer": true
+            },
+            {
+              "processId": 29352,
+              "parentProcessId": 43472,
+              "name": "msedgewebview2.exe",
+              "renderer": false
+            },
+            {
+              "processId": 32432,
+              "parentProcessId": 43472,
+              "name": "msedgewebview2.exe",
+              "renderer": false
+            },
+            {
+              "processId": 34516,
+              "parentProcessId": 17760,
+              "name": "komorebi-dioxus-desktop-framework-bench.exe",
+              "renderer": false
+            },
+            {
+              "processId": 41020,
+              "parentProcessId": 34516,
+              "name": "conhost.exe",
+              "renderer": false
+            },
+            {
+              "processId": 41956,
+              "parentProcessId": 43472,
+              "name": "msedgewebview2.exe",
+              "renderer": false
+            },
+            {
+              "processId": 43472,
+              "parentProcessId": 34516,
+              "name": "msedgewebview2.exe",
+              "renderer": false
+            },
+            {
+              "processId": 50696,
+              "parentProcessId": 43472,
+              "name": "msedgewebview2.exe",
+              "renderer": true
+            },
+            {
+              "processId": 59768,
+              "parentProcessId": 43472,
+              "name": "msedgewebview2.exe",
+              "renderer": false
+            }
+          ]
+        },
+        "postCycleIdle": {
+          "capturedAt": "2026-10-29T15:20:38.0665506+08:00",
+          "sampleStartedAt": "2026-10-29T15:20:36.0222417+08:00",
+          "sampleEndedAt": "2026-10-29T15:20:38.0665506+08:00",
+          "sampleDurationSeconds": 2.044,
+          "rootProcessId": 34516,
+          "processCount": 9,
+          "rendererCount": 2,
+          "workingSetMb": 460.3,
+          "privateWorkingSetMb": 118.7,
+          "privateBytesMb": 242.5,
+          "cpuSampleSeconds": 1,
+          "cpuSingleCorePercent": 0.0,
+          "cpuMachinePercent": 0.0,
+          "logicalProcessorCount": 32,
+          "gpuSamples": 2,
+          "gpuEnginePercent": 0.0,
+          "gpuEngineAveragePercent": 0.0,
+          "gpuEnginePeakPercent": 0.0,
+          "dedicatedGpuMb": 58.1,
+          "dedicatedGpuStartMb": 58.1,
+          "dedicatedGpuEndMb": 58.1,
+          "dedicatedGpuPeakMb": 58.1,
+          "sharedGpuMb": 2.1,
+          "sharedGpuStartMb": 2.1,
+          "sharedGpuEndMb": 2.1,
+          "sharedGpuPeakMb": 2.1,
+          "processes": [
+            {
+              "processId": 7968,
+              "parentProcessId": 43472,
+              "name": "msedgewebview2.exe",
+              "renderer": true
+            },
+            {
+              "processId": 29352,
+              "parentProcessId": 43472,
+              "name": "msedgewebview2.exe",
+              "renderer": false
+            },
+            {
+              "processId": 32432,
+              "parentProcessId": 43472,
+              "name": "msedgewebview2.exe",
+              "renderer": false
+            },
+            {
+              "processId": 34516,
+              "parentProcessId": 17760,
+              "name": "komorebi-dioxus-desktop-framework-bench.exe",
+              "renderer": false
+            },
+            {
+              "processId": 41020,
+              "parentProcessId": 34516,
+              "name": "conhost.exe",
+              "renderer": false
+            },
+            {
+              "processId": 41956,
+              "parentProcessId": 43472,
+              "name": "msedgewebview2.exe",
+              "renderer": false
+            },
+            {
+              "processId": 43472,
+              "parentProcessId": 34516,
+              "name": "msedgewebview2.exe",
+              "renderer": false
+            },
+            {
+              "processId": 50696,
+              "parentProcessId": 43472,
+              "name": "msedgewebview2.exe",
+              "renderer": true
+            },
+            {
+              "processId": 59768,
+              "parentProcessId": 43472,
+              "name": "msedgewebview2.exe",
+              "renderer": false
+            }
+          ]
+        }
+      },
+      "eventLog": "D:\\C2D\\Desktop\\Code\\Rust\\sTools\\rust-ui-benchmark-windows\\results\\2026-10-29\\dioxus-desktop-unmanaged-smoke-artifacts\\dioxus-desktop\\round-1-events.jsonl",
+      "executableSha256": "3ddd5bce338ab71dc06a7272928d0c52870b3529e887317e902377fea8c6a8b5",
+      "lockfileSha256": "74eaf9eea8725c31885ec60262aa9871e2a00dd251ab3e5b154f4c64baeb497b"
+    }
+  ],
+  "summary": {
+    "phases": [
+      {
+        "framework": "dioxus-desktop",
+        "phase": "hiddenIdle",
+        "metrics": {
+          "workingSetMb": {
+            "count": 1,
+            "median": 427.1,
+            "minimum": 427.1,
+            "maximum": 427.1
+          },
+          "privateWorkingSetMb": {
+            "count": 1,
+            "median": 103.5,
+            "minimum": 103.5,
+            "maximum": 103.5
+          },
+          "privateBytesMb": {
+            "count": 1,
+            "median": 277.6,
+            "minimum": 277.6,
+            "maximum": 277.6
+          },
+          "cpuSingleCorePercent": {
+            "count": 1,
+            "median": 0.0,
+            "minimum": 0.0,
+            "maximum": 0.0
+          },
+          "cpuMachinePercent": {
+            "count": 1,
+            "median": 0.0,
+            "minimum": 0.0,
+            "maximum": 0.0
+          },
+          "gpuEngineAveragePercent": {
+            "count": 1,
+            "median": 0.0,
+            "minimum": 0.0,
+            "maximum": 0.0
+          },
+          "gpuEnginePeakPercent": {
+            "count": 1,
+            "median": 0.001,
+            "minimum": 0.001,
+            "maximum": 0.001
+          },
+          "dedicatedGpuPeakMb": {
+            "count": 1,
+            "median": 145.9,
+            "minimum": 145.9,
+            "maximum": 145.9
+          },
+          "sharedGpuPeakMb": {
+            "count": 1,
+            "median": 2.3,
+            "minimum": 2.3,
+            "maximum": 2.3
+          }
+        }
+      },
+      {
+        "framework": "dioxus-desktop",
+        "phase": "visibleIdle",
+        "metrics": {
+          "workingSetMb": {
+            "count": 1,
+            "median": 429.6,
+            "minimum": 429.6,
+            "maximum": 429.6
+          },
+          "privateWorkingSetMb": {
+            "count": 1,
+            "median": 102.4,
+            "minimum": 102.4,
+            "maximum": 102.4
+          },
+          "privateBytesMb": {
+            "count": 1,
+            "median": 246.0,
+            "minimum": 246.0,
+            "maximum": 246.0
+          },
+          "cpuSingleCorePercent": {
+            "count": 1,
+            "median": 0.0,
+            "minimum": 0.0,
+            "maximum": 0.0
+          },
+          "cpuMachinePercent": {
+            "count": 1,
+            "median": 0.0,
+            "minimum": 0.0,
+            "maximum": 0.0
+          },
+          "gpuEngineAveragePercent": {
+            "count": 1,
+            "median": 0.0,
+            "minimum": 0.0,
+            "maximum": 0.0
+          },
+          "gpuEnginePeakPercent": {
+            "count": 1,
+            "median": 0.0,
+            "minimum": 0.0,
+            "maximum": 0.0
+          },
+          "dedicatedGpuPeakMb": {
+            "count": 1,
+            "median": 57.1,
+            "minimum": 57.1,
+            "maximum": 57.1
+          },
+          "sharedGpuPeakMb": {
+            "count": 1,
+            "median": 2.1,
+            "minimum": 2.1,
+            "maximum": 2.1
+          }
+        }
+      },
+      {
+        "framework": "dioxus-desktop",
+        "phase": "workload400",
+        "metrics": {
+          "workingSetMb": {
+            "count": 1,
+            "median": 458.1,
+            "minimum": 458.1,
+            "maximum": 458.1
+          },
+          "privateWorkingSetMb": {
+            "count": 1,
+            "median": 126.4,
+            "minimum": 126.4,
+            "maximum": 126.4
+          },
+          "privateBytesMb": {
+            "count": 1,
+            "median": 275.5,
+            "minimum": 275.5,
+            "maximum": 275.5
+          },
+          "cpuSingleCorePercent": {
+            "count": 1,
+            "median": 52.587,
+            "minimum": 52.587,
+            "maximum": 52.587
+          },
+          "cpuMachinePercent": {
+            "count": 1,
+            "median": 1.643,
+            "minimum": 1.643,
+            "maximum": 1.643
+          },
+          "gpuEngineAveragePercent": {
+            "count": 1,
+            "median": 0.485,
+            "minimum": 0.485,
+            "maximum": 0.485
+          },
+          "gpuEnginePeakPercent": {
+            "count": 1,
+            "median": 0.621,
+            "minimum": 0.621,
+            "maximum": 0.621
+          },
+          "dedicatedGpuPeakMb": {
+            "count": 1,
+            "median": 76.1,
+            "minimum": 76.1,
+            "maximum": 76.1
+          },
+          "sharedGpuPeakMb": {
+            "count": 1,
+            "median": 3.2,
+            "minimum": 3.2,
+            "maximum": 3.2
+          }
+        }
+      },
+      {
+        "framework": "dioxus-desktop",
+        "phase": "postHideIdle",
+        "metrics": {
+          "workingSetMb": {
+            "count": 1,
+            "median": 460.0,
+            "minimum": 460.0,
+            "maximum": 460.0
+          },
+          "privateWorkingSetMb": {
+            "count": 1,
+            "median": 118.5,
+            "minimum": 118.5,
+            "maximum": 118.5
+          },
+          "privateBytesMb": {
+            "count": 1,
+            "median": 266.4,
+            "minimum": 266.4,
+            "maximum": 266.4
+          },
+          "cpuSingleCorePercent": {
+            "count": 1,
+            "median": 0.0,
+            "minimum": 0.0,
+            "maximum": 0.0
+          },
+          "cpuMachinePercent": {
+            "count": 1,
+            "median": 0.0,
+            "minimum": 0.0,
+            "maximum": 0.0
+          },
+          "gpuEngineAveragePercent": {
+            "count": 1,
+            "median": 0.0,
+            "minimum": 0.0,
+            "maximum": 0.0
+          },
+          "gpuEnginePeakPercent": {
+            "count": 1,
+            "median": 0.0,
+            "minimum": 0.0,
+            "maximum": 0.0
+          },
+          "dedicatedGpuPeakMb": {
+            "count": 1,
+            "median": 76.1,
+            "minimum": 76.1,
+            "maximum": 76.1
+          },
+          "sharedGpuPeakMb": {
+            "count": 1,
+            "median": 2.1,
+            "minimum": 2.1,
+            "maximum": 2.1
+          }
+        }
+      },
+      {
+        "framework": "dioxus-desktop",
+        "phase": "postCycleIdle",
+        "metrics": {
+          "workingSetMb": {
+            "count": 1,
+            "median": 460.3,
+            "minimum": 460.3,
+            "maximum": 460.3
+          },
+          "privateWorkingSetMb": {
+            "count": 1,
+            "median": 118.7,
+            "minimum": 118.7,
+            "maximum": 118.7
+          },
+          "privateBytesMb": {
+            "count": 1,
+            "median": 242.5,
+            "minimum": 242.5,
+            "maximum": 242.5
+          },
+          "cpuSingleCorePercent": {
+            "count": 1,
+            "median": 0.0,
+            "minimum": 0.0,
+            "maximum": 0.0
+          },
+          "cpuMachinePercent": {
+            "count": 1,
+            "median": 0.0,
+            "minimum": 0.0,
+            "maximum": 0.0
+          },
+          "gpuEngineAveragePercent": {
+            "count": 1,
+            "median": 0.0,
+            "minimum": 0.0,
+            "maximum": 0.0
+          },
+          "gpuEnginePeakPercent": {
+            "count": 1,
+            "median": 0.0,
+            "minimum": 0.0,
+            "maximum": 0.0
+          },
+          "dedicatedGpuPeakMb": {
+            "count": 1,
+            "median": 58.1,
+            "minimum": 58.1,
+            "maximum": 58.1
+          },
+          "sharedGpuPeakMb": {
+            "count": 1,
+            "median": 2.1,
+            "minimum": 2.1,
+            "maximum": 2.1
+          }
+        }
+      }
+    ],
+    "latency": [
+      {
+        "framework": "dioxus-desktop",
+        "showLatencyMs": {
+          "count": 1,
+          "median": 413.627,
+          "minimum": 413.627,
+          "maximum": 413.627
+        },
+        "hideLatencyMs": {
+          "count": 1,
+          "median": 276.651,
+          "minimum": 276.651,
+          "maximum": 276.651
+        }
+      }
+    ]
+  }
+}

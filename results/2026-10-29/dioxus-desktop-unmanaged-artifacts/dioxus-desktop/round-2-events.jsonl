@@ -1,0 +1,10 @@
+{"framework":"dioxus-desktop","event":"ready-hidden","timestamp":"2026-10-29T07:23:10.5471347Z","elapsedMs":760}
+{"framework":"dioxus-desktop","event":"show-start","timestamp":"2026-10-29T07:23:24.9689095Z","elapsedMs":15182}
+{"framework":"dioxus-desktop","event":"show-end","timestamp":"2026-10-29T07:23:25.0729109Z","elapsedMs":15286}
+{"framework":"dioxus-desktop","event":"workload-start","timestamp":"2026-10-29T07:23:40.8613496Z","elapsedMs":31075}
+{"framework":"dioxus-desktop","event":"workload-end","timestamp":"2026-10-29T07:23:48.8641215Z","elapsedMs":39077}
+{"framework":"dioxus-desktop","event":"hide-start","timestamp":"2026-10-29T07:23:52.9840299Z","elapsedMs":43197}
+{"framework":"dioxus-desktop","event":"hide-end","timestamp":"2026-10-29T07:23:53.0115425Z","elapsedMs":43225}
+{"framework":"dioxus-desktop","event":"cycle-start","timestamp":"2026-10-29T07:24:22.2084071Z","elapsedMs":72422,"detail":{"count":30}}
+{"framework":"dioxus-desktop","event":"cycle-end","timestamp":"2026-10-29T07:24:29.9013927Z","elapsedMs":80115,"detail":{"count":30}}
+{"framework":"dioxus-desktop","event":"quit","timestamp":"2026-10-29T07:24:43.9232159Z","elapsedMs":94136}
