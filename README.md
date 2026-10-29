@@ -17,6 +17,30 @@ so the experiment measures framework/runtime cost rather than product scope.
 This repository is Windows-specific. The harness verifies native HWNDs and
 uses Windows process, GPU engine, and GPU process-memory performance counters.
 
+## Results at a glance
+
+The following values are medians from three release rounds on the same Windows
+11 machine. Memory is process-tree Private Working Set (PWS); CPU is workload
+CPU as a percentage of the whole 32-logical-processor machine; GPU is average
+engine utilization during the workload; GPU memory is the workload peak
+dedicated/shared allocation. Lower is better for every numeric column.
+
+| Framework | Hidden PWS (MB) | Workload PWS (MB) | Workload CPU (%) | GPU avg (%) | GPU memory peak (MB) | Warm show / hide (ms) | Main takeaway |
+|---|---:|---:|---:|---:|---:|---:|---|
+| Tauri / WebView2 | 100.2 | 107.1 | 0.328 | **0.000** | 108.6 / 2.2 | 283.7 / **229.9** | Balanced WebView option: moderate memory, very low workload CPU/GPU, and fastest hide. |
+| Slint | 33.2 | 60.7 | 0.983 | 5.378 | 75.3 / 23.2 | 353.9 / 288.2 | Second-lowest resident memory and clean hidden idle, but the highest measured workload GPU use. |
+| zgui | 87.6 | 96.5 | 0.655 | 0.413 | 144.1 / 36.3 | **238.7** / 253.2 | Fastest warm show with mid-range memory, but relatively high GPU memory allocation. |
+| Dioxus Desktop / WebView2 | 100.9 | 132.2 | 1.639 | 0.218 | 90.8 / 3.3 | Similar hidden WebView cost to Tauri, but higher workload memory/CPU and slower visibility transitions. |
+| Dioxus Native / Blitz | 190.5 | 190.5 | **0.327** | **0.000** | 154.2 / 74.2 | 267.2 / 261.8 | Low workload CPU and responsive show, but the largest resident memory and GPU-memory footprint. |
+| gpui-ce | **23.8** | **37.3** | 0.650 | 1.826 | **59.5 / 2.1** | 240.6 / 253.7 | Clear footprint leader and near-fastest show; hidden-state CPU observed after hide needs profiling. |
+
+These numbers characterize this probe, machine, driver stack, and pinned
+framework revisions—not universal framework rankings. A recorded GPU value of
+zero means the Windows per-process counter saw no activity at this sampling
+resolution; it does not mean that the framework never uses the GPU. See the
+[`full report`](docs/2026-10-28-six-framework-resident-comparison.md) for
+ranges, post-hide behavior, limitations, and interpretation.
+
 ## Repository layout
 
 - `probes/`: six independent probe crates plus the shared protocol crate;
