@@ -1,0 +1,18 @@
+[package]
+name = "komorebi-kas-framework-bench"
+version = "0.1.0"
+edition = "2024"
+publish = false
+
+[dependencies]
+kas = { version = "=0.17.0", default-features = false, features = ["dx12", "shaping"] }
+kas-wgpu = { version = "=0.17.0", default-features = false, features = ["dx12"] }
+kas-widgets = "=0.17.0"
+serde_json = "1"
+ui-bench-protocol = { path = "../probe-protocol" }
+windows-sys = { version = "0.61", features = [
+  "Win32_Foundation",
+  "Win32_System_Threading",
+  "Win32_UI_HiDpi",
+  "Win32_UI_WindowsAndMessaging",
+] }
