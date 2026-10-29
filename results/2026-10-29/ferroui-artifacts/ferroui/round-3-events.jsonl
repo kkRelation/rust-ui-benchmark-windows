@@ -1,0 +1,10 @@
+{"framework":"ferroui","event":"ready-hidden","timestamp":"2026-10-29T12:07:59.5688128Z","elapsedMs":87}
+{"framework":"ferroui","event":"show-start","timestamp":"2026-10-29T12:08:12.7638974Z","elapsedMs":13282}
+{"framework":"ferroui","event":"show-end","timestamp":"2026-10-29T12:08:12.8043654Z","elapsedMs":13322}
+{"framework":"ferroui","event":"workload-start","timestamp":"2026-10-29T12:08:27.2896118Z","elapsedMs":27808}
+{"framework":"ferroui","event":"workload-end","timestamp":"2026-10-29T12:08:35.2898761Z","elapsedMs":35808}
+{"framework":"ferroui","event":"hide-start","timestamp":"2026-10-29T12:08:38.213131Z","elapsedMs":38731}
+{"framework":"ferroui","event":"hide-end","timestamp":"2026-10-29T12:08:38.2255747Z","elapsedMs":38744}
+{"framework":"ferroui","event":"cycle-start","timestamp":"2026-10-29T12:09:06.3632977Z","elapsedMs":66881,"detail":{"count":30}}
+{"framework":"ferroui","event":"cycle-end","timestamp":"2026-10-29T12:09:11.3595354Z","elapsedMs":71878,"detail":{"count":30}}
+{"framework":"ferroui","event":"quit","timestamp":"2026-10-29T12:09:24.614086Z","elapsedMs":85132}

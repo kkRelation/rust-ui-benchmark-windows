@@ -10,10 +10,10 @@ resident Windows quick launcher. The published historical cohort contains:
 - Dioxus Native on Blitz
 - gpui-ce
 
-Iced, gpui-kit, and KAS have joined the corrected unmanaged-window cohort.
-Makepad and FerroUI remain planned as sequential expansions. Each one uses an isolated
-Cargo home and target directory which is removed only after its durable result
-passes validation, keeping peak disk use close to one framework build at a
+Iced, gpui-kit, KAS, Makepad, and FerroUI form the corrected 2026-10-29
+unmanaged-window expansion cohort. Each was tested serially with an isolated
+Cargo home and target directory which was removed only after its durable result
+passed validation, keeping peak disk use close to one framework build at a
 time.
 
 The production application that motivated the experiment is not a contestant.
@@ -48,6 +48,26 @@ resolution; it does not mean that the framework never uses the GPU. See the
 [`full report`](docs/2026-10-28-six-framework-resident-comparison.md) for
 ranges, post-hide behavior, limitations, and interpretation.
 
+### Corrected unmanaged-window expansion
+
+The following medians come from three release rounds on 2026-10-29 after both
+exact benchmark titles were excluded from komorebi. They are comparable within
+this five-framework cohort, but not directly rankable against the managed-window
+historical table above. Renderers were Iced WGPU/DX12, gpui-kit on gpui-pre,
+KAS WGPU/DX12, Makepad D3D11, and FerroUI Skia/ANGLE.
+
+| Framework | Hidden PWS (MB) | Workload PWS (MB) | Workload CPU (%) | GPU avg (%) | Warm show / hide (ms) |
+|---|---:|---:|---:|---:|---:|
+| Iced | 133.3 | 152.0 | **0.327** | 1.054 | 329.911 / **222.939** |
+| gpui-kit | **19.0** | **24.8** | 0.656 | 1.618 | 284.224 / 308.871 |
+| KAS | 151.7 | 188.4 | 0.328 | 11.699 | 246.977 / 237.816 |
+| Makepad | 124.9 | 133.9 | 0.328 | 1.022 | **224.070** / 234.086 |
+| FerroUI | 45.7 | 54.4 | 0.329 | **0.632** | 297.982 / 244.843 |
+
+These are machine- and scene-specific observations. In particular, the GPU
+counter is sampled at Windows process/engine resolution, and the frameworks use
+different retained-mode, rendering, and shader-cache strategies.
+
 ## Repository layout
 
 - `probes/`: independent probe crates plus the shared protocol crate;
@@ -62,7 +82,9 @@ pinned in its manifest: Slint 1.16.1, zgui commit `951a0ea3`, Dioxus Desktop
 Tauri 2.12.5 (`tauri-build` 2.7.4), Iced 0.14.0, and gpui-kit 0.8.1
 (resolving to gpui-pre 0.3.10). KAS, kas-wgpu, and kas-widgets are each
 pinned to 0.17.0, with only WGPU's DX12 backend enabled. Makepad Widgets is
-pinned to 1.0.0 and uses Makepad's native Windows D3D11 path.
+pinned to 1.0.0 and uses Makepad's native Windows D3D11 path. FerroUI is pinned
+to the only published 0.4 crate, `0.4.0-preview.1`, using its default desktop
+Fluent/Skia/ANGLE path.
 
 ## Protocol
 
@@ -260,6 +282,25 @@ shutdown. The scene still uses one Makepad process, one `MultiWindow`, and one
 Rust selection value projected into both native windows; no WebView runtime is
 present. Guarded cleanup removed only the isolated Makepad work root and
 recovered 1,897,279,488 bytes.
+
+### FerroUI unmanaged-window result
+
+FerroUI `0.4.0-preview.1` with its default desktop Fluent theme and Skia/ANGLE
+renderer completed a debug smoke run and three valid release rounds on
+2026-10-29. Its median hidden/workload private working sets were 45.7/54.4 MB;
+workload machine CPU was 0.329%, average GPU engine use was 0.632%, and warm
+show/hide latency was 297.982/244.843 ms. Both retained native windows kept the
+exact 715x514 and 1215x794 outer sizes at all four checkpoints in every round.
+
+The validated evidence is in
+[`ferroui.json`](results/2026-10-29/ferroui.json) and its adjacent event/status
+artifacts. FerroUI has no stable 0.4.0 release, so this result is explicitly a
+prerelease result. The default Fluent path transitively brings its markup/XAML
+tooling, but the probe does not enable FerroUI's facade `xaml`, Vello, WinUI,
+diagnostics, ReactiveUI, or MVVM variants. Its upstream ANGLE link emits
+LNK4217 import warnings; the locked build, smoke run, all three rounds, and
+clean shutdown nevertheless succeeded. Guarded cleanup removed only the
+isolated FerroUI work root and recovered 15,976,652,800 bytes.
 
 ## Historical result
 
