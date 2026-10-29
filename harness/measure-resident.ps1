@@ -304,7 +304,7 @@ function Invoke-ProbeRound {
   }
 }
 
-$resolvedOutput = [System.IO.Path]::GetFullPath((Join-Path $repoRoot $OutputPath))
+$resolvedOutput = Resolve-BenchmarkPath -RepoRoot $repoRoot -Path $OutputPath
 $outputDirectory = Split-Path -Parent $resolvedOutput
 [System.IO.Directory]::CreateDirectory($outputDirectory) | Out-Null
 $resolvedArtifactDirectory = if ([string]::IsNullOrWhiteSpace($ArtifactDirectory)) {
