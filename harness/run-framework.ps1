@@ -3,7 +3,8 @@ param(
   [switch]$Anchor,
   [switch]$KeepWorkdir,
   [string]$OutputDirectory,
-  [string]$HistoricalPath
+  [string]$HistoricalPath,
+  [string]$Label
 )
 
 $ErrorActionPreference = "Stop"
@@ -23,4 +24,5 @@ Invoke-BenchmarkFrameworkRun `
   -OutputDirectory $OutputDirectory `
   -Anchor:$Anchor `
   -KeepWorkdir:$KeepWorkdir `
-  -HistoricalPath $HistoricalPath
+  -HistoricalPath $HistoricalPath `
+  -Label $Label

@@ -138,6 +138,10 @@ Describe "framework result validation" {
 Describe "single-framework orchestration" {
   BeforeEach {
     $script:orchestrationCalls = @()
+    Mock Ensure-BenchmarkWindowsIgnoredByKomorebi {
+      $script:orchestrationCalls += "window-manager"
+      [pscustomobject]@{ manager = "komorebi"; active = $true; verified = $true; addedRules = @() }
+    }
     Mock New-BenchmarkFrameworkWorkspace {
       $script:orchestrationCalls += "workspace"
       [pscustomobject]@{
@@ -182,9 +186,29 @@ Describe "single-framework orchestration" {
       -HistoricalPath (Join-Path $TestDrive "historical.json")
 
     $script:orchestrationCalls | Should Be @(
-      "workspace", "build-debug", "measure-smoke", "validate-1",
+      "window-manager", "workspace", "build-debug", "measure-smoke", "validate-1",
       "build-release", "measure-release", "validate-3", "anchor", "cleanup"
     )
+  }
+
+  It "uses a safe explicit label for retry artifacts" {
+    $output = Join-Path $TestDrive "labelled"
+    $null = Invoke-BenchmarkFrameworkRun `
+      -RepoRoot $TestDrive `
+      -Framework "iced" `
+      -OutputDirectory $output `
+      -Label "iced-unmanaged-attempt-2" `
+      -KeepWorkdir
+    Test-Path -LiteralPath (Join-Path $output "iced-unmanaged-attempt-2-status.json") | Should Be $true
+    $threw = $false
+    try {
+      $null = Invoke-BenchmarkFrameworkRun `
+        -RepoRoot $TestDrive `
+        -Framework "iced" `
+        -OutputDirectory $output `
+        -Label "..\unsafe"
+    } catch { $threw = $true }
+    $threw | Should Be $true
   }
 
   It "keeps the workspace after a build failure" {

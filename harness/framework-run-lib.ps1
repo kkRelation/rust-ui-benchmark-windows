@@ -7,6 +7,9 @@ if (-not (Get-Command New-BenchmarkFrameworkWorkspace -ErrorAction SilentlyConti
 if (-not (Get-Command Compare-ResidentAnchor -ErrorAction SilentlyContinue)) {
   . (Join-Path $PSScriptRoot "anchor-comparison-lib.ps1")
 }
+if (-not (Get-Command Ensure-BenchmarkWindowsIgnoredByKomorebi -ErrorAction SilentlyContinue)) {
+  . (Join-Path $PSScriptRoot "komorebi-isolation.ps1")
+}
 
 function Get-FrameworkResultProperty {
   param(
@@ -236,7 +239,8 @@ function Invoke-BenchmarkFrameworkRun {
     [Parameter(Mandatory = $true)][string]$OutputDirectory,
     [switch]$Anchor,
     [switch]$KeepWorkdir,
-    [string]$HistoricalPath
+    [string]$HistoricalPath,
+    [string]$Label
   )
 
   [void](Get-BenchmarkFrameworkDefinition -Name $Framework)
@@ -246,7 +250,16 @@ function Invoke-BenchmarkFrameworkRun {
   $resolvedRepo = [System.IO.Path]::GetFullPath($RepoRoot)
   $resolvedOutput = [System.IO.Path]::GetFullPath($OutputDirectory)
   [System.IO.Directory]::CreateDirectory($resolvedOutput) | Out-Null
-  $baseName = if ($Anchor) { "$Framework-anchor" } else { $Framework }
+  if (-not [string]::IsNullOrWhiteSpace($Label) -and $Label -notmatch '^[a-z0-9][a-z0-9-]*$') {
+    throw "Run label must contain only lowercase letters, digits, and hyphens: $Label"
+  }
+  $baseName = if (-not [string]::IsNullOrWhiteSpace($Label)) {
+    $Label
+  } elseif ($Anchor) {
+    "$Framework-anchor"
+  } else {
+    $Framework
+  }
   $smokePath = Join-Path $resolvedOutput "$baseName-smoke.json"
   $resultPath = Join-Path $resolvedOutput "$baseName.json"
   $statusPath = Join-Path $resolvedOutput "$baseName-status.json"
@@ -254,9 +267,12 @@ function Invoke-BenchmarkFrameworkRun {
   $smokeArtifactDirectory = Join-Path $resolvedOutput "$baseName-smoke-artifacts"
   $comparisonPath = Join-Path $resolvedOutput "$baseName-comparison.json"
   $workspace = $null
-  $stage = "workspace"
+  $windowManagerIsolation = $null
+  $stage = "window-manager-isolation"
 
   try {
+    $windowManagerIsolation = Ensure-BenchmarkWindowsIgnoredByKomorebi
+    $stage = "workspace"
     $workspace = New-BenchmarkFrameworkWorkspace -RepoRoot $resolvedRepo -Framework $Framework
     $stage = "debug-build"
     $null = Invoke-BenchmarkFrameworkBuild -RepoRoot $resolvedRepo -Framework $Framework -Configuration debug -CargoHome $workspace.CargoHome -TargetDirectory $workspace.TargetDirectory
@@ -312,6 +328,7 @@ function Invoke-BenchmarkFrameworkRun {
       smokePath = $smokePath
       comparisonPath = if ($Anchor) { $comparisonPath } else { $null }
       workspaceRoot = $workspace.Root
+      windowManagerIsolation = $windowManagerIsolation
       cleanup = $cleanup
       completedAt = (Get-Date).ToString("o")
     }
@@ -326,6 +343,7 @@ function Invoke-BenchmarkFrameworkRun {
       error = $_.Exception.Message
       workspaceRoot = if ($null -ne $workspace) { $workspace.Root } else { $null }
       workspacePreserved = $null -ne $workspace
+      windowManagerIsolation = $windowManagerIsolation
       failedAt = (Get-Date).ToString("o")
     }
     Write-BenchmarkRunStatus -Path $statusPath -Status $failure
