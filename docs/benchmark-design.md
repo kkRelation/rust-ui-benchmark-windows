@@ -19,6 +19,7 @@ The corrected 2026-10-29 expansion is a separate unmanaged-window cohort:
 3. KAS 0.17.0 (WGPU/DX12)
 4. Makepad Widgets 1.0.0 (native Windows D3D11)
 5. FerroUI 0.4.0-preview.1 (default desktop Fluent/Skia/ANGLE)
+6. egui/eframe 0.37.0 (WGPU)
 
 The benchmark is a reduced business-equivalent probe, not a comparison between the full Tauri product and minimal demos. Cold startup remains supplementary. The primary result is the cost of a process that stays alive, presents warm windows, performs the same workload, and returns to the background.
 
@@ -75,7 +76,7 @@ CPU and GPU engine samples cover the same wall-clock interval. GPU memory is cap
 - All probes are release builds with lockfiles and exact versions or Git revisions.
 - Dioxus Desktop and Tauri are WebView2 contenders; Dioxus Native uses Blitz.
   The expansion renderers are Iced WGPU/DX12, gpui-kit/gpui-pre, KAS
-  WGPU/DX12, Makepad D3D11, and FerroUI Skia/ANGLE.
+  WGPU/DX12, Makepad D3D11, FerroUI Skia/ANGLE, and egui/eframe WGPU.
 - OS, GPU, driver, display topology, power state, WebView2 runtime, revisions, and commands are written into result metadata.
 - The runner checks window count and dimensions before accepting a phase.
 - Results from this machine describe relative cost under this protocol, not universal framework rankings.
@@ -105,7 +106,7 @@ tooling was kept inside its work root and removed with the validated build.
 
 ## Interpretation limits
 
-- The five expansion contestants were measured on one machine and date under
+- The six expansion contestants were measured on one machine and date under
   the corrected unmanaged-window rule; their numbers do not retroactively
   replace the historical six-framework report.
 - A zero GPU sample means the Windows per-process counter observed no activity

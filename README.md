@@ -10,7 +10,7 @@ resident Windows quick launcher. The published historical cohort contains:
 - Dioxus Native on Blitz
 - gpui-ce
 
-Iced, gpui-kit, KAS, Makepad, and FerroUI form the corrected 2026-10-29
+Iced, gpui-kit, KAS, Makepad, FerroUI, and egui form the corrected 2026-10-29
 unmanaged-window expansion cohort. Each was tested serially with an isolated
 Cargo home and target directory which was removed only after its durable result
 passed validation, keeping peak disk use close to one framework build at a
@@ -52,17 +52,18 @@ ranges, post-hide behavior, limitations, and interpretation.
 
 The following medians come from three release rounds on 2026-10-29 after both
 exact benchmark titles were excluded from komorebi. They are comparable within
-this five-framework cohort, but not directly rankable against the managed-window
+this six-framework cohort, but not directly rankable against the managed-window
 historical table above. Renderers were Iced WGPU/DX12, gpui-kit on gpui-pre,
-KAS WGPU/DX12, Makepad D3D11, and FerroUI Skia/ANGLE.
+KAS WGPU/DX12, Makepad D3D11, FerroUI Skia/ANGLE, and egui/eframe WGPU.
 
 | Framework | Hidden PWS (MB) | Workload PWS (MB) | Workload CPU (%) | GPU avg (%) | Warm show / hide (ms) |
 |---|---:|---:|---:|---:|---:|
-| Iced | 133.3 | 152.0 | **0.327** | 1.054 | 329.911 / **222.939** |
+| Iced | 133.3 | 152.0 | 0.327 | 1.054 | 329.911 / **222.939** |
 | gpui-kit | **19.0** | **24.8** | 0.656 | 1.618 | 284.224 / 308.871 |
 | KAS | 151.7 | 188.4 | 0.328 | 11.699 | 246.977 / 237.816 |
 | Makepad | 124.9 | 133.9 | 0.328 | 1.022 | **224.070** / 234.086 |
-| FerroUI | 45.7 | 54.4 | 0.329 | **0.632** | 297.982 / 244.843 |
+| FerroUI | 45.7 | 54.4 | 0.329 | 0.632 | 297.982 / 244.843 |
+| egui | 184.9 | 189.0 | **0.325** | **0.496** | 253.600 / 230.375 |
 
 These are machine- and scene-specific observations. In particular, the GPU
 counter is sampled at Windows process/engine resolution, and the frameworks use
@@ -84,7 +85,8 @@ Tauri 2.12.5 (`tauri-build` 2.7.4), Iced 0.14.0, and gpui-kit 0.8.1
 pinned to 0.17.0, with only WGPU's DX12 backend enabled. Makepad Widgets is
 pinned to 1.0.0 and uses Makepad's native Windows D3D11 path. FerroUI is pinned
 to the only published 0.4 crate, `0.4.0-preview.1`, using its default desktop
-Fluent/Skia/ANGLE path.
+Fluent/Skia/ANGLE path. egui/eframe is pinned to 0.37.0 and explicitly uses
+eframe's WGPU renderer.
 
 ## Protocol
 
@@ -301,6 +303,26 @@ diagnostics, ReactiveUI, or MVVM variants. Its upstream ANGLE link emits
 LNK4217 import warnings; the locked build, smoke run, all three rounds, and
 clean shutdown nevertheless succeeded. Guarded cleanup removed only the
 isolated FerroUI work root and recovered 15,976,652,800 bytes.
+
+### egui unmanaged-window result
+
+egui/eframe 0.37.0 with the WGPU renderer completed a debug smoke run and
+three valid release rounds on 2026-10-29. Its median hidden/workload private
+working sets were 184.9/189.0 MB; workload machine CPU was 0.325%, average GPU
+engine use was 0.496%, and warm show/hide latency was 253.600/230.375 ms. Both
+native viewports retained the exact 715x514 and 1215x794 outer sizes at all
+four checkpoints in every round. Hidden, visible-idle, post-hide, and
+post-cycle CPU/GPU medians were zero at the Windows sampling resolution.
+
+The validated evidence is in
+[`egui.json`](results/2026-10-29/egui.json) and its adjacent event/status
+artifacts. The probe uses eframe's root viewport plus
+`show_viewport_deferred` for the auxiliary window, one shared Rust selection
+value, and an explicit WGPU renderer selection. A current-PID and exact-title
+Win32 adapter synchronizes retained visibility using the same unmanaged-window
+contract as the other expansion probes. The 14.2 MB executable and locked
+dependency graph were identical across all rounds. Guarded cleanup removed
+only the isolated egui work root and recovered 3,520,892,928 bytes.
 
 ## Historical result
 
