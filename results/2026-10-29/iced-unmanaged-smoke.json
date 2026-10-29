@@ -1,0 +1,396 @@
+{
+  "schemaVersion": 2,
+  "capturedAt": "2026-10-29T15:53:29.1688144+08:00",
+  "protocol": {
+    "resident": true,
+    "windows": 2,
+    "mainContentSize": "700x480",
+    "auxiliaryContentSize": "1200x760",
+    "workload": "400 shared-state updates at 20 ms",
+    "phases": [
+      "hiddenIdle",
+      "warmShow",
+      "visibleIdle",
+      "workload400",
+      "warmHide",
+      "postHideIdle",
+      "cycle30",
+      "postCycleIdle"
+    ],
+    "sampleSeconds": 1,
+    "postHideSettleSeconds": 1,
+    "cycleCount": 2,
+    "rounds": 1,
+    "roundStart": 1,
+    "rotatingOrder": true,
+    "smoke": true
+  },
+  "pins": {
+    "iced": "0.14.0"
+  },
+  "environment": {
+    "os": "Microsoft Windows 11 专业版",
+    "osVersion": "10.0.26200",
+    "machine": "Jiaolong Series MRID6",
+    "logicalProcessors": 32,
+    "cpu": [
+      "AMD Ryzen 9 7945HX with Radeon Graphics        "
+    ],
+    "gpu": [
+      {
+        "name": "Parsec Virtual Display Adapter",
+        "driverVersion": "0.45.0.0"
+      },
+      {
+        "name": "GameViewer Virtual Display Adapter",
+        "driverVersion": "15.6.5.199"
+      },
+      {
+        "name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+        "driverVersion": "32.0.16.1047"
+      },
+      {
+        "name": "AMD Radeon(TM) Graphics",
+        "driverVersion": "32.0.11038.3"
+      }
+    ],
+    "powerPlan": "电源方案 GUID: 5fa7881b-3a51-42ec-92eb-4a309e6a73cc  (cpu boost)"
+  },
+  "toolchain": {
+    "rustcVerbose": "rustc 1.98.1 (48a229cea 2026-09-01)\nbinary: rustc\ncommit-hash: 48a229ceaefd4985c50990b14116b6d856af0985\ncommit-date: 2026-09-01\nhost: x86_64-pc-windows-msvc\nrelease: 1.98.1\nLLVM version: 22.1.8",
+    "cargoVersion": "cargo 1.98.1 (797e8a9bc 2026-08-05)"
+  },
+  "runs": [
+    {
+      "framework": "iced",
+      "round": 1,
+      "status": "failed",
+      "executable": ".benchmark-work/iced/target/debug/komorebi-iced-framework-bench.exe",
+      "error": "Timed out waiting for probe event 'ready-hidden' in C:\\Users\\Xcz\\AppData\\Local\\Temp\\ui-bench-493cde6666fe4afab86a074d81433702\\events.jsonl",
+      "eventLog": "D:\\C2D\\Desktop\\Code\\Rust\\sTools\\rust-ui-benchmark-windows\\results\\2026-10-29\\iced-unmanaged-smoke-artifacts\\iced\\round-1-events.jsonl",
+      "executableSha256": "60c7d35182e027c25413b6557898043d52a243df91c6f7d9a2978a9bc63541b8",
+      "lockfileSha256": "414f7ca513183b6b9a06dcf656e30717971eaa3637ad7f5b1657ceb5019de6a8"
+    }
+  ],
+  "summary": {
+    "phases": [
+      {
+        "framework": "iced",
+        "phase": "hiddenIdle",
+        "metrics": {
+          "workingSetMb": {
+            "count": 0,
+            "median": null,
+            "minimum": null,
+            "maximum": null
+          },
+          "privateWorkingSetMb": {
+            "count": 0,
+            "median": null,
+            "minimum": null,
+            "maximum": null
+          },
+          "privateBytesMb": {
+            "count": 0,
+            "median": null,
+            "minimum": null,
+            "maximum": null
+          },
+          "cpuSingleCorePercent": {
+            "count": 0,
+            "median": null,
+            "minimum": null,
+            "maximum": null
+          },
+          "cpuMachinePercent": {
+            "count": 0,
+            "median": null,
+            "minimum": null,
+            "maximum": null
+          },
+          "gpuEngineAveragePercent": {
+            "count": 0,
+            "median": null,
+            "minimum": null,
+            "maximum": null
+          },
+          "gpuEnginePeakPercent": {
+            "count": 0,
+            "median": null,
+            "minimum": null,
+            "maximum": null
+          },
+          "dedicatedGpuPeakMb": {
+            "count": 0,
+            "median": null,
+            "minimum": null,
+            "maximum": null
+          },
+          "sharedGpuPeakMb": {
+            "count": 0,
+            "median": null,
+            "minimum": null,
+            "maximum": null
+          }
+        }
+      },
+      {
+        "framework": "iced",
+        "phase": "visibleIdle",
+        "metrics": {
+          "workingSetMb": {
+            "count": 0,
+            "median": null,
+            "minimum": null,
+            "maximum": null
+          },
+          "privateWorkingSetMb": {
+            "count": 0,
+            "median": null,
+            "minimum": null,
+            "maximum": null
+          },
+          "privateBytesMb": {
+            "count": 0,
+            "median": null,
+            "minimum": null,
+            "maximum": null
+          },
+          "cpuSingleCorePercent": {
+            "count": 0,
+            "median": null,
+            "minimum": null,
+            "maximum": null
+          },
+          "cpuMachinePercent": {
+            "count": 0,
+            "median": null,
+            "minimum": null,
+            "maximum": null
+          },
+          "gpuEngineAveragePercent": {
+            "count": 0,
+            "median": null,
+            "minimum": null,
+            "maximum": null
+          },
+          "gpuEnginePeakPercent": {
+            "count": 0,
+            "median": null,
+            "minimum": null,
+            "maximum": null
+          },
+          "dedicatedGpuPeakMb": {
+            "count": 0,
+            "median": null,
+            "minimum": null,
+            "maximum": null
+          },
+          "sharedGpuPeakMb": {
+            "count": 0,
+            "median": null,
+            "minimum": null,
+            "maximum": null
+          }
+        }
+      },
+      {
+        "framework": "iced",
+        "phase": "workload400",
+        "metrics": {
+          "workingSetMb": {
+            "count": 0,
+            "median": null,
+            "minimum": null,
+            "maximum": null
+          },
+          "privateWorkingSetMb": {
+            "count": 0,
+            "median": null,
+            "minimum": null,
+            "maximum": null
+          },
+          "privateBytesMb": {
+            "count": 0,
+            "median": null,
+            "minimum": null,
+            "maximum": null
+          },
+          "cpuSingleCorePercent": {
+            "count": 0,
+            "median": null,
+            "minimum": null,
+            "maximum": null
+          },
+          "cpuMachinePercent": {
+            "count": 0,
+            "median": null,
+            "minimum": null,
+            "maximum": null
+          },
+          "gpuEngineAveragePercent": {
+            "count": 0,
+            "median": null,
+            "minimum": null,
+            "maximum": null
+          },
+          "gpuEnginePeakPercent": {
+            "count": 0,
+            "median": null,
+            "minimum": null,
+            "maximum": null
+          },
+          "dedicatedGpuPeakMb": {
+            "count": 0,
+            "median": null,
+            "minimum": null,
+            "maximum": null
+          },
+          "sharedGpuPeakMb": {
+            "count": 0,
+            "median": null,
+            "minimum": null,
+            "maximum": null
+          }
+        }
+      },
+      {
+        "framework": "iced",
+        "phase": "postHideIdle",
+        "metrics": {
+          "workingSetMb": {
+            "count": 0,
+            "median": null,
+            "minimum": null,
+            "maximum": null
+          },
+          "privateWorkingSetMb": {
+            "count": 0,
+            "median": null,
+            "minimum": null,
+            "maximum": null
+          },
+          "privateBytesMb": {
+            "count": 0,
+            "median": null,
+            "minimum": null,
+            "maximum": null
+          },
+          "cpuSingleCorePercent": {
+            "count": 0,
+            "median": null,
+            "minimum": null,
+            "maximum": null
+          },
+          "cpuMachinePercent": {
+            "count": 0,
+            "median": null,
+            "minimum": null,
+            "maximum": null
+          },
+          "gpuEngineAveragePercent": {
+            "count": 0,
+            "median": null,
+            "minimum": null,
+            "maximum": null
+          },
+          "gpuEnginePeakPercent": {
+            "count": 0,
+            "median": null,
+            "minimum": null,
+            "maximum": null
+          },
+          "dedicatedGpuPeakMb": {
+            "count": 0,
+            "median": null,
+            "minimum": null,
+            "maximum": null
+          },
+          "sharedGpuPeakMb": {
+            "count": 0,
+            "median": null,
+            "minimum": null,
+            "maximum": null
+          }
+        }
+      },
+      {
+        "framework": "iced",
+        "phase": "postCycleIdle",
+        "metrics": {
+          "workingSetMb": {
+            "count": 0,
+            "median": null,
+            "minimum": null,
+            "maximum": null
+          },
+          "privateWorkingSetMb": {
+            "count": 0,
+            "median": null,
+            "minimum": null,
+            "maximum": null
+          },
+          "privateBytesMb": {
+            "count": 0,
+            "median": null,
+            "minimum": null,
+            "maximum": null
+          },
+          "cpuSingleCorePercent": {
+            "count": 0,
+            "median": null,
+            "minimum": null,
+            "maximum": null
+          },
+          "cpuMachinePercent": {
+            "count": 0,
+            "median": null,
+            "minimum": null,
+            "maximum": null
+          },
+          "gpuEngineAveragePercent": {
+            "count": 0,
+            "median": null,
+            "minimum": null,
+            "maximum": null
+          },
+          "gpuEnginePeakPercent": {
+            "count": 0,
+            "median": null,
+            "minimum": null,
+            "maximum": null
+          },
+          "dedicatedGpuPeakMb": {
+            "count": 0,
+            "median": null,
+            "minimum": null,
+            "maximum": null
+          },
+          "sharedGpuPeakMb": {
+            "count": 0,
+            "median": null,
+            "minimum": null,
+            "maximum": null
+          }
+        }
+      }
+    ],
+    "latency": [
+      {
+        "framework": "iced",
+        "showLatencyMs": {
+          "count": 0,
+          "median": null,
+          "minimum": null,
+          "maximum": null
+        },
+        "hideLatencyMs": {
+          "count": 0,
+          "median": null,
+          "minimum": null,
+          "maximum": null
+        }
+      }
+    ]
+  }
+}

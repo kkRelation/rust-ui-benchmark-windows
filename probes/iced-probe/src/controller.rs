@@ -1,9 +1,9 @@
 use std::io;
-use std::sync::mpsc::{self, Receiver};
 use std::thread;
 use std::time::{Duration, Instant};
 
-use iced::{Element, Size, Subscription, Task, Theme, time, window};
+use iced::futures::channel::mpsc;
+use iced::{Element, Size, Subscription, Task, Theme, window};
 use serde_json::json;
 use ui_bench_protocol::{
     Command, EventKind, EventLog, WORKLOAD_STEP_MILLIS, WORKLOAD_STEPS, read_commands,
@@ -11,68 +11,36 @@ use ui_bench_protocol::{
 
 use crate::scene;
 use crate::windows::{
-    AUXILIARY_TITLE, MAIN_TITLE, benchmark_windows_ready, set_benchmark_windows_visible,
+    AUXILIARY_TITLE, MAIN_TITLE, set_benchmark_windows_visible, wait_for_benchmark_windows,
 };
-
-const TICK_MILLIS: u64 = 5;
 
 #[derive(Debug, Clone)]
 pub enum Message {
-    Opened(window::Id),
-    Tick(Instant),
-}
-
-#[derive(Debug, Clone, Copy)]
-enum Activity {
-    Idle,
-    Workload {
-        completed: usize,
-        next: Instant,
-    },
-    Cycle {
-        count: u16,
-        turns: u16,
-        next: Instant,
-    },
+    Opened,
+    Selected(usize),
+    Exit,
 }
 
 pub struct BenchState {
     main: window::Id,
     auxiliary: window::Id,
     selected: usize,
-    ready: bool,
-    opened: usize,
-    commands: Receiver<Command>,
-    activity: Activity,
-    log: EventLog,
 }
 
 impl BenchState {
     pub fn boot(log: EventLog) -> (Self, Task<Message>) {
-        let (command_sender, commands) = mpsc::channel();
-        let thread_log = log.clone();
-        thread::spawn(move || {
-            let input = io::stdin();
-            if let Err(error) = read_commands(input.lock(), |command| {
-                let quitting = matches!(command, Command::Quit);
-                command_sender
-                    .send(command)
-                    .map_err(|send_error| send_error.to_string())?;
-                Ok(!quitting)
-            }) {
-                let _ = thread_log.emit(EventKind::Error, Some(json!({ "message": error })));
-            }
-        });
+        let (messages, message_stream) = mpsc::unbounded();
+        thread::spawn(move || run_command_loop(log, messages));
 
         let (main, open_main) = window::open(window::Settings {
             size: Size::new(700.0, 480.0),
-            visible: false,
+            visible: true,
             exit_on_close_request: false,
             ..window::Settings::default()
         });
         let (auxiliary, open_auxiliary) = window::open(window::Settings {
             size: Size::new(1200.0, 760.0),
-            visible: false,
+            visible: true,
             exit_on_close_request: false,
             ..window::Settings::default()
         });
@@ -82,15 +50,11 @@ impl BenchState {
                 main,
                 auxiliary,
                 selected: 0,
-                ready: false,
-                opened: 0,
-                commands,
-                activity: Activity::Idle,
-                log,
             },
             Task::batch([
-                open_main.map(Message::Opened),
-                open_auxiliary.map(Message::Opened),
+                open_main.map(|_| Message::Opened),
+                open_auxiliary.map(|_| Message::Opened),
+                Task::run(message_stream, |message| message),
             ]),
         )
     }
@@ -98,8 +62,10 @@ impl BenchState {
     pub fn title(&self, id: window::Id) -> String {
         if id == self.main {
             MAIN_TITLE.to_owned()
-        } else {
+        } else if id == self.auxiliary {
             AUXILIARY_TITLE.to_owned()
+        } else {
+            String::new()
         }
     }
 
@@ -116,161 +82,101 @@ impl BenchState {
     }
 
     pub fn subscription(&self) -> Subscription<Message> {
-        time::every(Duration::from_millis(TICK_MILLIS)).map(Message::Tick)
+        Subscription::none()
     }
 
     pub fn update(&mut self, message: Message) -> Task<Message> {
         match message {
-            Message::Opened(id) => {
-                if id == self.main || id == self.auxiliary {
-                    self.opened += 1;
-                }
+            Message::Opened => Task::none(),
+            Message::Selected(selected) => {
+                self.selected = selected;
+                Task::none()
             }
-            Message::Tick(now) => {
-                if !self.ready {
-                    if self.opened == 2 {
-                        match benchmark_windows_ready() {
-                            Ok(true) => {
-                                if let Err(error) = set_benchmark_windows_visible(false) {
-                                    return self.fail(error);
-                                }
-                                self.ready = true;
-                                if let Err(error) = self.log.emit(EventKind::ReadyHidden, None) {
-                                    return self.fail(error.to_string());
-                                }
-                            }
-                            Ok(false) => {}
-                            Err(error) => return self.fail(error),
-                        }
-                    }
-                    return Task::none();
-                }
-
-                if let Err(error) = self.advance_activity(now) {
-                    return self.fail(error);
-                }
-                if matches!(self.activity, Activity::Idle) {
-                    match self.commands.try_recv() {
-                        Ok(command) => return self.start_command(command, now),
-                        Err(mpsc::TryRecvError::Empty) => {}
-                        Err(mpsc::TryRecvError::Disconnected) => {}
-                    }
-                }
-            }
+            Message::Exit => iced::exit(),
         }
-        Task::none()
+    }
+}
+
+fn run_command_loop(log: EventLog, messages: mpsc::UnboundedSender<Message>) {
+    if let Err(error) = wait_for_benchmark_windows() {
+        fail(&log, error, &messages);
+        return;
+    }
+    if let Err(error) = set_benchmark_windows_visible(false) {
+        fail(&log, error, &messages);
+        return;
+    }
+    if let Err(error) = log.emit(EventKind::ReadyHidden, None) {
+        fail(&log, error.to_string(), &messages);
+        return;
     }
 
-    fn start_command(&mut self, command: Command, now: Instant) -> Task<Message> {
-        let result = match command {
-            Command::Show => self.emit_around(EventKind::ShowStart, EventKind::ShowEnd, || {
+    let input = io::stdin();
+    let result = read_commands(input.lock(), |command| {
+        match command {
+            Command::Show => emit_around(&log, EventKind::ShowStart, EventKind::ShowEnd, || {
                 set_benchmark_windows_visible(true)
-            }),
+            })?,
             Command::Workload => {
-                if let Err(error) = self.log.emit(EventKind::WorkloadStart, None) {
-                    return self.fail(error.to_string());
+                log.emit(EventKind::WorkloadStart, None)
+                    .map_err(|error| error.to_string())?;
+                let started = Instant::now();
+                for update in 0..WORKLOAD_STEPS {
+                    messages
+                        .unbounded_send(Message::Selected((update + 1) % 72))
+                        .map_err(|error| error.to_string())?;
+                    let deadline =
+                        started + Duration::from_millis((update as u64 + 1) * WORKLOAD_STEP_MILLIS);
+                    thread::sleep(deadline.saturating_duration_since(Instant::now()));
                 }
-                self.activity = Activity::Workload {
-                    completed: 0,
-                    next: now + Duration::from_millis(WORKLOAD_STEP_MILLIS),
-                };
-                Ok(())
+                log.emit(EventKind::WorkloadEnd, None)
+                    .map_err(|error| error.to_string())?;
             }
-            Command::Hide => self.emit_around(EventKind::HideStart, EventKind::HideEnd, || {
+            Command::Hide => emit_around(&log, EventKind::HideStart, EventKind::HideEnd, || {
                 set_benchmark_windows_visible(false)
-            }),
+            })?,
             Command::Cycle { count } => {
-                if let Err(error) = self
-                    .log
-                    .emit(EventKind::CycleStart, Some(json!({ "count": count })))
-                {
-                    return self.fail(error.to_string());
+                log.emit(EventKind::CycleStart, Some(json!({ "count": count })))
+                    .map_err(|error| error.to_string())?;
+                for _ in 0..count {
+                    set_benchmark_windows_visible(true)?;
+                    thread::sleep(Duration::from_millis(50));
+                    set_benchmark_windows_visible(false)?;
+                    thread::sleep(Duration::from_millis(50));
                 }
-                self.activity = Activity::Cycle {
-                    count,
-                    turns: 0,
-                    next: now,
-                };
-                Ok(())
+                log.emit(EventKind::CycleEnd, Some(json!({ "count": count })))
+                    .map_err(|error| error.to_string())?;
             }
             Command::Quit => {
-                if let Err(error) = self.log.emit(EventKind::Quit, None) {
-                    return self.fail(error.to_string());
-                }
-                return iced::exit();
-            }
-        };
-
-        match result {
-            Ok(()) => Task::none(),
-            Err(error) => self.fail(error),
-        }
-    }
-
-    fn emit_around(
-        &self,
-        start: EventKind,
-        end: EventKind,
-        action: impl FnOnce() -> Result<(), String>,
-    ) -> Result<(), String> {
-        self.log
-            .emit(start, None)
-            .map_err(|error| error.to_string())?;
-        action()?;
-        self.log.emit(end, None).map_err(|error| error.to_string())
-    }
-
-    fn advance_activity(&mut self, now: Instant) -> Result<(), String> {
-        match self.activity {
-            Activity::Idle => {}
-            Activity::Workload {
-                mut completed,
-                mut next,
-            } => {
-                while completed < WORKLOAD_STEPS && now >= next {
-                    completed += 1;
-                    self.selected = completed % 72;
-                    next += Duration::from_millis(WORKLOAD_STEP_MILLIS);
-                }
-                if completed == WORKLOAD_STEPS {
-                    self.activity = Activity::Idle;
-                    self.log
-                        .emit(EventKind::WorkloadEnd, None)
-                        .map_err(|error| error.to_string())?;
-                } else {
-                    self.activity = Activity::Workload { completed, next };
-                }
-            }
-            Activity::Cycle {
-                count,
-                mut turns,
-                mut next,
-            } => {
-                while turns < count * 2 && now >= next {
-                    let visible = turns % 2 == 0;
-                    set_benchmark_windows_visible(visible)?;
-                    turns += 1;
-                    next += Duration::from_millis(50);
-                }
-                if turns == count * 2 {
-                    self.activity = Activity::Idle;
-                    self.log
-                        .emit(EventKind::CycleEnd, Some(json!({ "count": count })))
-                        .map_err(|error| error.to_string())?;
-                } else {
-                    self.activity = Activity::Cycle { count, turns, next };
-                }
+                log.emit(EventKind::Quit, None)
+                    .map_err(|error| error.to_string())?;
+                messages
+                    .unbounded_send(Message::Exit)
+                    .map_err(|error| error.to_string())?;
+                return Ok(false);
             }
         }
-        Ok(())
+        Ok(true)
+    });
+    if let Err(error) = result {
+        fail(&log, error, &messages);
     }
+}
 
-    fn fail(&self, error: String) -> Task<Message> {
-        let _ = self
-            .log
-            .emit(EventKind::Error, Some(json!({ "message": error })));
-        iced::exit()
-    }
+fn emit_around(
+    log: &EventLog,
+    start: EventKind,
+    end: EventKind,
+    action: impl FnOnce() -> Result<(), String>,
+) -> Result<(), String> {
+    log.emit(start, None).map_err(|error| error.to_string())?;
+    action()?;
+    log.emit(end, None).map_err(|error| error.to_string())
+}
+
+fn fail(log: &EventLog, error: String, messages: &mpsc::UnboundedSender<Message>) {
+    let _ = log.emit(EventKind::Error, Some(json!({ "message": error })));
+    let _ = messages.unbounded_send(Message::Exit);
 }
 
 #[cfg(test)]
@@ -278,19 +184,13 @@ mod tests {
     use super::*;
 
     #[test]
-    fn workload_reducer_performs_exactly_four_hundred_shared_updates() {
-        let started = Instant::now();
-        let mut selected = 0;
-        let mut completed = 0;
-        let mut next = started + Duration::from_millis(WORKLOAD_STEP_MILLIS);
-        let finished = started + Duration::from_millis(WORKLOAD_STEP_MILLIS * 400);
-        while completed < WORKLOAD_STEPS && finished >= next {
-            completed += 1;
-            selected = completed % 72;
-            next += Duration::from_millis(WORKLOAD_STEP_MILLIS);
-        }
-        assert_eq!(completed, 400);
-        assert_eq!(selected, 400 % 72);
+    fn workload_schedule_contains_exactly_four_hundred_shared_updates() {
+        let selected = (1..=WORKLOAD_STEPS)
+            .map(|completed| completed % 72)
+            .collect::<Vec<_>>();
+        assert_eq!(selected.len(), 400);
+        assert_eq!(selected.last(), Some(&(400 % 72)));
+        assert_eq!(WORKLOAD_STEPS as u64 * WORKLOAD_STEP_MILLIS, 8_000);
     }
 
     #[test]

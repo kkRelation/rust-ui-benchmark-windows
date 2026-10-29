@@ -1,0 +1,28 @@
+{
+  "status": "success",
+  "framework": "iced",
+  "anchor": false,
+  "keepWorkdir": false,
+  "resultPath": "D:\\C2D\\Desktop\\Code\\Rust\\sTools\\rust-ui-benchmark-windows\\results\\2026-10-29\\iced-unmanaged-attempt-3.json",
+  "smokePath": "D:\\C2D\\Desktop\\Code\\Rust\\sTools\\rust-ui-benchmark-windows\\results\\2026-10-29\\iced-unmanaged-attempt-3-smoke.json",
+  "comparisonPath": null,
+  "workspaceRoot": "D:\\C2D\\Desktop\\Code\\Rust\\sTools\\rust-ui-benchmark-windows\\.benchmark-work\\iced",
+  "windowManagerIsolation": {
+    "manager": "komorebi",
+    "active": true,
+    "verified": true,
+    "requiredRules": [
+      "UI Framework Bench - Main",
+      "UI Framework Bench - Auxiliary Canvas"
+    ],
+    "addedRules": []
+  },
+  "cleanup": {
+    "RemovedPath": "D:\\C2D\\Desktop\\Code\\Rust\\sTools\\rust-ui-benchmark-windows\\.benchmark-work\\iced",
+    "WasPresent": true,
+    "FreeBytesBefore": 41540685824,
+    "FreeBytesAfter": 44820701184,
+    "RecoveredBytes": 3280015360
+  },
+  "completedAt": "2026-10-29T16:08:16.2666553+08:00"
+}

@@ -1,10 +1,11 @@
-use windows_sys::Win32::Foundation::{HWND, LPARAM};
+use std::thread;
+use std::time::{Duration, Instant};
+
+use windows_sys::Win32::Foundation::HWND;
 use windows_sys::Win32::System::Threading::GetCurrentProcessId;
 use windows_sys::Win32::UI::WindowsAndMessaging::{
-    EnumWindows, GetWindowTextLengthW, GetWindowTextW, GetWindowThreadProcessId, SW_HIDE,
-    SW_SHOWNOACTIVATE, ShowWindow,
+    FindWindowExW, GetWindowThreadProcessId, SW_HIDE, SW_SHOWNOACTIVATE, ShowWindow,
 };
-use windows_sys::core::BOOL;
 
 pub const MAIN_TITLE: &str = "UI Framework Bench - Main";
 pub const AUXILIARY_TITLE: &str = "UI Framework Bench - Auxiliary Canvas";
@@ -13,30 +14,31 @@ fn is_benchmark_window(process_id: u32, expected_process_id: u32, title: &str) -
     process_id == expected_process_id && (title == MAIN_TITLE || title == AUXILIARY_TITLE)
 }
 
-unsafe extern "system" fn enum_window(hwnd: HWND, parameter: LPARAM) -> BOOL {
-    let windows = unsafe { &mut *(parameter as *mut Vec<HWND>) };
-    let mut process_id = 0_u32;
-    unsafe { GetWindowThreadProcessId(hwnd, &mut process_id) };
-
-    let expected_process_id = unsafe { GetCurrentProcessId() };
-    let length = unsafe { GetWindowTextLengthW(hwnd) };
-    if length <= 0 {
-        return 1;
-    }
-
-    let mut buffer = vec![0_u16; length as usize + 1];
-    let copied = unsafe { GetWindowTextW(hwnd, buffer.as_mut_ptr(), buffer.len() as i32) };
-    let title = String::from_utf16_lossy(&buffer[..copied as usize]);
-    if is_benchmark_window(process_id, expected_process_id, &title) {
-        windows.push(hwnd);
-    }
-    1
-}
-
 fn benchmark_windows() -> Vec<HWND> {
     let mut windows = Vec::new();
-    unsafe {
-        EnumWindows(Some(enum_window), &mut windows as *mut Vec<HWND> as LPARAM);
+    let expected_process_id = unsafe { GetCurrentProcessId() };
+    for title in [MAIN_TITLE, AUXILIARY_TITLE] {
+        let wide_title = title.encode_utf16().chain(Some(0)).collect::<Vec<_>>();
+        let mut previous = std::ptr::null_mut();
+        loop {
+            let window = unsafe {
+                FindWindowExW(
+                    std::ptr::null_mut(),
+                    previous,
+                    std::ptr::null(),
+                    wide_title.as_ptr(),
+                )
+            };
+            if window.is_null() {
+                break;
+            }
+            let mut process_id = 0_u32;
+            unsafe { GetWindowThreadProcessId(window, &mut process_id) };
+            if is_benchmark_window(process_id, expected_process_id, title) {
+                windows.push(window);
+            }
+            previous = window;
+        }
     }
     windows
 }
@@ -47,6 +49,19 @@ pub fn benchmark_windows_ready() -> Result<bool, String> {
         0 | 1 => Ok(false),
         2 => Ok(true),
         _ => Err(format!("expected two benchmark windows, found {count}")),
+    }
+}
+
+pub fn wait_for_benchmark_windows() -> Result<(), String> {
+    let deadline = Instant::now() + Duration::from_secs(60);
+    loop {
+        if benchmark_windows_ready()? {
+            return Ok(());
+        }
+        if Instant::now() >= deadline {
+            return Err("timed out waiting for two benchmark windows".to_owned());
+        }
+        thread::sleep(Duration::from_millis(20));
     }
 }
 

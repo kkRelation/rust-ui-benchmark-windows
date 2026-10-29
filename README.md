@@ -10,10 +10,11 @@ resident Windows quick launcher. The published historical cohort contains:
 - Dioxus Native on Blitz
 - gpui-ce
 
-Iced, gpui-kit, KAS, Makepad, and FerroUI are planned as sequential expansion
-cohorts. Each one uses an isolated Cargo home and target directory which is
-removed only after its durable result passes validation, keeping peak disk use
-close to one framework build at a time.
+Iced has joined the corrected unmanaged-window cohort. gpui-kit, KAS, Makepad,
+and FerroUI remain planned as sequential expansions. Each one uses an isolated
+Cargo home and target directory which is removed only after its durable result
+passes validation, keeping peak disk use close to one framework build at a
+time.
 
 The production application that motivated the experiment is not a contestant.
 Each reduced probe owns the same two-window scene and shared selection state,
@@ -179,6 +180,22 @@ were explicitly removed, recovering 3,625,500,672 bytes.
 All expansion probes must use this unmanaged-window rule. Direct ranking
 against the original six remains historical context only; a strict combined
 ranking would require rerunning those six under the corrected rule.
+
+### Iced unmanaged-window result
+
+Iced 0.14.0 with its WGPU renderer completed a debug smoke run and three valid
+release rounds on 2026-10-29. Its median hidden/workload private working sets
+were 133.3/152.0 MB; workload machine CPU was 0.327%, average GPU engine use
+was 1.054%, and warm show/hide latency was 329.911/222.939 ms. Both native
+windows retained the expected unmanaged outer sizes at every checkpoint.
+
+The validated evidence is in
+[`iced-unmanaged-attempt-3.json`](results/2026-10-29/iced-unmanaged-attempt-3.json)
+and its adjacent event/status artifacts. The first two smoke attempts are kept
+as diagnostics for an Iced/Winit same-process HWND enumeration deadlock; the
+successful probe restricts lookup to the two exact titles and verifies their
+PID before changing visibility. Guarded cleanup then removed only the isolated
+Iced work root and recovered 3,280,015,360 bytes.
 
 ## Historical result
 

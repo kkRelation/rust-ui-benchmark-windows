@@ -1,0 +1,20 @@
+{
+  "status": "failed",
+  "framework": "iced",
+  "anchor": false,
+  "stage": "smoke-validation",
+  "error": "Smoke result validation failed: Result contains 1 failed run(s) for 'iced'.; Expected exactly 1 distinct successful rounds for 'iced'; found 0 successful run(s) and 0 distinct round number(s).",
+  "workspaceRoot": "D:\\C2D\\Desktop\\Code\\Rust\\sTools\\rust-ui-benchmark-windows\\.benchmark-work\\iced",
+  "workspacePreserved": true,
+  "windowManagerIsolation": {
+    "manager": "komorebi",
+    "active": true,
+    "verified": true,
+    "requiredRules": [
+      "UI Framework Bench - Main",
+      "UI Framework Bench - Auxiliary Canvas"
+    ],
+    "addedRules": []
+  },
+  "failedAt": "2026-10-29T15:55:28.6071600+08:00"
+}
