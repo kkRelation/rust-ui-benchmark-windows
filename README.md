@@ -60,21 +60,25 @@ automatically for gpui-fast). These entries should not be mixed with the
 managed-window historical table above; the two-day separation also remains a
 minor cross-run limitation.
 
+Lower is better in every numeric column. 🟥 **Bold values** are overall minima
+(including ties); 🟦 **bold values** are lower than gpui-fast but are not the
+overall minimum. The gpui-fast row is the comparison baseline.
+
 | Framework | Hidden PWS (MB) | Workload PWS (MB) | Workload CPU (%) | GPU avg (%) | Warm show / hide (ms) |
 |---|---:|---:|---:|---:|---:|
-| Tauri / WebView2 | 94.6 | 98.2 | 0.328 | **0.000** | 259.550 / 218.722 |
+| Tauri / WebView2 | 94.6 | 98.2 | 0.328 | 🟥 **0.000** | 🟦 **259.550** / 🟦 **218.722** |
 | Slint | 33.2 | 61.5 | 1.304 | 6.717 | 419.151 / 345.402 |
-| zgui | 87.0 | 96.6 | 0.328 | 0.834 | **207.027** / 227.862 |
-| Dioxus Desktop / WebView2 | 97.2 | 123.1 | 1.313 | 0.481 | 335.474 / 263.959 |
-| Dioxus Native / Blitz | 189.5 | 189.9 | **0.325** | **0.000** | 266.597 / **199.261** |
-| gpui-ce | 23.7 | 36.6 | 0.658 | 2.985 | 246.915 / 204.532 |
-| Iced | 133.3 | 152.0 | 0.327 | 1.054 | 329.911 / 222.939 |
-| gpui-kit | **19.0** | **24.8** | 0.656 | 1.618 | 284.224 / 308.871 |
-| KAS | 151.7 | 188.4 | 0.328 | 11.699 | 246.977 / 237.816 |
-| Makepad | 124.9 | 133.9 | 0.328 | 1.022 | 224.070 / 234.086 |
-| FerroUI | 45.7 | 54.4 | 0.329 | 0.632 | 297.982 / 244.843 |
-| egui | 184.9 | 189.0 | **0.325** | 0.496 | 253.600 / 230.375 |
-| gpui-fast | 20.4 | 25.9 | **0.325** | 0.956 | 319.336 / 299.870 |
+| zgui | 87.0 | 96.6 | 0.328 | 🟦 **0.834** | 🟥 **207.027** / 🟦 **227.862** |
+| Dioxus Desktop / WebView2 | 97.2 | 123.1 | 1.313 | 🟦 **0.481** | 335.474 / 🟦 **263.959** |
+| Dioxus Native / Blitz | 189.5 | 189.9 | 🟥 **0.325** | 🟥 **0.000** | 🟦 **266.597** / 🟥 **199.261** |
+| gpui-ce | 23.7 | 36.6 | 0.658 | 2.985 | 🟦 **246.915** / 🟦 **204.532** |
+| Iced | 133.3 | 152.0 | 0.327 | 1.054 | 329.911 / 🟦 **222.939** |
+| gpui-kit | 🟥 **19.0** | 🟥 **24.8** | 0.656 | 1.618 | 🟦 **284.224** / 308.871 |
+| KAS | 151.7 | 188.4 | 0.328 | 11.699 | 🟦 **246.977** / 🟦 **237.816** |
+| Makepad | 124.9 | 133.9 | 0.328 | 1.022 | 🟦 **224.070** / 🟦 **234.086** |
+| FerroUI | 45.7 | 54.4 | 0.329 | 🟦 **0.632** | 🟦 **297.982** / 🟦 **244.843** |
+| egui | 184.9 | 189.0 | 🟥 **0.325** | 🟦 **0.496** | 🟦 **253.600** / 🟦 **230.375** |
+| gpui-fast | 20.4 | 25.9 | 🟥 **0.325** | 0.956 | 319.336 / 299.870 |
 
 These are machine- and scene-specific observations. In particular, the GPU
 counter is sampled at Windows process/engine resolution, and the frameworks use
