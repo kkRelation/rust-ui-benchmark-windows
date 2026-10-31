@@ -89,6 +89,43 @@ framework from one whose average hides a sharp weakness.
 
 [![Equal-weight composite ranking](docs/assets/comparison/overall-ranking.svg)](docs/assets/comparison/overall-ranking.svg)
 
+### Why some axis scores are very low
+
+An axis score is cohort-relative, not an absolute grade. A score of 0 means
+"last among these thirteen measurements"; it does not mean that the framework
+has zero capability or that the raw result is unusable. The list below includes
+every axis score at or below 25 so that a good composite cannot hide a sharp
+weakness. Raw inputs and scores come from
+[`comparison-data.json`](docs/assets/comparison/comparison-data.json).
+
+The explanations deliberately distinguish measured facts from causal
+attribution. Windows GPU activity here is the
+[per-timestamp sum](harness/measure-process-tree.ps1) of every matching
+process-tree engine/adapter counter, whereas
+[Task Manager represents a process by its busiest engine](https://devblogs.microsoft.com/directx/gpus-in-the-task-manager/).
+Warm latency is also end-to-end: command delivery, framework event-loop work,
+both HWND transitions, compositor/OS work, and
+[5 ms harness polling](harness/measure-resident.ps1) are all included.
+Consequently, an engine trace or CPU/GPU profiler is required where the table
+says that the root cause is not isolated.
+
+| Framework | Low axes (score; raw input) | What the evidence does and does not establish |
+|---|---|---|
+| gpui-fast | warm show 25 (319.336 ms); warm hide 16.667 (299.870 ms) | The accepted probe uses the normal native D3D11/DirectComposition path and both HWNDs reached the required states. The benchmark did not trace how much latency came from gpui-fast, DirectComposition, the OS transition, or polling. These are relative latency weaknesses, not evidence of a rendering or idle-resource problem. |
+| gpui-ce | workload CPU 16.667 (0.658% machine); GPU activity 16.667 (2.985%) | The cost appears only while the common 50 Hz selection workload drives both windows. Idle checkpoints return to the counter floor. No CPU stack or GPU-engine trace was captured, so the split between scene rebuild, command generation, rendering, and presentation remains unknown. |
+| gpui-kit | workload CPU 25 (0.656%); GPU activity 25 (1.618%); warm hide 8.333 (308.871 ms) | This is gpui-kit's normal gpui-pre application/root-component/asset path, not a browser shell. The measured costs are repeatable, but no profile isolates framework work from renderer and Windows presentation work; warm hide includes both native windows and harness observation. |
+| Dioxus Native / Blitz | RAM 0 (189.5/189.9 MB hidden/workload PWS); dedicated VRAM 25 (119.5 MB); shared GPU memory 25 (74.2 MB) | The pinned alpha/beta native stack creates [two Blitz window renderers and two VDOMs](probes/dioxus-native-probe/src/main.rs), synchronized from one selection channel. That topology is a concrete source of duplicated per-window state, but the benchmark did not attribute the footprint among VDOMs, renderer/device state, swapchains, glyph/image caches, and allocator retention. |
+| zgui | dedicated VRAM 16.667 (133.9 MB) | The value is the peak process allocation after both native windows and their render resources exist. Fast show/hide and modest CPU do not cancel that allocation, but the Windows counter cannot distinguish swapchain surfaces from renderer caches; no allocation trace was taken. |
+| egui | RAM 8.333 (184.9/189.0 MB PWS); dedicated VRAM 0 (281.9 MB); shared GPU memory 8.333 (81.1 MB) | The probe explicitly uses eframe's WGPU renderer with a root viewport and one deferred native viewport. The counters establish a large two-viewport WGPU footprint on this machine, but do not identify how much belongs to swapchains, staging/belt buffers, texture/glyph caches, the adapter, or retained allocator pages. |
+| Dioxus Desktop / WebView2 | workload CPU 0 (1.313%); warm show 8.333 (335.474 ms); warm hide 25 (263.959 ms) | The whole-tree measurement includes the two WebView2 renderer processes and the other WebView runtime processes, while each selection update crosses into both DOMs. This explains why the metric includes more than the Rust host, but no ETW/profile trace apportioned the CPU or latency among Dioxus diffing, IPC, WebView rendering, and window/compositor work. |
+| Iced | RAM 25 (133.3/152.0 MB PWS); shared GPU memory 16.667 (78.4 MB); warm show 16.667 (329.911 ms) | The accepted probe uses Iced's normal WGPU/DX12 multi-window path. The data establishes the resident and GPU-backed footprint plus end-to-end show time; it does not isolate WGPU device/surface allocations, caches, framework state, driver allocation policy, or Windows transition time. |
+| KAS | RAM 16.667 (151.7/188.4 MB PWS); GPU activity 0 (11.699%); dedicated VRAM 8.333 (241.9 MB); shared GPU memory 0 (195.6 MB) | KAS uses its normal WGPU/DX12 runner, and the high activity is confined to the common 400 x 20 ms two-window update phase. These are stable machine/scene observations, not a general KAS claim. No frame/engine or allocation profile was captured, so redraw scope, surface strategy, caches, and driver behavior remain candidate causes rather than conclusions. |
+| Slint | workload CPU 8.333 (1.304%); GPU activity 8.333 (6.717%); warm show/hide 0 (419.151/345.402 ms) | The probe's default Slint 1.16.1 features select Winit + FemtoVG/OpenGL. Every 20 ms the [probe changes selection-dependent content in both windows](probes/slint-probe/src/main.rs); that [FemtoVG 1.16.1 render path](https://github.com/slint-ui/slint/blob/v1.16.1/internal/renderers/femtovg/lib.rs) clears the full surface and traverses component items before presentation. This directly explains frequent whole-window GPU work, although only a GPU trace can apportion individual engines. The earlier PID-reuse-contaminated sample was excluded; the accepted three one-process rounds retain the same pattern. Show/hide remains an end-to-end result with no framework/OS breakdown. |
+
+Tauri, Makepad, and FerroUI have no axis at or below this explicit threshold;
+their non-leading dimensions and implementation caveats remain visible in the
+heatmap, raw JSON, and detailed notes below.
+
 ### Individual capability radars
 
 Each framework gets its own seven-axis radar so thirteen polygons never overlap.
