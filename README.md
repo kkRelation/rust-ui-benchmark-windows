@@ -1,8 +1,19 @@
 # Rust UI Benchmark for Windows
 
 A reproducible comparison of thirteen desktop UI stacks under the lifecycle of
-a resident Windows quick launcher: Tauri/WebView2, Slint, zgui, Dioxus Desktop,
-Dioxus Native/Blitz, gpui-ce, Iced, gpui-kit, KAS, Makepad, FerroUI, egui, and
+a resident Windows quick launcher:
+[Tauri/WebView2](https://github.com/tauri-apps/tauri),
+[Slint](https://github.com/slint-ui/slint),
+[zgui](https://github.com/zortax/zgui),
+[Dioxus Desktop](https://github.com/DioxusLabs/dioxus),
+[Dioxus Native/Blitz](https://github.com/DioxusLabs/blitz),
+[gpui-ce](https://github.com/gpui-ce/gpui-ce),
+[Iced](https://github.com/iced-rs/iced),
+[gpui-kit](https://github.com/longbridge/gpui-kit),
+[KAS](https://github.com/kas-gui/kas),
+[Makepad](https://github.com/makepad/makepad),
+[FerroUI](https://github.com/wieslawsoltes/FerroUI),
+[egui](https://github.com/emilk/egui), and
 [gpui-fast](https://github.com/longbridge/gpui-fast). The current results use
 the corrected unmanaged-window protocol and a common environment baseline.
 Frameworks are tested serially with an isolated Cargo home and target directory
@@ -192,7 +203,7 @@ for an accepted terminal outcome, not an incomplete result.
 
 ## Detailed current-result notes
 
-### Iced unmanaged-window result
+### [Iced](https://github.com/iced-rs/iced) unmanaged-window result
 
 Iced 0.14.0 with its WGPU renderer completed a debug smoke run and three valid
 release rounds on 2026-10-29. Its median hidden/workload private working sets
@@ -208,7 +219,7 @@ successful probe restricts lookup to the two exact titles and verifies their
 PID before changing visibility. Guarded cleanup then removed only the isolated
 Iced work root and recovered 3,280,015,360 bytes.
 
-### gpui-kit unmanaged-window result
+### [gpui-kit](https://github.com/longbridge/gpui-kit) unmanaged-window result
 
 gpui-kit 0.8.1, backed by gpui-pre 0.3.10, completed a debug smoke run and
 three valid release rounds on 2026-10-29. Its median hidden/workload private
@@ -229,7 +240,7 @@ accepted probe normalizes the two HWND outer rectangles with per-window DPI
 before emitting `ready-hidden`. Guarded cleanup removed only the isolated
 gpui-kit work root and recovered 7,488,868,352 bytes.
 
-### KAS unmanaged-window result
+### [KAS](https://github.com/kas-gui/kas) unmanaged-window result
 
 KAS 0.17.0 with its normal WGPU/DX12 runner completed a debug smoke run and
 three valid release rounds on 2026-10-29. Its median hidden/workload private
@@ -249,7 +260,7 @@ normalizes their DPI-aware outer rectangles, and requires 500 ms of stable
 hidden state before emitting `ready-hidden`. Guarded cleanup removed only the
 isolated KAS work root and recovered 3,313,897,472 bytes.
 
-### Makepad unmanaged-window result
+### [Makepad](https://github.com/makepad/makepad) unmanaged-window result
 
 Makepad Widgets 1.0.0 with its native Windows D3D11 renderer completed a
 debug smoke run and three valid release rounds on 2026-10-29. Its median
@@ -269,7 +280,7 @@ Rust selection value projected into both native windows; no WebView runtime is
 present. Guarded cleanup removed only the isolated Makepad work root and
 recovered 1,897,279,488 bytes.
 
-### FerroUI unmanaged-window result
+### [FerroUI](https://github.com/wieslawsoltes/FerroUI) unmanaged-window result
 
 FerroUI `0.4.0-preview.1` with its default desktop Fluent theme and Skia/ANGLE
 renderer completed a debug smoke run and three valid release rounds on
@@ -288,7 +299,7 @@ LNK4217 import warnings; the locked build, smoke run, all three rounds, and
 clean shutdown nevertheless succeeded. Guarded cleanup removed only the
 isolated FerroUI work root and recovered 15,976,652,800 bytes.
 
-### egui unmanaged-window result
+### [egui](https://github.com/emilk/egui) unmanaged-window result
 
 egui/eframe 0.37.0 with the WGPU renderer completed a debug smoke run and
 three valid release rounds on 2026-10-29. Its median hidden/workload private
@@ -308,7 +319,7 @@ contract as the other expansion probes. The 14.2 MB executable and locked
 dependency graph were identical across all rounds. Guarded cleanup removed
 only the isolated egui work root and recovered 3,520,892,928 bytes.
 
-### gpui-fast unmanaged-window result
+### [gpui-fast](https://github.com/longbridge/gpui-fast) unmanaged-window result
 
 gpui-fast 0.1.12 with its native Windows Direct3D 11/DirectComposition path
 completed a debug smoke run and three valid release rounds on 2026-10-31. Its
