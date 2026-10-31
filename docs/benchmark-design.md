@@ -12,8 +12,9 @@ lifecycle of a resident quick launcher:
 5. Dioxus Native (Blitz/WGPU)
 6. gpui-ce
 
-The corrected 2026-10-29 unmanaged-window cohort reruns the historical six and
-adds six more contestants:
+The corrected unmanaged-window cohort reruns the historical six, adds six
+contestants on 2026-10-29, and adds gpui-fast under the same baseline on
+2026-10-31:
 
 1. Tauri 2 (WebView2)
 2. Slint
@@ -27,6 +28,7 @@ adds six more contestants:
 10. Makepad Widgets 1.0.0 (native Windows D3D11)
 11. FerroUI 0.4.0-preview.1 (default desktop Fluent/Skia/ANGLE)
 12. egui/eframe 0.37.0 (WGPU)
+13. gpui-fast 0.1.12 (native Windows Direct3D 11/DirectComposition)
 
 The benchmark is a reduced business-equivalent probe, not a comparison between the full Tauri product and minimal demos. Cold startup remains supplementary. The primary result is the cost of a process that stays alive, presents warm windows, performs the same workload, and returns to the background.
 
@@ -83,7 +85,8 @@ CPU and GPU engine samples cover the same wall-clock interval. GPU memory is cap
 - All probes are release builds with lockfiles and exact versions or Git revisions.
 - Dioxus Desktop and Tauri are WebView2 contenders; Dioxus Native uses Blitz.
   The expansion renderers are Iced WGPU/DX12, gpui-kit/gpui-pre, KAS
-  WGPU/DX12, Makepad D3D11, FerroUI Skia/ANGLE, and egui/eframe WGPU.
+  WGPU/DX12, Makepad D3D11, FerroUI Skia/ANGLE, egui/eframe WGPU, and
+  gpui-fast Direct3D 11/DirectComposition.
 - OS, GPU, driver, display topology, power state, WebView2 runtime, revisions, and commands are written into result metadata.
 - The runner checks window count and dimensions before accepting a phase.
 - Results from this machine describe relative cost under this protocol, not universal framework rankings.
@@ -105,6 +108,13 @@ validation, and only then guarded deletion of that one allow-listed work root.
 A failed build, measurement, validation, or anchor check preserves the work
 root for diagnosis.
 
+The single-framework runner records and exits a running `screenpipe-app.exe`
+after the debug build and before lifecycle measurement. It restores the exact
+captured executable/arguments on success or failure and requires the local
+health endpoint to return `healthy` before cleanup or terminal status. Other
+processes whose names merely contain `screenpipe` are outside this isolation
+scope.
+
 This bounds peak disk use to roughly one framework build plus its isolated
 tooling. Exact peak size still varies substantially: native renderer source,
 shader, Skia, and ANGLE builds can be much larger than a small Rust-only probe.
@@ -113,9 +123,11 @@ tooling was kept inside its work root and removed with the validated build.
 
 ## Interpretation limits
 
-- All twelve contestants were measured on one machine and date under the
-  corrected unmanaged-window rule. These results form a separate comparable
-  cohort and do not retroactively replace the historical six-framework report.
+- All thirteen contestants were measured on one machine under the corrected
+  unmanaged-window rule. The first twelve were measured on 2026-10-29 and
+  gpui-fast on 2026-10-31, so the two-day separation remains a cross-run
+  limitation. These results do not retroactively replace the historical
+  six-framework report.
 - A zero GPU sample means the Windows per-process counter observed no activity
   at the sampling resolution, not that a framework never uses the GPU.
 - Framework defaults differ. FerroUI's default Fluent stack transitively

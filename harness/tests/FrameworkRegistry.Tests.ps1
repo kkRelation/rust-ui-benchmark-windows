@@ -7,7 +7,7 @@ Describe "benchmark framework registry" {
     $definitions.GetType().FullName | Should Be "System.Collections.Specialized.OrderedDictionary"
     $enabled = @($definitions.Values | Where-Object Enabled | ForEach-Object Name)
 
-    ($enabled -join ",") | Should Be "tauri,slint,zgui,dioxus-desktop,dioxus-native,gpui-ce,iced,gpui-kit,kas,makepad,ferroui,egui"
+    ($enabled -join ",") | Should Be "tauri,slint,zgui,dioxus-desktop,dioxus-native,gpui-ce,iced,gpui-kit,kas,makepad,ferroui,egui,gpui-fast"
   }
 
   It "has no approved expansion candidates left disabled" {
@@ -36,6 +36,17 @@ Describe "benchmark framework registry" {
     $definition.Binary | Should Be "komorebi-egui-framework-bench.exe"
     $definition.PinName | Should Be "egui"
     $definition.Pin | Should Be "0.37.0"
+    $definition.Enabled | Should Be $true
+  }
+
+  It "resolves the exact gpui-fast release build definition and pin" {
+    $definition = Get-BenchmarkFrameworkDefinition -Name "gpui-fast"
+
+    $definition.Name | Should Be "gpui-fast"
+    $definition.Directory | Should Be "gpui-fast-probe"
+    $definition.Binary | Should Be "komorebi-gpui-fast-framework-bench.exe"
+    $definition.PinName | Should Be "gpuiFast"
+    $definition.Pin | Should Be "0.1.12"
     $definition.Enabled | Should Be $true
   }
 

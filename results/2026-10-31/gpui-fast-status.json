@@ -1,0 +1,50 @@
+{
+  "status": "success",
+  "framework": "gpui-fast",
+  "anchor": false,
+  "keepWorkdir": false,
+  "resultPath": "D:\\C2D\\Desktop\\Code\\Rust\\sTools\\rust-ui-benchmark-windows\\results\\2026-10-31\\gpui-fast.json",
+  "smokePath": "D:\\C2D\\Desktop\\Code\\Rust\\sTools\\rust-ui-benchmark-windows\\results\\2026-10-31\\gpui-fast-smoke.json",
+  "comparisonPath": null,
+  "workspaceRoot": "D:\\C2D\\Desktop\\Code\\Rust\\sTools\\rust-ui-benchmark-windows\\.benchmark-work\\gpui-fast",
+  "windowManagerIsolation": {
+    "manager": "komorebi",
+    "active": true,
+    "verified": true,
+    "requiredRules": [
+      "UI Framework Bench - Main",
+      "UI Framework Bench - Auxiliary Canvas"
+    ],
+    "addedRules": [
+      "UI Framework Bench - Main",
+      "UI Framework Bench - Auxiliary Canvas"
+    ]
+  },
+  "screenpipeIsolation": {
+    "suspended": {
+      "wasRunning": true,
+      "stoppedProcessCount": 1,
+      "launches": [
+        {
+          "executablePath": "C:\\Users\\Xcz\\AppData\\Local\\screenpipe\\screenpipe-app.exe",
+          "arguments": "--autostart"
+        }
+      ],
+      "stoppedAt": "2026-10-31T13:06:52.8481563+08:00"
+    },
+    "restore": {
+      "required": true,
+      "startedProcessCount": 1,
+      "healthy": true,
+      "restoredAt": "2026-10-31T13:13:41.0300462+08:00"
+    }
+  },
+  "cleanup": {
+    "RemovedPath": "D:\\C2D\\Desktop\\Code\\Rust\\sTools\\rust-ui-benchmark-windows\\.benchmark-work\\gpui-fast",
+    "WasPresent": true,
+    "FreeBytesBefore": 39130890240,
+    "FreeBytesAfter": 43494113280,
+    "RecoveredBytes": 4363223040
+  },
+  "completedAt": "2026-10-31T13:13:48.9951995+08:00"
+}

@@ -1,0 +1,1166 @@
+{
+  "schemaVersion": 2,
+  "capturedAt": "2026-10-31T13:13:21.7776775+08:00",
+  "protocol": {
+    "resident": true,
+    "windows": 2,
+    "mainContentSize": "700x480",
+    "auxiliaryContentSize": "1200x760",
+    "workload": "400 shared-state updates at 20 ms",
+    "phases": [
+      "hiddenIdle",
+      "warmShow",
+      "visibleIdle",
+      "workload400",
+      "warmHide",
+      "postHideIdle",
+      "cycle30",
+      "postCycleIdle"
+    ],
+    "sampleSeconds": 10,
+    "postHideSettleSeconds": 15,
+    "cycleCount": 30,
+    "rounds": 3,
+    "roundStart": 1,
+    "rotatingOrder": true,
+    "smoke": false
+  },
+  "pins": {
+    "gpuiFast": "0.1.12"
+  },
+  "environment": {
+    "os": "Microsoft Windows 11 专业版",
+    "osVersion": "10.0.26200",
+    "machine": "Jiaolong Series MRID6",
+    "logicalProcessors": 32,
+    "cpu": [
+      "AMD Ryzen 9 7945HX with Radeon Graphics        "
+    ],
+    "gpu": [
+      {
+        "name": "Parsec Virtual Display Adapter",
+        "driverVersion": "0.45.0.0"
+      },
+      {
+        "name": "GameViewer Virtual Display Adapter",
+        "driverVersion": "15.6.5.199"
+      },
+      {
+        "name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+        "driverVersion": "32.0.16.1047"
+      },
+      {
+        "name": "AMD Radeon(TM) Graphics",
+        "driverVersion": "32.0.11038.3"
+      }
+    ],
+    "powerPlan": "电源方案 GUID: 5fa7881b-3a51-42ec-92eb-4a309e6a73cc  (cpu boost)"
+  },
+  "toolchain": {
+    "rustcVerbose": "rustc 1.98.1 (48a229cea 2026-09-01)\nbinary: rustc\ncommit-hash: 48a229ceaefd4985c50990b14116b6d856af0985\ncommit-date: 2026-09-01\nhost: x86_64-pc-windows-msvc\nrelease: 1.98.1\nLLVM version: 22.1.8",
+    "cargoVersion": "cargo 1.98.1 (797e8a9bc 2026-08-05)"
+  },
+  "runs": [
+    {
+      "framework": "gpui-fast",
+      "round": 1,
+      "status": "ok",
+      "executable": ".benchmark-work/gpui-fast/target/release/komorebi-gpui-fast-framework-bench.exe",
+      "executableSizeMb": 11.0,
+      "showLatencyMs": 319.336,
+      "hideLatencyMs": 363.17,
+      "topology": {
+        "hidden": [
+          {
+            "ProcessId": 54208,
+            "Title": "UI Framework Bench - Auxiliary Canvas",
+            "Visible": false,
+            "Width": 1215,
+            "Height": 794
+          },
+          {
+            "ProcessId": 54208,
+            "Title": "UI Framework Bench - Main",
+            "Visible": false,
+            "Width": 715,
+            "Height": 514
+          }
+        ],
+        "visible": [
+          {
+            "ProcessId": 54208,
+            "Title": "UI Framework Bench - Auxiliary Canvas",
+            "Visible": true,
+            "Width": 1215,
+            "Height": 794
+          },
+          {
+            "ProcessId": 54208,
+            "Title": "UI Framework Bench - Main",
+            "Visible": true,
+            "Width": 715,
+            "Height": 514
+          }
+        ],
+        "postHide": [
+          {
+            "ProcessId": 54208,
+            "Title": "UI Framework Bench - Auxiliary Canvas",
+            "Visible": false,
+            "Width": 1215,
+            "Height": 794
+          },
+          {
+            "ProcessId": 54208,
+            "Title": "UI Framework Bench - Main",
+            "Visible": false,
+            "Width": 715,
+            "Height": 514
+          }
+        ],
+        "postCycle": [
+          {
+            "ProcessId": 54208,
+            "Title": "UI Framework Bench - Auxiliary Canvas",
+            "Visible": false,
+            "Width": 1215,
+            "Height": 794
+          },
+          {
+            "ProcessId": 54208,
+            "Title": "UI Framework Bench - Main",
+            "Visible": false,
+            "Width": 715,
+            "Height": 514
+          }
+        ]
+      },
+      "phases": {
+        "hiddenIdle": {
+          "capturedAt": "2026-10-31T13:09:16.7400576+08:00",
+          "sampleStartedAt": "2026-10-31T13:09:05.5765415+08:00",
+          "sampleEndedAt": "2026-10-31T13:09:16.7400576+08:00",
+          "sampleDurationSeconds": 11.163,
+          "rootProcessId": 54208,
+          "processCount": 1,
+          "rendererCount": 0,
+          "workingSetMb": 62.8,
+          "privateWorkingSetMb": 21.0,
+          "privateBytesMb": 122.8,
+          "cpuSampleSeconds": 10,
+          "cpuSingleCorePercent": 0.0,
+          "cpuMachinePercent": 0.0,
+          "logicalProcessorCount": 32,
+          "gpuSamples": 11,
+          "gpuEnginePercent": 0.0,
+          "gpuEngineAveragePercent": 0.0,
+          "gpuEnginePeakPercent": 0.0,
+          "dedicatedGpuMb": 7.8,
+          "dedicatedGpuStartMb": 7.8,
+          "dedicatedGpuEndMb": 7.8,
+          "dedicatedGpuPeakMb": 7.8,
+          "sharedGpuMb": 0.7,
+          "sharedGpuStartMb": 0.7,
+          "sharedGpuEndMb": 0.7,
+          "sharedGpuPeakMb": 0.7,
+          "processes": [
+            {
+              "processId": 54208,
+              "parentProcessId": 33428,
+              "name": "komorebi-gpui-fast-framework-bench.exe",
+              "renderer": false
+            }
+          ]
+        },
+        "visibleIdle": {
+          "capturedAt": "2026-10-31T13:09:30.2049569+08:00",
+          "sampleStartedAt": "2026-10-31T13:09:19.0434457+08:00",
+          "sampleEndedAt": "2026-10-31T13:09:30.2049569+08:00",
+          "sampleDurationSeconds": 11.161,
+          "rootProcessId": 54208,
+          "processCount": 1,
+          "rendererCount": 0,
+          "workingSetMb": 68.0,
+          "privateWorkingSetMb": 25.1,
+          "privateBytesMb": 136.3,
+          "cpuSampleSeconds": 10,
+          "cpuSingleCorePercent": 0.0,
+          "cpuMachinePercent": 0.0,
+          "logicalProcessorCount": 32,
+          "gpuSamples": 11,
+          "gpuEnginePercent": 0.0,
+          "gpuEngineAveragePercent": 0.0,
+          "gpuEnginePeakPercent": 0.0,
+          "dedicatedGpuMb": 46.2,
+          "dedicatedGpuStartMb": 46.2,
+          "dedicatedGpuEndMb": 46.2,
+          "dedicatedGpuPeakMb": 46.2,
+          "sharedGpuMb": 2.2,
+          "sharedGpuStartMb": 2.2,
+          "sharedGpuEndMb": 2.2,
+          "sharedGpuPeakMb": 2.2,
+          "processes": [
+            {
+              "processId": 54208,
+              "parentProcessId": 33428,
+              "name": "komorebi-gpui-fast-framework-bench.exe",
+              "renderer": false
+            }
+          ]
+        },
+        "workload400": {
+          "capturedAt": "2026-10-31T13:09:42.5892712+08:00",
+          "sampleStartedAt": "2026-10-31T13:09:32.9525966+08:00",
+          "sampleEndedAt": "2026-10-31T13:09:42.5892712+08:00",
+          "sampleDurationSeconds": 9.635,
+          "rootProcessId": 54208,
+          "processCount": 1,
+          "rendererCount": 0,
+          "workingSetMb": 69.0,
+          "privateWorkingSetMb": 26.0,
+          "privateBytesMb": 137.2,
+          "cpuSampleSeconds": 8,
+          "cpuSingleCorePercent": 10.379,
+          "cpuMachinePercent": 0.324,
+          "logicalProcessorCount": 32,
+          "gpuSamples": 9,
+          "gpuEnginePercent": 0.881,
+          "gpuEngineAveragePercent": 0.881,
+          "gpuEnginePeakPercent": 1.179,
+          "dedicatedGpuMb": 49.4,
+          "dedicatedGpuStartMb": 49.4,
+          "dedicatedGpuEndMb": 49.4,
+          "dedicatedGpuPeakMb": 49.4,
+          "sharedGpuMb": 2.0,
+          "sharedGpuStartMb": 1.9,
+          "sharedGpuEndMb": 2.0,
+          "sharedGpuPeakMb": 2.0,
+          "processes": [
+            {
+              "processId": 54208,
+              "parentProcessId": 33428,
+              "name": "komorebi-gpui-fast-framework-bench.exe",
+              "renderer": false
+            }
+          ]
+        },
+        "postHideIdle": {
+          "capturedAt": "2026-10-31T13:10:11.3029396+08:00",
+          "sampleStartedAt": "2026-10-31T13:10:00.1831775+08:00",
+          "sampleEndedAt": "2026-10-31T13:10:11.3029396+08:00",
+          "sampleDurationSeconds": 11.12,
+          "rootProcessId": 54208,
+          "processCount": 1,
+          "rendererCount": 0,
+          "workingSetMb": 68.9,
+          "privateWorkingSetMb": 25.9,
+          "privateBytesMb": 137.1,
+          "cpuSampleSeconds": 10,
+          "cpuSingleCorePercent": 0.0,
+          "cpuMachinePercent": 0.0,
+          "logicalProcessorCount": 32,
+          "gpuSamples": 11,
+          "gpuEnginePercent": 0.0,
+          "gpuEngineAveragePercent": 0.0,
+          "gpuEnginePeakPercent": 0.0,
+          "dedicatedGpuMb": 49.4,
+          "dedicatedGpuStartMb": 49.4,
+          "dedicatedGpuEndMb": 49.4,
+          "dedicatedGpuPeakMb": 49.4,
+          "sharedGpuMb": 2.0,
+          "sharedGpuStartMb": 2.0,
+          "sharedGpuEndMb": 2.0,
+          "sharedGpuPeakMb": 2.0,
+          "processes": [
+            {
+              "processId": 54208,
+              "parentProcessId": 33428,
+              "name": "komorebi-gpui-fast-framework-bench.exe",
+              "renderer": false
+            }
+          ]
+        },
+        "postCycleIdle": {
+          "capturedAt": "2026-10-31T13:10:28.600654+08:00",
+          "sampleStartedAt": "2026-10-31T13:10:17.4471907+08:00",
+          "sampleEndedAt": "2026-10-31T13:10:28.600654+08:00",
+          "sampleDurationSeconds": 11.153,
+          "rootProcessId": 54208,
+          "processCount": 1,
+          "rendererCount": 0,
+          "workingSetMb": 68.9,
+          "privateWorkingSetMb": 25.9,
+          "privateBytesMb": 137.1,
+          "cpuSampleSeconds": 10,
+          "cpuSingleCorePercent": 0.0,
+          "cpuMachinePercent": 0.0,
+          "logicalProcessorCount": 32,
+          "gpuSamples": 11,
+          "gpuEnginePercent": 0.0,
+          "gpuEngineAveragePercent": 0.0,
+          "gpuEnginePeakPercent": 0.0,
+          "dedicatedGpuMb": 49.4,
+          "dedicatedGpuStartMb": 49.4,
+          "dedicatedGpuEndMb": 49.4,
+          "dedicatedGpuPeakMb": 49.4,
+          "sharedGpuMb": 2.0,
+          "sharedGpuStartMb": 2.0,
+          "sharedGpuEndMb": 2.0,
+          "sharedGpuPeakMb": 2.0,
+          "processes": [
+            {
+              "processId": 54208,
+              "parentProcessId": 33428,
+              "name": "komorebi-gpui-fast-framework-bench.exe",
+              "renderer": false
+            }
+          ]
+        }
+      },
+      "eventLog": "D:\\C2D\\Desktop\\Code\\Rust\\sTools\\rust-ui-benchmark-windows\\results\\2026-10-31\\gpui-fast-artifacts\\gpui-fast\\round-1-events.jsonl",
+      "executableSha256": "5382d5b576e7be4045cd1a0a375b3078a2d2824e3d276a0918b5771af3ad4edb",
+      "lockfileSha256": "dbd96f788ba8b8106600212be322dd54a73d8c42e90047d9220c40bcda656065"
+    },
+    {
+      "framework": "gpui-fast",
+      "round": 2,
+      "status": "ok",
+      "executable": ".benchmark-work/gpui-fast/target/release/komorebi-gpui-fast-framework-bench.exe",
+      "executableSizeMb": 11.0,
+      "showLatencyMs": 357.143,
+      "hideLatencyMs": 299.87,
+      "topology": {
+        "hidden": [
+          {
+            "ProcessId": 45124,
+            "Title": "UI Framework Bench - Auxiliary Canvas",
+            "Visible": false,
+            "Width": 1215,
+            "Height": 794
+          },
+          {
+            "ProcessId": 45124,
+            "Title": "UI Framework Bench - Main",
+            "Visible": false,
+            "Width": 715,
+            "Height": 514
+          }
+        ],
+        "visible": [
+          {
+            "ProcessId": 45124,
+            "Title": "UI Framework Bench - Auxiliary Canvas",
+            "Visible": true,
+            "Width": 1215,
+            "Height": 794
+          },
+          {
+            "ProcessId": 45124,
+            "Title": "UI Framework Bench - Main",
+            "Visible": true,
+            "Width": 715,
+            "Height": 514
+          }
+        ],
+        "postHide": [
+          {
+            "ProcessId": 45124,
+            "Title": "UI Framework Bench - Auxiliary Canvas",
+            "Visible": false,
+            "Width": 1215,
+            "Height": 794
+          },
+          {
+            "ProcessId": 45124,
+            "Title": "UI Framework Bench - Main",
+            "Visible": false,
+            "Width": 715,
+            "Height": 514
+          }
+        ],
+        "postCycle": [
+          {
+            "ProcessId": 45124,
+            "Title": "UI Framework Bench - Auxiliary Canvas",
+            "Visible": false,
+            "Width": 1215,
+            "Height": 794
+          },
+          {
+            "ProcessId": 45124,
+            "Title": "UI Framework Bench - Main",
+            "Visible": false,
+            "Width": 715,
+            "Height": 514
+          }
+        ]
+      },
+      "phases": {
+        "hiddenIdle": {
+          "capturedAt": "2026-10-31T13:10:42.6673742+08:00",
+          "sampleStartedAt": "2026-10-31T13:10:31.5370632+08:00",
+          "sampleEndedAt": "2026-10-31T13:10:42.6673742+08:00",
+          "sampleDurationSeconds": 11.13,
+          "rootProcessId": 45124,
+          "processCount": 1,
+          "rendererCount": 0,
+          "workingSetMb": 58.0,
+          "privateWorkingSetMb": 20.1,
+          "privateBytesMb": 122.2,
+          "cpuSampleSeconds": 10,
+          "cpuSingleCorePercent": 0.0,
+          "cpuMachinePercent": 0.0,
+          "logicalProcessorCount": 32,
+          "gpuSamples": 11,
+          "gpuEnginePercent": 0.0,
+          "gpuEngineAveragePercent": 0.0,
+          "gpuEnginePeakPercent": 0.0,
+          "dedicatedGpuMb": 7.8,
+          "dedicatedGpuStartMb": 7.8,
+          "dedicatedGpuEndMb": 7.8,
+          "dedicatedGpuPeakMb": 7.8,
+          "sharedGpuMb": 0.7,
+          "sharedGpuStartMb": 0.7,
+          "sharedGpuEndMb": 0.7,
+          "sharedGpuPeakMb": 0.7,
+          "processes": [
+            {
+              "processId": 45124,
+              "parentProcessId": 33428,
+              "name": "komorebi-gpui-fast-framework-bench.exe",
+              "renderer": false
+            }
+          ]
+        },
+        "visibleIdle": {
+          "capturedAt": "2026-10-31T13:10:56.101513+08:00",
+          "sampleStartedAt": "2026-10-31T13:10:44.980215+08:00",
+          "sampleEndedAt": "2026-10-31T13:10:56.101513+08:00",
+          "sampleDurationSeconds": 11.121,
+          "rootProcessId": 45124,
+          "processCount": 1,
+          "rendererCount": 0,
+          "workingSetMb": 63.7,
+          "privateWorkingSetMb": 24.7,
+          "privateBytesMb": 136.1,
+          "cpuSampleSeconds": 10,
+          "cpuSingleCorePercent": 0.0,
+          "cpuMachinePercent": 0.0,
+          "logicalProcessorCount": 32,
+          "gpuSamples": 11,
+          "gpuEnginePercent": 0.0,
+          "gpuEngineAveragePercent": 0.0,
+          "gpuEnginePeakPercent": 0.0,
+          "dedicatedGpuMb": 38.2,
+          "dedicatedGpuStartMb": 38.2,
+          "dedicatedGpuEndMb": 38.2,
+          "dedicatedGpuPeakMb": 38.2,
+          "sharedGpuMb": 2.5,
+          "sharedGpuStartMb": 2.5,
+          "sharedGpuEndMb": 2.5,
+          "sharedGpuPeakMb": 2.5,
+          "processes": [
+            {
+              "processId": 45124,
+              "parentProcessId": 33428,
+              "name": "komorebi-gpui-fast-framework-bench.exe",
+              "renderer": false
+            }
+          ]
+        },
+        "workload400": {
+          "capturedAt": "2026-10-31T13:11:08.3613654+08:00",
+          "sampleStartedAt": "2026-10-31T13:10:58.7678806+08:00",
+          "sampleEndedAt": "2026-10-31T13:11:08.3613654+08:00",
+          "sampleDurationSeconds": 9.591,
+          "rootProcessId": 45124,
+          "processCount": 1,
+          "rendererCount": 0,
+          "workingSetMb": 65.1,
+          "privateWorkingSetMb": 25.9,
+          "privateBytesMb": 137.6,
+          "cpuSampleSeconds": 8,
+          "cpuSingleCorePercent": 10.426,
+          "cpuMachinePercent": 0.326,
+          "logicalProcessorCount": 32,
+          "gpuSamples": 9,
+          "gpuEnginePercent": 0.956,
+          "gpuEngineAveragePercent": 0.956,
+          "gpuEnginePeakPercent": 1.238,
+          "dedicatedGpuMb": 49.4,
+          "dedicatedGpuStartMb": 49.4,
+          "dedicatedGpuEndMb": 49.4,
+          "dedicatedGpuPeakMb": 49.4,
+          "sharedGpuMb": 1.8,
+          "sharedGpuStartMb": 1.8,
+          "sharedGpuEndMb": 1.8,
+          "sharedGpuPeakMb": 1.8,
+          "processes": [
+            {
+              "processId": 45124,
+              "parentProcessId": 33428,
+              "name": "komorebi-gpui-fast-framework-bench.exe",
+              "renderer": false
+            }
+          ]
+        },
+        "postHideIdle": {
+          "capturedAt": "2026-10-31T13:11:37.0173519+08:00",
+          "sampleStartedAt": "2026-10-31T13:11:25.8412073+08:00",
+          "sampleEndedAt": "2026-10-31T13:11:37.0173519+08:00",
+          "sampleDurationSeconds": 11.176,
+          "rootProcessId": 45124,
+          "processCount": 1,
+          "rendererCount": 0,
+          "workingSetMb": 64.6,
+          "privateWorkingSetMb": 25.5,
+          "privateBytesMb": 137.1,
+          "cpuSampleSeconds": 10,
+          "cpuSingleCorePercent": 0.0,
+          "cpuMachinePercent": 0.0,
+          "logicalProcessorCount": 32,
+          "gpuSamples": 11,
+          "gpuEnginePercent": 0.0,
+          "gpuEngineAveragePercent": 0.0,
+          "gpuEnginePeakPercent": 0.0,
+          "dedicatedGpuMb": 49.4,
+          "dedicatedGpuStartMb": 49.4,
+          "dedicatedGpuEndMb": 49.4,
+          "dedicatedGpuPeakMb": 49.4,
+          "sharedGpuMb": 1.8,
+          "sharedGpuStartMb": 1.8,
+          "sharedGpuEndMb": 1.8,
+          "sharedGpuPeakMb": 1.8,
+          "processes": [
+            {
+              "processId": 45124,
+              "parentProcessId": 33428,
+              "name": "komorebi-gpui-fast-framework-bench.exe",
+              "renderer": false
+            }
+          ]
+        },
+        "postCycleIdle": {
+          "capturedAt": "2026-10-31T13:11:53.9772965+08:00",
+          "sampleStartedAt": "2026-10-31T13:11:42.821519+08:00",
+          "sampleEndedAt": "2026-10-31T13:11:53.9772965+08:00",
+          "sampleDurationSeconds": 11.156,
+          "rootProcessId": 45124,
+          "processCount": 1,
+          "rendererCount": 0,
+          "workingSetMb": 64.7,
+          "privateWorkingSetMb": 25.5,
+          "privateBytesMb": 137.1,
+          "cpuSampleSeconds": 10,
+          "cpuSingleCorePercent": 0.0,
+          "cpuMachinePercent": 0.0,
+          "logicalProcessorCount": 32,
+          "gpuSamples": 11,
+          "gpuEnginePercent": 0.0,
+          "gpuEngineAveragePercent": 0.0,
+          "gpuEnginePeakPercent": 0.0,
+          "dedicatedGpuMb": 49.4,
+          "dedicatedGpuStartMb": 49.4,
+          "dedicatedGpuEndMb": 49.4,
+          "dedicatedGpuPeakMb": 49.4,
+          "sharedGpuMb": 1.8,
+          "sharedGpuStartMb": 1.8,
+          "sharedGpuEndMb": 1.8,
+          "sharedGpuPeakMb": 1.8,
+          "processes": [
+            {
+              "processId": 45124,
+              "parentProcessId": 33428,
+              "name": "komorebi-gpui-fast-framework-bench.exe",
+              "renderer": false
+            }
+          ]
+        }
+      },
+      "eventLog": "D:\\C2D\\Desktop\\Code\\Rust\\sTools\\rust-ui-benchmark-windows\\results\\2026-10-31\\gpui-fast-artifacts\\gpui-fast\\round-2-events.jsonl",
+      "executableSha256": "5382d5b576e7be4045cd1a0a375b3078a2d2824e3d276a0918b5771af3ad4edb",
+      "lockfileSha256": "dbd96f788ba8b8106600212be322dd54a73d8c42e90047d9220c40bcda656065"
+    },
+    {
+      "framework": "gpui-fast",
+      "round": 3,
+      "status": "ok",
+      "executable": ".benchmark-work/gpui-fast/target/release/komorebi-gpui-fast-framework-bench.exe",
+      "executableSizeMb": 11.0,
+      "showLatencyMs": 284.475,
+      "hideLatencyMs": 280.752,
+      "topology": {
+        "hidden": [
+          {
+            "ProcessId": 37660,
+            "Title": "UI Framework Bench - Auxiliary Canvas",
+            "Visible": false,
+            "Width": 1215,
+            "Height": 794
+          },
+          {
+            "ProcessId": 37660,
+            "Title": "UI Framework Bench - Main",
+            "Visible": false,
+            "Width": 715,
+            "Height": 514
+          }
+        ],
+        "visible": [
+          {
+            "ProcessId": 37660,
+            "Title": "UI Framework Bench - Auxiliary Canvas",
+            "Visible": true,
+            "Width": 1215,
+            "Height": 794
+          },
+          {
+            "ProcessId": 37660,
+            "Title": "UI Framework Bench - Main",
+            "Visible": true,
+            "Width": 715,
+            "Height": 514
+          }
+        ],
+        "postHide": [
+          {
+            "ProcessId": 37660,
+            "Title": "UI Framework Bench - Auxiliary Canvas",
+            "Visible": false,
+            "Width": 1215,
+            "Height": 794
+          },
+          {
+            "ProcessId": 37660,
+            "Title": "UI Framework Bench - Main",
+            "Visible": false,
+            "Width": 715,
+            "Height": 514
+          }
+        ],
+        "postCycle": [
+          {
+            "ProcessId": 37660,
+            "Title": "UI Framework Bench - Auxiliary Canvas",
+            "Visible": false,
+            "Width": 1215,
+            "Height": 794
+          },
+          {
+            "ProcessId": 37660,
+            "Title": "UI Framework Bench - Main",
+            "Visible": false,
+            "Width": 715,
+            "Height": 514
+          }
+        ]
+      },
+      "phases": {
+        "hiddenIdle": {
+          "capturedAt": "2026-10-31T13:12:07.8598081+08:00",
+          "sampleStartedAt": "2026-10-31T13:11:56.6888735+08:00",
+          "sampleEndedAt": "2026-10-31T13:12:07.8598081+08:00",
+          "sampleDurationSeconds": 11.171,
+          "rootProcessId": 37660,
+          "processCount": 1,
+          "rendererCount": 0,
+          "workingSetMb": 58.3,
+          "privateWorkingSetMb": 20.4,
+          "privateBytesMb": 122.1,
+          "cpuSampleSeconds": 10,
+          "cpuSingleCorePercent": 0.0,
+          "cpuMachinePercent": 0.0,
+          "logicalProcessorCount": 32,
+          "gpuSamples": 11,
+          "gpuEnginePercent": 0.0,
+          "gpuEngineAveragePercent": 0.0,
+          "gpuEnginePeakPercent": 0.0,
+          "dedicatedGpuMb": 7.8,
+          "dedicatedGpuStartMb": 7.8,
+          "dedicatedGpuEndMb": 7.8,
+          "dedicatedGpuPeakMb": 7.8,
+          "sharedGpuMb": 0.7,
+          "sharedGpuStartMb": 0.7,
+          "sharedGpuEndMb": 0.7,
+          "sharedGpuPeakMb": 0.7,
+          "processes": [
+            {
+              "processId": 37660,
+              "parentProcessId": 33428,
+              "name": "komorebi-gpui-fast-framework-bench.exe",
+              "renderer": false
+            }
+          ]
+        },
+        "visibleIdle": {
+          "capturedAt": "2026-10-31T13:12:21.1543384+08:00",
+          "sampleStartedAt": "2026-10-31T13:12:10.034898+08:00",
+          "sampleEndedAt": "2026-10-31T13:12:21.1543384+08:00",
+          "sampleDurationSeconds": 11.119,
+          "rootProcessId": 37660,
+          "processCount": 1,
+          "rendererCount": 0,
+          "workingSetMb": 63.3,
+          "privateWorkingSetMb": 24.2,
+          "privateBytesMb": 135.4,
+          "cpuSampleSeconds": 10,
+          "cpuSingleCorePercent": 0.0,
+          "cpuMachinePercent": 0.0,
+          "logicalProcessorCount": 32,
+          "gpuSamples": 11,
+          "gpuEnginePercent": 0.0,
+          "gpuEngineAveragePercent": 0.0,
+          "gpuEnginePeakPercent": 0.0,
+          "dedicatedGpuMb": 38.2,
+          "dedicatedGpuStartMb": 38.2,
+          "dedicatedGpuEndMb": 38.2,
+          "dedicatedGpuPeakMb": 38.2,
+          "sharedGpuMb": 2.3,
+          "sharedGpuStartMb": 2.3,
+          "sharedGpuEndMb": 2.3,
+          "sharedGpuPeakMb": 2.3,
+          "processes": [
+            {
+              "processId": 37660,
+              "parentProcessId": 33428,
+              "name": "komorebi-gpui-fast-framework-bench.exe",
+              "renderer": false
+            }
+          ]
+        },
+        "workload400": {
+          "capturedAt": "2026-10-31T13:12:33.4405107+08:00",
+          "sampleStartedAt": "2026-10-31T13:12:23.8222095+08:00",
+          "sampleEndedAt": "2026-10-31T13:12:33.4405107+08:00",
+          "sampleDurationSeconds": 9.617,
+          "rootProcessId": 37660,
+          "processCount": 1,
+          "rendererCount": 0,
+          "workingSetMb": 65.0,
+          "privateWorkingSetMb": 25.9,
+          "privateBytesMb": 137.2,
+          "cpuSampleSeconds": 8,
+          "cpuSingleCorePercent": 10.398,
+          "cpuMachinePercent": 0.325,
+          "logicalProcessorCount": 32,
+          "gpuSamples": 9,
+          "gpuEnginePercent": 0.982,
+          "gpuEngineAveragePercent": 0.982,
+          "gpuEnginePeakPercent": 1.263,
+          "dedicatedGpuMb": 49.4,
+          "dedicatedGpuStartMb": 49.4,
+          "dedicatedGpuEndMb": 49.4,
+          "dedicatedGpuPeakMb": 49.4,
+          "sharedGpuMb": 1.8,
+          "sharedGpuStartMb": 1.8,
+          "sharedGpuEndMb": 1.8,
+          "sharedGpuPeakMb": 1.8,
+          "processes": [
+            {
+              "processId": 37660,
+              "parentProcessId": 33428,
+              "name": "komorebi-gpui-fast-framework-bench.exe",
+              "renderer": false
+            }
+          ]
+        },
+        "postHideIdle": {
+          "capturedAt": "2026-10-31T13:13:02.0224041+08:00",
+          "sampleStartedAt": "2026-10-31T13:12:50.8961182+08:00",
+          "sampleEndedAt": "2026-10-31T13:13:02.0224041+08:00",
+          "sampleDurationSeconds": 11.126,
+          "rootProcessId": 37660,
+          "processCount": 1,
+          "rendererCount": 0,
+          "workingSetMb": 64.6,
+          "privateWorkingSetMb": 25.4,
+          "privateBytesMb": 136.7,
+          "cpuSampleSeconds": 10,
+          "cpuSingleCorePercent": 0.0,
+          "cpuMachinePercent": 0.0,
+          "logicalProcessorCount": 32,
+          "gpuSamples": 11,
+          "gpuEnginePercent": 0.0,
+          "gpuEngineAveragePercent": 0.0,
+          "gpuEnginePeakPercent": 0.0,
+          "dedicatedGpuMb": 49.4,
+          "dedicatedGpuStartMb": 49.4,
+          "dedicatedGpuEndMb": 49.4,
+          "dedicatedGpuPeakMb": 49.4,
+          "sharedGpuMb": 1.8,
+          "sharedGpuStartMb": 1.8,
+          "sharedGpuEndMb": 1.8,
+          "sharedGpuPeakMb": 1.8,
+          "processes": [
+            {
+              "processId": 37660,
+              "parentProcessId": 33428,
+              "name": "komorebi-gpui-fast-framework-bench.exe",
+              "renderer": false
+            }
+          ]
+        },
+        "postCycleIdle": {
+          "capturedAt": "2026-10-31T13:13:19.1144389+08:00",
+          "sampleStartedAt": "2026-10-31T13:13:07.9585363+08:00",
+          "sampleEndedAt": "2026-10-31T13:13:19.1144389+08:00",
+          "sampleDurationSeconds": 11.156,
+          "rootProcessId": 37660,
+          "processCount": 1,
+          "rendererCount": 0,
+          "workingSetMb": 64.6,
+          "privateWorkingSetMb": 25.4,
+          "privateBytesMb": 136.7,
+          "cpuSampleSeconds": 10,
+          "cpuSingleCorePercent": 0.0,
+          "cpuMachinePercent": 0.0,
+          "logicalProcessorCount": 32,
+          "gpuSamples": 11,
+          "gpuEnginePercent": 0.0,
+          "gpuEngineAveragePercent": 0.0,
+          "gpuEnginePeakPercent": 0.0,
+          "dedicatedGpuMb": 49.4,
+          "dedicatedGpuStartMb": 49.4,
+          "dedicatedGpuEndMb": 49.4,
+          "dedicatedGpuPeakMb": 49.4,
+          "sharedGpuMb": 1.8,
+          "sharedGpuStartMb": 1.8,
+          "sharedGpuEndMb": 1.8,
+          "sharedGpuPeakMb": 1.8,
+          "processes": [
+            {
+              "processId": 37660,
+              "parentProcessId": 33428,
+              "name": "komorebi-gpui-fast-framework-bench.exe",
+              "renderer": false
+            }
+          ]
+        }
+      },
+      "eventLog": "D:\\C2D\\Desktop\\Code\\Rust\\sTools\\rust-ui-benchmark-windows\\results\\2026-10-31\\gpui-fast-artifacts\\gpui-fast\\round-3-events.jsonl",
+      "executableSha256": "5382d5b576e7be4045cd1a0a375b3078a2d2824e3d276a0918b5771af3ad4edb",
+      "lockfileSha256": "dbd96f788ba8b8106600212be322dd54a73d8c42e90047d9220c40bcda656065"
+    }
+  ],
+  "summary": {
+    "phases": [
+      {
+        "framework": "gpui-fast",
+        "phase": "hiddenIdle",
+        "metrics": {
+          "workingSetMb": {
+            "count": 3,
+            "median": 58.3,
+            "minimum": 58.0,
+            "maximum": 62.8
+          },
+          "privateWorkingSetMb": {
+            "count": 3,
+            "median": 20.4,
+            "minimum": 20.1,
+            "maximum": 21.0
+          },
+          "privateBytesMb": {
+            "count": 3,
+            "median": 122.2,
+            "minimum": 122.1,
+            "maximum": 122.8
+          },
+          "cpuSingleCorePercent": {
+            "count": 3,
+            "median": 0.0,
+            "minimum": 0.0,
+            "maximum": 0.0
+          },
+          "cpuMachinePercent": {
+            "count": 3,
+            "median": 0.0,
+            "minimum": 0.0,
+            "maximum": 0.0
+          },
+          "gpuEngineAveragePercent": {
+            "count": 3,
+            "median": 0.0,
+            "minimum": 0.0,
+            "maximum": 0.0
+          },
+          "gpuEnginePeakPercent": {
+            "count": 3,
+            "median": 0.0,
+            "minimum": 0.0,
+            "maximum": 0.0
+          },
+          "dedicatedGpuPeakMb": {
+            "count": 3,
+            "median": 7.8,
+            "minimum": 7.8,
+            "maximum": 7.8
+          },
+          "sharedGpuPeakMb": {
+            "count": 3,
+            "median": 0.7,
+            "minimum": 0.7,
+            "maximum": 0.7
+          }
+        }
+      },
+      {
+        "framework": "gpui-fast",
+        "phase": "visibleIdle",
+        "metrics": {
+          "workingSetMb": {
+            "count": 3,
+            "median": 63.7,
+            "minimum": 63.3,
+            "maximum": 68.0
+          },
+          "privateWorkingSetMb": {
+            "count": 3,
+            "median": 24.7,
+            "minimum": 24.2,
+            "maximum": 25.1
+          },
+          "privateBytesMb": {
+            "count": 3,
+            "median": 136.1,
+            "minimum": 135.4,
+            "maximum": 136.3
+          },
+          "cpuSingleCorePercent": {
+            "count": 3,
+            "median": 0.0,
+            "minimum": 0.0,
+            "maximum": 0.0
+          },
+          "cpuMachinePercent": {
+            "count": 3,
+            "median": 0.0,
+            "minimum": 0.0,
+            "maximum": 0.0
+          },
+          "gpuEngineAveragePercent": {
+            "count": 3,
+            "median": 0.0,
+            "minimum": 0.0,
+            "maximum": 0.0
+          },
+          "gpuEnginePeakPercent": {
+            "count": 3,
+            "median": 0.0,
+            "minimum": 0.0,
+            "maximum": 0.0
+          },
+          "dedicatedGpuPeakMb": {
+            "count": 3,
+            "median": 38.2,
+            "minimum": 38.2,
+            "maximum": 46.2
+          },
+          "sharedGpuPeakMb": {
+            "count": 3,
+            "median": 2.3,
+            "minimum": 2.2,
+            "maximum": 2.5
+          }
+        }
+      },
+      {
+        "framework": "gpui-fast",
+        "phase": "workload400",
+        "metrics": {
+          "workingSetMb": {
+            "count": 3,
+            "median": 65.1,
+            "minimum": 65.0,
+            "maximum": 69.0
+          },
+          "privateWorkingSetMb": {
+            "count": 3,
+            "median": 25.9,
+            "minimum": 25.9,
+            "maximum": 26.0
+          },
+          "privateBytesMb": {
+            "count": 3,
+            "median": 137.2,
+            "minimum": 137.2,
+            "maximum": 137.6
+          },
+          "cpuSingleCorePercent": {
+            "count": 3,
+            "median": 10.398,
+            "minimum": 10.379,
+            "maximum": 10.426
+          },
+          "cpuMachinePercent": {
+            "count": 3,
+            "median": 0.325,
+            "minimum": 0.324,
+            "maximum": 0.326
+          },
+          "gpuEngineAveragePercent": {
+            "count": 3,
+            "median": 0.956,
+            "minimum": 0.881,
+            "maximum": 0.982
+          },
+          "gpuEnginePeakPercent": {
+            "count": 3,
+            "median": 1.238,
+            "minimum": 1.179,
+            "maximum": 1.263
+          },
+          "dedicatedGpuPeakMb": {
+            "count": 3,
+            "median": 49.4,
+            "minimum": 49.4,
+            "maximum": 49.4
+          },
+          "sharedGpuPeakMb": {
+            "count": 3,
+            "median": 1.8,
+            "minimum": 1.8,
+            "maximum": 2.0
+          }
+        }
+      },
+      {
+        "framework": "gpui-fast",
+        "phase": "postHideIdle",
+        "metrics": {
+          "workingSetMb": {
+            "count": 3,
+            "median": 64.6,
+            "minimum": 64.6,
+            "maximum": 68.9
+          },
+          "privateWorkingSetMb": {
+            "count": 3,
+            "median": 25.5,
+            "minimum": 25.4,
+            "maximum": 25.9
+          },
+          "privateBytesMb": {
+            "count": 3,
+            "median": 137.1,
+            "minimum": 136.7,
+            "maximum": 137.1
+          },
+          "cpuSingleCorePercent": {
+            "count": 3,
+            "median": 0.0,
+            "minimum": 0.0,
+            "maximum": 0.0
+          },
+          "cpuMachinePercent": {
+            "count": 3,
+            "median": 0.0,
+            "minimum": 0.0,
+            "maximum": 0.0
+          },
+          "gpuEngineAveragePercent": {
+            "count": 3,
+            "median": 0.0,
+            "minimum": 0.0,
+            "maximum": 0.0
+          },
+          "gpuEnginePeakPercent": {
+            "count": 3,
+            "median": 0.0,
+            "minimum": 0.0,
+            "maximum": 0.0
+          },
+          "dedicatedGpuPeakMb": {
+            "count": 3,
+            "median": 49.4,
+            "minimum": 49.4,
+            "maximum": 49.4
+          },
+          "sharedGpuPeakMb": {
+            "count": 3,
+            "median": 1.8,
+            "minimum": 1.8,
+            "maximum": 2.0
+          }
+        }
+      },
+      {
+        "framework": "gpui-fast",
+        "phase": "postCycleIdle",
+        "metrics": {
+          "workingSetMb": {
+            "count": 3,
+            "median": 64.7,
+            "minimum": 64.6,
+            "maximum": 68.9
+          },
+          "privateWorkingSetMb": {
+            "count": 3,
+            "median": 25.5,
+            "minimum": 25.4,
+            "maximum": 25.9
+          },
+          "privateBytesMb": {
+            "count": 3,
+            "median": 137.1,
+            "minimum": 136.7,
+            "maximum": 137.1
+          },
+          "cpuSingleCorePercent": {
+            "count": 3,
+            "median": 0.0,
+            "minimum": 0.0,
+            "maximum": 0.0
+          },
+          "cpuMachinePercent": {
+            "count": 3,
+            "median": 0.0,
+            "minimum": 0.0,
+            "maximum": 0.0
+          },
+          "gpuEngineAveragePercent": {
+            "count": 3,
+            "median": 0.0,
+            "minimum": 0.0,
+            "maximum": 0.0
+          },
+          "gpuEnginePeakPercent": {
+            "count": 3,
+            "median": 0.0,
+            "minimum": 0.0,
+            "maximum": 0.0
+          },
+          "dedicatedGpuPeakMb": {
+            "count": 3,
+            "median": 49.4,
+            "minimum": 49.4,
+            "maximum": 49.4
+          },
+          "sharedGpuPeakMb": {
+            "count": 3,
+            "median": 1.8,
+            "minimum": 1.8,
+            "maximum": 2.0
+          }
+        }
+      }
+    ],
+    "latency": [
+      {
+        "framework": "gpui-fast",
+        "showLatencyMs": {
+          "count": 3,
+          "median": 319.336,
+          "minimum": 284.475,
+          "maximum": 357.143
+        },
+        "hideLatencyMs": {
+          "count": 3,
+          "median": 299.87,
+          "minimum": 280.752,
+          "maximum": 363.17
+        }
+      }
+    ]
+  }
+}

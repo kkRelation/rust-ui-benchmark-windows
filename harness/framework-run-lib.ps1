@@ -10,6 +10,9 @@ if (-not (Get-Command Compare-ResidentAnchor -ErrorAction SilentlyContinue)) {
 if (-not (Get-Command Ensure-BenchmarkWindowsIgnoredByKomorebi -ErrorAction SilentlyContinue)) {
   . (Join-Path $PSScriptRoot "komorebi-isolation.ps1")
 }
+if (-not (Get-Command Enter-BenchmarkScreenpipeIsolation -ErrorAction SilentlyContinue)) {
+  . (Join-Path $PSScriptRoot "screenpipe-isolation.ps1")
+}
 
 function Get-FrameworkResultProperty {
   param(
@@ -268,6 +271,9 @@ function Invoke-BenchmarkFrameworkRun {
   $comparisonPath = Join-Path $resolvedOutput "$baseName-comparison.json"
   $workspace = $null
   $windowManagerIsolation = $null
+  $screenpipeIsolation = $null
+  $screenpipeRestore = $null
+  $screenpipeRestored = $false
   $stage = "window-manager-isolation"
 
   try {
@@ -276,6 +282,8 @@ function Invoke-BenchmarkFrameworkRun {
     $workspace = New-BenchmarkFrameworkWorkspace -RepoRoot $resolvedRepo -Framework $Framework
     $stage = "debug-build"
     $null = Invoke-BenchmarkFrameworkBuild -RepoRoot $resolvedRepo -Framework $Framework -Configuration debug -CargoHome $workspace.CargoHome -TargetDirectory $workspace.TargetDirectory
+    $stage = "screenpipe-isolation"
+    $screenpipeIsolation = Enter-BenchmarkScreenpipeIsolation
     $stage = "smoke-measurement"
     $smokeResult = Invoke-BenchmarkFrameworkMeasurement `
       -RepoRoot $resolvedRepo -Framework $Framework -Configuration debug `
@@ -314,6 +322,10 @@ function Invoke-BenchmarkFrameworkRun {
       }
     }
 
+    $stage = "screenpipe-restore"
+    $screenpipeRestore = Exit-BenchmarkScreenpipeIsolation -State $screenpipeIsolation
+    $screenpipeRestored = $true
+
     $cleanup = $null
     if (-not $KeepWorkdir) {
       $stage = "cleanup"
@@ -329,24 +341,46 @@ function Invoke-BenchmarkFrameworkRun {
       comparisonPath = if ($Anchor) { $comparisonPath } else { $null }
       workspaceRoot = $workspace.Root
       windowManagerIsolation = $windowManagerIsolation
+      screenpipeIsolation = [pscustomobject]@{
+        suspended = $screenpipeIsolation
+        restore = $screenpipeRestore
+      }
       cleanup = $cleanup
       completedAt = (Get-Date).ToString("o")
     }
     Write-BenchmarkRunStatus -Path $statusPath -Status $status
     $status
   } catch {
+    $runError = $_
+    $restoreError = $null
+    if ($null -ne $screenpipeIsolation -and -not $screenpipeRestored) {
+      try {
+        $screenpipeRestore = Exit-BenchmarkScreenpipeIsolation -State $screenpipeIsolation
+        $screenpipeRestored = $true
+      } catch {
+        $restoreError = $_
+      }
+    }
     $failure = [pscustomobject]@{
       status = "failed"
       framework = $Framework
       anchor = [bool]$Anchor
       stage = $stage
-      error = $_.Exception.Message
+      error = $runError.Exception.Message
+      screenpipeRestoreError = if ($null -ne $restoreError) { $restoreError.Exception.Message } else { $null }
       workspaceRoot = if ($null -ne $workspace) { $workspace.Root } else { $null }
       workspacePreserved = $null -ne $workspace
       windowManagerIsolation = $windowManagerIsolation
+      screenpipeIsolation = [pscustomobject]@{
+        suspended = $screenpipeIsolation
+        restore = $screenpipeRestore
+      }
       failedAt = (Get-Date).ToString("o")
     }
     Write-BenchmarkRunStatus -Path $statusPath -Status $failure
-    throw
+    if ($null -ne $restoreError) {
+      throw "$($runError.Exception.Message) Screenpipe restore also failed: $($restoreError.Exception.Message)"
+    }
+    throw $runError
   }
 }

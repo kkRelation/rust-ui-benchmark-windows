@@ -142,6 +142,14 @@ Describe "single-framework orchestration" {
       $script:orchestrationCalls += "window-manager"
       [pscustomobject]@{ manager = "komorebi"; active = $true; verified = $true; addedRules = @() }
     }
+    Mock Enter-BenchmarkScreenpipeIsolation {
+      $script:orchestrationCalls += "screenpipe-stop"
+      [pscustomobject]@{ wasRunning = $true; stoppedProcessCount = 1; launches = @() }
+    }
+    Mock Exit-BenchmarkScreenpipeIsolation {
+      $script:orchestrationCalls += "screenpipe-restore"
+      [pscustomobject]@{ required = $true; startedProcessCount = 1; healthy = $true }
+    }
     Mock New-BenchmarkFrameworkWorkspace {
       $script:orchestrationCalls += "workspace"
       [pscustomobject]@{
@@ -186,8 +194,9 @@ Describe "single-framework orchestration" {
       -HistoricalPath (Join-Path $TestDrive "historical.json")
 
     $script:orchestrationCalls | Should Be @(
-      "window-manager", "workspace", "build-debug", "measure-smoke", "validate-1",
-      "build-release", "measure-release", "validate-3", "anchor", "cleanup"
+      "window-manager", "workspace", "build-debug", "screenpipe-stop", "measure-smoke",
+      "validate-1", "build-release", "measure-release", "validate-3", "anchor",
+      "screenpipe-restore", "cleanup"
     )
   }
 
@@ -228,6 +237,7 @@ Describe "single-framework orchestration" {
       $null = Invoke-BenchmarkFrameworkRun -RepoRoot $TestDrive -Framework "iced" -OutputDirectory (Join-Path $TestDrive "measurement-failure")
     } catch {}
     Assert-MockCalled Remove-BenchmarkFrameworkWorkspace -Times 0 -Scope It
+    Assert-MockCalled Exit-BenchmarkScreenpipeIsolation -Times 1 -Scope It
   }
 
   It "keeps the workspace after validation failure" {

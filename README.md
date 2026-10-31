@@ -10,11 +10,13 @@ resident Windows quick launcher. The published historical cohort contains:
 - Dioxus Native on Blitz
 - gpui-ce
 
-Iced, gpui-kit, KAS, Makepad, FerroUI, and egui are the six additional
-contestants. All twelve frameworks were tested serially under the corrected
-2026-10-29 unmanaged-window protocol, with an isolated Cargo home and target
-directory removed only after its durable result passed validation. This keeps
-peak disk use close to one framework build at a time.
+Iced, gpui-kit, KAS, Makepad, FerroUI, and egui are the six 2026-10-29
+additions. [gpui-fast](https://github.com/longbridge/gpui-fast) 0.1.12 is the
+thirteenth contestant, measured on 2026-10-31 under the same unmanaged-window
+protocol and environment baseline. Frameworks are tested serially with an
+isolated Cargo home and target directory removed only after durable results
+pass validation. This keeps peak disk use close to one framework build at a
+time.
 
 The production application that motivated the experiment is not a contestant.
 Each reduced probe owns the same two-window scene and shared selection state,
@@ -50,10 +52,13 @@ ranges, post-hide behavior, limitations, and interpretation.
 
 ### Corrected unmanaged-window total table
 
-The following medians cover all twelve frameworks rerun for three release
-rounds on 2026-10-29 after both exact benchmark titles were excluded from
-komorebi. Entries in this table are comparable with each other, but should not
-be mixed with the managed-window historical table above.
+The first twelve rows are three-release-round medians from 2026-10-29;
+gpui-fast is a three-round extension measured on 2026-10-31 under the same
+machine, power plan, protocol, and exact-title komorebi exclusions. Screenpipe
+was exited during both measurement sessions (manually for the earlier rows and
+automatically for gpui-fast). These entries should not be mixed with the
+managed-window historical table above; the two-day separation also remains a
+minor cross-run limitation.
 
 | Framework | Hidden PWS (MB) | Workload PWS (MB) | Workload CPU (%) | GPU avg (%) | Warm show / hide (ms) |
 |---|---:|---:|---:|---:|---:|
@@ -69,6 +74,7 @@ be mixed with the managed-window historical table above.
 | Makepad | 124.9 | 133.9 | 0.328 | 1.022 | 224.070 / 234.086 |
 | FerroUI | 45.7 | 54.4 | 0.329 | 0.632 | 297.982 / 244.843 |
 | egui | 184.9 | 189.0 | **0.325** | 0.496 | 253.600 / 230.375 |
+| gpui-fast | 20.4 | 25.9 | **0.325** | 0.956 | 319.336 / 299.870 |
 
 These are machine- and scene-specific observations. In particular, the GPU
 counter is sampled at Windows process/engine resolution, and the frameworks use
@@ -80,6 +86,7 @@ different retained-mode, rendering, and shader-cache strategies.
 - `harness/`: build, measurement, result-merge scripts, and Pester tests;
 - `results/2026-10-28/`: untouched raw data from the original experiment;
 - `results/2026-10-29/`: audited compatibility-anchor and unmanaged-cohort results;
+- `results/2026-10-31/`: gpui-fast smoke, three-round result, event logs, and isolation audit;
 - `docs/`: benchmark design, report, and extraction provenance.
 
 Every probe has its own `Cargo.lock`. Direct framework inputs are additionally
@@ -91,7 +98,8 @@ pinned to 0.17.0, with only WGPU's DX12 backend enabled. Makepad Widgets is
 pinned to 1.0.0 and uses Makepad's native Windows D3D11 path. FerroUI is pinned
 to the only published 0.4 crate, `0.4.0-preview.1`, using its default desktop
 Fluent/Skia/ANGLE path. egui/eframe is pinned to 0.37.0 and explicitly uses
-eframe's WGPU renderer.
+eframe's WGPU renderer. gpui-fast and gpui-fast-platform are pinned to 0.1.12;
+the Windows path uses its native Direct3D 11/DirectComposition renderer.
 
 ## Protocol
 
@@ -160,7 +168,10 @@ just framework-clean NAME
 
 After the named probe is implemented and enabled, `framework-test` performs a
 debug smoke run, a release build, three full release rounds, result validation,
-and guarded cleanup. A failure preserves
+and guarded cleanup. After the debug build it records and exits a running
+`screenpipe-app.exe`; on both success and failure it restarts the original
+executable with its original arguments and waits for `/health` to report
+`healthy`. A failure preserves
 `.benchmark-work/<framework>` and writes a terminal status JSON. The explicit
 `framework-clean` recipe uses the same allow-listed path checks and is intended
 for an accepted terminal outcome, not an incomplete result.
@@ -328,6 +339,26 @@ Win32 adapter synchronizes retained visibility using the same unmanaged-window
 contract as the other expansion probes. The 14.2 MB executable and locked
 dependency graph were identical across all rounds. Guarded cleanup removed
 only the isolated egui work root and recovered 3,520,892,928 bytes.
+
+### gpui-fast unmanaged-window result
+
+gpui-fast 0.1.12 with its native Windows Direct3D 11/DirectComposition path
+completed a debug smoke run and three valid release rounds on 2026-10-31. Its
+median hidden/workload private working sets were 20.4/25.9 MB; workload machine
+CPU was 0.325%, average GPU engine use was 0.956%, and warm show/hide latency
+was 319.336/299.870 ms. Hidden, visible-idle, post-hide, and post-cycle CPU/GPU
+medians were zero at the Windows sampling resolution. Post-cycle private
+working set matched post-hide in every round, so the 30 visibility cycles did
+not produce an observed retention increase in this probe.
+
+The validated evidence is in
+[`gpui-fast.json`](results/2026-10-31/gpui-fast.json) and its adjacent smoke,
+event, and [`status`](results/2026-10-31/gpui-fast-status.json) artifacts. Both
+HWNDs retained the exact 715x514 and 1215x794 unmanaged outer sizes at all four
+checkpoints in every round. The status audit records both komorebi title rules,
+Screenpipe suspension and healthy restoration, and guarded cleanup of only the
+gpui-fast work root, which recovered 4,363,223,040 bytes. The 11.0 MB executable
+and its SHA-256 were identical across all rounds.
 
 ## Historical result
 
