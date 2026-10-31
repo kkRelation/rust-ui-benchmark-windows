@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="560" height="520" viewBox="0 0 560 520" role="img" aria-labelledby="title desc">
+<title id="title">gpui-kit six-axis capability radar</title><desc id="desc">Higher is better. Scores are cohort-relative percentile rank scores.</desc>
+<style>text{font-family:"Segoe UI",Arial,sans-serif;fill:#e6edf3}.title{font-size:24px;font-weight:700}.sub{font-size:13px;fill:#9da7b3}.axis{font-size:12px;font-weight:700}.value{font-size:11px;fill:#79c0ff}.ring{fill:none;stroke:#30363d;stroke-width:1}.spoke{stroke:#30363d;stroke-width:1}.shape{fill:#1f6feb;fill-opacity:.34;stroke:#58a6ff;stroke-width:3}.dot{fill:#79c0ff}</style>
+<rect width="560" height="520" rx="14" fill="#0d1117"/>
+<text class="title" x="24" y="38">gpui-kit</text>
+<text class="sub" x="24" y="64">Overall #7.5 · score 50.0 · weakness floor 8.3</text>
+<text class="sub" x="24" y="86">Workload PWS 0.076% of 32 GiB RAM · dedicated VRAM 0.602% of 8 GiB</text>
+<polygon class="ring" points="280.0,235.5 313.3,254.8 313.3,293.3 280.0,312.5 246.7,293.3 246.7,254.8"/>
+<polygon class="ring" points="280.0,197.0 346.7,235.5 346.7,312.5 280.0,351.0 213.3,312.5 213.3,235.5"/>
+<polygon class="ring" points="280.0,158.5 380.0,216.3 380.0,331.8 280.0,389.5 180.0,331.8 180.0,216.3"/>
+<polygon class="ring" points="280.0,120.0 413.4,197.0 413.4,351.0 280.0,428.0 146.6,351.0 146.6,197.0"/>
+<line class="spoke" x1="280" y1="274" x2="280.0" y2="120.0"/>
+<line class="spoke" x1="280" y1="274" x2="413.4" y2="197.0"/>
+<line class="spoke" x1="280" y1="274" x2="413.4" y2="351.0"/>
+<line class="spoke" x1="280" y1="274" x2="280.0" y2="428.0"/>
+<line class="spoke" x1="280" y1="274" x2="146.6" y2="351.0"/>
+<line class="spoke" x1="280" y1="274" x2="146.6" y2="197.0"/>
+<polygon class="shape" points="280.0,120.0 313.3,254.8 313.3,293.3 280.0,428.0 224.4,306.1 268.9,267.6"/>
+<circle class="dot" cx="280.0" cy="120.0" r="4"/>
+<circle class="dot" cx="313.3" cy="254.8" r="4"/>
+<circle class="dot" cx="313.3" cy="293.3" r="4"/>
+<circle class="dot" cx="280.0" cy="428.0" r="4"/>
+<circle class="dot" cx="224.4" cy="306.1" r="4"/>
+<circle class="dot" cx="268.9" cy="267.6" r="4"/>
+<text class="axis" x="280" y="104" text-anchor="middle">RAM</text>
+<text class="value" x="280" y="121" text-anchor="middle">#1 · 100.0</text>
+<text class="axis" x="477" y="196" text-anchor="start">CPU</text>
+<text class="value" x="477" y="213" text-anchor="start">#10 · 25.0</text>
+<text class="axis" x="477" y="374" text-anchor="start">GPU activity</text>
+<text class="value" x="477" y="391" text-anchor="start">#10 · 25.0</text>
+<text class="axis" x="280" y="456" text-anchor="middle">VRAM</text>
+<text class="value" x="280" y="473" text-anchor="middle">#1 · 100.0</text>
+<text class="axis" x="83" y="374" text-anchor="end">Warm show</text>
+<text class="value" x="83" y="391" text-anchor="end">#8 · 41.7</text>
+<text class="axis" x="83" y="196" text-anchor="end">Warm hide</text>
+<text class="value" x="83" y="213" text-anchor="end">#12 · 8.3</text>
+<text class="sub" x="280" y="492" text-anchor="middle">Higher polygon vertices are better.</text>
+<text class="sub" x="280" y="510" text-anchor="middle">Polygon area is descriptive only and is not the composite score.</text>
+</svg>

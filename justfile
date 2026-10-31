@@ -9,6 +9,9 @@ build-debug:
 test:
     Invoke-Pester -Path './harness/tests'
 
+comparison-visuals:
+    & './harness/generate-comparison-visuals.ps1'
+
 smoke: build-debug
     & './harness/measure-resident.ps1' -Configuration debug -Smoke -OutputPath './results/local/smoke.json'
 
