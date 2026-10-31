@@ -1,74 +1,74 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1100" height="718" viewBox="0 0 1100 718" role="img" aria-labelledby="title desc">
-<title id="title">Equal-weight composite ranking</title><desc id="desc">The arithmetic mean of six cohort-relative percentile rank scores.</desc>
+<title id="title">Equal-weight composite ranking</title><desc id="desc">The arithmetic mean of seven cohort-relative percentile rank scores.</desc>
 <style>text{font-family:"Segoe UI",Arial,sans-serif;fill:#e6edf3}.title{font-size:25px;font-weight:700}.sub{font-size:14px;fill:#9da7b3}.name{font-size:14px;font-weight:600}.score{font-size:13px;font-weight:700}.floor{font-size:12px;fill:#9da7b3}</style>
 <rect width="1100" height="718" rx="14" fill="#0d1117"/>
 <text class="title" x="28" y="40">Equal-Weight Composite Ranking</text>
-<text class="sub" x="28" y="67">Arithmetic mean of RAM, CPU, GPU activity, dedicated VRAM, warm show and warm hide percentile rank scores.</text>
-<text class="sub" x="28" y="91">The weakness floor is the lowest of the six axis scores; radar polygon area is intentionally not used for ranking.</text>
-<text class="name" x="28" y="149">#1  Tauri / WebView2</text>
+<text class="sub" x="28" y="67">Mean of RAM, CPU, GPU activity, dedicated VRAM, shared GPU RAM, warm show and warm hide rank scores.</text>
+<text class="sub" x="28" y="91">The weakness floor is the lowest of the seven axis scores; radar polygon area is intentionally not used for ranking.</text>
+<text class="name" x="28" y="149">#1  gpui-fast</text>
 <rect x="340" y="131" width="600" height="24" rx="6" fill="#161b22"/>
-<rect x="340" y="131" width="383.3" height="24" rx="6" fill="#2ea043"/>
-<text class="score" x="956" y="149">63.9</text>
-<text class="floor" x="1012" y="149">floor 41.7</text>
-<text class="name" x="28" y="189">#2  gpui-ce</text>
+<rect x="340" y="131" width="396.4" height="24" rx="6" fill="#2ea043"/>
+<text class="score" x="956" y="149">66.1</text>
+<text class="floor" x="1012" y="149">floor 16.7</text>
+<text class="name" x="28" y="189">#2  Tauri / WebView2</text>
 <rect x="340" y="171" width="600" height="24" rx="6" fill="#161b22"/>
-<rect x="340" y="171" width="379.2" height="24" rx="6" fill="#1f6feb"/>
-<text class="score" x="956" y="189">63.2</text>
-<text class="floor" x="1012" y="189">floor 16.7</text>
-<text class="name" x="28" y="229">#3.5  Dioxus Native / Blitz</text>
+<rect x="340" y="171" width="396.4" height="24" rx="6" fill="#1f6feb"/>
+<text class="score" x="956" y="189">66.1</text>
+<text class="floor" x="1012" y="189">floor 41.7</text>
+<text class="name" x="28" y="229">#3  gpui-ce</text>
 <rect x="340" y="211" width="600" height="24" rx="6" fill="#161b22"/>
-<rect x="340" y="211" width="362.5" height="24" rx="6" fill="#1f6feb"/>
-<text class="score" x="956" y="229">60.4</text>
-<text class="floor" x="1012" y="229">floor 0.0</text>
-<text class="name" x="28" y="269">#3.5  gpui-fast</text>
+<rect x="340" y="211" width="392.9" height="24" rx="6" fill="#1f6feb"/>
+<text class="score" x="956" y="229">65.5</text>
+<text class="floor" x="1012" y="229">floor 16.7</text>
+<text class="name" x="28" y="269">#4  Makepad</text>
 <rect x="340" y="251" width="600" height="24" rx="6" fill="#161b22"/>
-<rect x="340" y="251" width="362.5" height="24" rx="6" fill="#58a6ff"/>
-<text class="score" x="956" y="269">60.4</text>
-<text class="floor" x="1012" y="269">floor 16.7</text>
-<text class="name" x="28" y="309">#5  zgui</text>
+<rect x="340" y="251" width="339.3" height="24" rx="6" fill="#1f6feb"/>
+<text class="score" x="956" y="269">56.5</text>
+<text class="floor" x="1012" y="269">floor 33.3</text>
+<text class="name" x="28" y="309">#5  gpui-kit</text>
 <rect x="340" y="291" width="600" height="24" rx="6" fill="#161b22"/>
-<rect x="340" y="291" width="354.2" height="24" rx="6" fill="#1f6feb"/>
-<text class="score" x="956" y="309">59.0</text>
-<text class="floor" x="1012" y="309">floor 16.7</text>
-<text class="name" x="28" y="349">#6  Makepad</text>
+<rect x="340" y="291" width="335.7" height="24" rx="6" fill="#1f6feb"/>
+<text class="score" x="956" y="309">56.0</text>
+<text class="floor" x="1012" y="309">floor 8.3</text>
+<text class="name" x="28" y="349">#6.5  Dioxus Native / Blitz</text>
 <rect x="340" y="331" width="600" height="24" rx="6" fill="#161b22"/>
-<rect x="340" y="331" width="345.8" height="24" rx="6" fill="#1f6feb"/>
-<text class="score" x="956" y="349">57.6</text>
-<text class="floor" x="1012" y="349">floor 33.3</text>
-<text class="name" x="28" y="389">#7.5  egui</text>
+<rect x="340" y="331" width="332.1" height="24" rx="6" fill="#1f6feb"/>
+<text class="score" x="956" y="349">55.4</text>
+<text class="floor" x="1012" y="349">floor 0.0</text>
+<text class="name" x="28" y="389">#6.5  zgui</text>
 <rect x="340" y="371" width="600" height="24" rx="6" fill="#161b22"/>
-<rect x="340" y="371" width="300.0" height="24" rx="6" fill="#1f6feb"/>
-<text class="score" x="956" y="389">50.0</text>
-<text class="floor" x="1012" y="389">floor 0.0</text>
-<text class="name" x="28" y="429">#7.5  gpui-kit</text>
+<rect x="340" y="371" width="332.1" height="24" rx="6" fill="#1f6feb"/>
+<text class="score" x="956" y="389">55.4</text>
+<text class="floor" x="1012" y="389">floor 16.7</text>
+<text class="name" x="28" y="429">#8  FerroUI</text>
 <rect x="340" y="411" width="600" height="24" rx="6" fill="#161b22"/>
-<rect x="340" y="411" width="300.0" height="24" rx="6" fill="#1f6feb"/>
-<text class="score" x="956" y="429">50.0</text>
-<text class="floor" x="1012" y="429">floor 8.3</text>
-<text class="name" x="28" y="469">#9  FerroUI</text>
+<rect x="340" y="411" width="303.6" height="24" rx="6" fill="#1f6feb"/>
+<text class="score" x="956" y="429">50.6</text>
+<text class="floor" x="1012" y="429">floor 33.3</text>
+<text class="name" x="28" y="469">#9  egui</text>
 <rect x="340" y="451" width="600" height="24" rx="6" fill="#161b22"/>
-<rect x="340" y="451" width="295.8" height="24" rx="6" fill="#1f6feb"/>
-<text class="score" x="956" y="469">49.3</text>
-<text class="floor" x="1012" y="469">floor 33.3</text>
-<text class="name" x="28" y="509">#10  Iced</text>
+<rect x="340" y="451" width="264.3" height="24" rx="6" fill="#1f6feb"/>
+<text class="score" x="956" y="469">44.0</text>
+<text class="floor" x="1012" y="469">floor 0.0</text>
+<text class="name" x="28" y="509">#10.5  Dioxus Desktop / WebView2</text>
 <rect x="340" y="491" width="600" height="24" rx="6" fill="#161b22"/>
-<rect x="340" y="491" width="258.3" height="24" rx="6" fill="#1f6feb"/>
-<text class="score" x="956" y="509">43.1</text>
-<text class="floor" x="1012" y="509">floor 16.7</text>
-<text class="name" x="28" y="549">#11  Dioxus Desktop / WebView2</text>
+<rect x="340" y="491" width="235.7" height="24" rx="6" fill="#1f6feb"/>
+<text class="score" x="956" y="509">39.3</text>
+<text class="floor" x="1012" y="509">floor 0.0</text>
+<text class="name" x="28" y="549">#10.5  Iced</text>
 <rect x="340" y="531" width="600" height="24" rx="6" fill="#161b22"/>
-<rect x="340" y="531" width="208.3" height="24" rx="6" fill="#1f6feb"/>
-<text class="score" x="956" y="549">34.7</text>
-<text class="floor" x="1012" y="549">floor 0.0</text>
-<text class="name" x="28" y="589">#12  KAS</text>
+<rect x="340" y="531" width="235.7" height="24" rx="6" fill="#1f6feb"/>
+<text class="score" x="956" y="549">39.3</text>
+<text class="floor" x="1012" y="549">floor 16.7</text>
+<text class="name" x="28" y="589">#12.5  KAS</text>
 <rect x="340" y="571" width="600" height="24" rx="6" fill="#161b22"/>
-<rect x="340" y="571" width="195.8" height="24" rx="6" fill="#1f6feb"/>
-<text class="score" x="956" y="589">32.6</text>
+<rect x="340" y="571" width="167.9" height="24" rx="6" fill="#1f6feb"/>
+<text class="score" x="956" y="589">28.0</text>
 <text class="floor" x="1012" y="589">floor 0.0</text>
-<text class="name" x="28" y="629">#13  Slint</text>
+<text class="name" x="28" y="629">#12.5  Slint</text>
 <rect x="340" y="611" width="600" height="24" rx="6" fill="#161b22"/>
-<rect x="340" y="611" width="154.2" height="24" rx="6" fill="#1f6feb"/>
-<text class="score" x="956" y="629">25.7</text>
+<rect x="340" y="611" width="167.9" height="24" rx="6" fill="#1f6feb"/>
+<text class="score" x="956" y="629">28.0</text>
 <text class="floor" x="1012" y="629">floor 0.0</text>
 <text class="sub" x="28" y="696">Change the Weights parameter in generate-comparison-visuals.ps1 for a workload-specific ranking.</text>
 </svg>

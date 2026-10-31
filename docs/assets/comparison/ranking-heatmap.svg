@@ -1,215 +1,242 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="796" viewBox="0 0 1500 796" role="img" aria-labelledby="title desc">
-<title id="title">Per-dimension rankings for thirteen Rust UI frameworks</title><desc id="desc">Lower resource use and latency rank higher. Overall is the equal-weight mean of six percentile rank scores.</desc>
+<svg xmlns="http://www.w3.org/2000/svg" width="1700" height="796" viewBox="0 0 1700 796" role="img" aria-labelledby="title desc">
+<title id="title">Per-dimension rankings for thirteen Rust UI frameworks</title><desc id="desc">Lower resource use and latency rank higher. Overall is the equal-weight mean of seven percentile rank scores.</desc>
 <style>text{font-family:"Segoe UI",Arial,sans-serif;fill:#e6edf3}.title{font-size:25px;font-weight:700}.sub{font-size:14px;fill:#9da7b3}.head{font-size:13px;font-weight:700}.name{font-size:14px;font-weight:600}.cell{font-size:13px;font-weight:700}.rank{font-size:12px;fill:#c9d1d9}.grid{stroke:#30363d;stroke-width:1}</style>
-<rect width="1500" height="796" rx="14" fill="#0d1117"/>
+<rect width="1700" height="796" rx="14" fill="#0d1117"/>
 <text class="title" x="28" y="40">Per-Dimension Ranking Heatmap</text>
 <text class="sub" x="28" y="67">#1 is best · ties use average rank · cell brightness follows the 0–100 percentile rank score</text>
-<text class="sub" x="28" y="91">RAM combines hidden and workload PWS with equal weight; Overall weights RAM, CPU, GPU activity, VRAM, show and hide equally.</text>
-<rect x="24" y="112" width="1452" height="650" rx="8" fill="#0b1016" stroke="#30363d"/>
-<rect x="24" y="112" width="1452" height="38" rx="8" fill="#161b22"/>
+<text class="sub" x="28" y="91">RAM combines hidden and workload PWS; Overall equally weights RAM, CPU, GPU activity, dedicated VRAM, shared GPU RAM, show and hide.</text>
+<rect x="24" y="112" width="1652" height="650" rx="8" fill="#0b1016" stroke="#30363d"/>
+<rect x="24" y="112" width="1652" height="38" rx="8" fill="#161b22"/>
 <text class="head" x="44" y="137">Framework</text>
-<text class="head" x="402.5" y="137" text-anchor="middle">RAM</text>
-<text class="head" x="547.5" y="137" text-anchor="middle">CPU</text>
-<text class="head" x="692.5" y="137" text-anchor="middle">GPU activity</text>
-<text class="head" x="837.5" y="137" text-anchor="middle">VRAM</text>
-<text class="head" x="982.5" y="137" text-anchor="middle">Warm show</text>
-<text class="head" x="1127.5" y="137" text-anchor="middle">Warm hide</text>
-<text class="head" x="1272.5" y="137" text-anchor="middle">Overall</text>
-<text class="name" x="44" y="178">Tauri / WebView2</text>
-<rect x="335" y="155" width="135" height="34" rx="5" fill="#194A92"/>
-<text class="cell" x="402.5" y="177" text-anchor="middle">#7 · 50.0</text>
-<rect x="480" y="155" width="135" height="34" rx="5" fill="#1A4D9A"/>
-<text class="cell" x="547.5" y="177" text-anchor="middle">#6.5 · 54.2</text>
-<rect x="625" y="155" width="135" height="34" rx="5" fill="#1E6CE4"/>
-<text class="cell" x="692.5" y="177" text-anchor="middle">#1.5 · 95.8</text>
-<rect x="770" y="155" width="135" height="34" rx="5" fill="#184384"/>
-<text class="cell" x="837.5" y="177" text-anchor="middle">#8 · 41.7</text>
-<rect x="915" y="155" width="135" height="34" rx="5" fill="#1A50A1"/>
-<text class="cell" x="982.5" y="177" text-anchor="middle">#6 · 58.3</text>
-<rect x="1060" y="155" width="135" height="34" rx="5" fill="#1D62CD"/>
-<text class="cell" x="1127.5" y="177" text-anchor="middle">#3 · 83.3</text>
-<rect x="1205" y="155" width="135" height="34" rx="5" fill="#1B54AB"/>
-<text class="cell" x="1272.5" y="177" text-anchor="middle">#1 · 63.9</text>
-<text class="name" x="44" y="222">gpui-ce</text>
-<rect x="335" y="199" width="135" height="34" rx="5" fill="#1D62CD"/>
-<text class="cell" x="402.5" y="221" text-anchor="middle">#3 · 83.3</text>
-<rect x="480" y="199" width="135" height="34" rx="5" fill="#153158"/>
-<text class="cell" x="547.5" y="221" text-anchor="middle">#11 · 16.7</text>
-<rect x="625" y="199" width="135" height="34" rx="5" fill="#153158"/>
-<text class="cell" x="692.5" y="221" text-anchor="middle">#11 · 16.7</text>
-<rect x="770" y="199" width="135" height="34" rx="5" fill="#1E66D5"/>
-<text class="cell" x="837.5" y="221" text-anchor="middle">#2.5 · 87.5</text>
-<rect x="915" y="199" width="135" height="34" rx="5" fill="#1D62CD"/>
-<text class="cell" x="982.5" y="221" text-anchor="middle">#3 · 83.3</text>
-<rect x="1060" y="199" width="135" height="34" rx="5" fill="#1E69DC"/>
-<text class="cell" x="1127.5" y="221" text-anchor="middle">#2 · 91.7</text>
-<rect x="1205" y="199" width="135" height="34" rx="5" fill="#1B53AA"/>
-<text class="cell" x="1272.5" y="221" text-anchor="middle">#2 · 63.2</text>
-<text class="name" x="44" y="266">Dioxus Native / Blitz</text>
-<rect x="335" y="243" width="135" height="34" rx="5" fill="#13243A"/>
-<text class="cell" x="402.5" y="265" text-anchor="middle">#13 · 0.0</text>
-<rect x="480" y="243" width="135" height="34" rx="5" fill="#1E69DC"/>
-<text class="cell" x="547.5" y="265" text-anchor="middle">#2 · 91.7</text>
-<rect x="625" y="243" width="135" height="34" rx="5" fill="#1E6CE4"/>
-<text class="cell" x="692.5" y="265" text-anchor="middle">#1.5 · 95.8</text>
-<rect x="770" y="243" width="135" height="34" rx="5" fill="#163766"/>
-<text class="cell" x="837.5" y="265" text-anchor="middle">#10 · 25.0</text>
-<rect x="915" y="243" width="135" height="34" rx="5" fill="#194A92"/>
-<text class="cell" x="982.5" y="265" text-anchor="middle">#7 · 50.0</text>
-<rect x="1060" y="243" width="135" height="34" rx="5" fill="#1F6FEB"/>
-<text class="cell" x="1127.5" y="265" text-anchor="middle">#1 · 100.0</text>
-<rect x="1205" y="243" width="135" height="34" rx="5" fill="#1A51A5"/>
-<text class="cell" x="1272.5" y="265" text-anchor="middle">#3.5 · 60.4</text>
-<rect x="24" y="282" width="1452" height="44" fill="#102a43"/>
-<text class="name" x="44" y="310">gpui-fast</text>
-<rect x="335" y="287" width="135" height="34" rx="5" fill="#1E69DC"/>
-<text class="cell" x="402.5" y="309" text-anchor="middle">#2 · 91.7</text>
-<rect x="480" y="287" width="135" height="34" rx="5" fill="#1E69DC"/>
-<text class="cell" x="547.5" y="309" text-anchor="middle">#2 · 91.7</text>
-<rect x="625" y="287" width="135" height="34" rx="5" fill="#194A92"/>
-<text class="cell" x="692.5" y="309" text-anchor="middle">#7 · 50.0</text>
-<rect x="770" y="287" width="135" height="34" rx="5" fill="#1E66D5"/>
-<text class="cell" x="837.5" y="309" text-anchor="middle">#2.5 · 87.5</text>
-<rect x="915" y="287" width="135" height="34" rx="5" fill="#163766"/>
-<text class="cell" x="982.5" y="309" text-anchor="middle">#10 · 25.0</text>
-<rect x="1060" y="287" width="135" height="34" rx="5" fill="#153158"/>
-<text class="cell" x="1127.5" y="309" text-anchor="middle">#11 · 16.7</text>
-<rect x="1205" y="287" width="135" height="34" rx="5" fill="#1A51A5"/>
-<text class="cell" x="1272.5" y="309" text-anchor="middle">#3.5 · 60.4</text>
-<text class="name" x="44" y="354">zgui</text>
-<rect x="335" y="331" width="135" height="34" rx="5" fill="#1A50A1"/>
-<text class="cell" x="402.5" y="353" text-anchor="middle">#6 · 58.3</text>
-<rect x="480" y="331" width="135" height="34" rx="5" fill="#1A4D9A"/>
-<text class="cell" x="547.5" y="353" text-anchor="middle">#6.5 · 54.2</text>
-<rect x="625" y="331" width="135" height="34" rx="5" fill="#1A50A1"/>
-<text class="cell" x="692.5" y="353" text-anchor="middle">#6 · 58.3</text>
-<rect x="770" y="331" width="135" height="34" rx="5" fill="#153158"/>
-<text class="cell" x="837.5" y="353" text-anchor="middle">#11 · 16.7</text>
-<rect x="915" y="331" width="135" height="34" rx="5" fill="#1F6FEB"/>
-<text class="cell" x="982.5" y="353" text-anchor="middle">#1 · 100.0</text>
-<rect x="1060" y="331" width="135" height="34" rx="5" fill="#1B56B0"/>
-<text class="cell" x="1127.5" y="353" text-anchor="middle">#5 · 66.7</text>
-<rect x="1205" y="331" width="135" height="34" rx="5" fill="#1A50A2"/>
-<text class="cell" x="1272.5" y="353" text-anchor="middle">#5 · 59.0</text>
-<text class="name" x="44" y="398">Makepad</text>
-<rect x="335" y="375" width="135" height="34" rx="5" fill="#173D75"/>
-<text class="cell" x="402.5" y="397" text-anchor="middle">#9 · 33.3</text>
-<rect x="480" y="375" width="135" height="34" rx="5" fill="#1A4D9A"/>
-<text class="cell" x="547.5" y="397" text-anchor="middle">#6.5 · 54.2</text>
-<rect x="625" y="375" width="135" height="34" rx="5" fill="#184384"/>
-<text class="cell" x="692.5" y="397" text-anchor="middle">#8 · 41.7</text>
-<rect x="770" y="375" width="135" height="34" rx="5" fill="#1C5CBF"/>
-<text class="cell" x="837.5" y="397" text-anchor="middle">#4 · 75.0</text>
-<rect x="915" y="375" width="135" height="34" rx="5" fill="#1E69DC"/>
-<text class="cell" x="982.5" y="397" text-anchor="middle">#2 · 91.7</text>
-<rect x="1060" y="375" width="135" height="34" rx="5" fill="#194A92"/>
-<text class="cell" x="1127.5" y="397" text-anchor="middle">#7 · 50.0</text>
-<rect x="1205" y="375" width="135" height="34" rx="5" fill="#1A4FA0"/>
-<text class="cell" x="1272.5" y="397" text-anchor="middle">#6 · 57.6</text>
-<text class="name" x="44" y="442">egui</text>
-<rect x="335" y="419" width="135" height="34" rx="5" fill="#142A49"/>
-<text class="cell" x="402.5" y="441" text-anchor="middle">#12 · 8.3</text>
-<rect x="480" y="419" width="135" height="34" rx="5" fill="#1E69DC"/>
-<text class="cell" x="547.5" y="441" text-anchor="middle">#2 · 91.7</text>
-<rect x="625" y="419" width="135" height="34" rx="5" fill="#1C5CBF"/>
-<text class="cell" x="692.5" y="441" text-anchor="middle">#4 · 75.0</text>
-<rect x="770" y="419" width="135" height="34" rx="5" fill="#13243A"/>
-<text class="cell" x="837.5" y="441" text-anchor="middle">#13 · 0.0</text>
-<rect x="915" y="419" width="135" height="34" rx="5" fill="#1B56B0"/>
-<text class="cell" x="982.5" y="441" text-anchor="middle">#5 · 66.7</text>
-<rect x="1060" y="419" width="135" height="34" rx="5" fill="#1A50A1"/>
-<text class="cell" x="1127.5" y="441" text-anchor="middle">#6 · 58.3</text>
-<rect x="1205" y="419" width="135" height="34" rx="5" fill="#194A92"/>
-<text class="cell" x="1272.5" y="441" text-anchor="middle">#7.5 · 50.0</text>
-<text class="name" x="44" y="486">gpui-kit</text>
-<rect x="335" y="463" width="135" height="34" rx="5" fill="#1F6FEB"/>
-<text class="cell" x="402.5" y="485" text-anchor="middle">#1 · 100.0</text>
-<rect x="480" y="463" width="135" height="34" rx="5" fill="#163766"/>
-<text class="cell" x="547.5" y="485" text-anchor="middle">#10 · 25.0</text>
-<rect x="625" y="463" width="135" height="34" rx="5" fill="#163766"/>
-<text class="cell" x="692.5" y="485" text-anchor="middle">#10 · 25.0</text>
-<rect x="770" y="463" width="135" height="34" rx="5" fill="#1F6FEB"/>
-<text class="cell" x="837.5" y="485" text-anchor="middle">#1 · 100.0</text>
-<rect x="915" y="463" width="135" height="34" rx="5" fill="#184384"/>
-<text class="cell" x="982.5" y="485" text-anchor="middle">#8 · 41.7</text>
-<rect x="1060" y="463" width="135" height="34" rx="5" fill="#142A49"/>
-<text class="cell" x="1127.5" y="485" text-anchor="middle">#12 · 8.3</text>
-<rect x="1205" y="463" width="135" height="34" rx="5" fill="#194A92"/>
-<text class="cell" x="1272.5" y="485" text-anchor="middle">#7.5 · 50.0</text>
-<text class="name" x="44" y="530">FerroUI</text>
-<rect x="335" y="507" width="135" height="34" rx="5" fill="#1C59B7"/>
-<text class="cell" x="402.5" y="529" text-anchor="middle">#4.5 · 70.8</text>
-<rect x="480" y="507" width="135" height="34" rx="5" fill="#173D75"/>
-<text class="cell" x="547.5" y="529" text-anchor="middle">#9 · 33.3</text>
-<rect x="625" y="507" width="135" height="34" rx="5" fill="#1B56B0"/>
-<text class="cell" x="692.5" y="529" text-anchor="middle">#5 · 66.7</text>
-<rect x="770" y="507" width="135" height="34" rx="5" fill="#1A50A1"/>
-<text class="cell" x="837.5" y="529" text-anchor="middle">#6 · 58.3</text>
-<rect x="915" y="507" width="135" height="34" rx="5" fill="#173D75"/>
-<text class="cell" x="982.5" y="529" text-anchor="middle">#9 · 33.3</text>
-<rect x="1060" y="507" width="135" height="34" rx="5" fill="#173D75"/>
-<text class="cell" x="1127.5" y="529" text-anchor="middle">#9 · 33.3</text>
-<rect x="1205" y="507" width="135" height="34" rx="5" fill="#194991"/>
-<text class="cell" x="1272.5" y="529" text-anchor="middle">#9 · 49.3</text>
-<text class="name" x="44" y="574">Iced</text>
-<rect x="335" y="551" width="135" height="34" rx="5" fill="#163766"/>
-<text class="cell" x="402.5" y="573" text-anchor="middle">#10 · 25.0</text>
-<rect x="480" y="551" width="135" height="34" rx="5" fill="#1C5CBF"/>
-<text class="cell" x="547.5" y="573" text-anchor="middle">#4 · 75.0</text>
-<rect x="625" y="551" width="135" height="34" rx="5" fill="#173D75"/>
-<text class="cell" x="692.5" y="573" text-anchor="middle">#9 · 33.3</text>
-<rect x="770" y="551" width="135" height="34" rx="5" fill="#173D75"/>
-<text class="cell" x="837.5" y="573" text-anchor="middle">#9 · 33.3</text>
-<rect x="915" y="551" width="135" height="34" rx="5" fill="#153158"/>
-<text class="cell" x="982.5" y="573" text-anchor="middle">#11 · 16.7</text>
-<rect x="1060" y="551" width="135" height="34" rx="5" fill="#1C5CBF"/>
-<text class="cell" x="1127.5" y="573" text-anchor="middle">#4 · 75.0</text>
-<rect x="1205" y="551" width="135" height="34" rx="5" fill="#184486"/>
-<text class="cell" x="1272.5" y="573" text-anchor="middle">#10 · 43.1</text>
-<text class="name" x="44" y="618">Dioxus Desktop / WebView2</text>
-<rect x="335" y="595" width="135" height="34" rx="5" fill="#184384"/>
-<text class="cell" x="402.5" y="617" text-anchor="middle">#8 · 41.7</text>
-<rect x="480" y="595" width="135" height="34" rx="5" fill="#13243A"/>
-<text class="cell" x="547.5" y="617" text-anchor="middle">#13 · 0.0</text>
-<rect x="625" y="595" width="135" height="34" rx="5" fill="#1D62CD"/>
-<text class="cell" x="692.5" y="617" text-anchor="middle">#3 · 83.3</text>
-<rect x="770" y="595" width="135" height="34" rx="5" fill="#194A92"/>
-<text class="cell" x="837.5" y="617" text-anchor="middle">#7 · 50.0</text>
-<rect x="915" y="595" width="135" height="34" rx="5" fill="#142A49"/>
-<text class="cell" x="982.5" y="617" text-anchor="middle">#12 · 8.3</text>
-<rect x="1060" y="595" width="135" height="34" rx="5" fill="#163766"/>
-<text class="cell" x="1127.5" y="617" text-anchor="middle">#10 · 25.0</text>
-<rect x="1205" y="595" width="135" height="34" rx="5" fill="#173E77"/>
-<text class="cell" x="1272.5" y="617" text-anchor="middle">#11 · 34.7</text>
+<text class="head" x="412.5" y="137" text-anchor="middle">RAM</text>
+<text class="head" x="577.5" y="137" text-anchor="middle">CPU</text>
+<text class="head" x="742.5" y="137" text-anchor="middle">GPU activity</text>
+<text class="head" x="907.5" y="137" text-anchor="middle">Dedicated VRAM</text>
+<text class="head" x="1072.5" y="137" text-anchor="middle">Shared GPU RAM</text>
+<text class="head" x="1237.5" y="137" text-anchor="middle">Warm show</text>
+<text class="head" x="1402.5" y="137" text-anchor="middle">Warm hide</text>
+<text class="head" x="1567.5" y="137" text-anchor="middle">Overall</text>
+<rect x="24" y="150" width="1652" height="44" fill="#102a43"/>
+<text class="name" x="44" y="178">gpui-fast</text>
+<rect x="335" y="155" width="155" height="34" rx="5" fill="#1E69DC"/>
+<text class="cell" x="412.5" y="177" text-anchor="middle">#2 · 91.7</text>
+<rect x="500" y="155" width="155" height="34" rx="5" fill="#1E69DC"/>
+<text class="cell" x="577.5" y="177" text-anchor="middle">#2 · 91.7</text>
+<rect x="665" y="155" width="155" height="34" rx="5" fill="#194A92"/>
+<text class="cell" x="742.5" y="177" text-anchor="middle">#7 · 50.0</text>
+<rect x="830" y="155" width="155" height="34" rx="5" fill="#1E66D5"/>
+<text class="cell" x="907.5" y="177" text-anchor="middle">#2.5 · 87.5</text>
+<rect x="995" y="155" width="155" height="34" rx="5" fill="#1F6FEB"/>
+<text class="cell" x="1072.5" y="177" text-anchor="middle">#1 · 100.0</text>
+<rect x="1160" y="155" width="155" height="34" rx="5" fill="#163766"/>
+<text class="cell" x="1237.5" y="177" text-anchor="middle">#10 · 25.0</text>
+<rect x="1325" y="155" width="155" height="34" rx="5" fill="#153158"/>
+<text class="cell" x="1402.5" y="177" text-anchor="middle">#11 · 16.7</text>
+<rect x="1490" y="155" width="155" height="34" rx="5" fill="#1B56AF"/>
+<text class="cell" x="1567.5" y="177" text-anchor="middle">#1 · 66.1</text>
+<text class="name" x="44" y="222">Tauri / WebView2</text>
+<rect x="335" y="199" width="155" height="34" rx="5" fill="#194A92"/>
+<text class="cell" x="412.5" y="221" text-anchor="middle">#7 · 50.0</text>
+<rect x="500" y="199" width="155" height="34" rx="5" fill="#1A4D9A"/>
+<text class="cell" x="577.5" y="221" text-anchor="middle">#6.5 · 54.2</text>
+<rect x="665" y="199" width="155" height="34" rx="5" fill="#1E6CE4"/>
+<text class="cell" x="742.5" y="221" text-anchor="middle">#1.5 · 95.8</text>
+<rect x="830" y="199" width="155" height="34" rx="5" fill="#184384"/>
+<text class="cell" x="907.5" y="221" text-anchor="middle">#8 · 41.7</text>
+<rect x="995" y="199" width="155" height="34" rx="5" fill="#1D5FC6"/>
+<text class="cell" x="1072.5" y="221" text-anchor="middle">#3.5 · 79.2</text>
+<rect x="1160" y="199" width="155" height="34" rx="5" fill="#1A50A1"/>
+<text class="cell" x="1237.5" y="221" text-anchor="middle">#6 · 58.3</text>
+<rect x="1325" y="199" width="155" height="34" rx="5" fill="#1D62CD"/>
+<text class="cell" x="1402.5" y="221" text-anchor="middle">#3 · 83.3</text>
+<rect x="1490" y="199" width="155" height="34" rx="5" fill="#1B56AF"/>
+<text class="cell" x="1567.5" y="221" text-anchor="middle">#2 · 66.1</text>
+<text class="name" x="44" y="266">gpui-ce</text>
+<rect x="335" y="243" width="155" height="34" rx="5" fill="#1D62CD"/>
+<text class="cell" x="412.5" y="265" text-anchor="middle">#3 · 83.3</text>
+<rect x="500" y="243" width="155" height="34" rx="5" fill="#153158"/>
+<text class="cell" x="577.5" y="265" text-anchor="middle">#11 · 16.7</text>
+<rect x="665" y="243" width="155" height="34" rx="5" fill="#153158"/>
+<text class="cell" x="742.5" y="265" text-anchor="middle">#11 · 16.7</text>
+<rect x="830" y="243" width="155" height="34" rx="5" fill="#1E66D5"/>
+<text class="cell" x="907.5" y="265" text-anchor="middle">#2.5 · 87.5</text>
+<rect x="995" y="243" width="155" height="34" rx="5" fill="#1D5FC6"/>
+<text class="cell" x="1072.5" y="265" text-anchor="middle">#3.5 · 79.2</text>
+<rect x="1160" y="243" width="155" height="34" rx="5" fill="#1D62CD"/>
+<text class="cell" x="1237.5" y="265" text-anchor="middle">#3 · 83.3</text>
+<rect x="1325" y="243" width="155" height="34" rx="5" fill="#1E69DC"/>
+<text class="cell" x="1402.5" y="265" text-anchor="middle">#2 · 91.7</text>
+<rect x="1490" y="243" width="155" height="34" rx="5" fill="#1B55AE"/>
+<text class="cell" x="1567.5" y="265" text-anchor="middle">#3 · 65.5</text>
+<text class="name" x="44" y="310">Makepad</text>
+<rect x="335" y="287" width="155" height="34" rx="5" fill="#173D75"/>
+<text class="cell" x="412.5" y="309" text-anchor="middle">#9 · 33.3</text>
+<rect x="500" y="287" width="155" height="34" rx="5" fill="#1A4D9A"/>
+<text class="cell" x="577.5" y="309" text-anchor="middle">#6.5 · 54.2</text>
+<rect x="665" y="287" width="155" height="34" rx="5" fill="#184384"/>
+<text class="cell" x="742.5" y="309" text-anchor="middle">#8 · 41.7</text>
+<rect x="830" y="287" width="155" height="34" rx="5" fill="#1C5CBF"/>
+<text class="cell" x="907.5" y="309" text-anchor="middle">#4 · 75.0</text>
+<rect x="995" y="287" width="155" height="34" rx="5" fill="#194A92"/>
+<text class="cell" x="1072.5" y="309" text-anchor="middle">#7 · 50.0</text>
+<rect x="1160" y="287" width="155" height="34" rx="5" fill="#1E69DC"/>
+<text class="cell" x="1237.5" y="309" text-anchor="middle">#2 · 91.7</text>
+<rect x="1325" y="287" width="155" height="34" rx="5" fill="#194A92"/>
+<text class="cell" x="1402.5" y="309" text-anchor="middle">#7 · 50.0</text>
+<rect x="1490" y="287" width="155" height="34" rx="5" fill="#1A4E9E"/>
+<text class="cell" x="1567.5" y="309" text-anchor="middle">#4 · 56.5</text>
+<text class="name" x="44" y="354">gpui-kit</text>
+<rect x="335" y="331" width="155" height="34" rx="5" fill="#1F6FEB"/>
+<text class="cell" x="412.5" y="353" text-anchor="middle">#1 · 100.0</text>
+<rect x="500" y="331" width="155" height="34" rx="5" fill="#163766"/>
+<text class="cell" x="577.5" y="353" text-anchor="middle">#10 · 25.0</text>
+<rect x="665" y="331" width="155" height="34" rx="5" fill="#163766"/>
+<text class="cell" x="742.5" y="353" text-anchor="middle">#10 · 25.0</text>
+<rect x="830" y="331" width="155" height="34" rx="5" fill="#1F6FEB"/>
+<text class="cell" x="907.5" y="353" text-anchor="middle">#1 · 100.0</text>
+<rect x="995" y="331" width="155" height="34" rx="5" fill="#1E69DC"/>
+<text class="cell" x="1072.5" y="353" text-anchor="middle">#2 · 91.7</text>
+<rect x="1160" y="331" width="155" height="34" rx="5" fill="#184384"/>
+<text class="cell" x="1237.5" y="353" text-anchor="middle">#8 · 41.7</text>
+<rect x="1325" y="331" width="155" height="34" rx="5" fill="#142A49"/>
+<text class="cell" x="1402.5" y="353" text-anchor="middle">#12 · 8.3</text>
+<rect x="1490" y="331" width="155" height="34" rx="5" fill="#1A4E9D"/>
+<text class="cell" x="1567.5" y="353" text-anchor="middle">#5 · 56.0</text>
+<text class="name" x="44" y="398">Dioxus Native / Blitz</text>
+<rect x="335" y="375" width="155" height="34" rx="5" fill="#13243A"/>
+<text class="cell" x="412.5" y="397" text-anchor="middle">#13 · 0.0</text>
+<rect x="500" y="375" width="155" height="34" rx="5" fill="#1E69DC"/>
+<text class="cell" x="577.5" y="397" text-anchor="middle">#2 · 91.7</text>
+<rect x="665" y="375" width="155" height="34" rx="5" fill="#1E6CE4"/>
+<text class="cell" x="742.5" y="397" text-anchor="middle">#1.5 · 95.8</text>
+<rect x="830" y="375" width="155" height="34" rx="5" fill="#163766"/>
+<text class="cell" x="907.5" y="397" text-anchor="middle">#10 · 25.0</text>
+<rect x="995" y="375" width="155" height="34" rx="5" fill="#163766"/>
+<text class="cell" x="1072.5" y="397" text-anchor="middle">#10 · 25.0</text>
+<rect x="1160" y="375" width="155" height="34" rx="5" fill="#194A92"/>
+<text class="cell" x="1237.5" y="397" text-anchor="middle">#7 · 50.0</text>
+<rect x="1325" y="375" width="155" height="34" rx="5" fill="#1F6FEB"/>
+<text class="cell" x="1402.5" y="397" text-anchor="middle">#1 · 100.0</text>
+<rect x="1490" y="375" width="155" height="34" rx="5" fill="#1A4E9C"/>
+<text class="cell" x="1567.5" y="397" text-anchor="middle">#6.5 · 55.4</text>
+<text class="name" x="44" y="442">zgui</text>
+<rect x="335" y="419" width="155" height="34" rx="5" fill="#1A50A1"/>
+<text class="cell" x="412.5" y="441" text-anchor="middle">#6 · 58.3</text>
+<rect x="500" y="419" width="155" height="34" rx="5" fill="#1A4D9A"/>
+<text class="cell" x="577.5" y="441" text-anchor="middle">#6.5 · 54.2</text>
+<rect x="665" y="419" width="155" height="34" rx="5" fill="#1A50A1"/>
+<text class="cell" x="742.5" y="441" text-anchor="middle">#6 · 58.3</text>
+<rect x="830" y="419" width="155" height="34" rx="5" fill="#153158"/>
+<text class="cell" x="907.5" y="441" text-anchor="middle">#11 · 16.7</text>
+<rect x="995" y="419" width="155" height="34" rx="5" fill="#173D75"/>
+<text class="cell" x="1072.5" y="441" text-anchor="middle">#9 · 33.3</text>
+<rect x="1160" y="419" width="155" height="34" rx="5" fill="#1F6FEB"/>
+<text class="cell" x="1237.5" y="441" text-anchor="middle">#1 · 100.0</text>
+<rect x="1325" y="419" width="155" height="34" rx="5" fill="#1B56B0"/>
+<text class="cell" x="1402.5" y="441" text-anchor="middle">#5 · 66.7</text>
+<rect x="1490" y="419" width="155" height="34" rx="5" fill="#1A4E9C"/>
+<text class="cell" x="1567.5" y="441" text-anchor="middle">#6.5 · 55.4</text>
+<text class="name" x="44" y="486">FerroUI</text>
+<rect x="335" y="463" width="155" height="34" rx="5" fill="#1C59B7"/>
+<text class="cell" x="412.5" y="485" text-anchor="middle">#4.5 · 70.8</text>
+<rect x="500" y="463" width="155" height="34" rx="5" fill="#173D75"/>
+<text class="cell" x="577.5" y="485" text-anchor="middle">#9 · 33.3</text>
+<rect x="665" y="463" width="155" height="34" rx="5" fill="#1B56B0"/>
+<text class="cell" x="742.5" y="485" text-anchor="middle">#5 · 66.7</text>
+<rect x="830" y="463" width="155" height="34" rx="5" fill="#1A50A1"/>
+<text class="cell" x="907.5" y="485" text-anchor="middle">#6 · 58.3</text>
+<rect x="995" y="463" width="155" height="34" rx="5" fill="#1A50A1"/>
+<text class="cell" x="1072.5" y="485" text-anchor="middle">#6 · 58.3</text>
+<rect x="1160" y="463" width="155" height="34" rx="5" fill="#173D75"/>
+<text class="cell" x="1237.5" y="485" text-anchor="middle">#9 · 33.3</text>
+<rect x="1325" y="463" width="155" height="34" rx="5" fill="#173D75"/>
+<text class="cell" x="1402.5" y="485" text-anchor="middle">#9 · 33.3</text>
+<rect x="1490" y="463" width="155" height="34" rx="5" fill="#194A94"/>
+<text class="cell" x="1567.5" y="485" text-anchor="middle">#8 · 50.6</text>
+<text class="name" x="44" y="530">egui</text>
+<rect x="335" y="507" width="155" height="34" rx="5" fill="#142A49"/>
+<text class="cell" x="412.5" y="529" text-anchor="middle">#12 · 8.3</text>
+<rect x="500" y="507" width="155" height="34" rx="5" fill="#1E69DC"/>
+<text class="cell" x="577.5" y="529" text-anchor="middle">#2 · 91.7</text>
+<rect x="665" y="507" width="155" height="34" rx="5" fill="#1C5CBF"/>
+<text class="cell" x="742.5" y="529" text-anchor="middle">#4 · 75.0</text>
+<rect x="830" y="507" width="155" height="34" rx="5" fill="#13243A"/>
+<text class="cell" x="907.5" y="529" text-anchor="middle">#13 · 0.0</text>
+<rect x="995" y="507" width="155" height="34" rx="5" fill="#142A49"/>
+<text class="cell" x="1072.5" y="529" text-anchor="middle">#12 · 8.3</text>
+<rect x="1160" y="507" width="155" height="34" rx="5" fill="#1B56B0"/>
+<text class="cell" x="1237.5" y="529" text-anchor="middle">#5 · 66.7</text>
+<rect x="1325" y="507" width="155" height="34" rx="5" fill="#1A50A1"/>
+<text class="cell" x="1402.5" y="529" text-anchor="middle">#6 · 58.3</text>
+<rect x="1490" y="507" width="155" height="34" rx="5" fill="#184588"/>
+<text class="cell" x="1567.5" y="529" text-anchor="middle">#9 · 44.0</text>
+<text class="name" x="44" y="574">Dioxus Desktop / WebView2</text>
+<rect x="335" y="551" width="155" height="34" rx="5" fill="#184384"/>
+<text class="cell" x="412.5" y="573" text-anchor="middle">#8 · 41.7</text>
+<rect x="500" y="551" width="155" height="34" rx="5" fill="#13243A"/>
+<text class="cell" x="577.5" y="573" text-anchor="middle">#13 · 0.0</text>
+<rect x="665" y="551" width="155" height="34" rx="5" fill="#1D62CD"/>
+<text class="cell" x="742.5" y="573" text-anchor="middle">#3 · 83.3</text>
+<rect x="830" y="551" width="155" height="34" rx="5" fill="#194A92"/>
+<text class="cell" x="907.5" y="573" text-anchor="middle">#7 · 50.0</text>
+<rect x="995" y="551" width="155" height="34" rx="5" fill="#1B56B0"/>
+<text class="cell" x="1072.5" y="573" text-anchor="middle">#5 · 66.7</text>
+<rect x="1160" y="551" width="155" height="34" rx="5" fill="#142A49"/>
+<text class="cell" x="1237.5" y="573" text-anchor="middle">#12 · 8.3</text>
+<rect x="1325" y="551" width="155" height="34" rx="5" fill="#163766"/>
+<text class="cell" x="1402.5" y="573" text-anchor="middle">#10 · 25.0</text>
+<rect x="1490" y="551" width="155" height="34" rx="5" fill="#184180"/>
+<text class="cell" x="1567.5" y="573" text-anchor="middle">#10.5 · 39.3</text>
+<text class="name" x="44" y="618">Iced</text>
+<rect x="335" y="595" width="155" height="34" rx="5" fill="#163766"/>
+<text class="cell" x="412.5" y="617" text-anchor="middle">#10 · 25.0</text>
+<rect x="500" y="595" width="155" height="34" rx="5" fill="#1C5CBF"/>
+<text class="cell" x="577.5" y="617" text-anchor="middle">#4 · 75.0</text>
+<rect x="665" y="595" width="155" height="34" rx="5" fill="#173D75"/>
+<text class="cell" x="742.5" y="617" text-anchor="middle">#9 · 33.3</text>
+<rect x="830" y="595" width="155" height="34" rx="5" fill="#173D75"/>
+<text class="cell" x="907.5" y="617" text-anchor="middle">#9 · 33.3</text>
+<rect x="995" y="595" width="155" height="34" rx="5" fill="#153158"/>
+<text class="cell" x="1072.5" y="617" text-anchor="middle">#11 · 16.7</text>
+<rect x="1160" y="595" width="155" height="34" rx="5" fill="#153158"/>
+<text class="cell" x="1237.5" y="617" text-anchor="middle">#11 · 16.7</text>
+<rect x="1325" y="595" width="155" height="34" rx="5" fill="#1C5CBF"/>
+<text class="cell" x="1402.5" y="617" text-anchor="middle">#4 · 75.0</text>
+<rect x="1490" y="595" width="155" height="34" rx="5" fill="#184180"/>
+<text class="cell" x="1567.5" y="617" text-anchor="middle">#10.5 · 39.3</text>
 <text class="name" x="44" y="662">KAS</text>
-<rect x="335" y="639" width="135" height="34" rx="5" fill="#153158"/>
-<text class="cell" x="402.5" y="661" text-anchor="middle">#11 · 16.7</text>
-<rect x="480" y="639" width="135" height="34" rx="5" fill="#1A4D9A"/>
-<text class="cell" x="547.5" y="661" text-anchor="middle">#6.5 · 54.2</text>
-<rect x="625" y="639" width="135" height="34" rx="5" fill="#13243A"/>
-<text class="cell" x="692.5" y="661" text-anchor="middle">#13 · 0.0</text>
-<rect x="770" y="639" width="135" height="34" rx="5" fill="#142A49"/>
-<text class="cell" x="837.5" y="661" text-anchor="middle">#12 · 8.3</text>
-<rect x="915" y="639" width="135" height="34" rx="5" fill="#1C5CBF"/>
-<text class="cell" x="982.5" y="661" text-anchor="middle">#4 · 75.0</text>
-<rect x="1060" y="639" width="135" height="34" rx="5" fill="#184384"/>
-<text class="cell" x="1127.5" y="661" text-anchor="middle">#8 · 41.7</text>
-<rect x="1205" y="639" width="135" height="34" rx="5" fill="#173C74"/>
-<text class="cell" x="1272.5" y="661" text-anchor="middle">#12 · 32.6</text>
+<rect x="335" y="639" width="155" height="34" rx="5" fill="#153158"/>
+<text class="cell" x="412.5" y="661" text-anchor="middle">#11 · 16.7</text>
+<rect x="500" y="639" width="155" height="34" rx="5" fill="#1A4D9A"/>
+<text class="cell" x="577.5" y="661" text-anchor="middle">#6.5 · 54.2</text>
+<rect x="665" y="639" width="155" height="34" rx="5" fill="#13243A"/>
+<text class="cell" x="742.5" y="661" text-anchor="middle">#13 · 0.0</text>
+<rect x="830" y="639" width="155" height="34" rx="5" fill="#142A49"/>
+<text class="cell" x="907.5" y="661" text-anchor="middle">#12 · 8.3</text>
+<rect x="995" y="639" width="155" height="34" rx="5" fill="#13243A"/>
+<text class="cell" x="1072.5" y="661" text-anchor="middle">#13 · 0.0</text>
+<rect x="1160" y="639" width="155" height="34" rx="5" fill="#1C5CBF"/>
+<text class="cell" x="1237.5" y="661" text-anchor="middle">#4 · 75.0</text>
+<rect x="1325" y="639" width="155" height="34" rx="5" fill="#184384"/>
+<text class="cell" x="1402.5" y="661" text-anchor="middle">#8 · 41.7</text>
+<rect x="1490" y="639" width="155" height="34" rx="5" fill="#16396C"/>
+<text class="cell" x="1567.5" y="661" text-anchor="middle">#12.5 · 28.0</text>
 <text class="name" x="44" y="706">Slint</text>
-<rect x="335" y="683" width="135" height="34" rx="5" fill="#1C59B7"/>
-<text class="cell" x="402.5" y="705" text-anchor="middle">#4.5 · 70.8</text>
-<rect x="480" y="683" width="135" height="34" rx="5" fill="#142A49"/>
-<text class="cell" x="547.5" y="705" text-anchor="middle">#12 · 8.3</text>
-<rect x="625" y="683" width="135" height="34" rx="5" fill="#142A49"/>
-<text class="cell" x="692.5" y="705" text-anchor="middle">#12 · 8.3</text>
-<rect x="770" y="683" width="135" height="34" rx="5" fill="#1B56B0"/>
-<text class="cell" x="837.5" y="705" text-anchor="middle">#5 · 66.7</text>
-<rect x="915" y="683" width="135" height="34" rx="5" fill="#13243A"/>
-<text class="cell" x="982.5" y="705" text-anchor="middle">#13 · 0.0</text>
-<rect x="1060" y="683" width="135" height="34" rx="5" fill="#13243A"/>
-<text class="cell" x="1127.5" y="705" text-anchor="middle">#13 · 0.0</text>
-<rect x="1205" y="683" width="135" height="34" rx="5" fill="#163767"/>
-<text class="cell" x="1272.5" y="705" text-anchor="middle">#13 · 25.7</text>
+<rect x="335" y="683" width="155" height="34" rx="5" fill="#1C59B7"/>
+<text class="cell" x="412.5" y="705" text-anchor="middle">#4.5 · 70.8</text>
+<rect x="500" y="683" width="155" height="34" rx="5" fill="#142A49"/>
+<text class="cell" x="577.5" y="705" text-anchor="middle">#12 · 8.3</text>
+<rect x="665" y="683" width="155" height="34" rx="5" fill="#142A49"/>
+<text class="cell" x="742.5" y="705" text-anchor="middle">#12 · 8.3</text>
+<rect x="830" y="683" width="155" height="34" rx="5" fill="#1B56B0"/>
+<text class="cell" x="907.5" y="705" text-anchor="middle">#5 · 66.7</text>
+<rect x="995" y="683" width="155" height="34" rx="5" fill="#184384"/>
+<text class="cell" x="1072.5" y="705" text-anchor="middle">#8 · 41.7</text>
+<rect x="1160" y="683" width="155" height="34" rx="5" fill="#13243A"/>
+<text class="cell" x="1237.5" y="705" text-anchor="middle">#13 · 0.0</text>
+<rect x="1325" y="683" width="155" height="34" rx="5" fill="#13243A"/>
+<text class="cell" x="1402.5" y="705" text-anchor="middle">#13 · 0.0</text>
+<rect x="1490" y="683" width="155" height="34" rx="5" fill="#16396C"/>
+<text class="cell" x="1567.5" y="705" text-anchor="middle">#12.5 · 28.0</text>
 <text class="sub" x="28" y="774">Scores are cohort-relative, not universal performance grades. Hardware-capacity percentages are shown on the individual radar cards.</text>
 </svg>

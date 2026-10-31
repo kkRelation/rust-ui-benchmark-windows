@@ -1,16 +1,17 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "methodology": {
     "direction": "lower-is-better",
     "rankScore": "100 * (frameworkCount - averageTieRank) / (frameworkCount - 1)",
     "ramAxis": "equal mean of hidden-PWS and workload-PWS rank scores",
-    "overall": "weighted arithmetic mean of the six axis rank scores",
+    "overall": "weighted arithmetic mean of the seven axis rank scores",
     "radarAreaUsedForRanking": false,
     "weights": {
       "ram": 1,
       "cpu": 1,
       "gpu": 1,
       "vram": 1,
+      "sharedGpu": 1,
       "show": 1,
       "hide": 1
     },
@@ -20,6 +21,46 @@
     }
   },
   "frameworks": [
+    {
+      "name": "gpui-fast",
+      "display": "gpui-fast",
+      "source": "results/2026-10-31/gpui-fast.json",
+      "metrics": {
+        "hiddenPwsMb": 20.4,
+        "workloadPwsMb": 25.9,
+        "workloadCpuPercent": 0.325,
+        "workloadGpuAveragePercent": 0.956,
+        "workloadDedicatedVramPeakMb": 49.4,
+        "workloadSharedGpuPeakMb": 1.8,
+        "warmShowMs": 319.336,
+        "warmHideMs": 299.87
+      },
+      "axisScores": {
+        "ram": 91.667,
+        "cpu": 91.667,
+        "gpuActivity": 50.0,
+        "dedicatedVram": 87.5,
+        "sharedGpuMemory": 100.0,
+        "warmShow": 25.0,
+        "warmHide": 16.667
+      },
+      "axisRanks": {
+        "ram": 2.0,
+        "cpu": 2.0,
+        "gpuActivity": 7.0,
+        "dedicatedVram": 2.5,
+        "sharedGpuMemory": 1.0,
+        "warmShow": 10.0,
+        "warmHide": 11.0
+      },
+      "overallScore": 66.072,
+      "overallRank": 1.0,
+      "weaknessFloor": 16.667,
+      "hardwareCost": {
+        "workloadPwsPercentOfSystemRam": 0.079,
+        "dedicatedVramPercent": 0.603
+      }
+    },
     {
       "name": "tauri",
       "display": "Tauri / WebView2",
@@ -39,6 +80,7 @@
         "cpu": 54.167,
         "gpuActivity": 95.833,
         "dedicatedVram": 41.667,
+        "sharedGpuMemory": 79.167,
         "warmShow": 58.333,
         "warmHide": 83.333
       },
@@ -47,11 +89,12 @@
         "cpu": 6.5,
         "gpuActivity": 1.5,
         "dedicatedVram": 8.0,
+        "sharedGpuMemory": 3.5,
         "warmShow": 6.0,
         "warmHide": 3.0
       },
-      "overallScore": 63.889,
-      "overallRank": 1.0,
+      "overallScore": 66.071,
+      "overallRank": 2.0,
       "weaknessFloor": 41.667,
       "hardwareCost": {
         "workloadPwsPercentOfSystemRam": 0.2997,
@@ -77,6 +120,7 @@
         "cpu": 16.667,
         "gpuActivity": 16.667,
         "dedicatedVram": 87.5,
+        "sharedGpuMemory": 79.167,
         "warmShow": 83.333,
         "warmHide": 91.667
       },
@@ -85,129 +129,16 @@
         "cpu": 11.0,
         "gpuActivity": 11.0,
         "dedicatedVram": 2.5,
+        "sharedGpuMemory": 3.5,
         "warmShow": 3.0,
         "warmHide": 2.0
       },
-      "overallScore": 63.195,
-      "overallRank": 2.0,
+      "overallScore": 65.476,
+      "overallRank": 3.0,
       "weaknessFloor": 16.667,
       "hardwareCost": {
         "workloadPwsPercentOfSystemRam": 0.1117,
         "dedicatedVramPercent": 0.603
-      }
-    },
-    {
-      "name": "dioxus-native",
-      "display": "Dioxus Native / Blitz",
-      "source": "results/2026-10-29/dioxus-native-unmanaged.json",
-      "metrics": {
-        "hiddenPwsMb": 189.5,
-        "workloadPwsMb": 189.9,
-        "workloadCpuPercent": 0.325,
-        "workloadGpuAveragePercent": 0.0,
-        "workloadDedicatedVramPeakMb": 119.5,
-        "workloadSharedGpuPeakMb": 74.2,
-        "warmShowMs": 266.597,
-        "warmHideMs": 199.261
-      },
-      "axisScores": {
-        "ram": 0.0,
-        "cpu": 91.667,
-        "gpuActivity": 95.833,
-        "dedicatedVram": 25.0,
-        "warmShow": 50.0,
-        "warmHide": 100.0
-      },
-      "axisRanks": {
-        "ram": 13.0,
-        "cpu": 2.0,
-        "gpuActivity": 1.5,
-        "dedicatedVram": 10.0,
-        "warmShow": 7.0,
-        "warmHide": 1.0
-      },
-      "overallScore": 60.417,
-      "overallRank": 3.5,
-      "weaknessFloor": 0.0,
-      "hardwareCost": {
-        "workloadPwsPercentOfSystemRam": 0.5795,
-        "dedicatedVramPercent": 1.4587
-      }
-    },
-    {
-      "name": "gpui-fast",
-      "display": "gpui-fast",
-      "source": "results/2026-10-31/gpui-fast.json",
-      "metrics": {
-        "hiddenPwsMb": 20.4,
-        "workloadPwsMb": 25.9,
-        "workloadCpuPercent": 0.325,
-        "workloadGpuAveragePercent": 0.956,
-        "workloadDedicatedVramPeakMb": 49.4,
-        "workloadSharedGpuPeakMb": 1.8,
-        "warmShowMs": 319.336,
-        "warmHideMs": 299.87
-      },
-      "axisScores": {
-        "ram": 91.667,
-        "cpu": 91.667,
-        "gpuActivity": 50.0,
-        "dedicatedVram": 87.5,
-        "warmShow": 25.0,
-        "warmHide": 16.667
-      },
-      "axisRanks": {
-        "ram": 2.0,
-        "cpu": 2.0,
-        "gpuActivity": 7.0,
-        "dedicatedVram": 2.5,
-        "warmShow": 10.0,
-        "warmHide": 11.0
-      },
-      "overallScore": 60.417,
-      "overallRank": 3.5,
-      "weaknessFloor": 16.667,
-      "hardwareCost": {
-        "workloadPwsPercentOfSystemRam": 0.079,
-        "dedicatedVramPercent": 0.603
-      }
-    },
-    {
-      "name": "zgui",
-      "display": "zgui",
-      "source": "results/2026-10-29/zgui-unmanaged.json",
-      "metrics": {
-        "hiddenPwsMb": 87.0,
-        "workloadPwsMb": 96.6,
-        "workloadCpuPercent": 0.328,
-        "workloadGpuAveragePercent": 0.834,
-        "workloadDedicatedVramPeakMb": 133.9,
-        "workloadSharedGpuPeakMb": 37.3,
-        "warmShowMs": 207.027,
-        "warmHideMs": 227.862
-      },
-      "axisScores": {
-        "ram": 58.333,
-        "cpu": 54.167,
-        "gpuActivity": 58.333,
-        "dedicatedVram": 16.667,
-        "warmShow": 100.0,
-        "warmHide": 66.667
-      },
-      "axisRanks": {
-        "ram": 6.0,
-        "cpu": 6.5,
-        "gpuActivity": 6.0,
-        "dedicatedVram": 11.0,
-        "warmShow": 1.0,
-        "warmHide": 5.0
-      },
-      "overallScore": 59.028,
-      "overallRank": 5.0,
-      "weaknessFloor": 16.667,
-      "hardwareCost": {
-        "workloadPwsPercentOfSystemRam": 0.2948,
-        "dedicatedVramPercent": 1.6345
       }
     },
     {
@@ -229,6 +160,7 @@
         "cpu": 54.167,
         "gpuActivity": 41.667,
         "dedicatedVram": 75.0,
+        "sharedGpuMemory": 50.0,
         "warmShow": 91.667,
         "warmHide": 50.0
       },
@@ -237,53 +169,16 @@
         "cpu": 6.5,
         "gpuActivity": 8.0,
         "dedicatedVram": 4.0,
+        "sharedGpuMemory": 7.0,
         "warmShow": 2.0,
         "warmHide": 7.0
       },
-      "overallScore": 57.639,
-      "overallRank": 6.0,
+      "overallScore": 56.548,
+      "overallRank": 4.0,
       "weaknessFloor": 33.333,
       "hardwareCost": {
         "workloadPwsPercentOfSystemRam": 0.4086,
         "dedicatedVramPercent": 0.7568
-      }
-    },
-    {
-      "name": "egui",
-      "display": "egui",
-      "source": "results/2026-10-29/egui.json",
-      "metrics": {
-        "hiddenPwsMb": 184.9,
-        "workloadPwsMb": 189.0,
-        "workloadCpuPercent": 0.325,
-        "workloadGpuAveragePercent": 0.496,
-        "workloadDedicatedVramPeakMb": 281.9,
-        "workloadSharedGpuPeakMb": 81.1,
-        "warmShowMs": 253.6,
-        "warmHideMs": 230.375
-      },
-      "axisScores": {
-        "ram": 8.333,
-        "cpu": 91.667,
-        "gpuActivity": 75.0,
-        "dedicatedVram": 0.0,
-        "warmShow": 66.667,
-        "warmHide": 58.333
-      },
-      "axisRanks": {
-        "ram": 12.0,
-        "cpu": 2.0,
-        "gpuActivity": 4.0,
-        "dedicatedVram": 13.0,
-        "warmShow": 5.0,
-        "warmHide": 6.0
-      },
-      "overallScore": 50.0,
-      "overallRank": 7.5,
-      "weaknessFloor": 0.0,
-      "hardwareCost": {
-        "workloadPwsPercentOfSystemRam": 0.5768,
-        "dedicatedVramPercent": 3.4412
       }
     },
     {
@@ -305,6 +200,7 @@
         "cpu": 25.0,
         "gpuActivity": 25.0,
         "dedicatedVram": 100.0,
+        "sharedGpuMemory": 91.667,
         "warmShow": 41.667,
         "warmHide": 8.333
       },
@@ -313,15 +209,96 @@
         "cpu": 10.0,
         "gpuActivity": 10.0,
         "dedicatedVram": 1.0,
+        "sharedGpuMemory": 2.0,
         "warmShow": 8.0,
         "warmHide": 12.0
       },
-      "overallScore": 50.0,
-      "overallRank": 7.5,
+      "overallScore": 55.952,
+      "overallRank": 5.0,
       "weaknessFloor": 8.333,
       "hardwareCost": {
         "workloadPwsPercentOfSystemRam": 0.0757,
         "dedicatedVramPercent": 0.6018
+      }
+    },
+    {
+      "name": "dioxus-native",
+      "display": "Dioxus Native / Blitz",
+      "source": "results/2026-10-29/dioxus-native-unmanaged.json",
+      "metrics": {
+        "hiddenPwsMb": 189.5,
+        "workloadPwsMb": 189.9,
+        "workloadCpuPercent": 0.325,
+        "workloadGpuAveragePercent": 0.0,
+        "workloadDedicatedVramPeakMb": 119.5,
+        "workloadSharedGpuPeakMb": 74.2,
+        "warmShowMs": 266.597,
+        "warmHideMs": 199.261
+      },
+      "axisScores": {
+        "ram": 0.0,
+        "cpu": 91.667,
+        "gpuActivity": 95.833,
+        "dedicatedVram": 25.0,
+        "sharedGpuMemory": 25.0,
+        "warmShow": 50.0,
+        "warmHide": 100.0
+      },
+      "axisRanks": {
+        "ram": 13.0,
+        "cpu": 2.0,
+        "gpuActivity": 1.5,
+        "dedicatedVram": 10.0,
+        "sharedGpuMemory": 10.0,
+        "warmShow": 7.0,
+        "warmHide": 1.0
+      },
+      "overallScore": 55.357,
+      "overallRank": 6.5,
+      "weaknessFloor": 0.0,
+      "hardwareCost": {
+        "workloadPwsPercentOfSystemRam": 0.5795,
+        "dedicatedVramPercent": 1.4587
+      }
+    },
+    {
+      "name": "zgui",
+      "display": "zgui",
+      "source": "results/2026-10-29/zgui-unmanaged.json",
+      "metrics": {
+        "hiddenPwsMb": 87.0,
+        "workloadPwsMb": 96.6,
+        "workloadCpuPercent": 0.328,
+        "workloadGpuAveragePercent": 0.834,
+        "workloadDedicatedVramPeakMb": 133.9,
+        "workloadSharedGpuPeakMb": 37.3,
+        "warmShowMs": 207.027,
+        "warmHideMs": 227.862
+      },
+      "axisScores": {
+        "ram": 58.333,
+        "cpu": 54.167,
+        "gpuActivity": 58.333,
+        "dedicatedVram": 16.667,
+        "sharedGpuMemory": 33.333,
+        "warmShow": 100.0,
+        "warmHide": 66.667
+      },
+      "axisRanks": {
+        "ram": 6.0,
+        "cpu": 6.5,
+        "gpuActivity": 6.0,
+        "dedicatedVram": 11.0,
+        "sharedGpuMemory": 9.0,
+        "warmShow": 1.0,
+        "warmHide": 5.0
+      },
+      "overallScore": 55.357,
+      "overallRank": 6.5,
+      "weaknessFloor": 16.667,
+      "hardwareCost": {
+        "workloadPwsPercentOfSystemRam": 0.2948,
+        "dedicatedVramPercent": 1.6345
       }
     },
     {
@@ -343,6 +320,7 @@
         "cpu": 33.333,
         "gpuActivity": 66.667,
         "dedicatedVram": 58.333,
+        "sharedGpuMemory": 58.333,
         "warmShow": 33.333,
         "warmHide": 33.333
       },
@@ -351,11 +329,12 @@
         "cpu": 9.0,
         "gpuActivity": 5.0,
         "dedicatedVram": 6.0,
+        "sharedGpuMemory": 6.0,
         "warmShow": 9.0,
         "warmHide": 9.0
       },
-      "overallScore": 49.305,
-      "overallRank": 9.0,
+      "overallScore": 50.595,
+      "overallRank": 8.0,
       "weaknessFloor": 33.333,
       "hardwareCost": {
         "workloadPwsPercentOfSystemRam": 0.166,
@@ -363,41 +342,43 @@
       }
     },
     {
-      "name": "iced",
-      "display": "Iced",
-      "source": "results/2026-10-29/iced-unmanaged-attempt-3.json",
+      "name": "egui",
+      "display": "egui",
+      "source": "results/2026-10-29/egui.json",
       "metrics": {
-        "hiddenPwsMb": 133.3,
-        "workloadPwsMb": 152.0,
-        "workloadCpuPercent": 0.327,
-        "workloadGpuAveragePercent": 1.054,
-        "workloadDedicatedVramPeakMb": 79.5,
-        "workloadSharedGpuPeakMb": 78.4,
-        "warmShowMs": 329.911,
-        "warmHideMs": 222.939
+        "hiddenPwsMb": 184.9,
+        "workloadPwsMb": 189.0,
+        "workloadCpuPercent": 0.325,
+        "workloadGpuAveragePercent": 0.496,
+        "workloadDedicatedVramPeakMb": 281.9,
+        "workloadSharedGpuPeakMb": 81.1,
+        "warmShowMs": 253.6,
+        "warmHideMs": 230.375
       },
       "axisScores": {
-        "ram": 25.0,
-        "cpu": 75.0,
-        "gpuActivity": 33.333,
-        "dedicatedVram": 33.333,
-        "warmShow": 16.667,
-        "warmHide": 75.0
+        "ram": 8.333,
+        "cpu": 91.667,
+        "gpuActivity": 75.0,
+        "dedicatedVram": 0.0,
+        "sharedGpuMemory": 8.333,
+        "warmShow": 66.667,
+        "warmHide": 58.333
       },
       "axisRanks": {
-        "ram": 10.0,
-        "cpu": 4.0,
-        "gpuActivity": 9.0,
-        "dedicatedVram": 9.0,
-        "warmShow": 11.0,
-        "warmHide": 4.0
+        "ram": 12.0,
+        "cpu": 2.0,
+        "gpuActivity": 4.0,
+        "dedicatedVram": 13.0,
+        "sharedGpuMemory": 12.0,
+        "warmShow": 5.0,
+        "warmHide": 6.0
       },
-      "overallScore": 43.055,
-      "overallRank": 10.0,
-      "weaknessFloor": 16.667,
+      "overallScore": 44.048,
+      "overallRank": 9.0,
+      "weaknessFloor": 0.0,
       "hardwareCost": {
-        "workloadPwsPercentOfSystemRam": 0.4639,
-        "dedicatedVramPercent": 0.9705
+        "workloadPwsPercentOfSystemRam": 0.5768,
+        "dedicatedVramPercent": 3.4412
       }
     },
     {
@@ -419,6 +400,7 @@
         "cpu": 0.0,
         "gpuActivity": 83.333,
         "dedicatedVram": 50.0,
+        "sharedGpuMemory": 66.667,
         "warmShow": 8.333,
         "warmHide": 25.0
       },
@@ -427,15 +409,56 @@
         "cpu": 13.0,
         "gpuActivity": 3.0,
         "dedicatedVram": 7.0,
+        "sharedGpuMemory": 5.0,
         "warmShow": 12.0,
         "warmHide": 10.0
       },
-      "overallScore": 34.722,
-      "overallRank": 11.0,
+      "overallScore": 39.286,
+      "overallRank": 10.5,
       "weaknessFloor": 0.0,
       "hardwareCost": {
         "workloadPwsPercentOfSystemRam": 0.3757,
         "dedicatedVramPercent": 0.929
+      }
+    },
+    {
+      "name": "iced",
+      "display": "Iced",
+      "source": "results/2026-10-29/iced-unmanaged-attempt-3.json",
+      "metrics": {
+        "hiddenPwsMb": 133.3,
+        "workloadPwsMb": 152.0,
+        "workloadCpuPercent": 0.327,
+        "workloadGpuAveragePercent": 1.054,
+        "workloadDedicatedVramPeakMb": 79.5,
+        "workloadSharedGpuPeakMb": 78.4,
+        "warmShowMs": 329.911,
+        "warmHideMs": 222.939
+      },
+      "axisScores": {
+        "ram": 25.0,
+        "cpu": 75.0,
+        "gpuActivity": 33.333,
+        "dedicatedVram": 33.333,
+        "sharedGpuMemory": 16.667,
+        "warmShow": 16.667,
+        "warmHide": 75.0
+      },
+      "axisRanks": {
+        "ram": 10.0,
+        "cpu": 4.0,
+        "gpuActivity": 9.0,
+        "dedicatedVram": 9.0,
+        "sharedGpuMemory": 11.0,
+        "warmShow": 11.0,
+        "warmHide": 4.0
+      },
+      "overallScore": 39.286,
+      "overallRank": 10.5,
+      "weaknessFloor": 16.667,
+      "hardwareCost": {
+        "workloadPwsPercentOfSystemRam": 0.4639,
+        "dedicatedVramPercent": 0.9705
       }
     },
     {
@@ -457,6 +480,7 @@
         "cpu": 54.167,
         "gpuActivity": 0.0,
         "dedicatedVram": 8.333,
+        "sharedGpuMemory": 0.0,
         "warmShow": 75.0,
         "warmHide": 41.667
       },
@@ -465,11 +489,12 @@
         "cpu": 6.5,
         "gpuActivity": 13.0,
         "dedicatedVram": 12.0,
+        "sharedGpuMemory": 13.0,
         "warmShow": 4.0,
         "warmHide": 8.0
       },
-      "overallScore": 32.639,
-      "overallRank": 12.0,
+      "overallScore": 27.976,
+      "overallRank": 12.5,
       "weaknessFloor": 0.0,
       "hardwareCost": {
         "workloadPwsPercentOfSystemRam": 0.575,
@@ -495,6 +520,7 @@
         "cpu": 8.333,
         "gpuActivity": 8.333,
         "dedicatedVram": 66.667,
+        "sharedGpuMemory": 41.667,
         "warmShow": 0.0,
         "warmHide": 0.0
       },
@@ -503,11 +529,12 @@
         "cpu": 12.0,
         "gpuActivity": 12.0,
         "dedicatedVram": 5.0,
+        "sharedGpuMemory": 8.0,
         "warmShow": 13.0,
         "warmHide": 13.0
       },
-      "overallScore": 25.694,
-      "overallRank": 13.0,
+      "overallScore": 27.976,
+      "overallRank": 12.5,
       "weaknessFloor": 0.0,
       "hardwareCost": {
         "workloadPwsPercentOfSystemRam": 0.1877,

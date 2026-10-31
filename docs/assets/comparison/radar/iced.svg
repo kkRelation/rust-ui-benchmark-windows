@@ -1,39 +1,43 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="560" height="520" viewBox="0 0 560 520" role="img" aria-labelledby="title desc">
-<title id="title">Iced six-axis capability radar</title><desc id="desc">Higher is better. Scores are cohort-relative percentile rank scores.</desc>
+<svg xmlns="http://www.w3.org/2000/svg" width="650" height="575" viewBox="0 0 650 575" role="img" aria-labelledby="title desc">
+<title id="title">Iced seven-axis capability radar</title><desc id="desc">Higher is better. Scores are cohort-relative percentile rank scores.</desc>
 <style>text{font-family:"Segoe UI",Arial,sans-serif;fill:#e6edf3}.title{font-size:24px;font-weight:700}.sub{font-size:13px;fill:#9da7b3}.axis{font-size:12px;font-weight:700}.value{font-size:11px;fill:#79c0ff}.ring{fill:none;stroke:#30363d;stroke-width:1}.spoke{stroke:#30363d;stroke-width:1}.shape{fill:#1f6feb;fill-opacity:.34;stroke:#58a6ff;stroke-width:3}.dot{fill:#79c0ff}</style>
-<rect width="560" height="520" rx="14" fill="#0d1117"/>
+<rect width="650" height="575" rx="14" fill="#0d1117"/>
 <text class="title" x="24" y="38">Iced</text>
-<text class="sub" x="24" y="64">Overall #10 · score 43.1 · weakness floor 16.7</text>
-<text class="sub" x="24" y="86">Workload PWS 0.464% of 32 GiB RAM · dedicated VRAM 0.971% of 8 GiB</text>
-<polygon class="ring" points="280.0,235.5 313.3,254.8 313.3,293.3 280.0,312.5 246.7,293.3 246.7,254.8"/>
-<polygon class="ring" points="280.0,197.0 346.7,235.5 346.7,312.5 280.0,351.0 213.3,312.5 213.3,235.5"/>
-<polygon class="ring" points="280.0,158.5 380.0,216.3 380.0,331.8 280.0,389.5 180.0,331.8 180.0,216.3"/>
-<polygon class="ring" points="280.0,120.0 413.4,197.0 413.4,351.0 280.0,428.0 146.6,351.0 146.6,197.0"/>
-<line class="spoke" x1="280" y1="274" x2="280.0" y2="120.0"/>
-<line class="spoke" x1="280" y1="274" x2="413.4" y2="197.0"/>
-<line class="spoke" x1="280" y1="274" x2="413.4" y2="351.0"/>
-<line class="spoke" x1="280" y1="274" x2="280.0" y2="428.0"/>
-<line class="spoke" x1="280" y1="274" x2="146.6" y2="351.0"/>
-<line class="spoke" x1="280" y1="274" x2="146.6" y2="197.0"/>
-<polygon class="shape" points="280.0,235.5 380.0,216.3 324.5,299.7 280.0,325.3 257.8,286.8 180.0,216.3"/>
-<circle class="dot" cx="280.0" cy="235.5" r="4"/>
-<circle class="dot" cx="380.0" cy="216.3" r="4"/>
-<circle class="dot" cx="324.5" cy="299.7" r="4"/>
-<circle class="dot" cx="280.0" cy="325.3" r="4"/>
-<circle class="dot" cx="257.8" cy="286.8" r="4"/>
-<circle class="dot" cx="180.0" cy="216.3" r="4"/>
-<text class="axis" x="280" y="104" text-anchor="middle">RAM</text>
-<text class="value" x="280" y="121" text-anchor="middle">#10 · 25.0</text>
-<text class="axis" x="477" y="196" text-anchor="start">CPU</text>
-<text class="value" x="477" y="213" text-anchor="start">#4 · 75.0</text>
-<text class="axis" x="477" y="374" text-anchor="start">GPU activity</text>
-<text class="value" x="477" y="391" text-anchor="start">#9 · 33.3</text>
-<text class="axis" x="280" y="456" text-anchor="middle">VRAM</text>
-<text class="value" x="280" y="473" text-anchor="middle">#9 · 33.3</text>
-<text class="axis" x="83" y="374" text-anchor="end">Warm show</text>
-<text class="value" x="83" y="391" text-anchor="end">#11 · 16.7</text>
-<text class="axis" x="83" y="196" text-anchor="end">Warm hide</text>
-<text class="value" x="83" y="213" text-anchor="end">#4 · 75.0</text>
-<text class="sub" x="280" y="492" text-anchor="middle">Higher polygon vertices are better.</text>
-<text class="sub" x="280" y="510" text-anchor="middle">Polygon area is descriptive only and is not the composite score.</text>
+<text class="sub" x="24" y="64">Overall #10.5 · score 39.3 · weakness floor 16.7</text>
+<text class="sub" x="24" y="86">Workload PWS 0.464% of 32 GiB RAM · dedicated VRAM 0.971% of 8 GiB · shared GPU 78.4 MB</text>
+<polygon class="ring" points="325.0,262.5 354.3,276.6 361.6,308.3 341.3,333.8 308.7,333.8 288.4,308.3 295.7,276.6"/>
+<polygon class="ring" points="325.0,225.0 383.6,253.2 398.1,316.7 357.5,367.6 292.5,367.6 251.9,316.7 266.4,253.2"/>
+<polygon class="ring" points="325.0,187.5 413.0,229.9 434.7,325.0 373.8,401.4 276.2,401.4 215.3,325.0 237.0,229.9"/>
+<polygon class="ring" points="325.0,150.0 442.3,206.5 471.2,333.4 390.1,435.1 259.9,435.1 178.8,333.4 207.7,206.5"/>
+<line class="spoke" x1="325" y1="300" x2="325.0" y2="150.0"/>
+<line class="spoke" x1="325" y1="300" x2="442.3" y2="206.5"/>
+<line class="spoke" x1="325" y1="300" x2="471.2" y2="333.4"/>
+<line class="spoke" x1="325" y1="300" x2="390.1" y2="435.1"/>
+<line class="spoke" x1="325" y1="300" x2="259.9" y2="435.1"/>
+<line class="spoke" x1="325" y1="300" x2="178.8" y2="333.4"/>
+<line class="spoke" x1="325" y1="300" x2="207.7" y2="206.5"/>
+<polygon class="shape" points="325.0,262.5 413.0,229.9 373.7,311.1 346.7,345.0 314.2,322.5 300.6,305.6 237.0,229.9"/>
+<circle class="dot" cx="325.0" cy="262.5" r="4"/>
+<circle class="dot" cx="413.0" cy="229.9" r="4"/>
+<circle class="dot" cx="373.7" cy="311.1" r="4"/>
+<circle class="dot" cx="346.7" cy="345.0" r="4"/>
+<circle class="dot" cx="314.2" cy="322.5" r="4"/>
+<circle class="dot" cx="300.6" cy="305.6" r="4"/>
+<circle class="dot" cx="237.0" cy="229.9" r="4"/>
+<text class="axis" x="325.0" y="106.0" text-anchor="middle">RAM</text>
+<text class="value" x="325.0" y="123.0" text-anchor="middle">#10 · 25.0</text>
+<text class="axis" x="476.7" y="179.0" text-anchor="start">CPU</text>
+<text class="value" x="476.7" y="196.0" text-anchor="start">#4 · 75.0</text>
+<text class="axis" x="514.1" y="343.2" text-anchor="start">GPU activity</text>
+<text class="value" x="514.1" y="360.2" text-anchor="start">#9 · 33.3</text>
+<text class="axis" x="409.2" y="474.8" text-anchor="start">Dedicated VRAM</text>
+<text class="value" x="409.2" y="491.8" text-anchor="start">#9 · 33.3</text>
+<text class="axis" x="240.8" y="474.8" text-anchor="end">Shared GPU RAM</text>
+<text class="value" x="240.8" y="491.8" text-anchor="end">#11 · 16.7</text>
+<text class="axis" x="135.9" y="343.2" text-anchor="end">Warm show</text>
+<text class="value" x="135.9" y="360.2" text-anchor="end">#11 · 16.7</text>
+<text class="axis" x="173.3" y="179.0" text-anchor="end">Warm hide</text>
+<text class="value" x="173.3" y="196.0" text-anchor="end">#4 · 75.0</text>
+<text class="sub" x="325" y="547" text-anchor="middle">Higher polygon vertices are better.</text>
+<text class="sub" x="325" y="565" text-anchor="middle">Polygon area is descriptive only and is not the composite score.</text>
 </svg>

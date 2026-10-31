@@ -7,11 +7,12 @@ Describe "comparison visual generation" {
 
     $result.FrameworkCount | Should Be 13
     $result.RadarCount | Should Be 13
+    Test-Path -LiteralPath (Join-Path $output "overview.svg") | Should Be $true
     Test-Path -LiteralPath (Join-Path $output "ranking-heatmap.svg") | Should Be $true
     Test-Path -LiteralPath (Join-Path $output "overall-ranking.svg") | Should Be $true
 
     $svgFiles = @(Get-ChildItem -LiteralPath $output -Filter "*.svg" -Recurse)
-    $svgFiles.Count | Should Be 15
+    $svgFiles.Count | Should Be 16
     foreach ($file in $svgFiles) {
       { [xml](Get-Content -LiteralPath $file.FullName -Raw -Encoding utf8) } | Should Not Throw
     }
@@ -19,15 +20,16 @@ Describe "comparison visual generation" {
     $data = Get-Content -LiteralPath (Join-Path $output "comparison-data.json") -Raw -Encoding utf8 |
       ConvertFrom-Json
     $data.frameworks.Count | Should Be 13
+    $data.schemaVersion | Should Be 2
     $data.methodology.radarAreaUsedForRanking | Should Be $false
     $data.methodology.hardwareBaseline.systemRamGiB | Should Be 32
     $data.methodology.hardwareBaseline.dedicatedVramGiB | Should Be 8
 
     $leader = @($data.frameworks | Sort-Object overallRank)[0]
-    $leader.name | Should Be "tauri"
+    $leader.name | Should Be "gpui-fast"
     $leader.overallRank | Should Be 1
     $gpuiFast = @($data.frameworks | Where-Object name -eq "gpui-fast")[0]
-    $gpuiFast.overallRank | Should Be 3.5
+    $gpuiFast.axisRanks.sharedGpuMemory | Should Not BeNullOrEmpty
     $gpuiFast.axisRanks.ram | Should Be 2
   }
 }

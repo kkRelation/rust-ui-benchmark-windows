@@ -32,7 +32,8 @@ refactors of two resident Windows applications:
   panel, and an Everything-backed File Explorer quick-find panel. It handles
   text, images, and files; uses several cooperating windows and popups; and is
   designed for keyboard-first, focus-preserving interaction.
-- `komorebi-shortcuts-tauri`, currently a Tauri/WebView2 application, is a
+- [komorebi-shortcuts-tauri](https://github.com/kkRelation/komorebi-shortcuts-tauri),
+  currently a Tauri/WebView2 application, is a
   searchable command palette for live Komorebi, Kanata, ErgoNav, AHK, and
   shell shortcuts. It starts hidden and adds no-activate auxiliary windows for
   the selected item's preview and keyboard-binding atlas.
@@ -64,7 +65,7 @@ Lower is better in every numeric column. Red values are overall minima
 minimum. The gpui-fast row is the comparison baseline. Select the image to
 open the full-size SVG.
 
-[![Corrected unmanaged-window comparison of thirteen Rust UI frameworks](docs/assets/thirteen-framework-unmanaged-comparison.svg)](docs/assets/thirteen-framework-unmanaged-comparison.svg)
+[![Corrected unmanaged-window comparison of thirteen Rust UI frameworks](docs/assets/comparison/overview.svg)](docs/assets/comparison/overview.svg)
 
 These are machine- and scene-specific observations. In particular, the GPU
 counter is sampled at Windows process/engine resolution, and the frameworks use
@@ -78,18 +79,19 @@ average rank.
 
 [![Per-dimension ranking heatmap](docs/assets/comparison/ranking-heatmap.svg)](docs/assets/comparison/ranking-heatmap.svg)
 
-The composite is an equal-weight arithmetic mean of six cohort-relative
+The composite is an equal-weight arithmetic mean of seven cohort-relative
 percentile rank scores: RAM, workload CPU, workload GPU activity, dedicated
-VRAM, warm show, and warm hide. It is a transparent default—not a universal
-answer—and the generator accepts custom weights. The weakness floor is the
-lowest axis score and helps distinguish a balanced framework from one whose
-average hides a sharp weakness.
+VRAM, shared GPU memory, warm show, and warm hide. Shared GPU memory is backed
+by system RAM and is kept separate from dedicated VRAM. This is a transparent
+default—not a universal answer—and the generator accepts custom weights. The
+weakness floor is the lowest axis score and helps distinguish a balanced
+framework from one whose average hides a sharp weakness.
 
 [![Equal-weight composite ranking](docs/assets/comparison/overall-ranking.svg)](docs/assets/comparison/overall-ranking.svg)
 
 ### Individual capability radars
 
-Each framework gets its own six-axis radar so thirteen polygons never overlap.
+Each framework gets its own seven-axis radar so thirteen polygons never overlap.
 Higher vertices are better. Radar polygon area is deliberately **not** used as
 the composite score: area changes when the same axes are reordered, which
 makes it unsuitable as a stable ranking formula.
@@ -109,11 +111,11 @@ makes it unsuitable as a stable ranking formula.
 
 </details>
 
-The radar cards also show workload PWS as a percentage of 32 GiB system RAM
-and dedicated GPU allocation as a percentage of 8 GiB VRAM. Those capacity
-figures are context, not score inputs: normalizing directly against 32/8 GiB
-would compress all frameworks near the top of the chart and hide meaningful
-differences inside this cohort.
+The radar cards also show workload PWS as a percentage of 32 GiB system RAM,
+dedicated GPU allocation as a percentage of 8 GiB VRAM, and shared GPU memory
+in MB. Those capacity figures are context, not score inputs: normalizing
+directly against 32/8 GiB would compress all frameworks near the top of the
+chart and hide meaningful differences inside this cohort.
 
 Regenerate every ranking visual and its machine-readable data with:
 

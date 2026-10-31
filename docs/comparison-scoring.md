@@ -3,13 +3,13 @@
 The comparison uses two complementary views:
 
 1. a ranking heatmap for exact per-dimension and overall placement;
-2. one six-axis radar per framework for the shape of its strengths and weaknesses.
+2. one seven-axis radar per framework for the shape of its strengths and weaknesses.
 
 Thirteen radars are never overlaid. Overlaying that many polygons obscures both
 labels and boundaries, while a single radar per framework keeps the same scale
 and axis order for visual comparison.
 
-## Six axes
+## Seven axes
 
 All raw metrics are lower-is-better:
 
@@ -17,12 +17,19 @@ All raw metrics are lower-is-better:
 - **CPU**: workload whole-machine CPU;
 - **GPU activity**: workload average GPU engine use;
 - **VRAM**: workload peak dedicated GPU allocation;
+- **Shared GPU memory**: workload peak system-memory-backed GPU allocation;
 - **Warm show**: end-to-end warm-show latency;
 - **Warm hide**: end-to-end warm-hide latency.
 
-Shared GPU memory remains in the exported raw metrics but is not a seventh radar
-axis. On Windows it is backed by system memory and is not equivalent to dedicated
-VRAM capacity.
+PWS is used for the RAM axis because it represents private pages resident in
+physical memory. Total Working Set includes shareable pages that can be counted
+more than once across a process tree, while Private Bytes measures committed
+address space rather than resident RAM. Both remain available in the raw
+benchmark results, but neither is added to PWS to manufacture a “total RAM”
+score.
+
+Shared GPU memory is a separate seventh axis. On Windows it is backed by system
+memory and is therefore labelled separately rather than presented as VRAM.
 
 ## Cohort-relative score
 
@@ -37,7 +44,7 @@ The best value scores 100 and the worst scores 0. This is a percentile-style
 cohort score, not an absolute performance grade. Adding another framework can
 change existing scores even when their raw measurements do not change.
 
-The default composite score is the weighted arithmetic mean of the six axis
+The default composite score is the weighted arithmetic mean of the seven axis
 scores. Every default weight is 1. The **weakness floor** is the lowest axis
 score and exposes a severe weakness that an average could hide.
 
@@ -50,7 +57,7 @@ Radar area is useful visual texture but is not a stable aggregate measure:
   measured;
 - one long vertex can visually compensate for a near-zero vertex.
 
-The radar therefore displays the six independently computed scores, while the
+The radar therefore displays the seven independently computed scores, while the
 composite uses an order-independent weighted mean.
 
 ## Hardware-capacity context
@@ -58,7 +65,8 @@ composite uses an order-independent weighted mean.
 Each radar card reports:
 
 - workload PWS as a percentage of 32 GiB system RAM;
-- workload peak dedicated allocation as a percentage of 8 GiB VRAM.
+- workload peak dedicated allocation as a percentage of 8 GiB VRAM;
+- workload peak shared GPU allocation in MB.
 
 These are context rather than score inputs. The measured footprints are small
 relative to 32/8 GiB, so a direct `100 - capacity cost` ability score would put
@@ -78,7 +86,7 @@ Generate a latency-focused variant in another directory:
 ```powershell
 & .\harness\generate-comparison-visuals.ps1 `
   -OutputDirectory '.\results\local\latency-visuals' `
-  -Weights @{ Ram = 1; Cpu = 1; Gpu = 1; Vram = 1; Show = 3; Hide = 3 }
+  -Weights @{ Ram = 1; Cpu = 1; Gpu = 1; Vram = 1; SharedGpu = 1; Show = 3; Hide = 3 }
 ```
 
 The generator emits the heatmap, composite ranking, thirteen independent radar
