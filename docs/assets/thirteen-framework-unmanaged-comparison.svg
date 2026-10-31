@@ -1,0 +1,139 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="800" viewBox="0 0 1500 800" role="img" aria-labelledby="title description">
+  <title id="title">Corrected unmanaged-window comparison of thirteen Rust UI frameworks</title>
+  <desc id="description">Three-round median resource usage and warm window latency. Red values are overall minima. Blue values beat gpui-fast without being the overall minimum.</desc>
+  <style>
+    text { font-family: "Segoe UI", Arial, sans-serif; fill: #e6edf3; }
+    .title { font-size: 25px; font-weight: 700; }
+    .subtitle { font-size: 14px; fill: #9da7b3; }
+    .header { font-size: 14px; font-weight: 700; fill: #f0f6fc; }
+    .framework { font-size: 14px; font-weight: 600; }
+    .value { font-size: 14px; font-variant-numeric: tabular-nums; }
+    .best { fill: #ff6b6b; font-weight: 700; }
+    .better { fill: #58a6ff; font-weight: 700; }
+    .baseline { fill: #79c0ff; font-weight: 700; }
+    .grid { stroke: #30363d; stroke-width: 1; }
+  </style>
+
+  <rect width="1500" height="800" rx="14" fill="#0d1117"/>
+  <text class="title" x="28" y="40">Corrected Unmanaged-Window Comparison</text>
+  <text class="subtitle" x="28" y="66">Lower is better · Three-round release medians · gpui-fast is the comparison baseline</text>
+  <text class="subtitle" x="28" y="94">
+    <tspan class="best">Red</tspan><tspan> = overall minimum (ties included)   ·   </tspan>
+    <tspan class="better">Blue</tspan><tspan> = lower than gpui-fast, but not the overall minimum</tspan>
+  </text>
+
+  <rect x="24" y="116" width="1452" height="620" rx="8" fill="#0b1016" stroke="#30363d"/>
+  <rect x="24" y="116" width="1452" height="48" rx="8" fill="#161b22"/>
+  <rect x="24" y="208" width="1452" height="44" fill="#0f141b"/>
+  <rect x="24" y="296" width="1452" height="44" fill="#0f141b"/>
+  <rect x="24" y="384" width="1452" height="44" fill="#0f141b"/>
+  <rect x="24" y="472" width="1452" height="44" fill="#0f141b"/>
+  <rect x="24" y="560" width="1452" height="44" fill="#0f141b"/>
+  <rect x="24" y="648" width="1452" height="44" fill="#0f141b"/>
+  <rect x="24" y="692" width="1452" height="44" fill="#102a43"/>
+
+  <path class="grid" d="M390 116V736 M570 116V736 M750 116V736 M930 116V736 M1110 116V736"/>
+  <path class="grid" d="M24 164H1476 M24 208H1476 M24 252H1476 M24 296H1476 M24 340H1476 M24 384H1476 M24 428H1476 M24 472H1476 M24 516H1476 M24 560H1476 M24 604H1476 M24 648H1476 M24 692H1476 M24 736H1476"/>
+
+  <text class="header" x="44" y="146">Framework</text>
+  <text class="header" x="480" y="146" text-anchor="middle">Hidden PWS (MB)</text>
+  <text class="header" x="660" y="146" text-anchor="middle">Workload PWS (MB)</text>
+  <text class="header" x="840" y="146" text-anchor="middle">Workload CPU (%)</text>
+  <text class="header" x="1020" y="146" text-anchor="middle">GPU Average (%)</text>
+  <text class="header" x="1293" y="146" text-anchor="middle">Warm Show / Hide (ms)</text>
+
+  <g class="value">
+    <text class="framework" x="44" y="192">Tauri / WebView2</text>
+    <text x="480" y="192" text-anchor="middle">94.6</text>
+    <text x="660" y="192" text-anchor="middle">98.2</text>
+    <text x="840" y="192" text-anchor="middle">0.328</text>
+    <text class="best" x="1020" y="192" text-anchor="middle">0.000</text>
+    <text x="1293" y="192" text-anchor="middle"><tspan class="better">259.550</tspan><tspan> / </tspan><tspan class="better">218.722</tspan></text>
+
+    <text class="framework" x="44" y="236">Slint</text>
+    <text x="480" y="236" text-anchor="middle">33.2</text>
+    <text x="660" y="236" text-anchor="middle">61.5</text>
+    <text x="840" y="236" text-anchor="middle">1.304</text>
+    <text x="1020" y="236" text-anchor="middle">6.717</text>
+    <text x="1293" y="236" text-anchor="middle">419.151 / 345.402</text>
+
+    <text class="framework" x="44" y="280">zgui</text>
+    <text x="480" y="280" text-anchor="middle">87.0</text>
+    <text x="660" y="280" text-anchor="middle">96.6</text>
+    <text x="840" y="280" text-anchor="middle">0.328</text>
+    <text class="better" x="1020" y="280" text-anchor="middle">0.834</text>
+    <text x="1293" y="280" text-anchor="middle"><tspan class="best">207.027</tspan><tspan> / </tspan><tspan class="better">227.862</tspan></text>
+
+    <text class="framework" x="44" y="324">Dioxus Desktop / WebView2</text>
+    <text x="480" y="324" text-anchor="middle">97.2</text>
+    <text x="660" y="324" text-anchor="middle">123.1</text>
+    <text x="840" y="324" text-anchor="middle">1.313</text>
+    <text class="better" x="1020" y="324" text-anchor="middle">0.481</text>
+    <text x="1293" y="324" text-anchor="middle"><tspan>335.474 / </tspan><tspan class="better">263.959</tspan></text>
+
+    <text class="framework" x="44" y="368">Dioxus Native / Blitz</text>
+    <text x="480" y="368" text-anchor="middle">189.5</text>
+    <text x="660" y="368" text-anchor="middle">189.9</text>
+    <text class="best" x="840" y="368" text-anchor="middle">0.325</text>
+    <text class="best" x="1020" y="368" text-anchor="middle">0.000</text>
+    <text x="1293" y="368" text-anchor="middle"><tspan class="better">266.597</tspan><tspan> / </tspan><tspan class="best">199.261</tspan></text>
+
+    <text class="framework" x="44" y="412">gpui-ce</text>
+    <text x="480" y="412" text-anchor="middle">23.7</text>
+    <text x="660" y="412" text-anchor="middle">36.6</text>
+    <text x="840" y="412" text-anchor="middle">0.658</text>
+    <text x="1020" y="412" text-anchor="middle">2.985</text>
+    <text x="1293" y="412" text-anchor="middle"><tspan class="better">246.915</tspan><tspan> / </tspan><tspan class="better">204.532</tspan></text>
+
+    <text class="framework" x="44" y="456">Iced</text>
+    <text x="480" y="456" text-anchor="middle">133.3</text>
+    <text x="660" y="456" text-anchor="middle">152.0</text>
+    <text x="840" y="456" text-anchor="middle">0.327</text>
+    <text x="1020" y="456" text-anchor="middle">1.054</text>
+    <text x="1293" y="456" text-anchor="middle"><tspan>329.911 / </tspan><tspan class="better">222.939</tspan></text>
+
+    <text class="framework" x="44" y="500">gpui-kit</text>
+    <text class="best" x="480" y="500" text-anchor="middle">19.0</text>
+    <text class="best" x="660" y="500" text-anchor="middle">24.8</text>
+    <text x="840" y="500" text-anchor="middle">0.656</text>
+    <text x="1020" y="500" text-anchor="middle">1.618</text>
+    <text x="1293" y="500" text-anchor="middle"><tspan class="better">284.224</tspan><tspan> / 308.871</tspan></text>
+
+    <text class="framework" x="44" y="544">KAS</text>
+    <text x="480" y="544" text-anchor="middle">151.7</text>
+    <text x="660" y="544" text-anchor="middle">188.4</text>
+    <text x="840" y="544" text-anchor="middle">0.328</text>
+    <text x="1020" y="544" text-anchor="middle">11.699</text>
+    <text x="1293" y="544" text-anchor="middle"><tspan class="better">246.977</tspan><tspan> / </tspan><tspan class="better">237.816</tspan></text>
+
+    <text class="framework" x="44" y="588">Makepad</text>
+    <text x="480" y="588" text-anchor="middle">124.9</text>
+    <text x="660" y="588" text-anchor="middle">133.9</text>
+    <text x="840" y="588" text-anchor="middle">0.328</text>
+    <text x="1020" y="588" text-anchor="middle">1.022</text>
+    <text x="1293" y="588" text-anchor="middle"><tspan class="better">224.070</tspan><tspan> / </tspan><tspan class="better">234.086</tspan></text>
+
+    <text class="framework" x="44" y="632">FerroUI</text>
+    <text x="480" y="632" text-anchor="middle">45.7</text>
+    <text x="660" y="632" text-anchor="middle">54.4</text>
+    <text x="840" y="632" text-anchor="middle">0.329</text>
+    <text class="better" x="1020" y="632" text-anchor="middle">0.632</text>
+    <text x="1293" y="632" text-anchor="middle"><tspan class="better">297.982</tspan><tspan> / </tspan><tspan class="better">244.843</tspan></text>
+
+    <text class="framework" x="44" y="676">egui</text>
+    <text x="480" y="676" text-anchor="middle">184.9</text>
+    <text x="660" y="676" text-anchor="middle">189.0</text>
+    <text class="best" x="840" y="676" text-anchor="middle">0.325</text>
+    <text class="better" x="1020" y="676" text-anchor="middle">0.496</text>
+    <text x="1293" y="676" text-anchor="middle"><tspan class="better">253.600</tspan><tspan> / </tspan><tspan class="better">230.375</tspan></text>
+
+    <text class="framework baseline" x="44" y="720">gpui-fast</text>
+    <text x="480" y="720" text-anchor="middle">20.4</text>
+    <text x="660" y="720" text-anchor="middle">25.9</text>
+    <text class="best" x="840" y="720" text-anchor="middle">0.325</text>
+    <text x="1020" y="720" text-anchor="middle">0.956</text>
+    <text x="1293" y="720" text-anchor="middle">319.336 / 299.870</text>
+  </g>
+
+  <text class="subtitle" x="28" y="772">PWS = Private Working Set. A measured GPU value of 0.000 means no activity was observed at the Windows counter sampling resolution.</text>
+</svg>
