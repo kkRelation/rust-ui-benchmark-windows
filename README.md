@@ -65,7 +65,7 @@ Lower is better in every numeric column. Red values are overall minima
 minimum. The gpui-fast row is the comparison baseline. Select the image to
 open the full-size SVG.
 
-[![Corrected unmanaged-window comparison of thirteen Rust UI frameworks](docs/assets/comparison/overview.svg)](docs/assets/comparison/overview.svg)
+[![Corrected comparison of thirteen Rust UI frameworks](docs/assets/comparison/overview.svg)](docs/assets/comparison/overview.svg)
 
 These are machine- and scene-specific observations. In particular, the GPU
 counter is sampled at Windows process/engine resolution, and the frameworks use
@@ -173,7 +173,7 @@ trade-offs, hardware-capacity interpretation, and custom-weight examples.
 - `probes/`: independent probe crates plus the shared protocol crate;
 - `harness/`: build, measurement, result-merge scripts, and Pester tests;
 - `results/2026-10-28/`: untouched raw data from the original experiment;
-- `results/2026-10-29/`: audited compatibility-anchor and unmanaged-cohort results;
+- `results/2026-10-29/`: audited compatibility-anchor and corrected-cohort results;
 - `results/2026-10-31/`: gpui-fast smoke, three-round result, event logs, and isolation audit;
 - `docs/`: benchmark design, report, and extraction provenance.
 
@@ -256,23 +256,20 @@ just framework-clean NAME
 
 After the named probe is implemented and enabled, `framework-test` performs a
 debug smoke run, a release build, three full release rounds, result validation,
-and guarded cleanup. After the debug build it records and exits a running
-`screenpipe-app.exe`; on both success and failure it restarts the original
-executable with its original arguments and waits for `/health` to report
-`healthy`. A failure preserves
-`.benchmark-work/<framework>` and writes a terminal status JSON. The explicit
-`framework-clean` recipe uses the same allow-listed path checks and is intended
-for an accepted terminal outcome, not an incomplete result.
+and guarded cleanup. A failure preserves `.benchmark-work/<framework>` and
+writes a terminal status JSON. The explicit `framework-clean` recipe uses the
+same allow-listed path checks and is intended for an accepted terminal outcome,
+not an incomplete result.
 
 ## Detailed current-result notes
 
-### [Iced](https://github.com/iced-rs/iced) unmanaged-window result
+### [Iced](https://github.com/iced-rs/iced)
 
 Iced 0.14.0 with its WGPU renderer completed a debug smoke run and three valid
 release rounds on 2026-10-29. Its median hidden/workload private working sets
 were 133.3/152.0 MB; workload machine CPU was 0.327%, average GPU engine use
 was 1.054%, and warm show/hide latency was 329.911/222.939 ms. Both native
-windows retained the expected unmanaged outer sizes at every checkpoint.
+windows retained the expected outer sizes at every checkpoint.
 
 The validated evidence is in
 [`iced-unmanaged-attempt-3.json`](results/2026-10-29/iced-unmanaged-attempt-3.json)
@@ -282,13 +279,13 @@ successful probe restricts lookup to the two exact titles and verifies their
 PID before changing visibility. Guarded cleanup then removed only the isolated
 Iced work root and recovered 3,280,015,360 bytes.
 
-### [gpui-kit](https://github.com/longbridge/gpui-kit) unmanaged-window result
+### [gpui-kit](https://github.com/longbridge/gpui-kit)
 
 gpui-kit 0.8.1, backed by gpui-pre 0.3.10, completed a debug smoke run and
 three valid release rounds on 2026-10-29. Its median hidden/workload private
 working sets were 19.0/24.8 MB; workload machine CPU was 0.656%, average GPU
 engine use was 1.618%, and warm show/hide latency was 284.224/308.871 ms. Both
-native windows retained the expected 715x514 and 1215x794 unmanaged outer
+native windows retained the expected 715x514 and 1215x794 outer
 sizes at all four checkpoints in every round. The probe uses gpui-kit's normal
 application, root-component, and asset initialization path; dependency and
 source inspection found no browser shell, QuickJS, or WebView runtime.
@@ -303,7 +300,7 @@ accepted probe normalizes the two HWND outer rectangles with per-window DPI
 before emitting `ready-hidden`. Guarded cleanup removed only the isolated
 gpui-kit work root and recovered 7,488,868,352 bytes.
 
-### [KAS](https://github.com/kas-gui/kas) unmanaged-window result
+### [KAS](https://github.com/kas-gui/kas)
 
 KAS 0.17.0 with its normal WGPU/DX12 runner completed a debug smoke run and
 three valid release rounds on 2026-10-29. Its median hidden/workload private
@@ -323,7 +320,7 @@ normalizes their DPI-aware outer rectangles, and requires 500 ms of stable
 hidden state before emitting `ready-hidden`. Guarded cleanup removed only the
 isolated KAS work root and recovered 3,313,897,472 bytes.
 
-### [Makepad](https://github.com/makepad/makepad) unmanaged-window result
+### [Makepad](https://github.com/makepad/makepad)
 
 Makepad Widgets 1.0.0 with its native Windows D3D11 renderer completed a
 debug smoke run and three valid release rounds on 2026-10-29. Its median
@@ -343,7 +340,7 @@ Rust selection value projected into both native windows; no WebView runtime is
 present. Guarded cleanup removed only the isolated Makepad work root and
 recovered 1,897,279,488 bytes.
 
-### [FerroUI](https://github.com/wieslawsoltes/FerroUI) unmanaged-window result
+### [FerroUI](https://github.com/wieslawsoltes/FerroUI)
 
 FerroUI `0.4.0-preview.1` with its default desktop Fluent theme and Skia/ANGLE
 renderer completed a debug smoke run and three valid release rounds on
@@ -362,7 +359,7 @@ LNK4217 import warnings; the locked build, smoke run, all three rounds, and
 clean shutdown nevertheless succeeded. Guarded cleanup removed only the
 isolated FerroUI work root and recovered 15,976,652,800 bytes.
 
-### [egui](https://github.com/emilk/egui) unmanaged-window result
+### [egui](https://github.com/emilk/egui)
 
 egui/eframe 0.37.0 with the WGPU renderer completed a debug smoke run and
 three valid release rounds on 2026-10-29. Its median hidden/workload private
@@ -377,12 +374,12 @@ The validated evidence is in
 artifacts. The probe uses eframe's root viewport plus
 `show_viewport_deferred` for the auxiliary window, one shared Rust selection
 value, and an explicit WGPU renderer selection. A current-PID and exact-title
-Win32 adapter synchronizes retained visibility using the same unmanaged-window
+Win32 adapter synchronizes retained visibility using the same window-lifecycle
 contract as the other expansion probes. The 14.2 MB executable and locked
 dependency graph were identical across all rounds. Guarded cleanup removed
 only the isolated egui work root and recovered 3,520,892,928 bytes.
 
-### [gpui-fast](https://github.com/longbridge/gpui-fast) unmanaged-window result
+### [gpui-fast](https://github.com/longbridge/gpui-fast)
 
 gpui-fast 0.1.12 with its native Windows Direct3D 11/DirectComposition path
 completed a debug smoke run and three valid release rounds on 2026-10-31. Its
@@ -396,11 +393,11 @@ not produce an observed retention increase in this probe.
 The validated evidence is in
 [`gpui-fast.json`](results/2026-10-31/gpui-fast.json) and its adjacent smoke,
 event, and [`status`](results/2026-10-31/gpui-fast-status.json) artifacts. Both
-HWNDs retained the exact 715x514 and 1215x794 unmanaged outer sizes at all four
-checkpoints in every round. The status audit records both komorebi title rules,
-Screenpipe suspension and healthy restoration, and guarded cleanup of only the
-gpui-fast work root, which recovered 4,363,223,040 bytes. The 11.0 MB executable
-and its SHA-256 were identical across all rounds.
+HWNDs retained the exact 715x514 and 1215x794 outer sizes at all four
+checkpoints in every round. The status audit records both komorebi title rules
+and guarded cleanup of only the gpui-fast work root, which recovered
+4,363,223,040 bytes. The 11.0 MB executable and its SHA-256 were identical
+across all rounds.
 
 ## Archived data and provenance
 
