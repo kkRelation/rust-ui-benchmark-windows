@@ -19,12 +19,36 @@ the corrected unmanaged-window protocol and a common environment baseline.
 Frameworks are tested serially with an isolated Cargo home and target directory
 removed only after durable results pass validation.
 
-The production application that motivated the experiment is not a contestant.
-Each reduced probe owns the same two-window scene and shared selection state,
-so the experiment measures framework/runtime cost rather than product scope.
-
 This repository is Windows-specific. The harness verifies native HWNDs and
 uses Windows process, GPU engine, and GPU process-memory performance counters.
+
+## Why this benchmark exists
+
+The author built this benchmark to choose a Rust GUI stack for possible UI
+refactors of two resident Windows applications:
+
+- [ClipboardXt](https://github.com/more-14-different/clipboardxt), currently a
+  WPF application, combines a searchable clipboard history, a folder-jump
+  panel, and an Everything-backed File Explorer quick-find panel. It handles
+  text, images, and files; uses several cooperating windows and popups; and is
+  designed for keyboard-first, focus-preserving interaction.
+- `komorebi-shortcuts-tauri`, currently a Tauri/WebView2 application, is a
+  searchable command palette for live Komorebi, Kanata, ErgoNav, AHK, and
+  shell shortcuts. It starts hidden and adds no-activate auxiliary windows for
+  the selected item's preview and keyboard-binding atlas.
+
+Both applications spend most of their lifetime in the background, then must
+pop out promptly on demand, search and update selection-dependent UI without
+perceptible delay, coordinate multiple native windows without stealing focus,
+and return to a low-resource hidden state. This makes hidden RAM and idle
+activity, warm show/hide latency, multi-window behavior, and sustained update
+cost product requirements rather than synthetic benchmark trivia.
+
+Neither production application is a contestant. Each reduced probe owns the
+same two-window scene and shared selection state, so the experiment isolates
+framework/runtime cost. It does not compare the applications' database,
+Everything integration, or full search pipelines; those remain separate
+product-level concerns when choosing a framework.
 
 ## Latest 13-framework results
 
